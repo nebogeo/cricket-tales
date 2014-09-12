@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" />
+    <title></title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <header>
+    </header>
+
+    <section class="top_layer">
+        {% block top_layer %}{% endblock %}
+    </section>
+    <section class="bottom_layer">
+        {% block bottom_layer %}{% endblock %}
+    </section>
+
+    <script src="{{ MEDIA_URL }}js/jquery-1.11.1.min.js"></script>
+    <script src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
+    <script src="{{ MEDIA_URL }}js/popcorn-complete.min.js"></script>
+    <script src="{{ MEDIA_URL }}js/base.js"></script>
+
+  </body>
+</html>

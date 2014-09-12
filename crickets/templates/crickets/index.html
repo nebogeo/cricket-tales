@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block top_layer %}
+<h1>Wild Cricket Tales</h1>
+{% endblock %}
+
+{% block bottom_layer %}
+<div class="box_container">
+{% if crickets_list %}
+    <ul>
+    {% for cricket in crickets_list %}
+    <div class="box">
+        <li><a href="/crickets/{{ cricket.id }}/">{{ cricket.name }}</a></li>
+        <img src="{{ cricket.image.url }}">
+    </div>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No crickets are available.</p>
+{% endif %}
+</div>
+{% endblock %}
