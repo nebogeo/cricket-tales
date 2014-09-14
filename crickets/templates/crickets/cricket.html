@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block top_layer %}
+<h1>Cricket Page for {{ cricket.name }}</h1>
+<div id="footnotediv"></div>
+<div id="test"></div>
+{% endblock %}
+
+
+{% block bottom_layer %}
+<script>video_setup("{{ cricket.image.url }}");</script>
+<progress id='progress-bar' min='0' max='100' value='0'>0% played</progress>
+
+
+<video nocontrols id="ourvideo">
+  <source src="{{ MEDIA_URL }}/movies/test.webm" type="video/webm">
+  <source src="{{ MEDIA_URL }}/movies/test.mp4" type="video/mp4">
+  <source src="{{ MEDIA_URL }}/movies/test.ogg" type="video/ogg">
+  I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+  <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
+</video>
+<div class="timeline">
+<div id="time" class="circle"></div>
+</div>
+
+{% endblock %}

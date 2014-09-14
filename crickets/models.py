@@ -15,11 +15,16 @@ class Personality(models.Model):
 
 class Movie(models.Model):
     cricket = models.ForeignKey(Cricket)
-    movie_file = models.FileField(upload_to='media/cricket_movies')
-    name = models.CharField(max_length=200)
+    movie_file_webm = models.FileField(upload_to='media/cricket_movies')
+    movie_file_ogg = models.FileField(upload_to='media/cricket_movies')
+    movie_file_mp4 = models.FileField(upload_to='media/cricket_movies')
+    def __unicode__(self):
+        return str(self.movie_file_webm);
 
 class Event(models.Model):
     movie = models.ForeignKey(Movie)
     event_type = models.CharField(max_length=200)
     start_time = models.FloatField(default=0)
     end_time = models.FloatField(default=0)
+    def __unicode__(self):
+        return self.event_type+" "+str(self.start_time);

@@ -30,9 +30,13 @@ class IndexView(generic.ListView):
         )
 
 
-class DetailView(generic.DetailView):
+class CricketView(generic.DetailView):
     model = Cricket
-    template_name = 'crickets/detail.html'
+    template_name = 'crickets/cricket.html'
+
+class MovieView(generic.DetailView):
+    model = Movie
+    template_name = 'crickets/movie.html'
 
 def spit(request):
     data = serializers.serialize("json", Cricket.objects.all())

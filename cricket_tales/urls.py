@@ -3,6 +3,8 @@ from django.contrib import admin
 
 import settings
 
+admin.site.site_header = 'Wild Cricket Tales Admin'
+
 urlpatterns = patterns('',
     url(r'^crickets/', include('crickets.urls')),
     url(r'^admin/', include(admin.site.urls)),
