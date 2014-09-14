@@ -9,17 +9,18 @@
     <header>
     </header>
 
-    <section class="top_layer">
-        {% block top_layer %}{% endblock %}
-    </section>
-    <section class="bottom_layer">
-        {% block bottom_layer %}{% endblock %}
-    </section>
-
     <script src="{{ MEDIA_URL }}js/jquery-1.11.1.min.js"></script>
     <script src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
     <script src="{{ MEDIA_URL }}js/popcorn-complete.min.js"></script>
     <script src="{{ MEDIA_URL }}js/base.js"></script>
+
+    <section class="top_layer">
+      {% block top_layer %}{% endblock %}
+    </section>
+    <section class="bottom_layer">
+      {% block bottom_layer %}{% endblock %}
+    </section>
+
 
   </body>
 </html>
