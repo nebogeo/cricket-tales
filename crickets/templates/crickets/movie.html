@@ -9,7 +9,6 @@
 
 {% block bottom_layer %}
 <script>video_setup("{{ movie.cricket.image.url }}");</script>
-<progress id='progress-bar' min='0' max='100' value='0'>0% played</progress>
 
 <video nocontrols id="ourvideo">
   <source src="{{ MEDIA_URL }}{{movie.movie_file_webm}}" type="video/webm">
@@ -18,8 +17,22 @@
   I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
   <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
 </video>
+
+<div class="timeline" style="background-color:pink; display:block;">
+  {% for event_type in event_types %}
+  <div class="circle" style="background-color:red; width:{{event_type.width}}%; display:inline-block">
+    {{event_type.name}}
+  </div>
+  {% endfor %}
+</div>
+
 <div class="timeline">
-<div id="time" class="circle"></div>
+  {% for event in events %}
+  <div class="small_circle" style="background-color:yellow; left:{{event.left}}%;">
+    {{event.type}}
+  </div>
+  {% endfor %}
+  <div id="time" class="circle"></div>
 </div>
 
 {% endblock %}

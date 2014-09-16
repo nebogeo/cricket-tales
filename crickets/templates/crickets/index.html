@@ -10,8 +10,8 @@
     <ul>
     {% for cricket in crickets_list %}
     <div class="box">
-        <li><a href="/crickets/{{ cricket.id }}/">{{ cricket.name }}</a></li>
-        <img src="{{ cricket.image.url }}">
+      <a href="/cricket/{{ cricket.id }}/"><h2>{{ cricket.name }}</h2></a>
+      <a href="/cricket/{{ cricket.id }}/"><img src="{{ cricket.image.url }}"></a>
     </div>
     {% endfor %}
     </ul>

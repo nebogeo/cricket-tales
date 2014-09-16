@@ -74,6 +74,9 @@ textarea {
 h1 {
     font-size: 500%;
 }
+h2 {
+    font-size: 250%;
+}
 
 
 body {
@@ -102,7 +105,6 @@ body {
     height: 170px;
     width: 170px;
     margin:10px;
-    background-color:blue;
 }
 
 
@@ -110,6 +112,8 @@ body {
     width:100%;
     height:50px;
     background-color:green;
+    text-align:center;
+    display:inline-block;
 }
 
 .circle {
@@ -117,5 +121,14 @@ body {
 	width: 50px;
 	height: 50px;
     background-color:white;
+}
+
+.small_circle {
+    margin-top: 10px;
+    border-radius: 15px;
+	width: 30px;
+	height: 30px;
+    background-color:white;
     position: absolute;
+    text-align: center;
 }
