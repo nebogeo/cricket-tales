@@ -62,13 +62,11 @@ class MovieView(generic.DetailView):
 
         context['event_types']=EventType.objects.all()
         for c, event_type in enumerate(context['event_types']):
-            event_type.width=int(100/len(context['event_types']))
+            event_type.width=int(100/len(context['event_types']))*0.5
 
         context['events']=Event.objects.filter(movie=context['movie'])
         for event in context['events']:
             event.left=int(event.start_time*10)
-
-
 
         return context
 

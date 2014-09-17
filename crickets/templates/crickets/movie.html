@@ -23,7 +23,7 @@
   <div class="button circle"
        onclick="add_event({{event_type.id}},{{movie.id}})"
        style="width:{{event_type.width}}%;">
-    {{event_type.name}}
+    <div class="button_text">{{event_type.name}}</div>
   </div>
   {% endfor %}
 </div>
@@ -31,10 +31,10 @@
 <div class="timeline bar">
   {% for event in events %}
   <div class="event small_circle" style="left:{{event.left}}%;">
-    {{event.type}}
+    <div class="event_text button_text">{{event.type}}</div>
   </div>
   {% endfor %}
-  <div id="time" class="time circle"></div>
+  <div id="time" class="time tiny_circle"></div>
 </div>
 
 {% endblock %}

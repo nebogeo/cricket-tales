@@ -80,14 +80,34 @@ body {
     min-height:100%;
 }
 
-.top_layer {
-    position:fixed; top:0px; left:0px;
+video {
     width: 100%;
+    height: auto;
+}
+
+.main_bit {
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.content {
+    position:absolute;
+    left:50%;
+    margin-left:-400px;
+    max-width: 800px;
+    width: 100%;
+}
+@media only screen and ( max-width: 800px ) {
+    .content {
+        margin-left: -50%;
+    }
+}
+
+.top_layer {
 }
 
 .bottom_layer {
-    position:absolute; top:0px; left:0px;
-    width: 100%;
     z-index: -1;
 }
 
@@ -106,48 +126,77 @@ body {
 /* square things */
 
 .bar {
-    width:100%;
-    height:50px;
-    background-color:green;
-    text-align:center;
-    display:inline-block;
+    width: 100%;
+    height: 5em;
+    background-color: green;
+    text-align: center;
+    display: inline-block;
+    overflow: hidden;
 }
 
 .timeline {
+    height: 3em;
 }
 
 .button_container {
     background-color:pink;
     display:block;
+    margin-bottom: 1em;
 }
 
 /* round things */
 
 .circle {
-    border-radius: 25px;
-	width: 50px;
-	height: 50px;
+    border-radius: 2.5em;
+	width: 5em;
+	height: 5em;
     text-align: center;
 }
 
 .small_circle {
-    border-radius: 15px;
-	width: 30px;
-	height: 30px;
+    border-radius: 1em;
+	width: 2em;
+	height: 2em;
+    text-align: center;
+}
+
+.tiny_circle {
+    border-radius: 0.5em;
+	width: 1em;
+	height: 1em;
     text-align: center;
 }
 
 .button {
     background-color: red;
     display: inline-block;
+    float: left;
+}
+
+.button:hover {
+    background-color: white;
+}
+
+.button:active {
+    background-color: green;
 }
 
 .event {
-    margin-top: 10px;
+    margin-top: 0.5em;
     position: absolute;
     background-color:yellow;
 }
 
 .time {
     background-color: white;
+}
+
+.button_text {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.event_text {
+    font-size: 50%;
 }

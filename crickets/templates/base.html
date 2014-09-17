@@ -14,13 +14,15 @@
     <script src="{{ MEDIA_URL }}js/popcorn-complete.min.js"></script>
     <script src="{{ MEDIA_URL }}js/base.js"></script>
 
-    <section class="top_layer">
-      {% block top_layer %}{% endblock %}
-    </section>
-    <section class="bottom_layer">
-      {% block bottom_layer %}{% endblock %}
-    </section>
+    <div class="main_bit">
 
+      <section class="top_layer content">
+        {% block top_layer %}{% endblock %}
+      </section>
+      <section class="bottom_layer content">
+        {% block bottom_layer %}{% endblock %}
+      </section>
+    </div>
 
   </body>
 </html>
