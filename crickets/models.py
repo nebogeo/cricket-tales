@@ -1,5 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+    def __unicode__(self):
+        return self.user.username
 
 class Cricket(models.Model):
     cricket_name = models.CharField(max_length=200)
@@ -20,7 +26,7 @@ class Movie(models.Model):
     movie_file_ogg = models.FileField(upload_to='media/cricket_movies')
     movie_file_mp4 = models.FileField(upload_to='media/cricket_movies')
     def __unicode__(self):
-        return str(self.movie_file_webm);
+        return str(self.cricket)+" : "+str(self.movie_file_webm);
 
 class EventType(models.Model):
     name = models.CharField(max_length=200)
@@ -33,4 +39,4 @@ class Event(models.Model):
     start_time = models.FloatField(default=0)
     end_time = models.FloatField(default=0)
     def __unicode__(self):
-        return self.type.name+" "+str(self.start_time);
+        return self.type.name+" "+str(self.start_time)+" : "+str(self.movie);

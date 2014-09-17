@@ -8,4 +8,7 @@ urlpatterns = patterns('',
     url(r'^movie/(?P<pk>\d+)/$', views.MovieView.as_view(), name='movie'),
     url(r'^suck/', views.suck, name='suck'),
     url(r'^spit_event/', views.spit_event, name='spit_event'),
+    url(r'^register/', views.register, name='register'),
+    url(r'^login/$', views.logmein, name='login'),
+    url(r'^logout/$', views.logmeout, name='logout'),
 )

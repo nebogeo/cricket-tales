@@ -2,6 +2,16 @@
 
 {% block top_layer %}
 <h1>Wild Cricket Tales</h1>
+
+{% if user.is_authenticated %}
+Hello {{ user.username }}!
+<a href="/logout/">Logout</a>
+{% else %}
+<a href="/login/">Login</a>
+<a href="/register/">Register Here</a>
+{% endif %}
+
+
 {% endblock %}
 
 {% block bottom_layer %}
