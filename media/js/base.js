@@ -104,20 +104,30 @@ function inner_render_event(type, start_time) {
         </div>');
 }
 
-function add_event(event_type, event_id, movie_id) {
+function add_event(event_type, event_id, movie_id,user_id) {
+
+    alert(user_id);
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();
 
-        console.log(t);
-
         // save to django ->
-        $.post("/spit_event/", {
-            movie: movie_id,
-            type: event_id,
-            start_time: t,
-            end_time: t+1
-        });
+        if (user_id=="None") {
+            $.post("/spit_event/", {
+                movie: movie_id,
+                type: event_id,
+                start_time: t,
+                end_time: t+1
+            });
+        } else {
+            $.post("/spit_event/", {
+                movie: movie_id,
+                type: event_id,
+                user: parseInt(user_id),
+                start_time: t,
+                end_time: t+1
+            });
+        }
 
         // add to the page
         inner_render_event(event_type, t);
