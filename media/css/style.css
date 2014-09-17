@@ -94,11 +94,11 @@ video {
 .content {
     position:absolute;
     left:50%;
-    margin-left:-400px;
-    max-width: 800px;
+    margin-left:-500px;
+    max-width: 1000px;
     width: 100%;
 }
-@media only screen and ( max-width: 800px ) {
+@media only screen and ( max-width: 1000px ) {
     .content {
         margin-left: -50%;
     }
@@ -123,6 +123,19 @@ video {
     margin:10px;
 }
 
+.box-overlay {
+    background:rgba(255,255,255,.75);
+    width: 100%;
+    height: 100%;
+    opacity:1;
+    -webkit-transition: opacity .25s ease;
+    -moz-transition: opacity .25s ease;
+}
+
+.box:hover .box-overlay {
+    opacity:0;
+}
+
 /* square things */
 
 .bar {
@@ -139,7 +152,7 @@ video {
 }
 
 .button_container {
-    background-color:pink;
+    background-color:yellow;
     display:block;
     margin-bottom: 1em;
 }
@@ -168,7 +181,7 @@ video {
 }
 
 .button {
-    background-color: red;
+    background-color: green;
     display: inline-block;
     float: left;
 }
@@ -182,12 +195,13 @@ video {
 }
 
 .event {
-    margin-top: 0.5em;
+    margin-top: -1.5em;
     position: absolute;
-    background-color:yellow;
+    background:rgba(255,255,0,.75);
 }
 
 .time {
+    margin-top: 1em;
     background-color: white;
 }
 

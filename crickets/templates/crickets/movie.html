@@ -21,18 +21,16 @@
 <div class="button_container bar">
   {% for event_type in event_types %}
   <div class="button circle"
-       onclick="add_event({{event_type.id}},{{movie.id}})"
+       onclick="add_event('{{event_type.name}}',{{event_type.id}},{{movie.id}})"
        style="width:{{event_type.width}}%;">
     <div class="button_text">{{event_type.name}}</div>
   </div>
   {% endfor %}
 </div>
 
-<div class="timeline bar">
+<div id="timeline" class="timeline bar">
   {% for event in events %}
-  <div class="event small_circle" style="left:{{event.left}}%;">
-    <div class="event_text button_text">{{event.type}}</div>
-  </div>
+  <script>render_event("{{event.type}}",{{event.start_time}});</script>
   {% endfor %}
   <div id="time" class="time tiny_circle"></div>
 </div>

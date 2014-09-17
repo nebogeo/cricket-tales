@@ -9,10 +9,11 @@
 {% if crickets_list %}
     <ul>
     {% for cricket in crickets_list %}
-    <div class="box">
-      <a href="/cricket/{{ cricket.id }}/"><h2>{{ cricket.name }}</h2></a>
-      <a href="/cricket/{{ cricket.id }}/"><img src="{{ cricket.image.url }}"></a>
-    </div>
+    <a href="/cricket/{{ cricket.id }}/">
+      <div class="box" style="background:url({{ cricket.image.url }});">
+        <div class="box-overlay"></div>
+      </div>
+    </a>
     {% endfor %}
     </ul>
 {% else %}

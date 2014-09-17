@@ -10,17 +10,15 @@
 {% block bottom_layer %}
 <div class="box_container">
 {% if movies %}
-    <ul>
     {% for movie in movies %}
-    <div class="box">
-      <li>
-        <a href="/movie/{{ movie.id }}/">
-          <img src="{{ movie.thumb.url }}">
-        </a>
-      </li>
-    </div>
+
+    <a href="/movie/{{ movie.id }}/">
+      <div class="box" style="background:url({{ movie.thumb.url }});">
+        <div class="box-overlay"></div>
+      </div>
+    </a>
+
     {% endfor %}
-    </ul>
 {% else %}
     <p>No crickets are available.</p>
 {% endif %}

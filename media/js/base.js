@@ -51,7 +51,7 @@ function video_setup(image) {
         pop = Popcorn("#ourvideo");
         console.log(pop);
 
-        pop.image({
+/*        pop.image({
         // seconds
             start: 2,
             // seconds
@@ -68,11 +68,11 @@ function video_setup(image) {
             onStart: function() {
               }
         });
+*/
 
         $("#time").draggable({
             axis:"x",
         });
-
 
         pop.on("timeupdate",
                function() {
@@ -88,11 +88,28 @@ function video_setup(image) {
 
 };
 
+function render_event(type, start_time) {
+    // need to wait for video...
+    document.addEventListener("DOMContentLoaded", function () {
+        inner_render_event(type, start_time);
+    });
+}
 
-function add_event(event_id, movie_id) {
+function inner_render_event(type, start_time) {
+    // convert time into %
+    var left = (start_time/pop.duration())*100;
+    $("#timeline").append(
+        '<div class="event small_circle" style="left:'+left+'%;">\
+            <div class="event_text button_text">'+type+'</div>\
+        </div>');
+}
+
+function add_event(event_type, event_id, movie_id) {
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();
+
+        console.log(t);
 
         // save to django ->
         $.post("/spit_event/", {
@@ -101,6 +118,9 @@ function add_event(event_id, movie_id) {
             start_time: t,
             end_time: t+1
         });
+
+        // add to the page
+        inner_render_event(event_type, t);
     }
 
 }

@@ -65,9 +65,6 @@ class MovieView(generic.DetailView):
             event_type.width=int(100/len(context['event_types']))*0.5
 
         context['events']=Event.objects.filter(movie=context['movie'])
-        for event in context['events']:
-            event.left=int(event.start_time*10)
-
         return context
 
 class EventForm(ModelForm):
