@@ -20,7 +20,9 @@
 
 <div class="button_container bar">
   {% for event_type in event_types %}
-  <div class="button circle" onclick="add_event({{event_type.id}})" style="width:{{event_type.width}}%;">
+  <div class="button circle"
+       onclick="add_event({{event_type.id}},{{movie.id}})"
+       style="width:{{event_type.width}}%;">
     {{event_type.name}}
   </div>
   {% endfor %}

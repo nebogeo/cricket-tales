@@ -76,27 +76,16 @@ class EventForm(ModelForm):
      class Meta:
          model = Event
 
-def get_event(request):
-    # if this is a POST request we need to process the form data
+## incoming from javascript...
+def spit_event(request):
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
         form = EventForm(request.POST)
-        # check whether it's valid:
         if form.is_valid():
-
-            # process the data in form.cleaned_data as required
-            # ...
-
             form.save()
-
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
+            return HttpResponse('')
     else:
         form = EventForm()
-
-    return render(request, 'crickets/event.html', {'form': form})
+        return render(request, 'crickets/event.html', {'form': form})
 
 ######################################################################
 ## json data
