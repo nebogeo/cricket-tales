@@ -108,10 +108,10 @@ video {
 }
 
 .top_layer {
+    z-index: 1;
 }
 
 .bottom_layer {
-    z-index: -1;
 }
 
 .box_container {
@@ -135,9 +135,9 @@ video {
     -moz-transition: opacity .25s ease;
 }
 
-.box:hover .box-overlay {
+/*.box:hover .box-overlay {
     opacity:0;
-}
+}*/
 
 /* square things */
 

@@ -42,7 +42,13 @@ $(document).ready(function(){
 // video/tagging business
 
 // global variables?! come on dear...
-pop = false;
+var pop = false;
+var events = [];
+
+// called before video loaded, so store them...
+function render_event(type, start_time) {
+    events.push([type, start_time]);
+}
 
 function video_setup(image) {
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
@@ -84,16 +90,15 @@ function video_setup(image) {
 
         // play the video right away
         pop.play();
+
+        // go through the events we collected earlier...
+        events.forEach(function(e) {
+            inner_render_event(e[0],e[1]);
+        });
+
     },false);
 
 };
-
-function render_event(type, start_time) {
-    // need to wait for video...
-    document.addEventListener("DOMContentLoaded", function () {
-        inner_render_event(type, start_time);
-    });
-}
 
 function inner_render_event(type, start_time) {
     // convert time into %
