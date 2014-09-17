@@ -4,11 +4,14 @@ $(document).ready(function(){
     });
 });
 
+// global variables?! come on dear...
+pop = false;
+
 function video_setup(image) {
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
     document.addEventListener("DOMContentLoaded", function () {
 
-        var pop = Popcorn("#ourvideo");
+        pop = Popcorn("#ourvideo");
         console.log(pop);
 
         pop.image({
@@ -47,3 +50,24 @@ function video_setup(image) {
     },false);
 
 };
+
+
+function add_event(id) {
+    // only works if we have a video running of course...
+    if (pop!=false) {
+        t = pop.currentTime();
+
+        alert(""+id+" at "+t);
+
+        // save to django!
+
+        $.post("../save_note/", {
+        noteid: noteID,
+        phase: "Example phase",
+        parent: $('#' + noteID).parent('td').attr('id'),
+        title: $('#' + noteID + ' textarea').val(),
+        message: "Blablbla",
+    });
+    }
+
+}

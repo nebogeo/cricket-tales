@@ -11,6 +11,9 @@ from django.core import serializers
 from django.template import Context, loader
 from itertools import chain
 
+from django import forms
+from django.forms import ModelForm
+
 #####################################################################
 ## index
 
@@ -69,9 +72,38 @@ class MovieView(generic.DetailView):
 
         return context
 
+class EventForm(ModelForm):
+     class Meta:
+         model = Event
+
+def get_event(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = EventForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+
+            # process the data in form.cleaned_data as required
+            # ...
+
+            form.save()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect('/thanks/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = EventForm()
+
+    return render(request, 'crickets/event.html', {'form': form})
+
 ######################################################################
 ## json data
 
-def spit(request):
+def suck(request):
     data = serializers.serialize("json", Cricket.objects.all())
     return HttpResponse(json.dumps(data), content_type="application/json")
+
+def spit(request):
+    pass

@@ -2,11 +2,11 @@ from django.db import models
 
 
 class Cricket(models.Model):
-    name = models.CharField(max_length=200)
+    cricket_name = models.CharField(max_length=200)
     created_date = models.DateTimeField('date created')
     image = models.ImageField(upload_to='media/cricket_images')
     def __unicode__(self):
-        return self.name;
+        return self.cricket_name;
 
 class Personality(models.Model):
     cricket = models.ForeignKey(Cricket)
@@ -33,4 +33,4 @@ class Event(models.Model):
     start_time = models.FloatField(default=0)
     end_time = models.FloatField(default=0)
     def __unicode__(self):
-        return self.event_type+" "+str(self.start_time);
+        return self.type.name+" "+str(self.start_time);

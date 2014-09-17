@@ -18,21 +18,21 @@
   <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
 </video>
 
-<div class="timeline" style="background-color:pink; display:block;">
+<div class="button_container bar">
   {% for event_type in event_types %}
-  <div class="circle" style="background-color:red; width:{{event_type.width}}%; display:inline-block">
+  <div class="button circle" onclick="add_event({{event_type.id}})" style="width:{{event_type.width}}%;">
     {{event_type.name}}
   </div>
   {% endfor %}
 </div>
 
-<div class="timeline">
+<div class="timeline bar">
   {% for event in events %}
-  <div class="small_circle" style="background-color:yellow; left:{{event.left}}%;">
+  <div class="event small_circle" style="left:{{event.left}}%;">
     {{event.type}}
   </div>
   {% endfor %}
-  <div id="time" class="circle"></div>
+  <div id="time" class="time circle"></div>
 </div>
 
 {% endblock %}

@@ -68,16 +68,12 @@ textarea {
 }
 
 
-
-
-
 h1 {
     font-size: 500%;
 }
 h2 {
     font-size: 250%;
 }
-
 
 body {
     width:100%;
@@ -107,8 +103,9 @@ body {
     margin:10px;
 }
 
+/* square things */
 
-.timeline {
+.bar {
     width:100%;
     height:50px;
     background-color:green;
@@ -116,19 +113,41 @@ body {
     display:inline-block;
 }
 
+.timeline {
+}
+
+.button_container {
+    background-color:pink;
+    display:block;
+}
+
+/* round things */
+
 .circle {
     border-radius: 25px;
 	width: 50px;
 	height: 50px;
-    background-color:white;
+    text-align: center;
 }
 
 .small_circle {
-    margin-top: 10px;
     border-radius: 15px;
 	width: 30px;
 	height: 30px;
-    background-color:white;
-    position: absolute;
     text-align: center;
+}
+
+.button {
+    background-color: red;
+    display: inline-block;
+}
+
+.event {
+    margin-top: 10px;
+    position: absolute;
+    background-color:yellow;
+}
+
+.time {
+    background-color: white;
 }
