@@ -75,9 +75,12 @@ h2 {
     font-size: 250%;
 }
 
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+
 body {
     width:100%;
     min-height:100%;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 video {

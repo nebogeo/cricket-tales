@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block top_layer %}
-<h1>Movies of {{ cricket.name }}</h1>
+<h1>Movies of {{ cricket.cricket_name }}</h1>
 <div id="footnotediv"></div>
 <div id="test"></div>
 {% endblock %}
@@ -20,7 +20,7 @@
 
     {% endfor %}
 {% else %}
-    <p>No crickets are available.</p>
+<p>No movies are available for this cricket yet.</p>
 {% endif %}
 </div>
 {% endblock %}
