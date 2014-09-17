@@ -105,8 +105,6 @@ function inner_render_event(type, start_time) {
 }
 
 function add_event(event_type, event_id, movie_id,user_id) {
-
-    alert(user_id);
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();

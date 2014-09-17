@@ -8,7 +8,7 @@ Hello {{ user.username }}!
 <a href="/logout/">Logout</a>
 {% else %}
 <a href="/login/">Login</a>
-<a href="/register/">Register Here</a>
+<a href="/register/">Register</a>
 {% endif %}
 
 
@@ -17,13 +17,11 @@ Hello {{ user.username }}!
 {% block bottom_layer %}
 <div class="box_container">
 {% if crickets_list %}
-    <ul>
     {% for cricket in crickets_list %}
     <a href="/cricket/{{ cricket.id }}/">
       <div class="box" style="background:url({{ cricket.image.url }});">
         <div class="box-overlay"></div>
       </div>
-    </a>
     {% endfor %}
     </ul>
 {% else %}
