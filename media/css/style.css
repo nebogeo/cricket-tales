@@ -200,12 +200,14 @@ video {
 
 .event {
     margin-top: -1.5em;
+    margin-left: -1.5em;
     position: absolute;
     background:rgba(255,255,0,.75);
 }
 
 .time {
     margin-top: 1em;
+    margin-left: -0.5em;
     background-color: white;
     -webkit-transition: left 1.5s linear;
     -moz-transition: left 1.5s linear;

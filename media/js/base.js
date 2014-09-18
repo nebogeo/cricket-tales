@@ -1,5 +1,7 @@
 // security stuff for async to prevent csrf
 
+console.log("helllo");
+
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -25,7 +27,9 @@ var csrftoken = getCookie('csrftoken');
 
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
+	console.log("csrf token before");
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+	    console.log("csrf token set");
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
