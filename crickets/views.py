@@ -84,6 +84,7 @@ def spit_event(request):
         if form.is_valid():
             form.save()
             return HttpResponse('')
+        return HttpResponse('request is invalid: '+str(form))
     else:
         form = EventForm()
         return render(request, 'crickets/event.html', {'form': form})

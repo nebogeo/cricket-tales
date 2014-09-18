@@ -80,26 +80,26 @@ function video_setup(image) {
             axis:"x",
         });
 
-        pop.on("timeupdate",
-               function() {
-                   var percentage = Math.floor((100 / pop.duration()) *
-                                               pop.currentTime());
-                   $("#time").css({left: percentage+"%"});
-               }
-              );
-
-        // play the video right away
-        pop.play();
-
-        // go through the events we collected earlier...
-        events.forEach(function(e) {
-            inner_render_event(e[0],e[1]);
+        pop.on("timeupdate", function() {
+            var percentage = Math.floor((100 / pop.duration()) *
+                                        pop.currentTime());
+            $("#time").css({left: percentage+"%"});
         });
 
+        pop.on("loadeddata", function () {
+            // go through the events we collected earlier...
+            events.forEach(function(e) {
+                console.log("rendering event...");
+                inner_render_event(e[0],e[1]);
+            });
+        });
+        // play the video right away
+        pop.play();
     },false);
 
 };
 
+// actually render the event
 function inner_render_event(type, start_time) {
     // convert time into %
     var left = (start_time/pop.duration())*100;
@@ -109,6 +109,7 @@ function inner_render_event(type, start_time) {
         </div>');
 }
 
+// sends the event to the server and renders it
 function add_event(event_type, event_id, movie_id,user_id) {
     // only works if we have a video running of course...
     if (pop!=false) {
@@ -119,6 +120,7 @@ function add_event(event_type, event_id, movie_id,user_id) {
             $.post("/spit_event/", {
                 movie: movie_id,
                 type: event_id,
+                user: "",
                 start_time: t,
                 end_time: t+1
             });

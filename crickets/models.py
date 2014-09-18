@@ -36,7 +36,7 @@ class EventType(models.Model):
 class Event(models.Model):
     movie = models.ForeignKey(Movie)
     type = models.ForeignKey(EventType)
-    user = models.ForeignKey(User, null=True)
+    user = models.ForeignKey(User, null=True, blank=True, default = None)
     start_time = models.FloatField(default=0)
     end_time = models.FloatField(default=0)
     def __unicode__(self):

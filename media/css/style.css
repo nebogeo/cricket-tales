@@ -135,9 +135,9 @@ video {
     -moz-transition: opacity .25s ease;
 }
 
-/*.box:hover .box-overlay {
+.box:hover .box-overlay {
     opacity:0;
-}*/
+}
 
 /* square things */
 
@@ -157,7 +157,6 @@ video {
 .button_container {
     background-color:yellow;
     display:block;
-    margin-bottom: 1em;
 }
 
 /* round things */
@@ -187,6 +186,8 @@ video {
     background-color: green;
     display: inline-block;
     float: left;
+    -webkit-transition: background-color 0.25s ease;
+    -moz-transition: background-color 0.25s ease;
 }
 
 .button:hover {
@@ -206,6 +207,8 @@ video {
 .time {
     margin-top: 1em;
     background-color: white;
+    -webkit-transition: left 1.5s linear;
+    -moz-transition: left 1.5s linear;
 }
 
 .button_text {
