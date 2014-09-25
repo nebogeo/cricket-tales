@@ -3,6 +3,21 @@
 {% block top_layer %}
 <h1>Wild Cricket Tales</h1>
 
+<div class="hiscores">
+  <h2>Craziest cricket clickers:</h2><br/>
+  <div class="hiscores_table">
+    {% for profile in hiscores_list %}
+    <div class="hiscores_row">
+      <div class="hiscores_left">{{ profile.user }}</div>
+      <div class="hiscores_right">{{ profile.num_events }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block bottom_layer %}
 {% if user.is_authenticated %}
 Hello {{ user.username }}!
 <a href="/logout/">Logout</a>
@@ -11,16 +26,6 @@ Hello {{ user.username }}!
 <a href="/register/">Register</a>
 {% endif %}
 
-<div class="hiscores">
-  <h2>Craziest cricket clickers:</h2><br/>
-  {% for profile in hiscores_list %}
-  {{ profile.user }}: {{ profile.num_events }} <br/>
-  {% endfor %}
-</div>
-
-{% endblock %}
-
-{% block bottom_layer %}
 <div class="box_container">
 {% if crickets_list %}
     {% for cricket in crickets_list %}

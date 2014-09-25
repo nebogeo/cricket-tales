@@ -10,6 +10,7 @@ from crickets.models import *
 from django.core import serializers
 from django.template import Context, loader, RequestContext
 from itertools import chain
+from django.db.models import Count
 
 # todo move forms
 from django import forms
@@ -59,7 +60,11 @@ class CricketView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(CricketView, self).get_context_data(**kwargs)
         context['movies']=Movie.objects.filter(cricket=context['cricket'])
-        context['num_events']=len(Event.objects.filter(movie__cricket=context['cricket']))
+        context['num_events']=Event.objects.filter(movie__cricket=context['cricket']).count()
+        context['fan_list']=Event.objects.filter(movie__cricket=context['cricket'])\
+                            .values('user__username')\
+                            .annotate(count=Count('user')).order_by('-count')[:5]
+
         return context
 
 ######################################################################

@@ -6,12 +6,24 @@
 
 {% block bottom_layer %}
 <section class="cricket_top">
-<h1>All about cricket: {{ cricket.name }}</h1>
-<div class="box" style="background:url({{ cricket.image.url }}); float:left;"></div>
-<div style="float:left; margin:10px;">
-<h2>Stats</h2><br/>
-Events recorded so far = {{ num_events }}
-</div>
+  <h1>All about cricket: {{ cricket.name }}</h1>
+  <div class="box" style="background:url({{ cricket.image.url }}); float:left;"></div>
+  <div style="float:left; margin:10px;">
+    <h2>Stats</h2>
+    <div class="hiscores_table">
+      Top fans:
+      {% for profile in fan_list %}
+      <div class="hiscores_row">
+        <div class="hiscores_left">{{ profile.user__username }}</div>
+        <div class="hiscores_right">{{ profile.count }}</div>
+      </div>
+      {% endfor %}
+      <div class="hiscores_row">
+        <div class="hiscores_left">Total recorded</div>
+        <div class="hiscores_right">{{ num_events }}</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="cricket_left">
@@ -19,13 +31,11 @@ Events recorded so far = {{ num_events }}
 <div class="box_container">
 {% if movies %}
     {% for movie in movies %}
-
     <a href="/movie/{{ movie.id }}/">
       <div class="box" style="background:url({{ movie.thumb.url }});">
         <div class="box-overlay"></div>
       </div>
     </a>
-
     {% endfor %}
 {% else %}
 <p>No movies are available for this cricket yet.</p>

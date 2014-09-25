@@ -225,9 +225,37 @@ video {
 }
 
 .hiscores {
-    pointer-events: none;
     padding-top: 10em;
 }
+
+.hiscores_table {
+    width: 170px;
+}
+
+.hiscores_row {
+    border: 1px;
+    height: 2em;
+}
+
+.hiscores_left {
+    float: left;
+    display: block;
+    border-radius: 0.5em;
+    padding: 0.2em;
+   background: lightgreen;
+}
+
+.hiscores_right {
+    border-radius: 0.5em;
+    float: right;
+    padding: 0.2em;
+    width: 1em;
+    font-size: 120%;
+    text-align: center;
+    clear: right;
+    background: lightblue;
+}
+
 
 .cricket_top {
     width:100%
