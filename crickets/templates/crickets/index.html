@@ -11,6 +11,12 @@ Hello {{ user.username }}!
 <a href="/register/">Register</a>
 {% endif %}
 
+<div class="hiscores">
+  <h2>Craziest cricket clickers:</h2><br/>
+  {% for profile in hiscores_list %}
+  {{ profile.user }}: {{ profile.num_events }} <br/>
+  {% endfor %}
+</div>
 
 {% endblock %}
 
@@ -21,7 +27,7 @@ Hello {{ user.username }}!
     <a href="/cricket/{{ cricket.id }}/">
       <div class="box" style="background:url({{ cricket.image.url }});">
         <div class="box-overlay"></div>
-      </div>
+    </div></a>
     {% endfor %}
     </ul>
 {% else %}

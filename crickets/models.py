@@ -4,15 +4,16 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     picture = models.ImageField(upload_to='profile_images', blank=True)
+    num_events = models.IntegerField(default=0)
     def __unicode__(self):
         return self.user.username
 
 class Cricket(models.Model):
-    cricket_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     created_date = models.DateTimeField('date created')
     image = models.ImageField(upload_to='media/cricket_images')
     def __unicode__(self):
-        return self.cricket_name;
+        return self.name;
 
 class Personality(models.Model):
     cricket = models.ForeignKey(Cricket)

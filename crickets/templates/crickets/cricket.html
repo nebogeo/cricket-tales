@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 
 {% block top_layer %}
-<h1>All about cricket: {{ cricket.cricket_name }}</h1>
-<div id="footnotediv"></div>
-<div id="test"></div>
 {% endblock %}
 
 
 {% block bottom_layer %}
+<section class="cricket_top">
+<h1>All about cricket: {{ cricket.name }}</h1>
+<div class="box" style="background:url({{ cricket.image.url }}); float:left;"></div>
+<div style="float:left; margin:10px;">
+Stats<br/>
+Events recorded so far = {{ num_events }}
+</div>
+</section>
+
+<section class="cricket_left">
+<h2>Least watched movies</h2>
 <div class="box_container">
 {% if movies %}
     {% for movie in movies %}
@@ -23,4 +31,26 @@
 <p>No movies are available for this cricket yet.</p>
 {% endif %}
 </div>
+</section>
+
+<section class="cricket_right">
+<h2>Most interesting movies</h2>
+<div class="box_container">
+{% if movies %}
+    {% for movie in movies %}
+
+    <a href="/movie/{{ movie.id }}/">
+      <div class="box" style="background:url({{ movie.thumb.url }});">
+        <div class="box-overlay"></div>
+      </div>
+    </a>
+
+    {% endfor %}
+{% else %}
+<p>No movies are available for this cricket yet.</p>
+{% endif %}
+</div>
+</section>
+
+
 {% endblock %}

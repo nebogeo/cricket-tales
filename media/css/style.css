@@ -108,6 +108,7 @@ video {
 }
 
 .top_layer {
+    pointer-events: none;
     z-index: 1;
 }
 
@@ -221,4 +222,23 @@ video {
 
 .event_text {
     font-size: 50%;
+}
+
+.hiscores {
+    pointer-events: none;
+    padding-top: 10em;
+}
+
+.cricket_top {
+    width:100%
+}
+
+.cricket_left {
+    width: 50%;
+    float: left;
+}
+
+.cricket_right {
+    width: 50%;
+    float: left;
 }
