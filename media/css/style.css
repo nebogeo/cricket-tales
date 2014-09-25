@@ -234,7 +234,7 @@ video {
 
 .hiscores_row {
     border: 1px;
-    height: 2em;
+    height: 1.6em;
 }
 
 .hiscores_left {
@@ -242,7 +242,8 @@ video {
     display: block;
     border-radius: 0.5em;
     padding: 0.2em;
-   background: lightgreen;
+    background: black;
+    color: white;
 }
 
 .hiscores_right {
@@ -250,10 +251,10 @@ video {
     float: right;
     padding: 0.2em;
     width: 1em;
-    font-size: 120%;
     text-align: center;
     clear: right;
-    background: lightblue;
+    background: black;
+    color: white;
 }
 
 

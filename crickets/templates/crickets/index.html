@@ -8,8 +8,8 @@
   <div class="hiscores_table">
     {% for profile in hiscores_list %}
     <div class="hiscores_row">
-      <div class="hiscores_left">{{ profile.user }}</div>
-      <div class="hiscores_right">{{ profile.num_events }}</div>
+      <div class="hiscores_left">{{ profile.user__username }}</div>
+      <div class="hiscores_right">{{ profile.count }}</div>
     </div>
     {% endfor %}
   </div>

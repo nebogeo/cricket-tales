@@ -47,7 +47,12 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['hiscores_list']=UserProfile.objects.order_by('-num_events')[:20]
+        context['hiscores_list']=Event.objects.all()\
+                            .exclude(user__isnull=True)\
+                            .values('user__username')\
+                            .annotate(count=Count('user')).order_by('-count')[:20]
+
+
         return context
 
 ######################################################################
@@ -62,8 +67,11 @@ class CricketView(generic.DetailView):
         context['movies']=Movie.objects.filter(cricket=context['cricket'])
         context['num_events']=Event.objects.filter(movie__cricket=context['cricket']).count()
         context['fan_list']=Event.objects.filter(movie__cricket=context['cricket'])\
+                            .exclude(user__isnull=True)\
                             .values('user__username')\
                             .annotate(count=Count('user')).order_by('-count')[:5]
+
+        context['anon']=Event.objects.filter(movie__cricket=context['cricket'], user__isnull=True).count()
 
         return context
 
@@ -96,12 +104,6 @@ def spit_event(request):
             form.save()
             # update the stats for this player
             data = form.cleaned_data
-            user = User.objects.filter(id=data['user'].id)[0]
-            profile = UserProfile.objects.filter(user=user)[0]
-            print profile
-            profile.num_tags += 1
-            profile.save()
-
             return HttpResponse('')
         return HttpResponse('request is invalid: '+str(form))
     else:
