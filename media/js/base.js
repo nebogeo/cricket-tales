@@ -106,6 +106,15 @@ function inner_render_event(type, start_time) {
     // convert time into %
     var left = (start_time/pop.duration())*100;
     $("#timeline").append(
+        '<div class="event micro_circle" style="left:'+left+'%; margin-top:-0.75em">\
+        </div>');
+}
+
+// actually render the event
+function inner_render_my_event(type, start_time) {
+    // convert time into %
+    var left = (start_time/pop.duration())*100;
+    $("#timeline").append(
         '<div class="event small_circle" style="left:'+left+'%;">\
             <div class="event_text button_text">'+type+'</div>\
         </div>');
@@ -137,7 +146,7 @@ function add_event(event_type, event_id, movie_id,user_id) {
         }
 
         // add to the page
-        inner_render_event(event_type, t);
+        inner_render_my_event(event_type, t);
     }
 
 }

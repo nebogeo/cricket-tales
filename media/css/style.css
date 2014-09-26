@@ -203,6 +203,13 @@ video {
     text-align: center;
 }
 
+.micro_circle {
+    border-radius: 0.25em;
+	width: 0.5em;
+	height: 0.5em;
+    text-align: center;
+}
+
 .button {
     background-color: green;
     display: inline-block;
