@@ -79,6 +79,7 @@ h2 {
 
 body {
     width:100%;
+    height:100%;
     min-height:100%;
     font-family: 'Noto Sans', sans-serif;
 }
@@ -115,16 +116,21 @@ video {
 .bottom_layer {
 }
 
+.outer_box_container {
+}
+
 .box_container {
     width:100%;
-    margin:0 auto;
+    height:700px;
+    overflow-y: scroll;
 }
 
 .box {
     display: inline-block;
-    height: 170px;
-    width: 170px;
-    margin:10px;
+    float: left;
+    height: 175px;
+    width: 175px;
+    margin:1em;
 }
 
 .box-overlay {
@@ -139,6 +145,20 @@ video {
 .box:hover .box-overlay {
     opacity:0;
 }
+
+.box-contents {
+    left: 0px;
+    top: -175px;
+    position: relative;
+    padding: 0.5em;
+    font-size: 75%;
+    color: black;
+}
+
+.box:hover .box-contents {
+    opacity:0;
+}
+
 
 /* square things */
 
@@ -225,7 +245,10 @@ video {
 }
 
 .hiscores {
-    padding-top: 10em;
+    border-radius: 1em;
+    margin-top: 30%;
+    width: 50%;
+    background:rgba(255,255,255,.75);
 }
 
 .hiscores_table {
@@ -234,14 +257,14 @@ video {
 
 .hiscores_row {
     border: 1px;
-    height: 1.6em;
+    height: 1.8em;
 }
 
 .hiscores_left {
     float: left;
     display: block;
     border-radius: 0.5em;
-    padding: 0.2em;
+    padding: 0.3em;
     background: black;
     color: white;
 }
@@ -249,7 +272,7 @@ video {
 .hiscores_right {
     border-radius: 0.5em;
     float: right;
-    padding: 0.2em;
+    padding: 0.3em;
     width: 1em;
     text-align: center;
     clear: right;
@@ -270,4 +293,8 @@ video {
 .cricket_right {
     width: 50%;
     float: left;
+}
+
+.login_box {
+    margin-top: 5em;
 }

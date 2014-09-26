@@ -6,8 +6,8 @@
 
 {% block bottom_layer %}
 <section class="cricket_top">
-  <h1>All about cricket: {{ cricket.name }}</h1>
-  <div class="box" style="background:url({{ cricket.image.url }}); float:left;"></div>
+  <h1>Cricket {{ cricket.name }}'s homepage</h1>
+  <a href="../.."><div class="box" style="background:url({{ cricket.image.url }}); float:left;"></div></a>
   <div style="float:left; margin:10px;">
     <div class="hiscores_table">
       Top fans:
@@ -17,15 +17,19 @@
         <div class="hiscores_right">{{ profile.count }}</div>
       </div>
       {% endfor %}
+      </br>
       <div class="hiscores_row">
         <div class="hiscores_left">Anon</div>
         <div class="hiscores_right">{{ anon }}</div>
       </div>
       <div class="hiscores_row">
-        <div class="hiscores_left">Total recorded</div>
+        <div class="hiscores_left">Total</div>
         <div class="hiscores_right">{{ num_events }}</div>
       </div>
     </div>
+  </div>
+  <div style="float:left; margin:10px;">
+    Stuff here all about this individual cricket, wing patterns etc etc.
   </div>
 </section>
 
@@ -35,8 +39,13 @@
 {% if movies %}
     {% for movie in movies %}
     <a href="/movie/{{ movie.id }}/">
-      <div class="box" style="background:url({{ movie.thumb.url }});">
+      <div class="box" style="background:url({{ MEDIA_URL }}movies/{{ movie.name }}.jpg);">
         <div class="box-overlay"></div>
+        <div class="box-contents">
+          Movie: {{ movie.name }}</br>
+          Contributors: {{ movie.contributors }}</br>
+          Events found: {{ movie.num_events }}</br>
+        </div>
       </div>
     </a>
     {% endfor %}
@@ -51,13 +60,16 @@
 <div class="box_container">
 {% if movies %}
     {% for movie in movies %}
-
     <a href="/movie/{{ movie.id }}/">
-      <div class="box" style="background:url({{ movie.thumb.url }});">
+      <div class="box" style="background:url({{ MEDIA_URL }}movies/{{ movie.name }}.jpg)">
         <div class="box-overlay"></div>
+        <div class="box-contents">
+          Movie: {{ movie.name }}</br>
+          Contributors: {{ movie.contributors }}</br>
+          Events found: {{ movie.num_events }}</br>
+        </div>
       </div>
     </a>
-
     {% endfor %}
 {% else %}
 <p>No movies are available for this cricket yet.</p>

@@ -11,9 +11,9 @@
 <script>video_setup("{{ movie.cricket.image.url }}");</script>
 
 <video nocontrols id="ourvideo">
-  <source src="{{ MEDIA_URL }}{{movie.movie_file_webm}}" type="video/webm">
-  <source src="{{ MEDIA_URL }}{{movie.movie_file_mp4}}" type="video/mp4">
-  <source src="{{ MEDIA_URL }}{{movie.movie_file_ogg}}" type="video/ogg">
+  <source src="{{ MEDIA_URL }}movies/{{movie.name}}.webm" type="video/webm">
+  <source src="{{ MEDIA_URL }}movies/{{movie.name}}.mp4}}" type="video/mp4">
+  <source src="{{ MEDIA_URL }}movies/{{movie.name}}.ogg}}" type="video/ogg">
   I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
 </video>
 

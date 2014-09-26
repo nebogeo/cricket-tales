@@ -10,7 +10,11 @@ class UserProfile(models.Model):
 class Cricket(models.Model):
     name = models.CharField(max_length=200)
     created_date = models.DateTimeField('date created')
-    image = models.ImageField(upload_to='media/cricket_images')
+    image = models.ImageField(upload_to='cricket_images')
+    # stuff updated from periodic update.py
+    biggest_fan = models.CharField(max_length=200, default="None yet")
+    num_contributors = models.CharField(max_length=200, default=0)
+    total_events = models.CharField(max_length=200, default=0)
     def __unicode__(self):
         return self.name;
 
@@ -21,12 +25,9 @@ class Personality(models.Model):
 
 class Movie(models.Model):
     cricket = models.ForeignKey(Cricket)
-    thumb =  models.ImageField(upload_to='media/cricket_thumbs')
-    movie_file_webm = models.FileField(upload_to='media/cricket_movies')
-    movie_file_ogg = models.FileField(upload_to='media/cricket_movies')
-    movie_file_mp4 = models.FileField(upload_to='media/cricket_movies')
+    name = models.CharField(max_length=200)
     def __unicode__(self):
-        return str(self.cricket)+" : "+str(self.movie_file_webm);
+        return str(self.cricket)+" : "+str(self.name);
 
 class EventType(models.Model):
     name = models.CharField(max_length=200)

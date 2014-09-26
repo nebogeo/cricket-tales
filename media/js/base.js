@@ -1,7 +1,5 @@
 // security stuff for async to prevent csrf
 
-console.log("helllo");
-
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -37,11 +35,11 @@ $.ajaxSetup({
 
 // do the dragging magic
 
-$(document).ready(function(){
+/*$(document).ready(function(){
     $(".box_container").draggable({
         axis:"y",
     });
-});
+});*/
 
 // video/tagging business
 

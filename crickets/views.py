@@ -1,6 +1,5 @@
 #####################################################################
 
-
 import json
 from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
@@ -50,8 +49,8 @@ class IndexView(generic.ListView):
         context['hiscores_list']=Event.objects.all()\
                             .exclude(user__isnull=True)\
                             .values('user__username')\
-                            .annotate(count=Count('user')).order_by('-count')[:20]
-
+                            .annotate(count=Count('user'))\
+                            .order_by('-count')[:20]
 
         return context
 
@@ -65,11 +64,22 @@ class CricketView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(CricketView, self).get_context_data(**kwargs)
         context['movies']=Movie.objects.filter(cricket=context['cricket'])
+
+        for movie in context['movies']:
+            movie.contributors=Event.objects.filter(movie=movie)\
+                            .exclude(user__isnull=True)\
+                            .values('user__username')\
+                            .annotate(count=Count('user'))\
+                            .count()
+            movie.num_events=Event.objects.filter(movie=movie).count()
+
         context['num_events']=Event.objects.filter(movie__cricket=context['cricket']).count()
+
         context['fan_list']=Event.objects.filter(movie__cricket=context['cricket'])\
                             .exclude(user__isnull=True)\
                             .values('user__username')\
-                            .annotate(count=Count('user')).order_by('-count')[:5]
+                            .annotate(count=Count('user'))\
+                            .order_by('-count')[:3]
 
         context['anon']=Event.objects.filter(movie__cricket=context['cricket'], user__isnull=True).count()
 
