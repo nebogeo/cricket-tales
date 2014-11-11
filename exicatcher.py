@@ -128,7 +128,7 @@ def extract(file, frames, stem, verbose, nowrite=False):
     header_offset = 4               # Bytes starting the SFS file before video info
 
     bad = 0
-    with open(args[0], 'rb') as f:
+    with open(file, 'rb') as f:
         for frame in frames:
             if verbose:
                 print '%d offset %d  length %d' % (frame['number'], frame['offset'], frame['length'])
