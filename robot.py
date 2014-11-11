@@ -1,13 +1,28 @@
-import os
+# a movie creating robot for crickets
+
+import os,sys
 import exicatcher
 import datetime
 import dbadd
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cricket_tales.settings")
+import django
+from crickets.models import *
 
 srcdir = "/home/dave/projects/crickets/fakedisk/"
 
 # palm:oil:chaos
 
-print "hello"
+django.setup()
+
+def add_movie_django(cricketname,moviename):
+    crickets = Cricket.objects.filter(name=cricketname) 
+    if len(crickets)>0:
+        print("adding "+moviename)
+        m = Movie(cricket = crickets[0], name = moviename)
+        m.save()
+    else:
+        print("add movie error, could not find cricket:"+cricketname)
+
 
 def examine_index(path):
     frames = exicatcher.read_index(path)
@@ -30,14 +45,20 @@ def examine_index(path):
     f.close()
 
 def run(cmd):
-    print(cmd)
+    #print(cmd)
     os.system(cmd)
 
-def run_converter(f):
-    f = "media/movies/"+f
-    run("avconv -i frames/frame-%05d.jpg -vf vflip -c:v libx264 "+f+".mp4")
-    run("avconv -i frames/frame-%05d.jpg -vf vflip "+f+".ogg")
-    run("avconv -i frames/frame-%05d.jpg -vf vflip "+f+".webm")
+dest_root = "media/movies/"
+
+def run_converter(f,r):
+    f = dest_root+f
+    cmd = "avconv -y -loglevel error -i frames/frame-%05d.jpg -vf vflip -r "+str(r)
+    print("making mp4")
+    run(cmd+" -c:v libx264 "+f+".mp4")
+    print("making ogg")
+    run(cmd+" "+f+".ogg")
+    print("making webm")
+    run(cmd+" "+f+".webm")
 
 def delete_frames():
     run("rm frames/*.jpg")
@@ -47,20 +68,31 @@ def renamer(start,frames):
         for i in range(0,frames):
             run("mv frames/frame-%05d.jpg frames/frame-%05d.jpg"%(i+start,i))
 
-def chop_video(path,subdir,start,frames):
+def create_thumb(fn):
+    run("convert frames/frame-00000.jpg -resize '233x175^' -gravity center -crop '175x175+0+0' "+dest_root+fn+".jpg")
+
+def check_done(fn):
+    return (os.path.isfile(dest_root+fn+".jpg") and
+            os.path.isfile(dest_root+fn+".mp4") and
+            os.path.isfile(dest_root+fn+".ogg") and
+            os.path.isfile(dest_root+fn+".webm"))
+    
+def chop_video(path,subdir,start,frames,fps):
     sf = os.path.splitext(path)
     moviename = sf[0]+".generic.sfs"
-    print("extracting "+moviename+" starting "+str(start))
-    exicatcher.extract(moviename, frames, "frames/frame", False)
-    renamer(start,len(frames))
     so = os.path.splitext(os.path.basename(path))
     outname = subdir+"/"+so[0]+"-"+str(start)
-    print(outname)
-    run_converter(outname)
-    delete_frames()
-    dbadd.add_movie_django("Fred",outname)
-
-
+    if not check_done(outname):
+        print("extracting "+moviename+" starting "+str(start))
+        exicatcher.extract(moviename, frames, "frames/frame", False)
+        renamer(start,len(frames))
+        print(outname)
+        create_thumb(outname)
+        run_converter(outname,fps)
+        delete_frames()
+        dbadd.add_movie_django("Fred",outname)
+    else:
+        print(outname+" is done...")
 
 def chop_index(duration,fps,path,subdir):
     frames = exicatcher.read_index(path)
@@ -70,11 +102,9 @@ def chop_index(duration,fps,path,subdir):
     # todo - what to do with the offcuts??
     print("seg length:"+str(seg_length))
     print("num segs:"+str(num_segs))
-
     for segnum in range(0,num_segs):
         start = segnum*seg_length
-        chop_video(path,subdir,start,frames[start:start+seg_length])
-
+        chop_video(path,subdir,start,frames[start:start+seg_length],fps)
 
 def search_videos(path,duration,fps):
     for (dirpath, dirnames, filenames) in os.walk(path):
@@ -84,8 +114,6 @@ def search_videos(path,duration,fps):
                 # todo get subdir from path...
                 chop_index(duration,fps,dirpath+"/"+filename,"IP101")
                 
-
-
-search_videos(srcdir,10,10)
+search_videos(srcdir,30,10)
 
 
