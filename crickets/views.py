@@ -63,7 +63,7 @@ class CricketView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CricketView, self).get_context_data(**kwargs)
-        context['movies']=Movie.objects.filter(cricket=context['cricket'])
+        context['movies']=Movie.objects.filter(cricket=context['cricket']).order_by('views')
 
         for movie in context['movies']:
             movie.contributors=Event.objects.filter(movie=movie)\
@@ -94,6 +94,10 @@ class MovieView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(MovieView, self).get_context_data(**kwargs)
+
+        # inc views
+        context['movie'].views+=1
+        context['movie'].save()
 
         context['event_types']=EventType.objects.all()
         for c, event_type in enumerate(context['event_types']):

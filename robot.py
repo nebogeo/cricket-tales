@@ -3,7 +3,6 @@
 import os,sys
 import exicatcher
 import datetime
-import dbadd
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cricket_tales.settings")
 import django
 from crickets.models import *
@@ -52,7 +51,7 @@ dest_root = "media/movies/"
 
 def run_converter(f,r):
     f = dest_root+f
-    cmd = "avconv -y -loglevel error -i frames/frame-%05d.jpg -vf vflip -r "+str(r)
+    cmd = "avconv -y -loglevel error -r "+str(r)+" -i frames/frame-%05d.jpg -vf vflip"
     print("making mp4")
     run(cmd+" -c:v libx264 "+f+".mp4")
     print("making ogg")
@@ -90,7 +89,7 @@ def chop_video(path,subdir,start,frames,fps):
         create_thumb(outname)
         run_converter(outname,fps)
         delete_frames()
-        dbadd.add_movie_django("Fred",outname)
+        add_movie_django("Fred",outname)
     else:
         print(outname+" is done...")
 
@@ -114,6 +113,6 @@ def search_videos(path,duration,fps):
                 # todo get subdir from path...
                 chop_index(duration,fps,dirpath+"/"+filename,"IP101")
                 
-search_videos(srcdir,30,10)
+search_videos(srcdir,30,3)
 
 
