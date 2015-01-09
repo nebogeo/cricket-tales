@@ -78,8 +78,22 @@ function video_setup(image) {
         });
 */
 
+        // scrubbing
         $("#time").draggable({
             axis:"x",
+            drag: function( event, ui ) {
+                var pos = pop.duration() * parseFloat($('#time').css('left')) /
+                        parseFloat($('#time').parent().css('width'));
+                pop.currentTime(pos);
+            }
+        });
+
+        // click on timeline
+        $("#timeline").click(function(e) {
+            var offset = $(this).offset();
+            var x = e.clientX - offset.left;
+            var pos = pop.duration() * x / parseFloat($('#timeline').css('width'));
+            pop.currentTime(pos);
         });
 
         pop.on("timeupdate", function() {

@@ -237,8 +237,8 @@ video {
     margin-top: 1em;
     margin-left: -0.5em;
     background-color: white;
-    -webkit-transition: left 1.5s linear;
-    -moz-transition: left 1.5s linear;
+    /*-webkit-transition: left 1.5s linear;
+    -moz-transition: left 1.5s linear;*/
 }
 
 .button_text {
