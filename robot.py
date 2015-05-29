@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # a movie creating robot for crickets
 
 import os,sys
@@ -41,6 +42,13 @@ def set_movie_status_django(moviename,status):
         return True
     except Movie.DoesNotExist:
         return False
+
+def get_movie_status_django(moviename):
+    try:
+        existing = Movie.objects.get(name=moviename)
+        return existing.status
+    except Movie.DoesNotExist:
+        return -1
     
 def examine_index(path):
     frames = exicatcher.read_index(path)
@@ -102,17 +110,19 @@ def add_django_record(path,subdir,start,frames,fps):
     add_movie_django("Fred",outname)
 
 # calculate frames and actually do the work, set movie state
-def chop_video(path,subdir,start,frames,fps):
+def make_video(path,subdir,start,frames,fps):
     sf = os.path.splitext(path)
     moviename = sf[0]+".generic.sfs"
     so = os.path.splitext(os.path.basename(path))
     outname = subdir+"/"+so[0]+"-"+str(start)
-    # check the django record exists
-    if not set_movie_status_django(outname,0):
+    # check django record exists
+    status = get_movie_status_django(outname)
+    if status==-1:
         print("Error: no django record found for movie: "+outname)
         return
-    # check the files don't already exist
-    if not check_done(outname):
+
+    # trust the status, so will overwrite existing files
+    if status==0:        
         print("extracting "+moviename+" starting "+str(start))
         exicatcher.extract(moviename, frames, "frames/frame", False)
         renamer(start,len(frames))
@@ -122,9 +132,13 @@ def chop_video(path,subdir,start,frames,fps):
         delete_frames()
         set_movie_status_django(outname,1)        
     else:
-        print(outname+" is already done...?")
-        # presume file a-ok, turn the movie on...
-        set_movie_status_django(outname,1)        
+        print(outname+": status is 1 - is already done...?")
+        # status is 1 so check files actually exist..
+        if not check_done(outname):
+            print(outname+"nope, setting status to 0, will get next time")
+            set_movie_status_django(outname,0)        
+        else:
+            print(outname+"yup")
 
 # calculate frames and generate django records
 def add_django_records_from_index(duration,fps,path,subdir):
@@ -167,7 +181,7 @@ def chop_index(duration,fps,path,subdir):
             end = num_frames
             print("extending: "+str(end-start)+" frames")
 
-        chop_video(path,subdir,start,frames[start:end],fps)
+        make_video(path,subdir,start,frames[start:end],fps)
 
 def search_and_create_django_records(path,duration,fps):
     for (dirpath, dirnames, filenames) in os.walk(path):
@@ -192,13 +206,13 @@ def search_and_process_videos(path,duration,fps):
 def update_video_status_django():
     for movie in Movie.objects.all():
         if check_done(movie.name) and movie.status == 0:
-            print("found a movie turned off with files, turning on: "+movie.name)
-            set_movie_status_django(movie.name,1)
+            print("found a movie turned off with files, check files for: "+movie.name)
+            #set_movie_status_django(movie.name,1)
         if not check_done(movie.name) and movie.status == 1:
             print("!!! found a movie turned ON without files, turning off: "+movie.name)
             set_movie_status_django(movie.name,0)
     
-if len(os.argv)<2 or os.argv[1]=="-?" or os.argv[1]=="--help":
+if len(sys.argv)<2 or sys.argv[1]=="-?" or sys.argv[1]=="--help":
     print "Welcome to the cricket tales processing robot v0.0.1"
     print "Options are: To build django records from the video files only:"
     print "cricket_robot build" 
@@ -206,12 +220,12 @@ if len(os.argv)<2 or os.argv[1]=="-?" or os.argv[1]=="--help":
     print "cricket_robot process"
     print "To check for and amend videos turned on that don't exist or videos turned off that do:"
     print "cricket_robot check"
-
-if os.argv[1]=="build":        
-    search_and_create_django_records(srcdir,30,3)
-if os.argv[1]=="process":
-    search_and_process_videos(srcdir,30,3)
-if os.argv[1]=="check":
-    update_video_status_django()
+else:
+    if sys.argv[1]=="build":        
+        search_and_create_django_records(srcdir,30,3)
+    if sys.argv[1]=="process":
+        search_and_process_videos(srcdir,30,3)
+    if sys.argv[1]=="check":
+        update_video_status_django()
 
 
