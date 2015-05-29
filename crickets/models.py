@@ -27,6 +27,10 @@ class Movie(models.Model):
     cricket = models.ForeignKey(Cricket)
     name = models.CharField(max_length=200)
     views = models.IntegerField(default=0)
+    created_date = models.DateTimeField('date created')
+    status = models.IntegerField(default=0)    
+    # stuff updated from periodic update.py
+    num_events = models.IntegerField(default=0)    
     def __unicode__(self):
         return str(self.cricket)+" : "+str(self.name);
 

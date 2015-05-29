@@ -11,7 +11,6 @@ crickets = Cricket.objects.all()
 
 for cricket in crickets:
     print("cricket:"+str(cricket))
-
     fans = Event.objects.filter(movie__cricket=cricket)\
                         .exclude(user__isnull=True)\
                         .values('user__username')\
@@ -20,11 +19,13 @@ for cricket in crickets:
     if len(fans)>0:
         cricket.biggest_fan=fans[0]["user__username"]
         print("biggest fan is: "+cricket.biggest_fan)
-
     cricket.num_contributors = len(fans)
     print("with "+str(cricket.num_contributors)+" contributors")
-
     cricket.total_events = Event.objects.filter(movie__cricket=cricket).count()
     print("total events: "+str(cricket.total_events))
-
     cricket.save()
+
+for movie in Movie.objects.all():
+    num_events = Event.objects.filter(movie=movie).count()
+    movie.num_events = num_events
+    movie.save()

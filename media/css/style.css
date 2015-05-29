@@ -280,7 +280,7 @@ video {
     border-radius: 0.5em;
     float: right;
     padding: 0.3em;
-    width: 1em;
+    min-width: 1em;
     text-align: center;
     clear: right;
     background: black;

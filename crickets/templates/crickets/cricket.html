@@ -29,6 +29,22 @@
     </div>
   </div>
   <div style="float:left; margin:10px;">
+    <div class="hiscores_table">
+      Stats:
+      <div class="hiscores_row">
+	<div class="hiscores_left">Total videos</div>
+	<div class="hiscores_right">{{ total_videos }}</div>
+      </div>
+      <div class="hiscores_row">
+	<div class="hiscores_left">Videos ready</div>
+	<div class="hiscores_right">{{ total_videos_ready }}</div>
+      </div>
+      <div class="hiscores_row">
+	<div class="hiscores_left">Hours</div>
+	<div class="hiscores_right">{{ total_hours }}</div>
+      </div>
+    </div>
+
     Stuff here all about this individual cricket, wing patterns etc etc.
   </div>
 </section>
@@ -36,8 +52,8 @@
 <section class="cricket_left">
 <h2>Least watched movies</h2>
 <div class="box_container">
-{% if movies %}
-    {% for movie in movies %}
+{% if least_watched_movies %}
+    {% for movie in least_watched_movies %}
     <a href="/movie/{{ movie.id }}/">
       <div class="box" style="background:url({{ MEDIA_URL }}movies/{{ movie.name }}.jpg);">
         <div class="box-overlay"></div>
@@ -59,8 +75,8 @@
 <section class="cricket_right">
 <h2>Most interesting movies</h2>
 <div class="box_container">
-{% if movies %}
-    {% for movie in movies %}
+{% if most_interesting_movies %}
+    {% for movie in most_interesting_movies %}
     <a href="/movie/{{ movie.id }}/">
       <div class="box" style="background:url({{ MEDIA_URL }}movies/{{ movie.name }}.jpg)">
         <div class="box-overlay"></div>

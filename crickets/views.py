@@ -63,15 +63,23 @@ class CricketView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CricketView, self).get_context_data(**kwargs)
-        context['movies']=Movie.objects.filter(cricket=context['cricket']).order_by('views')
+        context['least_watched_movies']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).order_by('views')[:30]
 
-        for movie in context['movies']:
+        for movie in context['least_watched_movies']:
             movie.contributors=Event.objects.filter(movie=movie)\
                             .exclude(user__isnull=True)\
                             .values('user__username')\
                             .annotate(count=Count('user'))\
                             .count()
-            movie.num_events=Event.objects.filter(movie=movie).count()
+
+        context['most_interesting_movies']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).order_by('num_events')[:30]
+
+        for movie in context['most_interesting_movies']:
+            movie.contributors=Event.objects.filter(movie=movie)\
+                            .exclude(user__isnull=True)\
+                            .values('user__username')\
+                            .annotate(count=Count('user'))\
+                            .count()
 
         context['num_events']=Event.objects.filter(movie__cricket=context['cricket']).count()
 
@@ -82,7 +90,9 @@ class CricketView(generic.DetailView):
                             .order_by('-count')[:3]
 
         context['anon']=Event.objects.filter(movie__cricket=context['cricket'], user__isnull=True).count()
-
+        context['total_videos']=Movie.objects.filter(cricket=context['cricket']).count()
+        context['total_videos_ready']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).count()
+        context['total_hours']="%0.2f"%(context['total_videos']/120.0)
         return context
 
 ######################################################################
