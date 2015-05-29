@@ -4,10 +4,12 @@
 import os,sys
 import exicatcher
 import datetime
+import time
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cricket_tales.settings")
 import django
 from crickets.models import *
 from django.utils import timezone
+import subprocess
 
 srcdir = "/synology/nas1/Storage/2013/"
 dest_root = "media/movies/"
@@ -52,7 +54,6 @@ def get_movie_status_django(moviename):
     
 def examine_index(path):
     frames = exicatcher.read_index(path)
-    print len(frames)    
     last = ""
     f = open(path+".freq","w")
     for i,frame in enumerate(frames):
@@ -67,7 +68,6 @@ def examine_index(path):
 
         last = dt         
     tot/=len(frames)
-    print 1/tot
     f.close()
 
 def run(cmd):
@@ -77,13 +77,13 @@ def run(cmd):
 def run_converter(f,r):
     f = dest_root+f
     cmd = "avconv -y -loglevel error -r "+str(r)+" -i frames/frame-%05d.jpg -vf vflip"
-    print("making mp4")
     run(cmd+" -c:v libx264 "+f+".mp4")
-    print("making ogg")
+    time.sleep(20)
     run(cmd+" "+f+".ogg")
-    print("making webm")
+    time.sleep(20)
     run(cmd+" "+f+".webm")
-
+    time.sleep(20)
+ 
 def delete_frames():
     run("rm frames/*.jpg")
 
@@ -123,22 +123,20 @@ def make_video(path,subdir,start,frames,fps):
 
     # trust the status, so will overwrite existing files
     if status==0:        
-        print("extracting "+moviename+" starting "+str(start))
+        #print("extracting "+moviename+" starting "+str(start))
         exicatcher.extract(moviename, frames, "frames/frame", False)
         renamer(start,len(frames))
-        print(outname)
+        #print(outname)
         create_thumb(outname)
         run_converter(outname,fps)
         delete_frames()
         set_movie_status_django(outname,1)        
     else:
-        print(outname+": status is 1 - is already done...?")
+        #print(outname+": status is 1 - is already done...?")
         # status is 1 so check files actually exist..
         if not check_done(outname):
-            print(outname+"nope, setting status to 0, will get next time")
+            print("status is 1 but no files, setting status to 0, will get next time")
             set_movie_status_django(outname,0)        
-        else:
-            print(outname+"yup")
 
 # calculate frames and generate django records
 def add_django_records_from_index(duration,fps,path,subdir):
@@ -146,17 +144,17 @@ def add_django_records_from_index(duration,fps,path,subdir):
     num_frames = len(frames)
     seg_length = int(round(duration*fps)) # ideal length
     num_segs = num_frames/seg_length 
-    print("leftover frames:"+str(num_frames%seg_length))
+    #print("leftover frames:"+str(num_frames%seg_length))
     # adjust length to include all frames (if it doesn't quite match)
-    print("seg length:"+str(seg_length))
-    print("num segs:"+str(num_segs))
+    #print("seg length:"+str(seg_length))
+    #print("num segs:"+str(num_segs))
     for segnum in range(0,num_segs):
         start = segnum*seg_length
         end = start+seg_length
         if segnum==num_segs-1: # is this the last segment?
             # extend to end of the video
             end = num_frames
-            print("extending: "+str(end-start)+" frames")
+            #print("extending: "+str(end-start)+" frames")
 
         add_django_record(path,subdir,start,frames[start:end],fps)
 
@@ -169,10 +167,10 @@ def chop_index(duration,fps,path,subdir):
     num_frames = len(frames)
     seg_length = int(round(duration*fps)) # ideal length
     num_segs = num_frames/seg_length 
-    print("leftover frames:"+str(num_frames%seg_length))
+    #print("leftover frames:"+str(num_frames%seg_length))
     # adjust length to include all frames (if it doesn't quite match)
-    print("seg length:"+str(seg_length))
-    print("num segs:"+str(num_segs))
+    #print("seg length:"+str(seg_length))
+    #print("num segs:"+str(num_segs))
     for segnum in range(0,num_segs):
         start = segnum*seg_length
         end = start+seg_length
@@ -203,15 +201,40 @@ def search_and_process_videos(path,duration,fps):
                 # todo get subdir from path...
                 chop_index(duration,fps,dirpath+"/"+filename,subdir)
 
+def get_video_length(filename):
+    cmd = "avconv -i "+filename+" 2>&1 | grep 'Duration' | awk '{print $2}' | sed s/,//"
+    out = subprocess.check_output(cmd,shell=True)
+    time = map(lambda s: s.strip(),out.split(":"))
+    if len(time)<2: return 0
+    seconds = float(time[2])
+    return seconds
+
+def check_video_lengths(fn):
+    return (get_video_length(dest_root+fn+".mp4")>=30 and
+            get_video_length(dest_root+fn+".ogg")>=30 and
+            get_video_length(dest_root+fn+".webm")>=30)
+    
 def update_video_status_django():
     for movie in Movie.objects.all():
-        if check_done(movie.name) and movie.status == 0:
-            print("found a movie turned off with files, check files for: "+movie.name)
-            #set_movie_status_django(movie.name,1)
+        if check_done(movie.name):
+            if not check_video_lengths(movie.name):
+                print("movies too short: "+movie.name)           
+                # force redo
+                set_movie_status_django(movie.name,0)
+            elif movie.status == 0:
+                print("found a movie turned off good files, turning on: "+movie.name)
+                set_movie_status_django(movie.name,1)
+
         if not check_done(movie.name) and movie.status == 1:
             print("!!! found a movie turned ON without files, turning off: "+movie.name)
             set_movie_status_django(movie.name,0)
     
+        
+
+
+
+
+
 if len(sys.argv)<2 or sys.argv[1]=="-?" or sys.argv[1]=="--help":
     print "Welcome to the cricket tales processing robot v0.0.1"
     print "Options are: To build django records from the video files only:"
@@ -227,5 +250,14 @@ else:
         search_and_process_videos(srcdir,30,3)
     if sys.argv[1]=="check":
         update_video_status_django()
+    if sys.argv[1]=="debug":
+        get_video_length(sys.argv[2])
+
+
+
+
+
+
+
 
 

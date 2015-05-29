@@ -72,7 +72,7 @@ class CricketView(generic.DetailView):
                             .annotate(count=Count('user'))\
                             .count()
 
-        context['most_interesting_movies']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).order_by('num_events')[:30]
+        context['most_interesting_movies']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).order_by('-num_events')[:30]
 
         for movie in context['most_interesting_movies']:
             movie.contributors=Event.objects.filter(movie=movie)\

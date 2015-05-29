@@ -27,5 +27,6 @@ for cricket in crickets:
 
 for movie in Movie.objects.all():
     num_events = Event.objects.filter(movie=movie).count()
-    movie.num_events = num_events
-    movie.save()
+    if movie.num_events != num_events:
+        movie.num_events = num_events
+        movie.save()
