@@ -107,7 +107,7 @@ def add_django_record(path,subdir,start,frames,fps):
     moviename = sf[0]+".generic.sfs"
     so = os.path.splitext(os.path.basename(path))
     outname = subdir+"/"+so[0]+"-"+str(start)
-    add_movie_django("Fred",outname)
+    add_movie_django("Unknown",outname)
 
 # calculate frames and actually do the work, set movie state
 def make_video(path,subdir,start,frames,fps):
