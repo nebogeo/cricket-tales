@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block top_layer %}
-<h1>Wild Cricket Tales</h1>
 <div class="hiscores">
   <h2>Craziest cricket clickers:</h2><br/>
   <div class="hiscores_table">
@@ -16,17 +15,9 @@
 {% endblock %}
 
 {% block bottom_layer %}
-<div class="login_box">
-  {% if user.is_authenticated %}
-  Hello {{ user.username }}!
-  <a href="/logout/">Logout</a>
-  {% else %}
-  <a href="/login/">Login</a> or <a href="/register/">Register</a>
-  {% endif %}
-</div>
 
-<div class="outer_box_container">
-  <div class="box_container">
+<div class="outer_row_container">
+  <div class="row_container">
     {% if crickets_list %}
     {% for cricket in crickets_list %}
     <a href="/cricket/{{ cricket.id }}/">
@@ -44,5 +35,19 @@
     <p>No crickets are available.</p>
     {% endif %}
   </div>
+</div>
+
+<div class="field">
+<div class="burrow-container">
+  {% if burrows %}
+  {% for burrow in burrows %}
+  <div class="burrow" style="left:{{ burrow.pos_x }}px; top:{{ burrow.pos_y }}px">
+    X <a href="/burrow/{{ burrow.id }}/">{{ burrow.name }}</a>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p>No burrows are available.</p>
+  {% endif %}
+</div>
 </div>
 {% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block top_layer %}
+{% endblock %}
+
+
+{% block bottom_layer %}
+<section class="cricket_top">
+  <h1>Burrow {{ burrow.name }}</h1>
+  <div style="float:left; margin:10px;">
+    <div class="hiscores_table">
+      Stats:
+      <div class="hiscores_row">
+	<div class="hiscores_left">Total videos</div>
+	<div class="hiscores_right">{{ total_videos }}</div>
+      </div>
+      <div class="hiscores_row">
+	<div class="hiscores_left">Videos ready</div>
+	<div class="hiscores_right">{{ total_videos_ready }}</div>
+      </div>
+      <div class="hiscores_row">
+	<div class="hiscores_left">Hours</div>
+	<div class="hiscores_right">{{ total_hours }}</div>
+      </div>
+    </div>
+    Stuff here all about this burrow???
+  </div>
+</section>
+
+<section class="cricket_left">
+<h2>Least watched movies</h2>
+<div class="box_container">
+{% if least_watched_movies %}
+    {% for movie in least_watched_movies %}
+    <a href="/movie/{{ movie.id }}/">
+      <div class="box" style="background:url({{ MEDIA_URL }}movies/{{ movie.name }}.jpg);">
+        <div class="box-overlay"></div>
+        <div class="box-contents">
+          Movie: {{ movie.name }}</br>
+          Contributors: {{ movie.contributors }}</br>
+          Events found: {{ movie.num_events }}</br>
+          Views: {{ movie.views }}</br>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+{% else %}
+<p>No movies are available for this cricket yet.</p>
+{% endif %}
+</div>
+</section>
+
+<section class="cricket_right">
+<h2>Most interesting movies</h2>
+<div class="box_container">
+{% if most_interesting_movies %}
+    {% for movie in most_interesting_movies %}
+    <a href="/movie/{{ movie.id }}/">
+      <div class="box" style="background:url({{ MEDIA_URL }}movies/{{ movie.name }}.jpg)">
+        <div class="box-overlay"></div>
+        <div class="box-contents">
+          Movie: {{ movie.name }}</br>
+          Contributors: {{ movie.contributors }}</br>
+          Events found: {{ movie.num_events }}</br>
+          Views: {{ movie.views }}</br>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+{% else %}
+<p>No movies are available for this cricket yet.</p>
+{% endif %}
+</div>
+</section>
+
+
+{% endblock %}

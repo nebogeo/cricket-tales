@@ -10,6 +10,7 @@ import django
 from crickets.models import *
 from django.utils import timezone
 import subprocess
+import random
 
 srcdir = "/synology/nas1/Storage/2013/"
 dest_root = "media/movies/"
@@ -17,6 +18,19 @@ dest_root = "media/movies/"
 # palm:oil:chaos
 
 django.setup()
+
+def update_burrow_django(movie):
+    burrowname = movie.name.split("/")[0]
+    try:
+        existing = Burrow.objects.get(name=burrowname)
+    except Burrow.DoesNotExist:
+        print("adding burrow: "+burrowname)
+        existing = Burrow(name = burrowname, pos_x=0, pos_y=0)
+        existing.save()
+    if movie.burrow!=existing:
+        #print("registering movie: "+movie.name+" with "+burrowname)
+        movie.burrow=existing
+        movie.save()
 
 def add_movie_django(cricketname,moviename):
     # exit if it exists already
@@ -33,6 +47,8 @@ def add_movie_django(cricketname,moviename):
                   created_date = timezone.now(),
                   status = 0)
         m.save()
+        # find and connect, or make new burrow here
+        update_burrow_django(m)
     else:
         print("add movie error, could not find cricket:"+cricketname)
 
@@ -229,10 +245,15 @@ def update_video_status_django():
             print("!!! found a movie turned ON without files, turning off: "+movie.name)
             set_movie_status_django(movie.name,0)
     
-        
+def update_burrows():
+    for movie in Movie.objects.all():
+        update_burrow_django(movie)
 
-
-
+def shuffle_burrows():
+    for burrow in Burrow.objects.all():
+        burrow.pos_x = random.randrange(0,800)
+        burrow.pos_y = random.randrange(0,800)
+        burrow.save()
 
 
 if len(sys.argv)<2 or sys.argv[1]=="-?" or sys.argv[1]=="--help":
@@ -252,6 +273,10 @@ else:
         update_video_status_django()
     if sys.argv[1]=="debug":
         get_video_length(sys.argv[2])
+    if sys.argv[1]=="update-burrows":        
+        update_burrows()
+    if sys.argv[1]=="shuffle-burrows":        
+        shuffle_burrows()
 
 
 

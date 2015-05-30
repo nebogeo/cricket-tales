@@ -4,8 +4,11 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     picture = models.ImageField(upload_to='profile_images', blank=True)
+    score = models.FloatField(default=0)
     def __unicode__(self):
         return self.user.username
+
+User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 
 class Cricket(models.Model):
     name = models.CharField(max_length=200)
@@ -23,8 +26,16 @@ class Personality(models.Model):
     num_matings = models.IntegerField(default=0)
     time_in_nests = models.FloatField(default=0)
 
+class Burrow(models.Model):
+    name = models.CharField(max_length=200)
+    pos_x = models.FloatField(default=0)
+    pos_y = models.FloatField(default=0)
+    def __unicode__(self):
+        return self.name;
+
 class Movie(models.Model):
     cricket = models.ForeignKey(Cricket)
+    burrow = models.ForeignKey(Burrow, null=True, blank=True, default = None)
     name = models.CharField(max_length=200)
     views = models.IntegerField(default=0)
     created_date = models.DateTimeField('date created')
@@ -47,3 +58,4 @@ class Event(models.Model):
     end_time = models.FloatField(default=0)
     def __unicode__(self):
         return self.type.name+" "+str(self.start_time)+" : "+str(self.movie);
+

@@ -125,6 +125,16 @@ video {
     overflow-y: scroll;
 }
 
+.outer_row_container {
+}
+
+.row_container {
+    width:1700px;
+    height:200px;
+    overflow-x: scroll;
+}
+
+
 .box {
     display: inline-block;
     float: left;
@@ -252,8 +262,9 @@ video {
 }
 
 .hiscores {
+    position: fixed;
     border-radius: 1em;
-    margin-top: 30%;
+    margin-top: 60%;
     width: 50%;
     background:rgba(255,255,255,.75);
 }
@@ -303,5 +314,20 @@ video {
 }
 
 .login_box {
-    margin-top: 5em;
+}
+
+.field {
+    background: green;
+    width: 900px;
+    height: 900px;
+}
+
+.burrow-container {
+    position: relative;
+}
+
+.burrow {
+    position: absolute;
+    width: 50px;
+    height: 30px;
 }

@@ -27,25 +27,11 @@ class IndexView(generic.ListView):
     template_name = 'crickets/index.html'
     context_object_name = 'crickets_list'
     def get_queryset(self):
-
-        return chain(Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-                     Cricket.objects.order_by('-created_date'),
-        )
+        return Cricket.objects.order_by('-created_date')
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
+        context['burrows'] = Burrow.objects.all()
         context['hiscores_list']=Event.objects.all()\
                             .exclude(user__isnull=True)\
                             .values('user__username')\
@@ -94,6 +80,35 @@ class CricketView(generic.DetailView):
         context['total_videos_ready']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).count()
         context['total_hours']="%0.2f"%(context['total_videos']/120.0)
         return context
+
+# just like cricket view atm
+class BurrowView(generic.DetailView):
+    model = Burrow
+    template_name = 'crickets/burrow.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(BurrowView, self).get_context_data(**kwargs)
+        context['least_watched_movies']=Movie.objects.filter(burrow=context['burrow']).exclude(status=0).order_by('views')[:30]
+        for movie in context['least_watched_movies']:
+            movie.contributors=Event.objects.filter(movie=movie)\
+                            .exclude(user__isnull=True)\
+                            .values('user__username')\
+                            .annotate(count=Count('user'))\
+                            .count()
+
+        context['most_interesting_movies']=Movie.objects.filter(burrow=context['burrow']).exclude(status=0).order_by('-num_events')[:30]
+        for movie in context['most_interesting_movies']:
+            movie.contributors=Event.objects.filter(movie=movie)\
+                            .exclude(user__isnull=True)\
+                            .values('user__username')\
+                            .annotate(count=Count('user'))\
+                            .count()
+
+        context['total_videos']=Movie.objects.filter(burrow=context['burrow']).count()
+        context['total_videos_ready']=Movie.objects.filter(burrow=context['burrow']).exclude(status=0).count()
+        context['total_hours']="%0.2f"%(context['total_videos']/120.0)
+        return context
+
 
 ######################################################################
 ## movie page
