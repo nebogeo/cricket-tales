@@ -11,6 +11,7 @@ from crickets.models import *
 from django.utils import timezone
 import subprocess
 import random
+import math
 
 srcdir = "/synology/nas1/Storage/2013/"
 dest_root = "media/movies/"
@@ -249,10 +250,38 @@ def update_burrows():
     for movie in Movie.objects.all():
         update_burrow_django(movie)
 
+def mag(a):
+    return math.sqrt(a[0]*a[0] + a[1]*a[1])
+
+def distance(a,b):
+    return mag([a[0]-b[0],a[1]-b[1]])
+
+def random_pos():
+    return [random.randrange(0,950),
+            random.randrange(0,950)]
+
+def check_list(np,poslist):
+    for p in poslist:
+        if distance(p,np)<40:
+            return False
+    return True
+            
+def find_new_location(poslist):
+    np = random_pos()
+    found = False
+    while not found: 
+        found = check_list(np,poslist)
+        if not found: np = random_pos()
+    return np
+        
 def shuffle_burrows():
+    poslist = []
     for burrow in Burrow.objects.all():
-        burrow.pos_x = random.randrange(0,800)
-        burrow.pos_y = random.randrange(0,800)
+        print(burrow.name)
+        p = find_new_location(poslist)
+        poslist.append(p)
+        burrow.pos_x = p[0]
+        burrow.pos_y = p[1]
         burrow.save()
 
 

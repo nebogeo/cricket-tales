@@ -27,7 +27,7 @@ class IndexView(generic.ListView):
     template_name = 'crickets/index.html'
     context_object_name = 'crickets_list'
     def get_queryset(self):
-        return Cricket.objects.order_by('-created_date')
+        return Cricket.objects.order_by('created_date')
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -105,7 +105,9 @@ class BurrowView(generic.DetailView):
                             .count()
 
         context['total_videos']=Movie.objects.filter(burrow=context['burrow']).count()
-        context['total_videos_ready']=Movie.objects.filter(burrow=context['burrow']).exclude(status=0).count()
+        context['total_videos_ready']=Movie.objects.filter(burrow=context['burrow'])\
+                                                   .exclude(status=0)\
+                                                   .count()
         context['total_hours']="%0.2f"%(context['total_videos']/120.0)
         return context
 
