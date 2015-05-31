@@ -15,6 +15,9 @@
 {% endblock %}
 
 {% block bottom_layer %}
+<div style="margin-top:1em; font-size:150%;">
+Cricket tales is a citizen science experiment where you can help us understand the busy world of wild crickets by recording events that happen during 30 second movies of their burrows.
+</div>
 <div class="outer_row_container">
   <h2>Meet our crickets</h2>
   <div class="row_container">
@@ -58,6 +61,7 @@
 	Total events: {{ burrow.total_events }}</br>
 	{% else %}
 	Waiting for movies!
+	{{ burrow.num_movies }} in the queue...</br>
 	{% endif %}
       </span>      
     </div>

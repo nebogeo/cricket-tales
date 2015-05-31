@@ -1,2 +1,1 @@
-nohup ./robot.py process >& robot.log &
-
+nohup cpulimit -l 10 ./robot.py process >& robot.log &

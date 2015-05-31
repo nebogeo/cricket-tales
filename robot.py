@@ -176,6 +176,7 @@ def add_django_records_from_index(duration,fps,path,subdir):
         add_django_record(path,subdir,start,frames[start:end],fps)
 
 def chop_index(duration,fps,path,subdir):
+    print("processing "+subdir)
     # check subdirectory exists and create it if not
     if not os.path.exists(dest_root+subdir):
         os.makedirs(dest_root+subdir)
@@ -297,6 +298,11 @@ else:
     if sys.argv[1]=="build":        
         search_and_create_django_records(srcdir,30,3)
     if sys.argv[1]=="process":
+        print("updating burrows")
+        update_burrows()
+        print("checking")
+        update_video_status_django()
+        print("processing")
         search_and_process_videos(srcdir,30,3)
     if sys.argv[1]=="check":
         update_video_status_django()
