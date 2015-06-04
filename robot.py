@@ -67,8 +67,9 @@ else:
         Thread(target = process_loop, args = ("thread-3", )).start()
     
     if sys.argv[1]=="player-activity":
-        robot_django.update_all_activity()
-        time.sleep(30)
+        while True:
+            robot_django.update_all_activity()
+            time.sleep(30)
 
     if sys.argv[1]=="check":
         robot_django.update_video_status()
