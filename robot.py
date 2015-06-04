@@ -21,6 +21,8 @@ import robot_django
 import robot.process
 import robot.movie
 import robot.settings
+import time
+from threading import Thread
 
 def search_and_create_movie_records(path,duration,fps):
     for (dirpath, dirnames, filenames) in os.walk(path):
@@ -44,22 +46,30 @@ def search_and_process_videos(path,duration,fps):
                 # todo get subdir from path...
                 robot_django.chop_index(duration,fps,dirpath+"/"+filename,subdir)
 
+def process_loop(instance_name):
+    while True:
+        robot_django.process_random_video(instance_name)
+        time.sleep(20)
+
 
 if len(sys.argv)<2 or sys.argv[1]=="-?" or sys.argv[1]=="--help":
     print "Welcome to the cricket tales processing robot v0.0.1"
 else:
-    if sys.argv[1]=="debug":
-        for i in range(0,3):
-            robot_django.process_random_video()
     if sys.argv[1]=="build":
-        search_and_create_movie_records(robot.settings.srcdir,30,3)
-    if sys.argv[1]=="process":
-        print("updating burrows")
-        robot_django.update_burrows()
-        print("checking")
-        robot_django.update_video_status()
-        print("processing")
-        search_and_process_videos(robot.settings.srcdir,30,3)
+        search_and_create_movie_records(robot.settings.srcdir,
+                                        robot.settings.video_length,
+                                        robot.settings.video_fps)
+ 
+    if sys.argv[1]=="video-process":
+        Thread(target = process_loop, args = ("thread-0", )).start()
+        Thread(target = process_loop, args = ("thread-1", )).start()
+        Thread(target = process_loop, args = ("thread-2", )).start()
+        Thread(target = process_loop, args = ("thread-3", )).start()
+    
+    if sys.argv[1]=="player-activity":
+        robot_django.update_all_activity()
+        time.sleep(30)
+
     if sys.argv[1]=="check":
         robot_django.update_video_status()
     if sys.argv[1]=="update-burrows":
@@ -68,3 +78,4 @@ else:
         robot_django.shuffle_burrows()
     if sys.argv[1]=="activity-update":
         robot_django.update_all_activity()
+

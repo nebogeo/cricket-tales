@@ -25,23 +25,23 @@ def run(cmd):
     #print(cmd)
     os.system(cmd)
 
-def run_converter(f,r):
+def run_converter(f,r,instance_name):
     f = settings.dest_root+f
-    cmd = "avconv -y -loglevel error -r "+str(r)+" -i frames/frame-%05d.jpg -vf vflip"
-    run(cmd+" -c:v libx264 "+f+".mp4")
+    cmd = "avconv -y -loglevel error -r "+str(r)+" -i "+instance_name+"/frame-%05d.jpg -vf vflip"
+    run(cmd+" -c:v libx264 -threads 1 "+f+".mp4")
     run(cmd+" "+f+".ogg")
     run(cmd+" "+f+".webm")
 
-def delete_frames():
-    run("rm frames/*.jpg")
+def delete_frames(instance_name):
+    run("rm "+instance_name+"/*.jpg")
 
-def renamer(start,frames):
+def renamer(start,frames,instance_name):
     if start>0:
         for i in range(0,frames):
-            run("mv frames/frame-%05d.jpg frames/frame-%05d.jpg"%(i+start,i))
+            run(("mv "+instance_name+"/frame-%05d.jpg "+instance_name+"/frame-%05d.jpg")%(i+start,i))
 
-def create_thumb(fn):
-    run("convert frames/frame-00000.jpg -resize '233x175^' -gravity center -crop '175x175+0+0' "+settings.dest_root+fn+".jpg")
+def create_thumb(fn,instance_name):
+    run("convert "+instance_name+"/frame-00000.jpg -resize '233x175^' -gravity center -crop '175x175+0+0' "+settings.dest_root+fn+".jpg")
 
 def check_done(fn):
     return (os.path.isfile(settings.dest_root+fn+".jpg") and
@@ -58,6 +58,6 @@ def get_video_length(filename):
     return seconds
 
 def check_video_lengths(fn):
-    return (get_video_length(settings.dest_root+fn+".mp4")>=30 and
-            get_video_length(settings.dest_root+fn+".ogg")>=30 and
-            get_video_length(settings.dest_root+fn+".webm")>=30)
+    return (get_video_length(settings.dest_root+fn+".mp4")>=settings.video_length and
+            get_video_length(settings.dest_root+fn+".ogg")>=settings.video_length and
+            get_video_length(settings.dest_root+fn+".webm")>=settings.video_length)

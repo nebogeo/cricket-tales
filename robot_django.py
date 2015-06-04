@@ -20,6 +20,7 @@ import django
 from crickets.models import *
 from django.utils import timezone
 from django.db.models import Max
+from django.db.models import Count
 from random import randint
 
 import robot.process
@@ -116,11 +117,17 @@ def add_movie_records_from_index(duration,fps,path,subdir):
 def update_video_status():
     for movie in Movie.objects.all():
         if robot.process.check_done(movie.name):
-            if not robot.process.check_video_lengths(movie.name):
-                print("movies too short: "+movie.name)
+            #if not robot.process.check_video_lengths(movie.name):
+            #    print("movies too short: "+movie.name)#
+
+#                print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".mp4"))
+ #               print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".ogg"))
+  #              print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".webm"))
+
+
                 # force redo
-                set_movie_status(movie.name,0)
-            elif movie.status == 0:
+   #             set_movie_status(movie.name,0)
+            if movie.status == 0:
                 print("found a movie turned off good files, turning on: "+movie.name)
                 set_movie_status(movie.name,1)
 
@@ -130,6 +137,7 @@ def update_video_status():
 
 def update_burrows():
     for movie in Movie.objects.all():
+        print(movie.name)
         update_burrow_with_movie(movie)
 
 
@@ -156,15 +164,15 @@ def random_one(model):
            pass
 
 
-def process_random_video():
+def process_random_video(instance_name):
     # pick a random one, also checks already processed ones
-    make_video(random_one(Movie))
+    make_video(random_one(Movie),instance_name)
 
 #################################################################
 ## video process which need access to django...
 
 # calculate frames and actually do the work, set movie state
-def make_video(movie):
+def make_video(movie,instance_name):
     print("making "+movie.name)
     frames = robot.exicatcher.read_index(movie.src_index_file)
     frames = frames[movie.start_frame:movie.start_frame+movie.length_frames]
@@ -178,11 +186,11 @@ def make_video(movie):
 
     # trust the status, so will overwrite existing files
     if movie.status==0:
-        robot.exicatcher.extract(moviename, frames, "frames/frame", False)
-        robot.process.renamer(movie.start_frame,movie.length_frames)
-        robot.process.create_thumb(movie.name)
-        robot.process.run_converter(movie.name,movie.fps)
-        robot.process.delete_frames()
+        robot.exicatcher.extract(moviename, frames, instance_name+"/frame", False)
+        robot.process.renamer(movie.start_frame,movie.length_frames,instance_name)
+        robot.process.create_thumb(movie.name,instance_name)
+        robot.process.run_converter(movie.name,movie.fps,instance_name)
+        robot.process.delete_frames(instance_name)
         movie.status = 1
         movie.save()
     else:
