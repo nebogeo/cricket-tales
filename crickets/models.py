@@ -35,7 +35,7 @@ class Burrow(models.Model):
     num_movies_ready = models.IntegerField(default=0)
     biggest_contributor = models.CharField(max_length=200, default="None yet")
     num_contributors = models.CharField(max_length=200, default=0)
-    total_events = models.CharField(max_length=200, default=0)    
+    total_events = models.CharField(max_length=200, default=0)
     def __unicode__(self):
         return self.name;
 
@@ -45,9 +45,13 @@ class Movie(models.Model):
     name = models.CharField(max_length=200)
     views = models.IntegerField(default=0)
     created_date = models.DateTimeField('date created')
-    status = models.IntegerField(default=0)    
+    status = models.IntegerField(default=0)
+    src_index_file = models.CharField(max_length=4096)
+    start_frame = models.IntegerField(default=0)
+    fps = models.FloatField(default=0)
+    length_frames = models.IntegerField(default=0)
     # stuff updated from periodic update.py
-    num_events = models.IntegerField(default=0)    
+    num_events = models.IntegerField(default=0)
     def __unicode__(self):
         return str(self.cricket)+" : "+str(self.name);
 
@@ -64,4 +68,3 @@ class Event(models.Model):
     end_time = models.FloatField(default=0)
     def __unicode__(self):
         return self.type.name+" "+str(self.start_time)+" : "+str(self.movie);
-
