@@ -17,6 +17,7 @@
 # some maths for calculating random burrow positions
 
 import math
+import random
 
 def mag(a):
     return math.sqrt(a[0]*a[0] + a[1]*a[1])

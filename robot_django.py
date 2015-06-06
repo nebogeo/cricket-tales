@@ -26,6 +26,7 @@ from random import randint
 import robot.process
 import robot.exicatcher
 import robot.settings
+import robot.maths
 
 django.setup()
 
@@ -145,7 +146,7 @@ def shuffle_burrows():
     poslist = []
     for burrow in Burrow.objects.all():
         print(burrow.name)
-        p = find_new_location(poslist)
+        p = robot.maths.find_new_location(poslist)
         poslist.append(p)
         burrow.pos_x = p[0]
         burrow.pos_y = p[1]
