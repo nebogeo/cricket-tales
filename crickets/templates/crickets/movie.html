@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 
 {% block top_layer %}
+<div id="movie_end" class="movie_end" style="visibility:hidden;">
+  <div class="button_container bar" style="background=rgba(255,255,255,0.75);">
+    <h1>Thankyou for watching!</h1>
+    <div class="button" style="width:30%" onclick="restart_video()">
+      View again
+    </div>
+    <div class="button" style="width:30%" onclick="window.location.href='/'">
+      Back
+    </div>
+    <div class="button" style="width:30%">
+      Next movie
+    </div>
+  </div>
+</div>
 {% endblock %}
-
 
 {% block bottom_layer %}
 <script>video_setup("{{ movie.cricket.image.url }}");</script>
@@ -16,10 +29,9 @@
 
 <div class="button_container bar">
   {% for event_type in event_types %}
-  <div class="button circle"
-       onclick="add_event('{{event_type.name}}',{{event_type.id}},{{movie.id}},'{{user.id}}')"
-       style="width:{{event_type.width}}%;">
-    <div class="button_text">{{event_type.name}}</div>
+  <div class="button"
+       onclick="add_event('{{event_type.name}}',{{event_type.id}},{{movie.id}},'{{user.id}}')">
+    {{event_type.name}}
   </div>
   {% endfor %}
 </div>

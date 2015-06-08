@@ -109,11 +109,23 @@ function video_setup(image) {
                 inner_render_event(e[0],e[1]);
             });
         });
+
+        pop.on("ended", function() {
+            console.log("ended...");
+            $("#movie_end").css("visibility", "visible");
+        });
+
         // play the video right away
         pop.play();
     },false);
-
 };
+
+function restart_video() {
+    $("#movie_end").css("visibility", "hidden");
+    pop.currentTime(0);
+    pop.play();
+}
+
 
 // actually render the event
 function inner_render_event(type, start_time) {
