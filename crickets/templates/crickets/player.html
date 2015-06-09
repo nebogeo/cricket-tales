@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block top_layer %}
+{% endblock %}
+
+{% block bottom_layer %}
+<section class="cricket_top">
+  <h1>{{ user.username }}'s cricket tales</h1>
+  <div class="box" style="background:url({{ cricket.image.url }}); float:left;"></div></a>
+</section>
+
+<section class="cricket_left">
+Num Events: {{ user.profile.num_events }}</br>
+Score: {{ user.profile.score }}
+
+</section>
+
+<section class="cricket_right">
+<h2>Movies contributed to</h2>
+<div class="box_container">
+{% if movies %}
+{% for movie in movies %}
+    <a href="/movie/{{ movie.movie.id }}/">
+      <div class="box" style="background:url({{ MEDIA_URL }}movies/{{ movie.movie.name }}.jpg)">
+        <div class="box-overlay"></div>
+        <div class="box-contents">
+          Movie: {{ movie.movie.name }}</br>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% else %}
+<p>This player has not contributed to any movies yet.</p>
+{% endif %}
+</div>
+</section>
+
+{% endblock %}

@@ -5,6 +5,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     picture = models.ImageField(upload_to='profile_images', blank=True)
     score = models.FloatField(default=0)
+    num_events = models.IntegerField(default=0)
+
     def __unicode__(self):
         return self.user.username
 
@@ -54,6 +56,14 @@ class Movie(models.Model):
     num_events = models.IntegerField(default=0)
     def __unicode__(self):
         return str(self.cricket)+" : "+str(self.name);
+
+# optimisation one to many to avoid doing lookups on all the events
+# in order to find which movies players have clicked on
+# these are created automatically by robot.py
+# premature optimisation
+class PlayersToMovies(models.Model):
+    user = models.ForeignKey(User)
+    movie = models.ForeignKey(Movie)
 
 class EventType(models.Model):
     name = models.CharField(max_length=200)

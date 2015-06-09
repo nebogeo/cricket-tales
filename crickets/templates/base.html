@@ -18,14 +18,15 @@
       <a href="/">Cricket Tales</a> <span style="font-size:50%">help us tell their stories</span>
       <div style="float:right;">
 	{% if user.is_authenticated %}
-	Hello {{ user.username }}! Your score is {{ user.profile.score }}
+	Hello {{ user.username }}! Your score is {{ user.profile.num_events }}
+    <a href="/player/{{user.id}}">My page</a>
 	<a href="/logout/">Logout</a>
 	{% else %}
 	<a href="/login/">Login</a> or <a href="/register/">Register</a>
 	{% endif %}
       </div>
     </div>
-    
+
     <div class="main_bit">
       <section class="top_layer content">
         {% block top_layer %}{% endblock %}

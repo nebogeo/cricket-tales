@@ -249,7 +249,19 @@ def update_movies_activity():
             movie.num_events = num_events
             movie.save()
 
+# update the list of movies a player has created an event in
+# premature optimisation
+#def update_player_to_movies():
+#    for user in User.objects.all():
+#        for movie in Event.objects.filter(user=user).values("movie").distinct():
+#            try:
+#                existing = PlayersToMovies.objects.get(user=user,movie=movie)
+#            except Burrow.DoesNotExist:
+#                print("Player to movie added for "+user.username)
+#                PlayersToMovies(user=user, movie=movie).save()
+
 def update_all_activity():
     update_crickets_activity()
     update_burrows_activity()
     update_movies_activity()
+    #update_player_to_movies()

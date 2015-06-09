@@ -41,6 +41,33 @@ class IndexView(generic.ListView):
         return context
 
 ######################################################################
+## player page
+
+class PlayerView(generic.DetailView):
+    model = User
+    template_name = 'crickets/player.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PlayerView, self).get_context_data(**kwargs)
+
+        ###############################################################
+        ## long lookup via all events (add movie.m.* to template to use)
+        ## get all unique movies that contain events we've tagged
+        #context['movies']=Event.objects.filter(user=context["user"]).values("movie").distinct()
+        ## lookup the movies themselves
+        ## this should be done in SQL - wtf can't work out how with ORM
+        #for movie in context['movies']:
+        #    movie["m"] = Movie.objects.get(pk=movie["movie"])
+
+        ###############################################################
+        ## fast lookup via playerstomovies
+        context['movies']=PlayersToMovies.objects.filter(user=context["user"])
+
+
+
+        return context
+
+######################################################################
 ## cricket page
 
 class CricketView(generic.DetailView):
@@ -144,7 +171,23 @@ def spit_event(request):
         if form.is_valid():
             form.save()
             # update the stats for this player
+            # too much here???
+            # either this or a laggy continual robot.py process
             data = form.cleaned_data
+
+            profile = data["user"].profile
+            profile.num_events+=1
+            profile.save()
+
+            user = data["user"]
+            movie = data["movie"]
+
+            try:
+                existing = PlayersToMovies.objects.get(user=user,movie=movie)
+            except PlayersToMovies.DoesNotExist:
+                print("Player to movie added for "+user.username)
+                PlayersToMovies(user=user, movie=movie).save()
+
             return HttpResponse('')
         return HttpResponse('request is invalid: '+str(form))
     else:
