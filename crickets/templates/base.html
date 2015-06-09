@@ -18,11 +18,23 @@
       <a href="/">Cricket Tales</a> <span style="font-size:50%">help us tell their stories</span>
       <div style="float:right;">
 	{% if user.is_authenticated %}
-	Hello {{ user.username }}! Your score is {{ user.profile.num_events }}
-    <a href="/player/{{user.id}}">My page</a>
-	<a href="/logout/">Logout</a>
+	Hello {{ user.username }}, you have contributed {{ user.profile.num_events }} events
+
+    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/logout/'">
+      Logout
+    </div>
+
+    <div class="button" style="font-size:70%; float:right;  margin-left:1em;" onclick="window.location.href='/player/{{user.id}}'">
+      My page
+    </div>
+
 	{% else %}
-	<a href="/login/">Login</a> or <a href="/register/">Register</a>
+    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/register/'">
+      Register
+    </div>
+    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/login/'">
+      Login
+    </div>
 	{% endif %}
       </div>
     </div>
