@@ -20,6 +20,7 @@ from django import forms
 
 from django.contrib.auth import authenticate, login, logout
 
+
 #####################################################################
 ## index
 
@@ -175,18 +176,20 @@ def spit_event(request):
             # either this or a laggy continual robot.py process
             data = form.cleaned_data
 
-            profile = data["user"].profile
-            profile.num_events+=1
-            profile.save()
+            # if we're not anonymous
+            if data["user"]:
+                profile = data["user"].profile
+                profile.num_events+=1
+                profile.save()
 
-            user = data["user"]
-            movie = data["movie"]
+                user = data["user"]
+                movie = data["movie"]
 
-            try:
-                existing = PlayersToMovies.objects.get(user=user,movie=movie)
-            except PlayersToMovies.DoesNotExist:
-                print("Player to movie added for "+user.username)
-                PlayersToMovies(user=user, movie=movie).save()
+                try:
+                    existing = PlayersToMovies.objects.get(user=user,movie=movie)
+                except PlayersToMovies.DoesNotExist:
+                    print("Player to movie added for "+user.username)
+                    PlayersToMovies(user=user, movie=movie).save()
 
             return HttpResponse('')
         return HttpResponse('request is invalid: '+str(form))
@@ -263,6 +266,10 @@ def logmein(request):
 def logmeout(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+# redirect to a random movie
+def random_movie(request):
+    return HttpResponseRedirect('/movie/'+str(random_one(Movie).pk))
 
 ######################################################################
 ## json data

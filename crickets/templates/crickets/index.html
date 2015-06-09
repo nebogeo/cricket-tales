@@ -16,7 +16,7 @@
 
 {% block bottom_layer %}
 <div style="margin-top:1em; font-size:150%;">
-Cricket tales is a citizen science experiment where you can help us understand the busy world of wild crickets by recording events that happen during 30 second movies of their burrows.
+Cricket tales is a citizen science experiment where you can help us understand the busy world of wild crickets by recording events that happen during one minute movies of their burrows.
 </div>
 <div class="outer_row_container">
   <h2>Meet our crickets</h2>
@@ -46,12 +46,12 @@ Cricket tales is a citizen science experiment where you can help us understand t
     <img src="/media/images/grass.png"></img>
     {% if burrows %}
     {% for burrow in burrows %}
-    
+
     <div class="burrow" style="left:{{ burrow.pos_x }}px; top:{{ burrow.pos_y }}px;">
       <a href="/burrow/{{ burrow.id }}/">
 	<img src={% if burrow.num_movies_ready > 0 %} "/media/images/house-full.png" {% else %} "/media/images/house-empty.png" {% endif %}></img>
       </a>
-      <span class="tooltip">               
+      <span class="tooltip">
 	<h3>{{ burrow.name }}</h3> </br>
 	{% if burrow.num_movies_ready > 0 %}
 	Movies ready: {{ burrow.num_movies_ready }}</br>
@@ -63,7 +63,7 @@ Cricket tales is a citizen science experiment where you can help us understand t
 	Waiting for movies!
 	{{ burrow.num_movies }} in the queue...</br>
 	{% endif %}
-      </span>      
+      </span>
     </div>
     {% endfor %}
     {% else %}

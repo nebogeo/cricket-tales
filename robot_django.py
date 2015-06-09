@@ -21,7 +21,6 @@ from crickets.models import *
 from django.utils import timezone
 from django.db.models import Max
 from django.db.models import Count
-from random import randint
 
 import robot.process
 import robot.exicatcher
@@ -151,19 +150,6 @@ def shuffle_burrows():
         burrow.pos_x = p[0]
         burrow.pos_y = p[1]
         burrow.save()
-
-
-# fast random selection
-def random_one(model):
-   max_ = model.objects.aggregate(Max('id'))['id__max']
-   i = 0
-   while i < 1:
-       try:
-           return model.objects.get(pk=randint(1, max_))
-           i += 1
-       except model.DoesNotExist:
-           pass
-
 
 def process_random_video(instance_name):
     # pick a random one, also checks already processed ones
