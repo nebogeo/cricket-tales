@@ -49,7 +49,9 @@ Cricket tales is a citizen science experiment where you can help us understand t
 
     <div class="burrow" style="left:{{ burrow.pos_x }}px; top:{{ burrow.pos_y }}px;">
       <a href="/burrow/{{ burrow.id }}/">
+        {% if burrow.biggest_contributor != "None yet" %}
         <div class="owner">{{ burrow.biggest_contributor }}</div>
+        {% endif %}
 	    <img src={% if burrow.num_movies_ready > 0 %} "/media/images/house-full.png" {% else %} "/media/images/house-empty.png" {% endif %}></img>
       </a>
       <span class="tooltip">
