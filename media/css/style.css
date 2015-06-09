@@ -395,6 +395,10 @@ video {
     position: relative;
 }
 
+.owner {
+    color: #000000;
+}
+
 .burrow {
     color: #fff;
     position: absolute;
