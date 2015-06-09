@@ -269,7 +269,7 @@ def logmeout(request):
 
 # redirect to a random movie
 def random_movie(request):
-    return HttpResponseRedirect('/movie/'+str(random_one(Movie).pk))
+    return HttpResponseRedirect('/movie/'+str(random_one_check_status(Movie,1).pk))
 
 ######################################################################
 ## json data

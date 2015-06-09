@@ -18,6 +18,7 @@ import os,sys
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cricket_tales.settings")
 import django
 from crickets.models import *
+from crickets.common import *
 from django.utils import timezone
 from django.db.models import Max
 from django.db.models import Count

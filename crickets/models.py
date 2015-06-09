@@ -16,19 +16,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import Max
-from random import randint
-
-# fast random selection
-def random_one(model):
-   max_ = model.objects.aggregate(Max('id'))['id__max']
-   i = 0
-   while i < 1:
-       try:
-           return model.objects.get(pk=randint(1, max_))
-           i += 1
-       except model.DoesNotExist:
-           pass
+from common import *
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
