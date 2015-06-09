@@ -65,6 +65,8 @@ else:
         Thread(target = process_loop, args = ("thread-1", )).start()
         Thread(target = process_loop, args = ("thread-2", )).start()
         Thread(target = process_loop, args = ("thread-3", )).start()
+        Thread(target = process_loop, args = ("thread-4", )).start()
+        Thread(target = process_loop, args = ("thread-5", )).start()
     
     if sys.argv[1]=="player-activity":
         while True:
