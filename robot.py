@@ -62,8 +62,8 @@ else:
                                         robot.settings.video_fps)
 
     if sys.argv[1]=="build-crickets":
-        robot.import_data.import_crickets("../cricket-data/crickets.csv",robot_django.add_cricket)
-        #robot.import_data.connect_cricket_to_movies("../cricket-data/crickets-timing.csv",robot_django.connect_cricket_to_movies)
+        #robot.import_data.import_crickets("cricket-data/crickets.csv",robot_django.add_cricket)
+        robot.import_data.connect_cricket_to_movies("cricket-data/crickets-timing.csv",robot_django.connect_cricket_to_movies)
 
     if sys.argv[1]=="video-process":
         Thread(target = process_loop, args = ("thread-0", )).start()

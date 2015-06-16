@@ -78,6 +78,20 @@ def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,st
     crickets = Cricket.objects.filter(name=cricketname)
     if len(crickets)>0:
         print("adding "+moviename)
+
+        if end_time[0]==0: 
+            print end_time
+            print start_time
+            print("time error!")
+            end_time=start_time
+
+        if start_time[0]==0: 
+            print("time error!")
+            print end_time
+            print start_time
+            start_time=end_time
+
+
         m = Movie(cricket = crickets[0],
                   name = moviename,
                   created_date = timezone.now(),
@@ -116,8 +130,6 @@ def add_movie_record(path,subdir,start,frames,fps):
     moviename = sf[0]+".generic.sfs"
     so = os.path.splitext(os.path.basename(path))
     outname = subdir+"/"+so[0]+"-"+str(start)
-    print frames[0]
-
     add_movie("Unknown",outname,path,start,fps,len(frames),
               frames[0]["time"], frames[len(frames)-1]["time"])
 
@@ -172,10 +184,21 @@ def connect_cricket_to_movies(name,burrow,date_in,date_out):
 
     # loop over all movies at this burrow
     for movie in Movie.objects.filter(burrow__name="IP"+burrow):
-        print movie.name
+        # todo - UTC/GMT/WTF?
+        st = movie.start_time.replace(tzinfo=None)
+        et = movie.end_time.replace(tzinfo=None)
+
         # calculate timing
-
-
+        if date_in<et and date_out>st:
+            print movie.name
+            print date_in
+            print movie.start_time
+            print date_out
+            print movie.end_time
+            
+            print "connect!"
+            movie.cricket = cricket
+            movie.save()
 
 def update_burrows():
     for movie in Movie.objects.all():
@@ -243,11 +266,15 @@ def update_crickets_activity():
                             .order_by('-count')
         if len(fans)>0:
             cricket.biggest_fan=fans[0]["user__username"]
-            print("biggest fan is: "+cricket.biggest_fan)
+            #print("biggest fan is: "+cricket.biggest_fan)
         cricket.num_contributors = len(fans)
-        print("with "+str(cricket.num_contributors)+" contributors")
+        #print("with "+str(cricket.num_contributors)+" contributors")
         cricket.total_events = Event.objects.filter(movie__cricket=cricket).count()
-        print("total events: "+str(cricket.total_events))
+        #print("total events: "+str(cricket.total_events))
+
+        # dependant on active videos so needs updating here
+        cricket.num_videos = Movie.objects.filter(cricket=cricket,status=1).count()
+        #if cricket.num_videos!=0: print(cricket.num_videos)
         cricket.save()
 
 def update_burrows_activity():
