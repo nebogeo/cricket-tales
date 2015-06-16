@@ -116,6 +116,8 @@ def add_movie_record(path,subdir,start,frames,fps):
     moviename = sf[0]+".generic.sfs"
     so = os.path.splitext(os.path.basename(path))
     outname = subdir+"/"+so[0]+"-"+str(start)
+    print frames[0]
+
     add_movie("Unknown",outname,path,start,fps,len(frames),
               frames[0]["time"], frames[len(frames)-1]["time"])
 
