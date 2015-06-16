@@ -17,6 +17,7 @@
 import os,sys
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cricket_tales.settings")
 import django
+import datetime
 from crickets.models import *
 from crickets.common import *
 from django.utils import timezone
@@ -63,13 +64,17 @@ def update_burrow_with_movie(movie):
         movie.burrow=existing
         movie.save()
 
+# convert time from exicatcher to datetime format
+def conv_time(t):
+    return datetime.datetime(t[0],t[1],t[3],t[4],t[5],t[6],t[7]/1000)
+
 def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,start_time,end_time):
     # exit if it exists already
     existing = Movie.objects.filter(name=moviename)
     if len(existing)!=0:
         print("not adding, found "+moviename)
         return
-
+    
     crickets = Cricket.objects.filter(name=cricketname)
     if len(crickets)>0:
         print("adding "+moviename)
@@ -81,8 +86,8 @@ def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,st
                   start_frame = start_frame,
                   fps = fps,
                   length_frames = num_frames,
-                  start_time = start_time,
-                  end_time = end_time)
+                  start_time = conv_time(start_time),
+                  end_time = conv_time(end_time))
         m.save()
         # find and connect, or make new burrow here
         update_burrow_with_movie(m)
@@ -112,7 +117,7 @@ def add_movie_record(path,subdir,start,frames,fps):
     so = os.path.splitext(os.path.basename(path))
     outname = subdir+"/"+so[0]+"-"+str(start)
     add_movie("Unknown",outname,path,start,fps,len(frames),
-              frames[0].time, frames[len(frames)-1].time)
+              frames[0]["time"], frames[len(frames)-1]["time"])
 
 # calculate frames and generate django records
 def add_movie_records_from_index(duration,fps,path,subdir):
