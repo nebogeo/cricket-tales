@@ -33,6 +33,23 @@ django.setup()
 #########################################################################
 # adding movies and updating burrows
 
+def add_cricket(name,gender,born,born_at_burrow,mass_at_birth):
+    # exit if it exists already
+    existing = Cricket.objects.filter(name=name)
+    if len(existing)!=0:
+        print("not adding, found "+name)
+        return
+
+    print("adding "+name)
+    m = Cricket(name = name,
+                created_date = timezone.now(),
+                image = "cricket_images/2X.png",
+                gender = gender,
+                born = born,
+                born_at_burrow = born_at_burrow,
+                mass_at_birth = mass_at_birth)
+    m.save()
+
 def update_burrow_with_movie(movie):
     burrowname = movie.name.split("/")[0]
     try:
@@ -46,7 +63,7 @@ def update_burrow_with_movie(movie):
         movie.burrow=existing
         movie.save()
 
-def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames):
+def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,start_time,end_time):
     # exit if it exists already
     existing = Movie.objects.filter(name=moviename)
     if len(existing)!=0:
@@ -63,7 +80,9 @@ def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames):
                   src_index_file = index_filename,
                   start_frame = start_frame,
                   fps = fps,
-                  length_frames = num_frames)
+                  length_frames = num_frames,
+                  start_time = start_time,
+                  end_time = end_time)
         m.save()
         # find and connect, or make new burrow here
         update_burrow_with_movie(m)
@@ -92,7 +111,8 @@ def add_movie_record(path,subdir,start,frames,fps):
     moviename = sf[0]+".generic.sfs"
     so = os.path.splitext(os.path.basename(path))
     outname = subdir+"/"+so[0]+"-"+str(start)
-    add_movie("Unknown",outname,path,start,fps,len(frames))
+    add_movie("Unknown",outname,path,start,fps,len(frames),
+              frames[0].time, frames[len(frames)-1].time)
 
 # calculate frames and generate django records
 def add_movie_records_from_index(duration,fps,path,subdir):
@@ -113,7 +133,6 @@ def add_movie_records_from_index(duration,fps,path,subdir):
             #print("extending: "+str(end-start)+" frames")
 
         add_movie_record(path,subdir,start,frames[start:end],fps)
-
 
 def update_video_status():
     for movie in Movie.objects.all():
@@ -136,11 +155,25 @@ def update_video_status():
             print("!!! found a movie turned ON without files, turning off: "+movie.name)
             set_movie_status(movie.name,0)
 
+def connect_cricket_to_movies(name,burrow,date_in,date_out):
+    # find cricket
+    try:
+        cricket = Cricket.objects.get(name=name)
+    except Cricket.DoesNotExist:
+        return False
+
+
+    # loop over all movies at this burrow
+    for movie in Movie.objects.filter(burrow__name="IP"+burrow):
+        print movie.name
+        # calculate timing
+
+
+
 def update_burrows():
     for movie in Movie.objects.all():
         print(movie.name)
         update_burrow_with_movie(movie)
-
 
 def shuffle_burrows():
     poslist = []

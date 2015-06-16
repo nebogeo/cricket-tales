@@ -21,6 +21,7 @@ import robot_django
 import robot.process
 import robot.movie
 import robot.settings
+import robot.import_data
 import time
 from threading import Thread
 
@@ -59,7 +60,11 @@ else:
         search_and_create_movie_records(robot.settings.srcdir,
                                         robot.settings.video_length,
                                         robot.settings.video_fps)
- 
+
+    if sys.argv[1]=="build-crickets":
+        #robot.import_data.import_crickets("../cricket-data/crickets.csv",robot_django.add_cricket)
+        robot.import_data.connect_cricket_to_movies("../cricket-data/crickets-timing.csv",robot_django.connect_cricket_to_movies)
+
     if sys.argv[1]=="video-process":
         Thread(target = process_loop, args = ("thread-0", )).start()
         Thread(target = process_loop, args = ("thread-1", )).start()
@@ -67,7 +72,7 @@ else:
         Thread(target = process_loop, args = ("thread-3", )).start()
         Thread(target = process_loop, args = ("thread-4", )).start()
         Thread(target = process_loop, args = ("thread-5", )).start()
-    
+
     if sys.argv[1]=="player-activity":
         while True:
             robot_django.update_all_activity()
@@ -81,4 +86,3 @@ else:
         robot_django.shuffle_burrows()
     if sys.argv[1]=="activity-update":
         robot_django.update_all_activity()
-

@@ -20,7 +20,7 @@ Cricket tales is a citizen science experiment where you can help us understand t
 </div>
 <div class="outer_row_container">
   <h2>Meet our crickets</h2>
-  <div class="row_container">
+  <div class="row_container" style="max-height:200px; overflow:hidden;">
     {% if crickets_list %}
     {% for cricket in crickets_list %}
     <a href="/cricket/{{ cricket.id }}/">
