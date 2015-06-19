@@ -52,19 +52,6 @@ def add_cricket(name,gender,born,born_at_burrow,mass_at_birth):
                 mass_at_birth = mass_at_birth)
     m.save()
 
-def update_burrow_with_movie(movie):
-    burrowname = movie.name.split("/")[0]
-    try:
-        existing = Burrow.objects.get(name=burrowname)
-    except Burrow.DoesNotExist:
-        print("adding burrow: "+burrowname)
-        existing = Burrow(name = burrowname, pos_x=0, pos_y=0)
-        existing.save()
-    if movie.burrow!=existing:
-        #print("registering movie: "+movie.name+" with "+burrowname)
-        movie.burrow=existing
-        movie.save()
-
 # build all the burrows from the csv file
 def build_burrows(filename):
     cameras_to_burrows = robot.import_data.import_cameras_to_burrows(filename)
@@ -217,9 +204,11 @@ def connect_cricket_to_movies(name,burrow,date_in,date_out):
     except Cricket.DoesNotExist:
         return False
 
+    m = Movie.objects.filter(burrow__name=burrow)
+    if len(m)==0: print("no movies found for burrow: "+burrow)
 
     # loop over all movies at this burrow
-    for movie in Movie.objects.filter(burrow__name="IP"+burrow):
+    for movie in m:
         # todo - UTC/GMT/WTF?
         st = movie.start_time.replace(tzinfo=None)
         et = movie.end_time.replace(tzinfo=None)
@@ -235,11 +224,6 @@ def connect_cricket_to_movies(name,burrow,date_in,date_out):
             print "connect!"
             movie.cricket = cricket
             movie.save()
-
-def update_burrows():
-    for movie in Movie.objects.all():
-        print(movie.name)
-        update_burrow_with_movie(movie)
 
 def shuffle_burrows():
     poslist = []

@@ -86,8 +86,6 @@ else:
 
     if sys.argv[1]=="check":
         robot_django.update_video_status()
-    if sys.argv[1]=="update-burrows":
-        robot_django.update_burrows()
     if sys.argv[1]=="shuffle-burrows":
         robot_django.shuffle_burrows()
     if sys.argv[1]=="activity-update":
