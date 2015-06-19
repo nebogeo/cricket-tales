@@ -36,6 +36,25 @@ def import_crickets(filename, make_fn):
                 make_fn(name,gender,born,born_at_burrow,mass_at_birth)
 
 
+def import_cameras_to_burrows(filename):
+    ret = []
+    with open(filename) as csvfile:
+        r = csv.reader(csvfile, delimiter=',', quotechar='"')
+        for i,row in enumerate(r):
+            if i>0:
+                ret.append({"camera": row[0],
+                            "burrow": row[1],
+                            "on": datetime.datetime.strptime(row[2],"%d-%b-%Y  %H:%M"),
+                            "off": datetime.datetime.strptime(row[3],"%d-%b-%Y  %H:%M")})
+    return ret
+
+# simple linear lookup
+def get_burrow(cameras_to_burrows,camera_name,start_time,end_time):
+    for c2b in cameras_to_burrows:
+        if c2b["camera"] == camera_name and c2b["on"]>start_time and c2b["off"]<end_time:
+            return c2b["burrow"]
+    return False
+
 def connect_cricket_to_movies(filename, connect_fn):
     with open(filename) as csvfile:
         r = csv.reader(csvfile, delimiter=',', quotechar='"')

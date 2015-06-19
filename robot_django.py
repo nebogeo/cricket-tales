@@ -27,6 +27,7 @@ import robot.process
 import robot.exicatcher
 import robot.settings
 import robot.maths
+import robot.import_data
 
 django.setup()
 
@@ -62,6 +63,39 @@ def update_burrow_with_movie(movie):
         #print("registering movie: "+movie.name+" with "+burrowname)
         movie.burrow=existing
         movie.save()
+
+# build all the burrows from the csv file
+def build_burrows(filename):
+    cameras_to_burrows = robot.import_data.import_cameras_to_burrows(filename)
+
+    # first loop over all cameras to burrows and add all the burrows
+    # we'll need
+    for c2b in cameras_to_burrows:
+        try:
+            existing = Burrow.objects.get(name=c2b["burrow"])
+        except Burrow.DoesNotExist:
+            print("adding burrow: "+c2b["burrow"])
+            existing = Burrow(name = c2b["burrow"], pos_x=0, pos_y=0)
+            existing.save()
+
+# use the csv file to connect the movies with the right burrows
+def connect_burrows_to_movies(filename):
+    cameras_to_burrows = robot.import_data.import_cameras_to_burrows(filename)
+    # update the movies with the right burrow id
+    # loop over all movies, find the right burrow from camera and time
+    for movie in Movie.objects.all():
+        camera_name = movie.name[:movie.name.find("/")]
+        burrow_name = import_data.get_burrow(cameras_to_burrows,camera_name,
+                                             movie.start_time,movie.end_time)
+        if not burrow_name:
+            print("no burrow found for"+camera_name)
+            print(movie.start_time)
+            print(movie.end_time)
+        else:
+            print("connecting movie to "+burrow_name)
+            burrow = Burrow.objects.get(name=burrow_name)
+            movie.burrow=burrow
+            movie.save()
 
 def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,start_time,end_time):
     # exit if it exists already

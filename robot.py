@@ -56,14 +56,16 @@ def process_loop(instance_name):
 if len(sys.argv)<2 or sys.argv[1]=="-?" or sys.argv[1]=="--help":
     print "Welcome to the cricket tales processing robot v0.0.1"
 else:
-    if sys.argv[1]=="build":
+    if sys.argv[1]=="build-movies":
         search_and_create_movie_records(robot.settings.srcdir,
                                         robot.settings.video_length,
                                         robot.settings.video_fps)
+    if sys.argv[1]=="build-burrows":
+        robot_django.build_burrows("cricket-data/camera-burrow.csv")
 
     if sys.argv[1]=="build-crickets":
-        #robot.import_data.import_crickets("../cricket-data/crickets.csv",robot_django.add_cricket)
-        robot.import_data.connect_cricket_to_movies("../cricket-data/crickets-timing.csv",robot_django.connect_cricket_to_movies)
+        #robot.import_data.import_crickets("cricket-data/crickets.csv",robot_django.add_cricket)
+        robot.import_data.connect_cricket_to_movies("cricket-data/crickets-timing.csv",robot_django.connect_cricket_to_movies)
 
     if sys.argv[1]=="video-process":
         Thread(target = process_loop, args = ("thread-0", )).start()
@@ -77,6 +79,10 @@ else:
         while True:
             robot_django.update_all_activity()
             time.sleep(30)
+
+    if sys.argv[1]=="update-movie-burrows":
+        robot_django.connect_burrows_to_movies("cricket-data/camera-burrow.csv")
+
 
     if sys.argv[1]=="check":
         robot_django.update_video_status()
