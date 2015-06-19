@@ -139,7 +139,8 @@ def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,st
                   end_time = conv_time(end_time))
         m.save()
         # find and connect, or make new burrow here
-        update_burrow_with_movie(m)
+        #update_burrow_with_movie(m)
+        # now connects via cameras -> burrows, but need something replacing it here...
     else:
         print("add movie error, could not find cricket:"+cricketname)
 
