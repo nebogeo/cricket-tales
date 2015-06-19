@@ -17,6 +17,7 @@
 import os,sys
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cricket_tales.settings")
 import django
+import datetime
 from crickets.models import *
 from crickets.common import *
 from django.utils import timezone
@@ -84,11 +85,12 @@ def connect_burrows_to_movies(filename):
     # update the movies with the right burrow id
     # loop over all movies, find the right burrow from camera and time
     for movie in Movie.objects.all():
-        camera_name = movie.name[:movie.name.find("/")]
-        burrow_name = import_data.get_burrow(cameras_to_burrows,camera_name,
-                                             movie.start_time,movie.end_time)
+        camera_name = movie.name[2:movie.name.find("/")]
+        burrow_name = robot.import_data.get_burrow(cameras_to_burrows,camera_name,
+                                                   movie.start_time.replace(tzinfo=None),
+                                                   movie.end_time.replace(tzinfo=None))
         if not burrow_name:
-            print("no burrow found for"+camera_name)
+            print("no burrow found for "+camera_name)
             print(movie.start_time)
             print(movie.end_time)
         else:
@@ -96,6 +98,10 @@ def connect_burrows_to_movies(filename):
             burrow = Burrow.objects.get(name=burrow_name)
             movie.burrow=burrow
             movie.save()
+
+# convert time from exicatcher to datetime format
+def conv_time(t):
+    return datetime.datetime(t[0],t[1],t[3],t[4],t[5],t[6],t[7]/1000)
 
 def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,start_time,end_time):
     # exit if it exists already
@@ -107,6 +113,20 @@ def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,st
     crickets = Cricket.objects.filter(name=cricketname)
     if len(crickets)>0:
         print("adding "+moviename)
+
+        if end_time[0]==0:
+            print end_time
+            print start_time
+            print("time error!")
+            end_time=start_time
+
+        if start_time[0]==0:
+            print("time error!")
+            print end_time
+            print start_time
+            start_time=end_time
+
+
         m = Movie(cricket = crickets[0],
                   name = moviename,
                   created_date = timezone.now(),
@@ -115,8 +135,8 @@ def add_movie(cricketname,moviename,index_filename,start_frame,fps,num_frames,st
                   start_frame = start_frame,
                   fps = fps,
                   length_frames = num_frames,
-                  start_time = start_time,
-                  end_time = end_time)
+                  start_time = conv_time(start_time),
+                  end_time = conv_time(end_time))
         m.save()
         # find and connect, or make new burrow here
         update_burrow_with_movie(m)
@@ -145,10 +165,8 @@ def add_movie_record(path,subdir,start,frames,fps):
     moviename = sf[0]+".generic.sfs"
     so = os.path.splitext(os.path.basename(path))
     outname = subdir+"/"+so[0]+"-"+str(start)
-    print frames[0]
-
     add_movie("Unknown",outname,path,start,fps,len(frames),
-              frames[0].time, frames[len(frames)-1].time)
+              frames[0]["time"], frames[len(frames)-1]["time"])
 
 # calculate frames and generate django records
 def add_movie_records_from_index(duration,fps,path,subdir):
@@ -201,10 +219,21 @@ def connect_cricket_to_movies(name,burrow,date_in,date_out):
 
     # loop over all movies at this burrow
     for movie in Movie.objects.filter(burrow__name="IP"+burrow):
-        print movie.name
+        # todo - UTC/GMT/WTF?
+        st = movie.start_time.replace(tzinfo=None)
+        et = movie.end_time.replace(tzinfo=None)
+
         # calculate timing
+        if date_in<et and date_out>st:
+            print movie.name
+            print date_in
+            print movie.start_time
+            print date_out
+            print movie.end_time
 
-
+            print "connect!"
+            movie.cricket = cricket
+            movie.save()
 
 def update_burrows():
     for movie in Movie.objects.all():
@@ -272,11 +301,15 @@ def update_crickets_activity():
                             .order_by('-count')
         if len(fans)>0:
             cricket.biggest_fan=fans[0]["user__username"]
-            print("biggest fan is: "+cricket.biggest_fan)
+            #print("biggest fan is: "+cricket.biggest_fan)
         cricket.num_contributors = len(fans)
-        print("with "+str(cricket.num_contributors)+" contributors")
+        #print("with "+str(cricket.num_contributors)+" contributors")
         cricket.total_events = Event.objects.filter(movie__cricket=cricket).count()
-        print("total events: "+str(cricket.total_events))
+        #print("total events: "+str(cricket.total_events))
+
+        # dependant on active videos so needs updating here
+        cricket.num_videos = Movie.objects.filter(cricket=cricket,status=1).count()
+        #if cricket.num_videos!=0: print(cricket.num_videos)
         cricket.save()
 
 def update_burrows_activity():

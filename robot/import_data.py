@@ -51,7 +51,7 @@ def import_cameras_to_burrows(filename):
 # simple linear lookup
 def get_burrow(cameras_to_burrows,camera_name,start_time,end_time):
     for c2b in cameras_to_burrows:
-        if c2b["camera"] == camera_name and c2b["on"]>start_time and c2b["off"]<end_time:
+        if c2b["camera"] == camera_name and c2b["on"]<start_time and c2b["off"]>end_time:
             return c2b["burrow"]
     return False
 

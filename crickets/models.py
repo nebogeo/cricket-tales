@@ -41,6 +41,8 @@ class Cricket(models.Model):
     biggest_fan = models.CharField(max_length=200, default="None yet")
     num_contributors = models.CharField(max_length=200, default=0)
     total_events = models.CharField(max_length=200, default=0)
+    num_videos = models.IntegerField(default=0)
+
     def __unicode__(self):
         return self.name;
 
