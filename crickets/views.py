@@ -28,7 +28,7 @@ class IndexView(generic.ListView):
     template_name = 'crickets/index.html'
     context_object_name = 'crickets_list'
     def get_queryset(self):
-        return Cricket.objects.order_by('?')[:5]
+        return Cricket.objects.exclude(num_videos=0).order_by('?')[:5]
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
