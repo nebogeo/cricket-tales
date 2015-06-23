@@ -249,11 +249,13 @@ def make_video(movie,instance_name):
     frames = frames[movie.start_frame:movie.start_frame+movie.length_frames]
     moviename = os.path.splitext(movie.src_index_file)[0]+".generic.sfs"
     outname = movie.name
+    camera_name = movie.name[2:movie.name.find("/")]
+
     # check django record exists
 
     # check subdirectory exists and create it if not
-    if not os.path.exists(robot.settings.dest_root+movie.burrow.name):
-        os.makedirs(robot.settings.dest_root+movie.burrow.name)
+    if not os.path.exists(robot.settings.dest_root+camera_name):
+        os.makedirs(robot.settings.dest_root+camera_name)
 
     # trust the status, so will overwrite existing files
     if movie.status==0:
