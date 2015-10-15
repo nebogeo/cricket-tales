@@ -164,6 +164,7 @@ class MovieView(generic.DetailView):
 class EventForm(ModelForm):
      class Meta:
          model = Event
+         fields = "__all__" 
 
 ## incoming from javascript...
 def spit_event(request):

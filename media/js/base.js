@@ -1,5 +1,4 @@
 // security stuff for async to prevent csrf
-
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -52,12 +51,41 @@ function render_event(type, start_time) {
     events.push([type, start_time]);
 }
 
+function burrow_event() {
+    $(this).off( 'click' );
+    $('.info-text').html('Click on the burrow to begin the video.');
+    $("#ourvideo").click(function(e) {
+    var parentOffset = $(this).parent().offset(); 
+    var burrowX = e.pageX - parentOffset.left;
+    var burrowY = e.pageY - parentOffset.top;
+    
+    burrowClicked = true;
+
+    $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #BECC6D; position: absolute; opacity: 0.7; display: block; top:'+(burrowY)+'px; left:'+(burrowX - 50)+'px;"></div>');
+    $('.click-video-circle').fadeOut();
+    pop.play();
+
+    videoClickEvents['burrowXY'] = [burrowX, burrowY];
+    $('.info-text').html('Enter the ID of the cricket when or if you see it.');
+    
+    });
+}
+
+
 function video_setup(image) {
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
     document.addEventListener("DOMContentLoaded", function () {
 
+        burrowClicked = false;
+        noCricket = false;
+        noCricketEnd = false;
+        cricketFirstClicked = false;
+        idEntered = false;
+        cricketLastClicked = false;
+
+        videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : ''}
+
         pop = Popcorn("#ourvideo");
-        console.log(pop);
 
 /*        pop.image({
         // seconds
@@ -70,13 +98,91 @@ function video_setup(image) {
             target: "footnotediv"
         });
 
-        pop.code({
-            start: 2.2,
-            end: 20.7,
-            onStart: function() {
-              }
-        });
 */
+        
+        pop.code({
+            start: 0,
+            end: 0.01,
+            onStart: function() {
+                $('.top_layer').css({'z-index' : '-1'});
+
+                if (cricketFirstClicked === false) {
+
+                    $('.info-text').html('Click on the cricket if you can see it <button id="no_cricket">No Cricket</button>.');
+                    $("#ourvideo").click(function(e) {
+                        $(this).off( 'click' );
+                        var parentOffset = $(this).parent().offset(); 
+                        var cricketStartX = e.pageX - parentOffset.left;
+                        var cricketStartY = e.pageY - parentOffset.top;
+
+                        if (noCricket === false){
+                            videoClickEvents['cricketStartXY'] = [cricketStartX, cricketStartY];
+                            console.log(videoClickEvents['cricketStartXY'])
+                            $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #F8AFC2; position: absolute; opacity: 0.7; display: block; top:'+(cricketStartY)+'px; left:'+(cricketStartX - 50)+'px;"></div>');
+                            $('.click-video-circle').fadeOut();
+                        } else {
+                            videoClickEvents['cricketStartXY'] = '';
+                        }
+
+                        $(this).off('click');
+
+                        burrow_event();
+                        });
+                };
+
+
+                $('#no_cricket').click(function() {
+                    console.log('No cricket')
+                    $('.info-text').html('Click on the burrow to begin the video.');
+                    $(this).off( 'click' );
+                    noCricket = true;
+                    burrow_event();
+                });
+
+                }
+        });
+
+        pop.on("ended", function() {
+            $('.top_layer').css({'z-index' : '1'});
+
+            if (burrowClicked === true) {
+                $('.info-text').html('Click on the cricket to finish the video <button id="no_cricket_end">No cricket</button>'); 
+                $('#ourvideo').click(function(e) {
+                    $(this).off( 'click' );
+                    $('.info-text').html('Events Complete');
+                    pop.pause();
+
+                    var parentOffset = $(this).parent().offset(); 
+                    var cricketEndX = e.pageX - parentOffset.left;
+                    var cricketEndY = e.pageY - parentOffset.top;
+
+                    cricketLastClicked = true;
+
+                    if (noCricketEnd === false) {
+                        videoClickEvents['cricketEndXY'] = [cricketEndX, cricketEndY];
+                        $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #717892; position: absolute; opacity: 0.7; display: block; top:'+(cricketEndY)+'px; left:'+(cricketEndX - 50)+'px;"></div>');
+                        $('.click-video-circle').fadeOut();
+                    } else {
+                        videoClickEvents = '';
+                    }
+                    $("#movie_end").css("visibility", "visible");
+                });  
+            } else if (cricketFirstClicked === false) {
+                $('.info-text').html('No cricket clicked [no cricket seen?]'); 
+            }
+
+             $('#no_cricket_end').click(function() {
+                    $(this).off( 'click' );
+                    $('.info-text').html('Events Complete');                
+                    noCricketEnd = true;   
+                    $('#ourvideo').off( 'click' );
+                    $("#movie_end").css("visibility", "visible");
+            });
+
+
+            console.log(videoClickEvents);
+
+        });
 
         // scrubbing
         $("#time").draggable({
@@ -102,6 +208,7 @@ function video_setup(image) {
             $("#time").css({left: percentage+"%"});
         });
 
+        
         pop.on("loadeddata", function () {
             // go through the events we collected earlier...
             events.forEach(function(e) {
@@ -110,22 +217,22 @@ function video_setup(image) {
             });
         });
 
-        pop.on("ended", function() {
-            console.log("ended...");
-            $("#movie_end").css("visibility", "visible");
-        });
+        // pop.on("ended", function() {
+        //     console.log("ended...");
+        //     $("#movie_end").css("visibility", "visible");
 
-        // play the video right away
-        pop.play();
+        // });
+
+
     },false);
 };
+
 
 function restart_video() {
     $("#movie_end").css("visibility", "hidden");
     pop.currentTime(0);
     pop.play();
 }
-
 
 // actually render the event
 function inner_render_event(type, start_time) {
