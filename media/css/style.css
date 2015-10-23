@@ -209,6 +209,28 @@ video {
     display:block;
 }
 
+/* invisible then visible things, aka ID form */
+div#tag_cricket {
+    display: none;
+    width: 20%;
+    background: #fff;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+.id_cricket{
+    display: none;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+input#tag_id {
+    text-align: center;
+}
+
 /* round things */
 
 .circle {
@@ -326,6 +348,7 @@ video {
     height: 50%;
     background:rgba(255,255,255,.75);
 }
+
 
 
 .hiscores {
@@ -476,3 +499,5 @@ video {
          -o-transform: translateY(0px);
             transform: translateY(0px);
 }
+
+

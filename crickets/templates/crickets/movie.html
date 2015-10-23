@@ -41,6 +41,7 @@
     {{event_type.name}}
   </div>
   {% endfor %}
+  <div class="button id_cricket" onclick="id_cricket()"> ID </div>
 </div>
 
 <div id="timeline" class="timeline bar">
@@ -49,5 +50,53 @@
   {% endfor %}
   <div id="time" class="time tiny_circle"></div>
 </div>
+</div>
 
+<div id="tag_cricket" class="panel panel-default">
+  <div class="panel-body">
+
+  <div class="form-group">
+    <input type="text" class="form-control tag" id="tag_id" placeholder="XX" readonly maxlength="2">
+  </div>
+
+  <table class="table-striped table table-bordered" id="tag_cricket_id">
+        <tr>
+            <td data-value="+" onclick="enter_id(this)">+</td>
+            <td data-value="A" onclick="enter_id(this)">A</td>
+            <td data-value="L" onclick="enter_id(this)">L</td>
+            <td data-value="U" onclick="enter_id(this)">U</td>
+        </tr>
+        <tr>
+            <td data-value="=" onclick="enter_id(this)">=</td>
+            <td data-value="C" onclick="enter_id(this)">C</td>
+            <td data-value="N" onclick="enter_id(this)">N</td>
+            <td data-value="V" onclick="enter_id(this)">V</td>
+        </tr>
+        <tr>
+            <td data-value="1" onclick="enter_id(this)">1</td>
+            <td data-value="D" onclick="enter_id(this)">D</td>
+            <td data-value="O" onclick="enter_id(this)">O</td>
+            <td data-value="X" onclick="enter_id(this)">X</td>
+        </tr>
+        <tr>
+            <td data-value="6" onclick="enter_id(this)">6</td>
+            <td data-value="E" onclick="enter_id(this)">E</td>
+            <td data-value="P" onclick="enter_id(this)">P</td>
+            <td data-value="Z" onclick="enter_id(this)">Z</td>
+        </tr>
+        <tr>
+            <td data-value="7" onclick="enter_id(this)">7</td>
+            <td data-value="H" onclick="enter_id(this)">H</td>
+            <td data-value="S" onclick="enter_id(this)">S</td>
+            <td data-value="9" onclick="enter_id(this)">9</td>
+        </tr>
+        <tr>
+            <td data-value="J" onclick="enter_id(this)">J</td>
+            <td data-value="T" onclick="enter_id(this)">T</td>
+            <td id="delete">Delete</td>
+            <td id="save">Save</td>
+        </tr>
+    </table>
+  </div>
+  </div>
 {% endblock %}

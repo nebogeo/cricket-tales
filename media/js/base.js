@@ -51,6 +51,71 @@ function render_event(type, start_time) {
     events.push([type, start_time]);
 }
 
+function build_id_keyboard() {
+
+    $('#tag_cricket').draggable();
+    //Constructing keyboard
+    var id_keyboard_values = [['+', 'A', 'L', 'U'], ['=', 'C', 'N', 'V'], ['1', 'D', 'O', 'X'], ['6', 'E', 'P', 'Z'], ['7', 'H', 'S', '9'], ['J', 'T', 'Delete', 'Save']]
+    var operators = ['Not sure', 'Cancel', 'Delete', 'Save']
+    //Enumerate for tr
+    var table = '<table id="tag_cricket_id" class="table-striped table table-bordered">'
+    $(id_keyboard_values).each(function (i, array) {
+        table += '<tr>'
+        //Enumerate for td 
+        $(array).each(function (n, list) {
+
+            in_list = jQuery.inArray(list, operators )
+
+            if (in_list != -1) {
+                var operator_id = list.replace(/\s/g, '');
+                table += '<td id="'+operator_id.toLowerCase()+'">'+list+'</td>'
+            } else {
+                table += '<td data-value="'+list+'" onClick="enter_id(this)">'+list+'</td>'
+            }
+
+            
+        })
+        table += '</tr>'
+    })
+    table += '</table>'
+
+    console.log(table)
+    initialise_operators_keyboard() 
+}
+
+function initialise_operators_keyboard() {
+        $("#delete").click(function (){
+            $('#tag_id').val('');
+        });
+
+        $("#save").click(function (){
+            cricket_id = $('#tag_id').val()
+            
+            if (cricket_id.length == 2) {
+                videoClickEvents['cricketId'] = cricket_id;
+            } else {
+                videoClickEvents['cricketId'] = '';
+            }
+
+            id_cricket();            
+        });
+}
+
+function enter_id(t) {
+   var id_par = $(t).attr('data-value')
+   var value = $(t).text()
+   var input = $('#tag_id')
+
+   letters = $('#tag_id').val().length;
+   
+    if (letters >= 2) {
+        return false;
+    } else {
+        $(input).val($(input).val() + value);
+    }
+
+}
+
 function burrow_event() {
     $(this).off( 'click' );
     $('.info-text').html('Click on the burrow to begin the video.');
@@ -67,8 +132,10 @@ function burrow_event() {
 
     videoClickEvents['burrowXY'] = [burrowX, burrowY];
     $('.info-text').html('Enter the ID of the cricket when or if you see it.');
-    
+
+    $('.id_cricket').show(); //if ended    
     });
+
 }
 
 
@@ -83,22 +150,13 @@ function video_setup(image) {
         idEntered = false;
         cricketLastClicked = false;
 
-        videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : ''}
+             
+
+        videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : '', 'cricketId' : ''};
+
+        build_id_keyboard();  
 
         pop = Popcorn("#ourvideo");
-
-/*        pop.image({
-        // seconds
-            start: 2,
-            // seconds
-            end: 15,
-            href: "",
-            src: image,
-            text: "DRUMBEAT",
-            target: "footnotediv"
-        });
-
-*/
         
         pop.code({
             start: 0,
@@ -107,7 +165,6 @@ function video_setup(image) {
                 $('.top_layer').css({'z-index' : '-1'});
 
                 if (cricketFirstClicked === false) {
-
                     $('.info-text').html('Click on the cricket if you can see it <button id="no_cricket">No Cricket</button>.');
                     $("#ourvideo").click(function(e) {
                         $(this).off( 'click' );
@@ -131,12 +188,13 @@ function video_setup(image) {
                 };
 
 
-                $('#no_cricket').click(function() {
+                    $('#no_cricket').click(function() {
                     console.log('No cricket')
                     $('.info-text').html('Click on the burrow to begin the video.');
                     $(this).off( 'click' );
                     noCricket = true;
                     burrow_event();
+
                 });
 
                 }
@@ -194,6 +252,7 @@ function video_setup(image) {
             }
         });
 
+
         // click on timeline
         $("#timeline").click(function(e) {
             var offset = $(this).offset();
@@ -217,15 +276,22 @@ function video_setup(image) {
             });
         });
 
-        // pop.on("ended", function() {
-        //     console.log("ended...");
-        //     $("#movie_end").css("visibility", "visible");
-
-        // });
-
-
     },false);
 };
+
+function id_cricket() {
+    $('#tag_cricket').toggle();
+
+    if($('#tag_cricket:hidden').length == 0)
+        {
+            pop.pause()
+        } else {
+            if (pop.duration() != pop.currentTime()) {
+                pop.play() 
+            }
+        }
+}
+    
 
 
 function restart_video() {
@@ -234,6 +300,9 @@ function restart_video() {
     pop.play();
 }
 
+function toggle_keyboard() {
+    $('#tag_cricket').toggle();
+}
 // actually render the event
 function inner_render_event(type, start_time) {
     // convert time into %
