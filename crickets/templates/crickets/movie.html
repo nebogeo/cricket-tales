@@ -1,46 +1,164 @@
 {% extends "base.html" %}
 
-{% block top_layer %}
-<div id="movie_end" class="movie_end" style="visibility:hidden;">
-  <div class="button_container bar" style="background=rgba(255,255,255,0.75);">
-    <h1>Thankyou for watching!</h1>
-    <div class="button" style="width:30%" onclick="restart_video()">
-      View again
-    </div>
-    <div class="button" style="width:30%" onclick="window.location.href='/'">
-      Back
-    </div>
-    <div class="button" style="width:30%"  onclick="window.location.href='/random_movie/'">
-      Next movie
+<div class="row-fluid"> <!-- Row for the whole thing -->
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <!-- Setting up grid for whole thing -->
+  {% block top_layer %}
+
+  <div id="movie_end" class="movie_end" style="visibility:hidden;">
+    <div class="button_container bar" style="background=rgba(255,255,255,0.75);">
+      <h1>Thankyou for watching!</h1>
+      <div class="button" style="width:30%" onclick="restart_video()">
+        View again
+      </div>
+      <div class="button" style="width:30%" onclick="window.location.href='/'">
+        Back
+      </div>
+      <div class="button" style="width:30%"  onclick="window.location.href='/random_movie/'">
+        Next movie
+      </div>
     </div>
   </div>
-</div>
-{% endblock %}
+  {% endblock %}
 
-{% block bottom_layer %}
-<script>video_setup("{{ movie.cricket.image.url }}");</script>
+  {% block bottom_layer %}
+  <script>video_setup("{{ movie.cricket.image.url }}");</script>
+  <div class="row-fluid"><!-- video/prompt row -->
+    <div class="col-lg-6 col-md-8 col-sm-8 col-xs-8"><!-- video/prompt div -->
+      <div class="row-fluid"><!-- HR row -->
+        <hr class="top col-lg-12 col-lg-offset-4 col-md-12 col-sm-12 col-xs-12">
+      </div><!-- end HR row -->
+      <div class="row-fluid"><!-- Info panel row -->        
+        <div id="burrow_start col-lg-12" class="info-panel"><!-- Info panel div -->
+          <div class="panel-body info-text"></div>
+        </div><!-- end Info panel div -->
+      </div><!-- end info panel row -->
+      <div class="row-fluid"> <!-- HR row -->   
+        <hr class="bottom col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      </div><!-- end HR row -->  
 
-<video nocontrols id="ourvideo">
-  <source src="{{ MEDIA_URL }}movies/{{movie.name}}.webm" type="video/webm">
-  <source src="{{ MEDIA_URL }}movies/{{movie.name}}.mp4" type="video/mp4">
-  <source src="{{ MEDIA_URL }}movies/{{movie.name}}.ogg" type="video/ogg">
-  I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
-</video>
+      <div class="row-fluid"><!-- Player row -->
+        <div id="cricket_player" class="col-lg-12"><!-- Player div -->
+          <video nocontrols id="ourvideo" class="video-start">
+            <source src="{{ MEDIA_URL }}movies/{{movie.name}}.webm" type="video/webm">
+            <source src="{{ MEDIA_URL }}movies/{{movie.name}}.mp4" type="video/mp4">
+            <source src="{{ MEDIA_URL }}movies/{{movie.name}}.ogg" type="video/ogg">
+            I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+          </video>
+        </div><!-- end Player div -->
+      </div><!-- end Player row -->
 
-<div class="button_container bar">
-  {% for event_type in event_types %}
-  <div class="button"
-       onclick="add_event('{{event_type.name}}',{{event_type.id}},{{movie.id}},'{{user.id}}')">
-    {{event_type.name}}
-  </div>
-  {% endfor %}
-</div>
+      <div class="row-fluid"><!-- timeline row -->
+        <div id="timeline" class="timeline bar"><!-- timeline div -->
+          <div class="timeline_line"></div>
+          {% for event in events %}
+            <script>render_event("{{event.type}}",{{event.start_time}});</script>
+          {% endfor %}
+          <div id="time" class="time tiny_circle"></div>
+        </div><!-- end timeline div -->
+      </div><!-- end timeline row -->
 
-<div id="timeline" class="timeline bar">
-  {% for event in events %}
-  <script>render_event("{{event.type}}",{{event.start_time}});</script>
-  {% endfor %}
-  <div id="time" class="time tiny_circle"></div>
-</div>
+      </div><!-- End video/prompt div -->
+    </div><!-- End video/prompt row -->
 
-{% endblock %}
+    <div id="tag_cricket" class="panel panel-default">
+      <div class="panel-body">
+
+      <div class="form-group">
+        <input type="text" class="form-control tag" id="tag_id" placeholder="XX" readonly maxlength="2">
+      </div>
+
+      <table class="table-striped table table-bordered" id="tag_cricket_id">
+            <tr>
+                <td data-value="+" onclick="enter_id(this)">+</td>
+                <td data-value="A" onclick="enter_id(this)">A</td>
+                <td data-value="L" onclick="enter_id(this)">L</td>
+                <td data-value="U" onclick="enter_id(this)">U</td>
+            </tr>
+            <tr>
+                <td data-value="=" onclick="enter_id(this)">=</td>
+                <td data-value="C" onclick="enter_id(this)">C</td>
+                <td data-value="N" onclick="enter_id(this)">N</td>
+                <td data-value="V" onclick="enter_id(this)">V</td>
+            </tr>
+            <tr>
+                <td data-value="1" onclick="enter_id(this)">1</td>
+                <td data-value="D" onclick="enter_id(this)">D</td>
+                <td data-value="O" onclick="enter_id(this)">O</td>
+                <td data-value="X" onclick="enter_id(this)">X</td>
+            </tr>
+            <tr>
+                <td data-value="6" onclick="enter_id(this)">6</td>
+                <td data-value="E" onclick="enter_id(this)">E</td>
+                <td data-value="P" onclick="enter_id(this)">P</td>
+                <td data-value="Z" onclick="enter_id(this)">Z</td>
+            </tr>
+            <tr>
+                <td data-value="7" onclick="enter_id(this)">7</td>
+                <td data-value="H" onclick="enter_id(this)">H</td>
+                <td data-value="S" onclick="enter_id(this)">S</td>
+                <td data-value="9" onclick="enter_id(this)">9</td>
+            </tr>
+            <tr>
+                <td data-value="J" onclick="enter_id(this)">J</td>
+                <td data-value="T" onclick="enter_id(this)">T</td>
+                <td id="delete">Delete</td>
+                <td id="save">Save</td>
+            </tr>
+        </table>
+      </div>
+      </div>
+
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><!-- Button div -->
+      <div class="row-fluid">
+      <div class="button_container bar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- Generated buttons -->
+        <div class="row-fluid">
+        {% for event_type in event_types %}
+
+          {% if 'Predator:' not in event_type.name and 'Something Else' not in event_type.name %}
+
+          <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4" style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' %}.png); background-size: 100% 100%;"
+               onclick="add_event('{{event_type.name}}',{{event_type.id}},{{movie.id}},'{{user.id}}')">
+
+            <div class="button_text">
+
+              <p>{{event_type.name}}</p></div>
+          </div>
+          {% endif %}
+        {% endfor %}
+        <!-- Non generated buttons -->
+         <div class="button col-lg-4 col-md-5 col-sm-5 col-xs-5" style="background: url(/media/images/buttons/bird.png); background-size: 100% 100%;"
+               onclick="add_event('{{predator_bird.name}}',{{predator_bird.id}},{{movie.id}},'{{user.id}}')">
+               <div class="button_text" style="visibility: hidden">
+                <p>{{predator_bird.name}}</p>
+               </div>
+        </div>
+         <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4" style="background: url(/media/images/buttons/shrew.png); background-size: 100% 100%;"
+               onclick="add_event('{{predator_shrew.name}}',{{predator_shrew.id}},{{movie.id}},'{{user.id}}')">
+               <div class="button_text" style="visibility: hidden">
+                <p>{{predator_shrew.name}}</p>
+               </div>
+             </div>
+         <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4" style="background: url(/media/images/buttons/button-1.png); background-size: 100% 100%;"
+               onclick="add_event('{{something_else.name}}',{{something_else.id}},{{movie.id}},'{{user.id}}')">
+               <div class="button_text">
+              <p>!</p></div>
+             </div>
+        </div>
+        <div class="row-fluid">
+          <div class="button id-display col-lg-7 col-lg-offset-2 col-md-10 col-sm-10 col-xs-10" style="background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;" onclick="id_cricket()">
+            <div class="button_text">
+                <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">ID</p>
+<!--                 <p class="cricket-id-display col-lg-12 col-md-12 col-sm-12 col-xs-12"></p> -->
+
+            </div>
+          </div>
+        </div>
+    </div>
+    </div><!-- End button div -->
+    </div><!-- End video/prompt div -->
+    </div><!-- End player row-->
+  {% endblock %}
+</div><!-- End grid-->
+</div><!-- End main/container row -->
