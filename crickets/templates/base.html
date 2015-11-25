@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
     <script src="/media/js/base.js"></script>
 
     <div class="login_box">
@@ -42,13 +43,15 @@
       </div>
     </div>
 
-    <div class="main_bit">
-      <section class="top_layer content">
-        {% block top_layer %}{% endblock %}
-      </section>
-      <section class="bottom_layer content">
-        {% block bottom_layer %}{% endblock %}
-      </section>
+    <div class="container">
+      <div class="main_bit">
+        <section class="top_layer content">
+          {% block top_layer %}{% endblock %}
+        </section>
+        <section class="bottom_layer content">
+          {% block bottom_layer %}{% endblock %}
+        </section>
+      </div>
     </div>
 
   </body>

@@ -7,6 +7,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
 }
 
+body {
+  background: url('../images/background.png');
+  background-repeat: repeat;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -16,6 +21,10 @@ caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
+}
+
+td:hover {
+    cursor: pointer;
 }
 
 q, blockquote {
@@ -76,6 +85,7 @@ h2 {
 }
 
 @import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+@import url(https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister);
 
 body {
     width:100%;
@@ -98,28 +108,28 @@ video {
 }
 
 .main_bit {
-    width: 100%;
-    max-width: 300px;
-    box-sizing: border-box;
+    width: 120%;
+    /*box-sizing: border-box;*/
 }
 
 .content {
-    position:absolute;
+/*    position:absolute;
     left:50%;
-    margin-left:-500px;
-    max-width: 1000px;
-    width: 100%;
+    margin-left:-500px;*/
+/*    max-width: 2000px;
+    width: 100%;*/
 }
-@media only screen and ( max-width: 1000px ) {
+/*@media only screen and ( max-width: 1000px ) {
     .content {
         margin-left: -50%;
     }
-}
+}*/
 
 .top_layer {
     /*pointer-events: none;*/
     z-index: 1;
 }
+
 
 .bottom_layer {
 }
@@ -179,13 +189,69 @@ video {
 .box:hover .box-contents {
     opacity:1;
 }
+/* info panel shiz */
+hr.top {
+    background:url('../images/borders/border-top-long.png');
+    /*background-repeat: no-repeat;*/
+    border: 0;
+    height: 20px;
+    background-size: 100%;
+    background-repeat: repeat-x;
+    padding: 0em !important;
+    margin: 0em !important;
+}
+
+hr.bottom {
+    background:url('../images/borders/border-bottom-long.png');
+    border: 0;
+    height: 35px;
+    background-size: 100%;
+    background-repeat: repeat-x;
+    padding: 0px;
+    margin: 0px;
+}
+
+button#no_cricket {
+    background:url('../images/buttons/button-oblong.png');
+    border: 0px;
+    background-size: 100% 100%;
+/*    background-position-x: -0.2em;
+    background-position-y: -0.4em;*/
+    overflow: visible;
+/*    width: 120px;*/
+    text-align: left;
+    background-repeat: no-repeat;
+}
+
+#burrow_start,
+.info-panel {
+    border: 0px;
+    background: 0px;
+    box-shadow: 0px;
+    -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
+   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
+   height: auto;
+   font-family: 'Vidaloka', serif;
+   font-size: 1.2vw;
+   display: table;
+}
+
+.info-panel {
+    text-align: right;
+    display: table-cell;
+    margin: -1em;
+    /*vertical-align: middle;*/
+}
 
 
 /* square things */
 
 .bar {
     width: 100%;
-    background-color: green;
+    background: url('../images/track/timeline.png');
+    background-size: 108%;
+    background-position: -1em;
     text-align: center;
     display: inline-block;
     overflow: hidden;
@@ -194,19 +260,23 @@ video {
 
 .timeline {
     height: 3em;
+    overflow: visible;
 }
 
 .timeline_line {
-    position: relative;
-    top: 1.70em;
     background-color: black;
     height: 1px;
+    position: relative;
+    top: 50%;
 }
 
 .button_container {
     padding: 0.25em;
-    background-color:yellow;
     display:block;
+}
+
+.button_container.bar {
+    background: transparent;
 }
 
 /* invisible then visible things, aka ID form */
@@ -217,9 +287,10 @@ div#tag_cricket {
     position: absolute;
     top: 10%;
     right: 10%;
+    z-index: 10;
 }
 
-.id_cricket{
+.id-display{
     display: none;
 }
 
@@ -242,7 +313,7 @@ input#tag_id {
 }
 
 .small_circle {
-    border: 1px solid #1e4018;
+    /*border: 1px solid #1e4018;*/
     border-radius: 1em;
 	width: 2em;
 	height: 2em;
@@ -251,10 +322,12 @@ input#tag_id {
 
 .tiny_circle {
     border: 1px solid #1e4018;
-    border-radius: 0.5em;
-	width: 1em;
-	height: 1em;
+    border-radius: 0.3em;
+	width: 0.6em;
+	height: 0.6em;
     text-align: center;
+    position: relative;
+    top: 0.1em;
 }
 
 .micro_circle {
@@ -263,11 +336,13 @@ input#tag_id {
 	width: 0.5em;
 	height: 0.5em;
     text-align: center;
+    position: relative;
+
 }
 
 .button {
     float: left;
-    border: 1px solid #1e4018;
+    font-family: 'Love Ya Like A Sister', cursive;
     background: #238029;
     background: -webkit-gradient(linear, left top, left bottom, from(#65d67b), to(#238029));
     background: -webkit-linear-gradient(top, #65d67b, #238029);
@@ -278,50 +353,66 @@ input#tag_id {
     -webkit-border-radius: 13px;
     -moz-border-radius: 13px;
     border-radius: 13px;
-    -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
-    -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
-    box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   
     text-shadow: #7fbd83 0 1px 0;
     color: #000000;
     text-decoration: none;
-    padding: 0.25em;
-    margin-right: 0.25em;
     cursor: pointer;
+
+}
+
+.button_container > .button {
+   width: 100%;
+   height: auto;
+   padding: 0.2em;
+   background: url("../images/buttons/button-1.png");
+   background-size: 100% 100%;
+   border: 0px solid #fff !important;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
+   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
+}
+
+.button_container > .id-display {
+    width: 100% !important;
+    min-height: 200px;
+    height: auto !important;
 }
 
 
-.button:hover {
-    border: 1px solid #1a4018;
-    text-shadow: #7fbd83 0 1px 0;
-    background: #2f8f2f;
-    background: -webkit-gradient(linear, left top, left bottom, from(#78fa90), to(#2f8f2f));
-    background: -webkit-linear-gradient(top, #78fa90, #2f8f2f);
-    background: -moz-linear-gradient(top, #78fa90, #2f8f2f);
-    background: -ms-linear-gradient(top, #78fa90, #2f8f2f);
-    background: -o-linear-gradient(top, #78fa90, #2f8f2f);
-    background-image: -ms-linear-gradient(top, #78fa90 0%, #2f8f2f 100%);
-    color: #000000;
-}
-.button:active {
-    text-shadow: #7fbd83 0 1px 0;
-    border: 1px solid #18401e;
-    background: #807111;
-    background: -webkit-gradient(linear, left top, left bottom, from(#d4d428), to(#2f8f2f));
-    background: -webkit-linear-gradient(top, #d4d428, #807111);
-    background: -moz-linear-gradient(top, #d4d428, #807111);
-    background: -ms-linear-gradient(top, #d4d428, #807111);
-    background: -o-linear-gradient(top, #d4d428, #807111);
-    background-image: -ms-linear-gradient(top, #d4d428 0%, #807111 100%);
-    color: #000000;
+.button .button_text {
+    width: 80%;
+    height: 80%;
+    display: table;
+    margin: 0.3em;
 }
 
+.id-display .button_text {
+    width: 80% !important;
+    height: 80%;
+    display: table;
+}
 
+span.cricket-id-char {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.id-display .button_text p,
+.button .button_text p {
+    font-size: 1.2vw;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 1em 0em 1em 0em;
+    margin-left: 0.7em;
+}
 
 .event {
-    margin-top: -1.5em;
+    margin-top: -1em;
     margin-left: -1.5em;
     position: absolute;
-    background:rgba(255,255,0,.75);
+/*    background:rgba(255,255,0,.75);*/
     pointer-events: none;
 }
 
@@ -342,11 +433,12 @@ input#tag_id {
 }
 
 .movie_end {
+    position: absolute;
     margin-left: 20%;
     margin-top: 15%;
     width: 60%;
     height: 50%;
-    background:rgba(255,255,255,.75);
+    z-index: 2;
 }
 
 

@@ -159,6 +159,10 @@ class MovieView(generic.DetailView):
             event_type.width=int(100/len(context['event_types']))*0.5
 
         context['events']=Event.objects.filter(movie=context['movie'])
+        context['buttons'] = [1, 2, 3, 4, 5, 6, 7]
+        context['predator_bird'] = EventType.objects.filter(name="Predator: Bird").first()
+        context['predator_shrew'] = EventType.objects.filter(name="Predator: Shrew").first()
+        context['something_else'] = EventType.objects.filter(name="Something Else").first()
         return context
 
 class EventForm(ModelForm):

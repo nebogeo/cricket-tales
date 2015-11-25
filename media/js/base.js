@@ -90,9 +90,11 @@ function initialise_operators_keyboard() {
 
         $("#save").click(function (){
             cricket_id = $('#tag_id').val()
+
             
             if (cricket_id.length == 2) {
                 videoClickEvents['cricketId'] = cricket_id;
+                $('p.cricket-id-display').html('ID: <span class="cricket-id-char">'+cricket_id+'</span>');
             } else {
                 videoClickEvents['cricketId'] = '';
             }
@@ -125,15 +127,12 @@ function burrow_event() {
     var burrowY = e.pageY - parentOffset.top;
     
     burrowClicked = true;
-
-    $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #BECC6D; position: absolute; opacity: 0.7; display: block; top:'+(burrowY)+'px; left:'+(burrowX - 50)+'px;"></div>');
-    $('.click-video-circle').fadeOut();
     pop.play();
 
     videoClickEvents['burrowXY'] = [burrowX, burrowY];
     $('.info-text').html('Enter the ID of the cricket when or if you see it.');
 
-    $('.id_cricket').show(); //if ended    
+    $('.id-display').show(); //if ended    
     });
 
 }
@@ -149,8 +148,14 @@ function video_setup(image) {
         cricketFirstClicked = false;
         idEntered = false;
         cricketLastClicked = false;
+                  
 
-             
+        $('.button_container .button ').not('.id-display').each(function() {
+            console.log(this)
+            var button_width = $(this).width();
+            $(this).height(button_width);
+        })
+
 
         videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : '', 'cricketId' : ''};
 
@@ -162,7 +167,7 @@ function video_setup(image) {
             start: 0,
             end: 0.01,
             onStart: function() {
-                $('.top_layer').css({'z-index' : '-1'});
+                $('.top_layer').css({'z-index' : '-1', 'display' : 'none'});
 
                 if (cricketFirstClicked === false) {
                     $('.info-text').html('Click on the cricket if you can see it <button id="no_cricket">No Cricket</button>.');
@@ -175,8 +180,7 @@ function video_setup(image) {
                         if (noCricket === false){
                             videoClickEvents['cricketStartXY'] = [cricketStartX, cricketStartY];
                             console.log(videoClickEvents['cricketStartXY'])
-                            $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #F8AFC2; position: absolute; opacity: 0.7; display: block; top:'+(cricketStartY)+'px; left:'+(cricketStartX - 50)+'px;"></div>');
-                            $('.click-video-circle').fadeOut();
+                           
                         } else {
                             videoClickEvents['cricketStartXY'] = '';
                         }
@@ -201,11 +205,14 @@ function video_setup(image) {
         });
 
         pop.on("ended", function() {
-            $('.top_layer').css({'z-index' : '1'});
+            
 
             if (burrowClicked === true) {
-                $('.info-text').html('Click on the cricket to finish the video <button id="no_cricket_end">No cricket</button>'); 
+                $('.info-text').html('Click on the cricket to finish the video <button id="no_cricket_end">No cricket</button>');
                 $('#ourvideo').click(function(e) {
+                    $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
+                    pop.currentTime(pop.duration())
+                    
                     $(this).off( 'click' );
                     $('.info-text').html('Events Complete');
                     pop.pause();
@@ -218,23 +225,27 @@ function video_setup(image) {
 
                     if (noCricketEnd === false) {
                         videoClickEvents['cricketEndXY'] = [cricketEndX, cricketEndY];
-                        $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #717892; position: absolute; opacity: 0.7; display: block; top:'+(cricketEndY)+'px; left:'+(cricketEndX - 50)+'px;"></div>');
-                        $('.click-video-circle').fadeOut();
+                        // $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #717892; position: absolute; opacity: 0.7; display: block; top:'+(cricketEndY)+'px; left:'+(cricketEndX - 50)+'px;"></div>');
+                        // $('.click-video-circle').fadeOut();
                     } else {
                         videoClickEvents = '';
                     }
+                    $(this).off( 'click' );
                     $("#movie_end").css("visibility", "visible");
-                });  
+                    
+                });
+
             } else if (cricketFirstClicked === false) {
                 $('.info-text').html('No cricket clicked [no cricket seen?]'); 
             }
 
              $('#no_cricket_end').click(function() {
+                    $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                     $(this).off( 'click' );
                     $('.info-text').html('Events Complete');                
                     noCricketEnd = true;   
-                    $('#ourvideo').off( 'click' );
                     $("#movie_end").css("visibility", "visible");
+                    $('#ourvideo').off( 'click' );
             });
 
 
@@ -280,6 +291,7 @@ function video_setup(image) {
 };
 
 function id_cricket() {
+
     $('#tag_cricket').toggle();
 
     if($('#tag_cricket:hidden').length == 0)
@@ -295,9 +307,10 @@ function id_cricket() {
 
 
 function restart_video() {
-    $("#movie_end").css("visibility", "hidden");
+    $('#ourvideo').off( 'click' );
+    $("#movie_end").css("visibility", "visible");
     pop.currentTime(0);
-    pop.play();
+    pop.pause();
 }
 
 function toggle_keyboard() {
@@ -306,20 +319,20 @@ function toggle_keyboard() {
 // actually render the event
 function inner_render_event(type, start_time) {
     // convert time into %
-    var left = (start_time/pop.duration())*100;
-    $("#timeline").append(
-        '<div class="event micro_circle" style="left:'+left+'%; margin-top:-0.75em">\
-        </div>');
+    // var left = (start_time/pop.duration())*100;
+    // $("#timeline").append(
+    //     '<div class="event micro_circle" style="left:'+left+'%;">\
+    //     </div>');
 }
 
 // actually render the event
 function inner_render_my_event(type, start_time) {
     // convert time into %
     var left = (start_time/pop.duration())*100;
+    var cricket_image = Math.floor(Math.random() * 10) + 1  
     $("#timeline").append(
-        '<div class="event small_circle" style="left:'+left+'%;">\
-            <div class="event_text button_text">'+type+'</div>\
-        </div>');
+        '<div class="event small_circle" style="left:'+left+'%; margin-top: -1.8em"><img class="cricket-line" src="/media/images/crickets/'+cricket_image+'.png" style="z-index: 2; height: 75px; width:auto"></div>');
+    $('.cricket-line').fadeOut('slow');
 }
 
 // sends the event to the server and renders it
