@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" />
+    <link rel="stylesheet" href="http://127.0.0.1:8000/media/css/style.css" />
     <title>cricket-tales</title>
     <meta name="viewport" content="width=device-width">
   </head>
@@ -12,7 +12,11 @@
     <script src="{{ MEDIA_URL }}js/jquery-1.11.1.min.js"></script>
     <script src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
     <script src="{{ MEDIA_URL }}js/popcorn-complete.min.js"></script>
-    <script src="{{ MEDIA_URL }}js/base.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
+    <script src="/media/js/base.js"></script>
 
     <div class="login_box">
       <a href="/">Cricket Tales</a> <span style="font-size:50%">help us tell their stories</span>
@@ -39,13 +43,15 @@
       </div>
     </div>
 
-    <div class="main_bit">
-      <section class="top_layer content">
-        {% block top_layer %}{% endblock %}
-      </section>
-      <section class="bottom_layer content">
-        {% block bottom_layer %}{% endblock %}
-      </section>
+    <div class="container">
+      <div class="main_bit">
+        <section class="top_layer content">
+          {% block top_layer %}{% endblock %}
+        </section>
+        <section class="bottom_layer content">
+          {% block bottom_layer %}{% endblock %}
+        </section>
+      </div>
     </div>
 
   </body>
