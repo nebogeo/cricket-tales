@@ -23,12 +23,12 @@
   {% block bottom_layer %}
   <script>video_setup("{{ movie.cricket.image.url }}");</script>
   <div class="row-fluid"><!-- video/prompt row -->
-    <div class="col-lg-6 col-md-8 col-sm-8 col-xs-8"><!-- video/prompt div -->
+    <div class="col-lg-6 col-md-6 col-sm-7 col-xs-10"><!-- video/prompt div -->
       <div class="row-fluid"><!-- HR row -->
-        <hr class="top col-lg-12 col-lg-offset-4 col-md-12 col-sm-12 col-xs-12">
+        <hr class="top col-lg-12 col-md-12 col-sm-12 col-xs-12"/>
       </div><!-- end HR row -->
-      <div class="row-fluid"><!-- Info panel row -->        
-        <div id="burrow_start col-lg-12" class="info-panel"><!-- Info panel div -->
+      <div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12"><!-- Info panel row -->        
+        <div id="burrow_start" class="info-panel"><!-- Info panel div -->
           <div class="panel-body info-text"></div>
         </div><!-- end Info panel div -->
       </div><!-- end info panel row -->
@@ -37,7 +37,7 @@
       </div><!-- end HR row -->  
 
       <div class="row-fluid"><!-- Player row -->
-        <div id="cricket_player" class="col-lg-12"><!-- Player div -->
+        <div id="cricket_player" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><!-- Player div -->
           <video nocontrols id="ourvideo" class="video-start">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.webm" type="video/webm">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.mp4" type="video/mp4">
@@ -109,16 +109,16 @@
       </div>
 
 
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><!-- Button div -->
+    <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12"><!-- Button div -->
       <div class="row-fluid">
-      <div class="button_container bar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="button_container bar col-lg-12 col-md-10 col-sm-10 col-xs-10">
         <!-- Generated buttons -->
         <div class="row-fluid">
         {% for event_type in event_types %}
 
           {% if 'Predator:' not in event_type.name and 'Something Else' not in event_type.name %}
 
-          <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4" style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' %}.png); background-size: 100% 100%;"
+          <div class="button col-lg-4 col-md-4 col-sm-5 col-xs-3" style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' %}.png); background-size: 100% 100%;"
                onclick="add_event('{{event_type.name}}',{{event_type.id}},{{movie.id}},'{{user.id}}')">
 
             <div class="button_text">
@@ -128,26 +128,26 @@
           {% endif %}
         {% endfor %}
         <!-- Non generated buttons -->
-         <div class="button col-lg-4 col-md-5 col-sm-5 col-xs-5" style="background: url(/media/images/buttons/bird.png); background-size: 100% 100%;"
+         <div class="button col-lg-4 col-md-4 col-sm-5 col-xs-3" style="background: url(/media/images/buttons/bird.png); background-size: 100% 100%;"
                onclick="add_event('{{predator_bird.name}}',{{predator_bird.id}},{{movie.id}},'{{user.id}}')">
                <div class="button_text" style="visibility: hidden">
                 <p>{{predator_bird.name}}</p>
                </div>
         </div>
-         <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4" style="background: url(/media/images/buttons/shrew.png); background-size: 100% 100%;"
+         <div class="button col-lg-4 col-md-4 col-sm-5 col-xs-3" style="background: url(/media/images/buttons/shrew.png); background-size: 100% 100%;"
                onclick="add_event('{{predator_shrew.name}}',{{predator_shrew.id}},{{movie.id}},'{{user.id}}')">
                <div class="button_text" style="visibility: hidden">
                 <p>{{predator_shrew.name}}</p>
                </div>
              </div>
-         <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4" style="background: url(/media/images/buttons/button-1.png); background-size: 100% 100%;"
+         <div class="button col-lg-4 col-md-4 col-sm-5 col-xs-3" style="background: url(/media/images/buttons/button-1.png); background-size: 100% 100%;"
                onclick="add_event('{{something_else.name}}',{{something_else.id}},{{movie.id}},'{{user.id}}')">
                <div class="button_text">
               <p>!</p></div>
              </div>
         </div>
         <div class="row-fluid">
-          <div class="button id-display col-lg-7 col-lg-offset-2 col-md-10 col-sm-10 col-xs-10" style="background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;" onclick="id_cricket()">
+          <div class="button id-display col-lg-7 col-lg-offset-2 col-md-7 col-md-offset-2 col-sm-7 col-sm-offset-2 col-xs-7 col-xs-offset-2" style="background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;" onclick="id_cricket()">
             <div class="button_text">
                 <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">ID</p>
 <!--                 <p class="cricket-id-display col-lg-12 col-md-12 col-sm-12 col-xs-12"></p> -->

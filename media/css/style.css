@@ -211,7 +211,8 @@ hr.bottom {
     margin: 0px;
 }
 
-button#no_cricket {
+button#no_cricket,
+button#no_cricket_end {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
     background-size: 100% 100%;
@@ -235,13 +236,12 @@ button#no_cricket {
    font-family: 'Vidaloka', serif;
    font-size: 1.2vw;
    display: table;
+   z-index: 3;
 }
 
 .info-panel {
     text-align: right;
     display: table-cell;
-    margin: -1em;
-    /*vertical-align: middle;*/
 }
 
 
