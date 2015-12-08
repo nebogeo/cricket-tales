@@ -15,34 +15,39 @@
 {% endblock %}
 
 {% block bottom_layer %}
-<div style="margin-top:1em; font-size:150%;">
+
+<!-- start of bar hack copied from base.html -->
+    <div class="login_box">
+      <a href="/">Cricket Tales</a> <span style="font-size:50%">help us tell their stories</span>
+      <div style="float:right;">
+	{% if user.is_authenticated %}
+	Hello {{ user.username }}, you have contributed {{ user.profile.num_events }} events
+
+    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/logout/'">
+      Logout
+    </div>
+
+    <div class="button" style="font-size:70%; float:right;  margin-left:1em;" onclick="window.location.href='/player/{{user.id}}'">
+      My page
+    </div>
+
+	{% else %}
+    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/register/'">
+      Register
+    </div>
+    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/login/'">
+      Login
+    </div>
+	{% endif %}
+      </div>
+    </div>
+<!-- end of bar hack -->
+
+<div style="font-size: 150%">
 Cricket tales is a citizen science experiment where you can help us understand the busy world of wild crickets by recording events that happen during one minute movies of their burrows.
-</div>
-<div class="outer_row_container">
-  <h2>Meet our crickets</h2>
-  <div class="row_container" style="width:1200px;">
-    {% if crickets_list %}
-    {% for cricket in crickets_list %}
-    <a href="/cricket/{{ cricket.id }}/">
-      <div class="box" style="background:url({{ cricket.image.url }});">
-        <div class="box-overlay"></div>
-        <div class="box-contents">
-          Name: {{ cricket.name }}</br>
-          <span style="font-size:150%">Biggest fan: {{ cricket.biggest_fan }}</span></br>
-          Movies: {{ cricket.num_videos }}</br>
-          Contributors: {{ cricket.num_contributors }}</br>
-          Total events: {{ cricket.total_events }}</br>
-        </div>
-    </div></a>
-    {% endfor %}
-    {% else %}
-    <p>No crickets are available.</p>
-    {% endif %}
-  </div>
 </div>
 
 <div class="field">
-  <h2>See their homes</h2>
   <div class="burrow-container">
     <img src="/media/images/grass.png"></img>
     {% if burrows %}
@@ -75,4 +80,5 @@ Cricket tales is a citizen science experiment where you can help us understand t
     {% endif %}
   </div>
 </div>
+
 {% endblock %}

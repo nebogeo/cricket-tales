@@ -32,6 +32,23 @@ $.ajaxSetup({
     }
 });
 
+// precache the images
+// todo: convert to sprite sheet
+imagelist = [];
+function add_to_imagelist(id) {
+    imagelist.push("button-"+i+".png");
+    imagelist.push("button-"+i+"-offset.png");
+    imagelist.push("button-"+i+"-high.png");
+}
+for (i=1; i<7; i++) {
+    add_to_imagelist(i);
+}
+add_to_imagelist("shrew");
+add_to_imagelist("bird");
+imagelist.forEach( function(path) {
+    new Image().src="/media/images/buttons/"+path;
+} );
+
 // do the dragging magic
 
 /*$(document).ready(function(){
@@ -55,32 +72,32 @@ function build_id_keyboard() {
 
     $('#tag_cricket').draggable();
     //Constructing keyboard
-    var id_keyboard_values = [['+', 'A', 'L', 'U'], ['=', 'C', 'N', 'V'], ['1', 'D', 'O', 'X'], ['6', 'E', 'P', 'Z'], ['7', 'H', 'S', '9'], ['J', 'T', 'Delete', 'Save']]
-    var operators = ['Not sure', 'Cancel', 'Delete', 'Save']
+    var id_keyboard_values = [['+', 'A', 'L', 'U'], ['=', 'C', 'N', 'V'], ['1', 'D', 'O', 'X'], ['6', 'E', 'P', 'Z'], ['7', 'H', 'S', '9'], ['J', 'T', 'Delete', 'Save']];
+    var operators = ['Not sure', 'Cancel', 'Delete', 'Save'];
     //Enumerate for tr
-    var table = '<table id="tag_cricket_id" class="table-striped table table-bordered">'
+    var table = '<table id="tag_cricket_id" class="table-striped table table-bordered">';
     $(id_keyboard_values).each(function (i, array) {
-        table += '<tr>'
-        //Enumerate for td 
+        table += '<tr>';
+        //Enumerate for td
         $(array).each(function (n, list) {
 
-            in_list = jQuery.inArray(list, operators )
+            in_list = jQuery.inArray(list, operators );
 
             if (in_list != -1) {
                 var operator_id = list.replace(/\s/g, '');
-                table += '<td id="'+operator_id.toLowerCase()+'">'+list+'</td>'
+                table += '<td id="'+operator_id.toLowerCase()+'">'+list+'</td>';
             } else {
-                table += '<td data-value="'+list+'" onClick="enter_id(this)">'+list+'</td>'
+                table += '<td data-value="'+list+'" onClick="enter_id(this)">'+list+'</td>';
             }
 
-            
-        })
-        table += '</tr>'
-    })
-    table += '</table>'
 
-    console.log(table)
-    initialise_operators_keyboard() 
+        });
+        table += '</tr>';
+    });
+    table += '</table>';
+
+    //console.log(table);
+    initialise_operators_keyboard();
 }
 
 function initialise_operators_keyboard() {
@@ -89,9 +106,9 @@ function initialise_operators_keyboard() {
         });
 
         $("#save").click(function (){
-            cricket_id = $('#tag_id').val()
+            cricket_id = $('#tag_id').val();
 
-            
+
             if (cricket_id.length == 2) {
                 videoClickEvents['cricketId'] = cricket_id;
                 $('p.cricket-id-display').html('ID: <span class="cricket-id-char">'+cricket_id+'</span>');
@@ -99,17 +116,17 @@ function initialise_operators_keyboard() {
                 videoClickEvents['cricketId'] = '';
             }
 
-            id_cricket();            
+            id_cricket();
         });
 }
 
 function enter_id(t) {
-   var id_par = $(t).attr('data-value')
-   var value = $(t).text()
-   var input = $('#tag_id')
+   var id_par = $(t).attr('data-value');
+   var value = $(t).text();
+   var input = $('#tag_id');
 
    letters = $('#tag_id').val().length;
-   
+
     if (letters >= 2) {
         return false;
     } else {
@@ -122,21 +139,32 @@ function burrow_event() {
     $(this).off( 'click' );
     $('.info-text').html('Click on the burrow to begin the video.');
     $("#ourvideo").click(function(e) {
-    var parentOffset = $(this).parent().offset(); 
+    var parentOffset = $(this).parent().offset();
     var burrowX = e.pageX - parentOffset.left;
     var burrowY = e.pageY - parentOffset.top;
-    
+
     burrowClicked = true;
     pop.play();
 
     videoClickEvents['burrowXY'] = [burrowX, burrowY];
     $('.info-text').html('Enter the ID of the cricket when or if you see it.');
 
-    $('.id-display').show(); //if ended    
+    $('.id-display').show(); //if ended
     });
 
 }
 
+// make the buttons square
+function fixup_buttons() {
+    $('.button_container .button ').not('.id-display').each(function() {
+        var button_width = $(this).width();
+        $(this).height(button_width);
+    });
+}
+
+function event_button_change(obj, image) {
+    obj.style.backgroundImage="url("+image+")";
+}
 
 function video_setup(image) {
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
@@ -148,21 +176,15 @@ function video_setup(image) {
         cricketFirstClicked = false;
         idEntered = false;
         cricketLastClicked = false;
-                  
 
-        $('.button_container .button ').not('.id-display').each(function() {
-            console.log(this)
-            var button_width = $(this).width();
-            $(this).height(button_width);
-        })
-
+        fixup_buttons();
 
         videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : '', 'cricketId' : ''};
 
-        build_id_keyboard();  
+        build_id_keyboard();
 
         pop = Popcorn("#ourvideo");
-        
+
         pop.code({
             start: 0,
             end: 0.01,
@@ -173,14 +195,14 @@ function video_setup(image) {
                     $('.info-text').html('Click on the cricket if you can see it <button id="no_cricket">No Cricket</button>.');
                     $("#ourvideo").click(function(e) {
                         $(this).off( 'click' );
-                        var parentOffset = $(this).parent().offset(); 
+                        var parentOffset = $(this).parent().offset();
                         var cricketStartX = e.pageX - parentOffset.left;
                         var cricketStartY = e.pageY - parentOffset.top;
 
                         if (noCricket === false){
                             videoClickEvents['cricketStartXY'] = [cricketStartX, cricketStartY];
-                            console.log(videoClickEvents['cricketStartXY'])
-                           
+                            console.log(videoClickEvents['cricketStartXY']);
+
                         } else {
                             videoClickEvents['cricketStartXY'] = '';
                         }
@@ -193,7 +215,7 @@ function video_setup(image) {
 
 
                     $('#no_cricket').click(function() {
-                    console.log('No cricket')
+                    console.log('No cricket');
                     $('.info-text').html('Click on the burrow to begin the video.');
                     $(this).off( 'click' );
                     noCricket = true;
@@ -205,19 +227,19 @@ function video_setup(image) {
         });
 
         pop.on("ended", function() {
-            
+
 
             if (burrowClicked === true) {
                 $('.info-text').html('Click on the cricket to finish the video <button id="no_cricket_end">No cricket</button>');
                 $('#ourvideo').click(function(e) {
                     $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
-                    pop.currentTime(pop.duration())
-                    
+                    pop.currentTime(pop.duration());
+
                     $(this).off( 'click' );
                     $('.info-text').html('Events Complete');
                     pop.pause();
 
-                    var parentOffset = $(this).parent().offset(); 
+                    var parentOffset = $(this).parent().offset();
                     var cricketEndX = e.pageX - parentOffset.left;
                     var cricketEndY = e.pageY - parentOffset.top;
 
@@ -232,24 +254,24 @@ function video_setup(image) {
                     }
                     $(this).off( 'click' );
                     $("#movie_end").css("visibility", "visible");
-                    
+
                 });
 
             } else if (cricketFirstClicked === false) {
-                $('.info-text').html('No cricket clicked [no cricket seen?]'); 
+                $('.info-text').html('No cricket clicked [no cricket seen?]');
             }
 
              $('#no_cricket_end').click(function() {
                     $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                     $(this).off( 'click' );
-                    $('.info-text').html('Events Complete');                
-                    noCricketEnd = true;   
+                    $('.info-text').html('Events Complete');
+                    noCricketEnd = true;
                     $("#movie_end").css("visibility", "visible");
                     $('#ourvideo').off( 'click' );
             });
 
 
-            console.log(videoClickEvents);
+            //console.log(videoClickEvents);
 
         });
 
@@ -278,11 +300,11 @@ function video_setup(image) {
             $("#time").css({left: percentage+"%"});
         });
 
-        
+
         pop.on("loadeddata", function () {
             // go through the events we collected earlier...
             events.forEach(function(e) {
-                console.log("rendering event...");
+                //console.log("rendering event...");
                 inner_render_event(e[0],e[1]);
             });
         });
@@ -296,14 +318,14 @@ function id_cricket() {
 
     if($('#tag_cricket:hidden').length == 0)
         {
-            pop.pause()
+            pop.pause();
         } else {
             if (pop.duration() != pop.currentTime()) {
-                pop.play() 
+                pop.play();
             }
         }
 }
-    
+
 
 
 function restart_video() {
@@ -329,7 +351,7 @@ function inner_render_event(type, start_time) {
 function inner_render_my_event(type, start_time) {
     // convert time into %
     var left = (start_time/pop.duration())*100;
-    var cricket_image = Math.floor(Math.random() * 10) + 1  
+    var cricket_image = Math.floor(Math.random() * 10) + 1;
     $("#timeline").append(
         '<div class="event small_circle" style="left:'+left+'%; margin-top: -1.8em"><img class="cricket-line" src="/media/images/crickets/'+cricket_image+'.png" style="z-index: 2; height: 75px; width:auto"></div>');
     $('.cricket-line').fadeOut('slow');

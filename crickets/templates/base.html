@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="{{ MEDIA_URL }}/css/style.css" /> 
-    <!-- fix yr settings :P <link rel="stylesheet" href="http://127.0.0.1:8000/media/css/style.css" /> -->
     <title>cricket-tales</title>
     <meta name="viewport" content="width=device-width">
   </head>
@@ -17,8 +15,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
+    <!-- loading last for overrides... -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}/css/style.css" />
     <script src="/media/js/base.js"></script>
-
+<!--
     <div class="login_box">
       <a href="/">Cricket Tales</a> <span style="font-size:50%">help us tell their stories</span>
       <div style="float:right;">
@@ -43,7 +43,7 @@
 	{% endif %}
       </div>
     </div>
-
+-->
     <div class="container">
       <div class="main_bit">
         <section class="top_layer content">
