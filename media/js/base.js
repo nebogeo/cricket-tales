@@ -224,6 +224,8 @@ function video_setup(image) {
                 });
 
                 }
+
+
         });
 
         pop.on("ended", function() {

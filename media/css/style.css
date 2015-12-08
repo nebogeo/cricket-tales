@@ -341,12 +341,6 @@ input#tag_id {
 
 }
 
-/* fixed size buttons for events */
-.event_button {
-    width:170px;
-    height:170px;
-}
-
 .button {
     float: left;
     font-family: 'Love Ya Like A Sister', cursive;
@@ -412,7 +406,7 @@ span.cricket-id-char {
 
 .id-display .button_text p,
 .button .button_text p {
-/*    font-size: 1.2vw;  */
+    font-size: 1.5vw;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
