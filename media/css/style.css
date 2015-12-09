@@ -582,9 +582,10 @@ span.cricket-id-char {
     top: 0px;
     width: 100%;
     text-align: right;
-    margin-bottom: -3em;
     z-index: 5;
     position:relative;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 nav ul {
@@ -592,7 +593,6 @@ nav ul {
 	list-style: none;
 	position: relative;
 	display: inline-table;
-    background: #e7f8c1;
 }
 
 nav ul ul {
@@ -631,7 +631,7 @@ nav ul li a {
 }
 
 nav ul ul {
-	border-radius: 0px; padding: 0;
+/*	border-radius: 0px; padding: 0; */
 	position: absolute; top: 100%;
 }
 nav ul ul li {

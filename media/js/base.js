@@ -138,7 +138,7 @@ function enter_id(t) {
 
 function burrow_event() {
     $(this).off( 'click' );
-    $('.info-text').html('Click on the burrow to begin the video.');
+    $('.info-text').html('2. Click on the middle of the burrow to begin the video');
     $("#ourvideo").click(function(e) {
     var parentOffset = $(this).parent().offset();
     var burrowX = e.pageX - parentOffset.left;
@@ -148,7 +148,7 @@ function burrow_event() {
     pop.play();
 
     videoClickEvents['burrowXY'] = [burrowX, burrowY];
-    $('.info-text').html('Enter the ID of the cricket when or if you see it.');
+    $('.info-text').html('3. Tag cricket behaviours and ID as the video plays');
 
     $('.id-display').show(); //if ended
     });
@@ -183,7 +183,7 @@ function video_setup(image) {
                 $('.top_layer').css({'z-index' : '-1', 'display' : 'none'});
 
                 if (cricketFirstClicked === false) {
-                    $('.info-text').html('Click on the cricket if you can see it <button id="no_cricket">No Cricket</button>.');
+                    $('.info-text').html('1. Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>');
                     $("#ourvideo").click(function(e) {
                         $(this).off( 'click' );
                         var parentOffset = $(this).parent().offset();
@@ -207,7 +207,7 @@ function video_setup(image) {
 
                     $('#no_cricket').click(function() {
                     console.log('No cricket');
-                    $('.info-text').html('Click on the burrow to begin the video.');
+                    $('.info-text').html('2. Click on the middle of the burrow to begin the video');
                     $(this).off( 'click' );
                     noCricket = true;
                     burrow_event();
@@ -223,13 +223,13 @@ function video_setup(image) {
 
 
             if (burrowClicked === true) {
-                $('.info-text').html('Click on the cricket to finish the video <button id="no_cricket_end">No cricket</button>');
+                $('.info-text').html('4. Click on the cricket to finish the video, or click <button id="no_cricket_end">No cricket</button>');
                 $('#ourvideo').click(function(e) {
                     $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                     pop.currentTime(pop.duration());
 
                     $(this).off( 'click' );
-                    $('.info-text').html('Events Complete');
+                    $('.info-text').html('Well done! Video complete');
                     pop.pause();
 
                     var parentOffset = $(this).parent().offset();
@@ -257,7 +257,7 @@ function video_setup(image) {
              $('#no_cricket_end').click(function() {
                     $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                     $(this).off( 'click' );
-                    $('.info-text').html('Events Complete');
+                    $('.info-text').html('Well done! Video complete');
                     noCricketEnd = true;
                     $("#movie_end").css("visibility", "visible");
                     $('#ourvideo').off( 'click' );
