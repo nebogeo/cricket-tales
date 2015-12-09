@@ -235,11 +235,11 @@ button#no_cricket_end {
 .bar {
     width: 100%;
     background: url('../images/track/timeline.png');
-    background-size: 108%;
+    background-size: 108% 250%;
     background-position: -1em;
     text-align: center;
     display: inline-block;
-    overflow: hidden;
+    overflow: visible;
     font-size: 130%;
 }
 
