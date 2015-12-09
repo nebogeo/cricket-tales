@@ -155,14 +155,6 @@ function burrow_event() {
 
 }
 
-// make the buttons square
-function fixup_buttons() {
-    $('.button_container .button ').not('.id-display').each(function() {
-        var button_width = $(this).width();
-        $(this).height(button_width);
-    });
-}
-
 function event_button_change(obj, image) {
     obj.style.backgroundImage="url("+image+")";
 }
@@ -177,8 +169,6 @@ function video_setup(image) {
         cricketFirstClicked = false;
         idEntered = false;
         cricketLastClicked = false;
-
-        //fixup_buttons();
 
         videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : '', 'cricketId' : ''};
 
@@ -300,7 +290,7 @@ function video_setup(image) {
         pop.on("timeupdate", function() {
             var percentage = Math.floor((100 / pop.duration()) *
                                         pop.currentTime());
-            $("#time").css({left: percentage+"%"});
+            $("#time").css({left: percentage*0.95+"%"});
         });
 
 
