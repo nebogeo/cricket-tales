@@ -82,9 +82,11 @@ textarea {
 
 
 h1 {
+    font-family: 'Love Ya Like A Sister', sans-serif;
     font-size: 200%;
 }
 h2 {
+    font-family: 'Love Ya Like A Sister', sans-serif;
     font-size: 150%;
 }
 
@@ -110,6 +112,39 @@ video {
 
 .logo {
 }
+
+.map {
+    height: 35em;
+    border: 5px dashed #1e4018;
+}
+
+.score {
+    text-align: center;
+    background: #f6fce9;
+    font-size: 2vw;
+    height: 10em;
+    margin-bottom: 2em;
+}
+
+.score-name {
+    padding: 0.25em;
+}
+
+.score-value {
+    background: #e7f8c1;
+    text-align: center;
+    padding: 0.25em;
+    margin-bottom: 0.1em;
+}
+
+.news-feed {
+    text-align: center;
+    background: #f6fce9;
+    font-size: 2vw;
+    height: 10em;
+    margin-bottom: 2em;
+}
+
 
 .game_title {
     text-align: center;
