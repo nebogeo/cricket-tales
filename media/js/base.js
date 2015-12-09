@@ -34,6 +34,7 @@ $.ajaxSetup({
 
 // precache the images
 // todo: convert to sprite sheet
+
 imagelist = [];
 function add_to_imagelist(id) {
     imagelist.push("button-"+i+".png");
@@ -177,7 +178,7 @@ function video_setup(image) {
         idEntered = false;
         cricketLastClicked = false;
 
-        fixup_buttons();
+        //fixup_buttons();
 
         videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : '', 'cricketId' : ''};
 

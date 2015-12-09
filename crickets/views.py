@@ -155,7 +155,21 @@ class MovieView(generic.DetailView):
         context['movie'].views+=1
         context['movie'].save()
 
-        context['event_types']=EventType.objects.all()
+        # order these explicitly
+        context['event_types']=[
+            EventType.objects.filter(name="MATE")[0],
+            EventType.objects.filter(name="SING")[0],
+            EventType.objects.filter(name="FIGHT")[0],
+            EventType.objects.filter(name="FEED")[0],
+            EventType.objects.filter(name="Leaves Burrow")[0],
+            EventType.objects.filter(name="Enters Burrow")[0],
+            EventType.objects.filter(name="Cricket Seen")[0],
+            EventType.objects.filter(name="Leaves Frame")[0],
+            EventType.objects.filter(name="Predator: Bird")[0],
+            EventType.objects.filter(name="Predator: Shrew")[0],
+            EventType.objects.filter(name="TRAP")[0],
+            EventType.objects.filter(name="Something Else")[0]]
+
         for c, event_type in enumerate(context['event_types']):
             event_type.width=int(100/len(context['event_types']))*0.5
 
