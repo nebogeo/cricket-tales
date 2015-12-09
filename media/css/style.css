@@ -578,20 +578,19 @@ span.cricket-id-char {
 /* menu stuff */
 
 .menu_holder {
+    font-family: 'Love Ya Like A Sister', sans-serif;
     top: 0px;
     width: 100%;
     text-align: right;
-	position: absolute;
-    z-index: 5;
+    margin-bottom: -3em;
 }
 
 nav ul {
     text-align: center;
-    width: 150px;
 	list-style: none;
 	position: relative;
 	display: inline-table;
-    background: #004400;
+    background: #e7f8c1;
 }
 
 nav ul ul {
@@ -600,12 +599,11 @@ nav ul ul {
 
 nav ul li:hover > ul {
 	display: block;
-    background: #007700;
+    background: #e7f8c1;
 }
 
 
 nav ul li a {
-    color: #ffffff;
 }
 
 
@@ -639,10 +637,9 @@ nav ul ul li {
 	position: relative;
 }
 nav ul ul li a {
-	padding: 15px 40px;
-	color: #fff;
+	padding: 15px 20px;
 }
 nav ul ul li a:hover {
-    background: #55ff55;
+    background: #b6e05c;
 	text-decoration: none;
 }

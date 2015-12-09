@@ -23,16 +23,16 @@
     <div class="menu_holder">
       <nav>
         <ul>
-          <li><a href="#">Menu</a>
+          <li><a href="#"><img src="{{ MEDIA_URL }}images/buttons/menu.png"></a>
 	        <ul>
               {% if user.is_authenticated %}
-              <li><a href="/player/{{ user.id }}">My map</a></li>
+              <li><a href="/player/{{ user.id }}">MY MAP</a></li>
               {% else %}
-              <li><a href="/login">Login/Register</a></li>
+              <li><a href="/login">LOGIN/REGISTER</a></li>
               {% endif %}
-		      <li><a href="/tutorial/">Tutorial</a></li>
-		      <li><a href="/about/">About</a></li>
-		      <li><a href="/random_movie/">Play!</a></li>
+		      <li><a href="/tutorial/">TUTORIAL</a></li>
+		      <li><a href="/about/">ABOUT</a></li>
+		      <li><a href="/random_movie/">PLAY!</a></li>
 	        </ul>
           </li>
         </ul>
