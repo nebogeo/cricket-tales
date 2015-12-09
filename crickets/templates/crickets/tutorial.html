@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block top_layer %}
+{% endblock %}
+
+{% block bottom_layer %}
+<div class="row" style="font-size: 300%">
+  <div class="col-xs-12">
+    Tutorial goes here...
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8 col-xs-12">
+
+    <div class="button col-sm-4 col-xs-12"
+         style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;"
+         onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-high.png');"
+         onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+         onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-offset.png');"
+         onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+         onclick="window.location.href='/random_movie/'">
+      <div class="button_text">
+        <p style="font-size:2.5vw;">Play</p>
+      </div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="button col-sm-4 col-xs-12"
+         style="background: url(/media/images/buttons/button-6.png); background-size: 100% 100%;"
+         onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-high.png');"
+         onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
+         onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-offset.png');"
+         onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
+         onclick="window.location.href='/player/{{ user.id }}'"
+         >
+      <div class="button_text">
+        <p style="font-size:2.5vw;">
+          My home
+        </p>
+      </div>
+    </div>
+    {% endif %}
+  </div> <!-- button container -->
+</div>
+
+
+{% endblock %}

@@ -38,6 +38,7 @@ class IndexView(generic.ListView):
                             .values('user__username')\
                             .annotate(count=Count('user'))\
                             .order_by('-count')[:20]
+        context['hide_menu'] = True
 
         return context
 
@@ -168,7 +169,7 @@ class MovieView(generic.DetailView):
 class EventForm(ModelForm):
      class Meta:
          model = Event
-         fields = "__all__" 
+         fields = "__all__"
 
 ## incoming from javascript...
 def spit_event(request):
@@ -266,7 +267,13 @@ def logmein(request):
     else:
         return render_to_response('crickets/login.html', {}, context)
 
+def tutorial(request):
+    context = RequestContext(request)
+    return render_to_response('crickets/tutorial.html', {}, context)
 
+def about(request):
+    context = RequestContext(request)
+    return render_to_response('crickets/about.html', {}, context)
 
 def logmeout(request):
     logout(request)

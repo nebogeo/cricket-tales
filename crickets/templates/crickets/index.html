@@ -17,6 +17,7 @@
 {% block bottom_layer %}
 
 <!-- start of bar hack copied from base.html -->
+<!--
     <div class="login_box">
       <a href="/">Cricket Tales</a> <span style="font-size:50%">help us tell their stories</span>
       <div style="float:right;">
@@ -40,13 +41,77 @@
     </div>
 	{% endif %}
       </div>
-    </div>
+    </div> -->
 <!-- end of bar hack -->
+<div style="text-align: right;">
+Made in Cornwall by<br/>
+<img class="logo" src="{{ MEDIA_URL }}/images/logo.png"/>
+</div>
+<div class="game_title">
+{% if user.is_authenticated %} Welcome back {{ user.username }}, to {% endif %}</br>
+<span style="font-size:500%">Cricket Tales</span>
+</div>
+<div class="row">
+  <div class="col-sm-2 col-xs-0"></div>
+  <div class="col-sm-8 col-xs-12">
 
-<div style="font-size: 150%">
-Cricket tales is a citizen science experiment where you can help us understand the busy world of wild crickets by recording events that happen during one minute movies of their burrows.
+    <div class="button col-sm-4 col-xs-12"
+         style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;"
+         onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-high.png');"
+         onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+         onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-offset.png');"
+         onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+         onclick="window.location.href='/about/'">
+      <div class="button_text">
+        <p style="font-size:2.5vw;">ABOUT THE PROJECT</p>
+      </div>
+    </div>
+
+    <div class="button col-sm-4 col-xs-12"
+         style="background: url(/media/images/buttons/button-6.png); background-size: 100% 100%;"
+         onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-high.png');"
+         onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
+         onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-offset.png');"
+         onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
+         {% if user.is_authenticated %}
+         onclick="window.location.href='/player/{{ user.id }}'"
+         {% else %}
+         onclick="window.location.href='/login/'"
+         {% endif %}
+         >
+      <div class="button_text">
+        <p style="font-size:2.5vw;">
+          {% if user.is_authenticated %}
+          CONTINUE TO PLAY
+          {% else %}
+          LOGIN FOR FULL GAME
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="button col-sm-4 col-xs-12"
+         style="background: url(/media/images/buttons/button-4.png); background-size: 100% 100%;"
+         onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4-high.png');"
+         onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4.png');"
+         onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4-offset.png');"
+         onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4.png');"
+         onclick="window.location.href='/tutorial/'">
+      <div class="button_text">
+        <p style="font-size:2.5vw;">CONTRIBUTE AS GUEST</p>
+      </div>
+    </div>
+  </div> <!- button container -->
+</div>
+<div class="col-sm-6 col-xs-12">
+  <div class="row" style="margin-top:2em;">
+    <img class="logo" src="{{ MEDIA_URL }}/images/exeter_logo.png"/>
+    <img class="logo" src="{{ MEDIA_URL }}/images/nerc logo.jpg"/>
+  </div>
 </div>
 
+
+<!--
 <div class="field">
   <div class="burrow-container">
     <img src="/media/images/grass.png"></img>
@@ -80,5 +145,6 @@ Cricket tales is a citizen science experiment where you can help us understand t
     {% endif %}
   </div>
 </div>
+-->
 
 {% endblock %}

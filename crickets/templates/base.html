@@ -11,13 +11,36 @@
     <script src="{{ MEDIA_URL }}js/jquery-1.11.1.min.js"></script>
     <script src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
     <script src="{{ MEDIA_URL }}js/popcorn-complete.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap-theme.min.css">
+    <script src="{{ MEDIA_URL }}js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
     <!-- loading last for overrides... -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}/css/style.css" />
     <script src="/media/js/base.js"></script>
+
+    <!-- menu time! -->
+    {% if not hide_menu %} <!-- hidden for index (maybe also movie?) -->
+    <div class="menu_holder">
+      <nav>
+        <ul>
+          <li><a href="#">Menu</a>
+	        <ul>
+              {% if user.is_authenticated %}
+              <li><a href="/player/{{ user.id }}">My map</a></li>
+              {% else %}
+              <li><a href="/login">Login/Register</a></li>
+              {% endif %}
+		      <li><a href="/tutorial/">Tutorial</a></li>
+		      <li><a href="/about/">About</a></li>
+		      <li><a href="/random_movie/">Play!</a></li>
+	        </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    {% endif %}
+
 <!--
     <div class="login_box">
       <a href="/">Cricket Tales</a> <span style="font-size:50%">help us tell their stories</span>
@@ -52,6 +75,7 @@
         <section class="bottom_layer content">
           {% block bottom_layer %}{% endblock %}
         </section>
+
       </div>
     </div>
 

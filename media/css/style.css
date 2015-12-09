@@ -108,34 +108,18 @@ video {
     height: auto;
 }
 
-.main_bit {
-    /*width: 120%; */
-    /*box-sizing: border-box;*/
+.logo {
 }
 
-.content {
-/*    position:absolute;
-    left:50%;
-    margin-left:-500px;*/
-/*    max-width: 2000px;
-    width: 100%;*/
+.game_title {
+    text-align: center;
+    margin-bottom: 1em;
+    font-family: 'Love Ya Like A Sister', sans-serif;
 }
-/*@media only screen and ( max-width: 1000px ) {
-    .content {
-        margin-left: -50%;
-    }
-}*/
 
 .top_layer {
     /*pointer-events: none;*/
     z-index: 1;
-}
-
-
-.bottom_layer {
-}
-
-.outer_box_container {
 }
 
 .box_container {
@@ -344,34 +328,11 @@ input#tag_id {
 .button {
     float: left;
     font-family: 'Love Ya Like A Sister', cursive;
-    background: #238029;
-    background: -webkit-gradient(linear, left top, left bottom, from(#65d67b), to(#238029));
-    background: -webkit-linear-gradient(top, #65d67b, #238029);
-    background: -moz-linear-gradient(top, #65d67b, #238029);
-    background: -ms-linear-gradient(top, #65d67b, #238029);
-    background: -o-linear-gradient(top, #65d67b, #238029);
-    background-image: -ms-linear-gradient(top, #65d67b 0%, #238029 100%);
-    -webkit-border-radius: 13px;
-    -moz-border-radius: 13px;
-    border-radius: 13px;
-
-    text-shadow: #7fbd83 0 1px 0;
-    color: #000000;
-    text-decoration: none;
-    cursor: pointer;
-
-}
-
-.button_container > .button {
-   width: 100%;
-   height: auto;
-   padding: 0.2em;
-   background: url("../images/buttons/button-1.png");
-   background-size: 100% 100%;
-   border: 0px solid #fff !important;
-   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
-   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
-   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0 !important;
+    height: auto;
+    min-height: 100px;
+    background: url("../images/buttons/button-1.png");
+    background-size: 100% 100%;
+    border: 0px solid #fff !important;
 }
 
 .button_container > .id-display {
@@ -389,8 +350,7 @@ input#tag_id {
     width: 80%;
     height: 80%;
     display: table;
-    margin: 0.3em;
-    font-size: 130%;
+    margin: auto;
 }
 
 .id-display .button_text {
@@ -607,6 +567,7 @@ span.cricket-id-char {
 }
 
 .container {
+    margin-top: 1em;
     width: 100%;
 }
 
@@ -614,4 +575,77 @@ span.cricket-id-char {
 #cricket_player {
     padding-left:0px;
     padding-right:0px;
+}
+
+
+/* menu stuff */
+
+.menu_holder {
+    top: 0px;
+    width: 100%;
+    text-align: right;
+	position: absolute;
+    z-index: 5;
+}
+
+nav ul {
+    text-align: center;
+    width: 150px;
+	list-style: none;
+	position: relative;
+	display: inline-table;
+    background: #004400;
+}
+
+nav ul ul {
+	display: none;
+}
+
+nav ul li:hover > ul {
+	display: block;
+    background: #007700;
+}
+
+
+nav ul li a {
+    color: #ffffff;
+}
+
+
+nav ul:after {
+	content: ""; clear: both; display: block;
+}
+
+nav ul li {
+	float: left;
+}
+
+nav ul li:hover {
+}
+
+nav ul li:hover a {
+	text-decoration: none;
+}
+
+nav ul li a {
+	display: block;
+    padding: 0px 20px;
+	text-decoration: none;
+}
+
+nav ul ul {
+	border-radius: 0px; padding: 0;
+	position: absolute; top: 100%;
+}
+nav ul ul li {
+	float: none;
+	position: relative;
+}
+nav ul ul li a {
+	padding: 15px 40px;
+	color: #fff;
+}
+nav ul ul li a:hover {
+    background: #55ff55;
+	text-decoration: none;
 }
