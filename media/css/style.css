@@ -347,11 +347,12 @@ span.cricket-id-char {
 }
 
 #tag_cricket tr {
-    background: rgba(255, 255, 255, 1);
+    background: #caec9e;
 }
 
 #tag_cricket td {
     min-width: 2em;
+    border: 1px solid #3e432b;
 }
 
 #tag_cricket td#delete,
@@ -361,11 +362,6 @@ span.cricket-id-char {
     background: url('../images/buttons/button-oblong.png');
     background-size: 100% 100%;
 }
-
-/*#tag_cricket td#save {
-    border-right: 0px;
-    border-left: 0px;
-}*/
 
 .event {
     margin-top: -1em;
