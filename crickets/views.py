@@ -157,18 +157,18 @@ class MovieView(generic.DetailView):
 
         # order these explicitly
         context['event_types']=[
-            EventType.objects.filter(name="MATE")[0],
-            EventType.objects.filter(name="SING")[0],
-            EventType.objects.filter(name="FIGHT")[0],
-            EventType.objects.filter(name="FEED")[0],
-            EventType.objects.filter(name="LEAVES BURROW")[0],
-            EventType.objects.filter(name="ENTERS BURROW")[0],
-            EventType.objects.filter(name="ANOTHER CRICKET")[0],
-            EventType.objects.filter(name="LEAVES FRAME")[0],
-            EventType.objects.filter(name="Predator: Bird")[0],
-            EventType.objects.filter(name="Predator: Shrew")[0],
-            EventType.objects.filter(name="TRAP")[0],
-            EventType.objects.filter(name="Something Else")[0]]
+            EventType.objects.filter(name="MATE").first(),
+            EventType.objects.filter(name="SING").first(),
+            EventType.objects.filter(name="FIGHT").first(),
+            EventType.objects.filter(name="FEED").first(),
+            EventType.objects.filter(name="LEAVES BURROW").first(),
+            EventType.objects.filter(name="ENTERS BURROW").first(),
+            EventType.objects.filter(name="ANOTHER CRICKET").first(),
+            EventType.objects.filter(name="LEAVES FRAME").first(),
+            EventType.objects.filter(name="Predator: Bird").first(),
+            EventType.objects.filter(name="Predator: Shrew").first(),
+            EventType.objects.filter(name="TRAP").first(),
+            EventType.objects.filter(name="Something Else").first()]
 
         for c, event_type in enumerate(context['event_types']):
             event_type.width=int(100/len(context['event_types']))*0.5
@@ -178,6 +178,10 @@ class MovieView(generic.DetailView):
         context['predator_bird'] = EventType.objects.filter(name="Predator: Bird").first()
         context['predator_shrew'] = EventType.objects.filter(name="Predator: Shrew").first()
         context['something_else'] = EventType.objects.filter(name="Something Else").first()
+        context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
+        context['cricket_end'] = EventType.objects.filter(name="Cricket End").first()
+        context['burrow_start'] = EventType.objects.filter(name="Burrow Start").first()
+        context['cricket_id'] = EventType.objects.filter(name="Cricket ID").first()
         return context
 
 class EventForm(ModelForm):

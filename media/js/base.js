@@ -64,12 +64,7 @@ imagelist.forEach( function(path) {
 var pop = false;
 var events = [];
 
-// called before video loaded, so store them...
-function render_event(type, start_time) {
-    events.push([type, start_time]);
-}
-
-function build_id_keyboard() {
+function build_id_keyboard(cricket_id_id,movie_id,user_id) {
 
     $('#tag_cricket').draggable();
     //Constructing keyboard
@@ -98,26 +93,22 @@ function build_id_keyboard() {
     table += '</table>';
 
     //console.log(table);
-    initialise_operators_keyboard();
+    initialise_operators_keyboard(cricket_id_id,movie_id,user_id);
 }
 
-function initialise_operators_keyboard() {
+function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
         $("#delete").click(function (){
             $('#tag_id').val('');
         });
 
         $("#save").click(function (){
             cricket_id = $('#tag_id').val();
-
-
             if (cricket_id.length == 2) {
-                videoClickEvents['cricketId'] = cricket_id;
+                add_event(cricket_id_id,movie_id,user_id, null, null, cricket_id);
                 $('p.cricket-id-display').html('ID: <span class="cricket-id-char">'+cricket_id+'</span>');
-            } else {
-                videoClickEvents['cricketId'] = '';
-            }
+            } 
 
-            id_cricket();
+            toggle_id_cricket();
         });
 }
 
@@ -136,21 +127,49 @@ function enter_id(t) {
 
 }
 
-function burrow_event() {
-    $(this).off( 'click' );
-    $('.info-text').html('2. Click on the middle of the burrow to begin the video');
+function update_infotext() {
+    switch(state) {
+        case "wait-cricket":
+            $('.info-text').html('1. Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>');
+            break;
+        case "wait-burrow":
+            $('.info-text').html('2. Click on the middle of the burrow to begin the video');
+            break;
+        case "movie-playing":
+            $('.info-text').html('3. Tag cricket behaviours and ID as the video plays');
+            break;
+        case "wait-cricket-end":
+            $('.info-text').html('4. Click on the cricket to finish the video, or click <button id="no_cricket_end">No cricket</button>');
+            break;
+        case "movie-end":
+            $('.info-text').html('Well done! Video complete');
+            break;
+        // whyyy
+        case "no-cricket-end":
+            $('.info-text').html('No cricket clicked [no cricket seen?]');
+            break;
+        default: 
+            $('.info-text').html('I have no idea, you broke me');
+
+    }
+}
+
+
+function burrow_event(burrow_start_id,movie_id,user_id) {
+    console.log(state);
+    update_infotext();
     $("#ourvideo").click(function(e) {
-    var parentOffset = $(this).parent().offset();
-    var burrowX = e.pageX - parentOffset.left;
-    var burrowY = e.pageY - parentOffset.top;
 
-    burrowClicked = true;
-    pop.play();
+        state = 'movie-playing';
+        pop.play();
 
-    videoClickEvents['burrowXY'] = [burrowX, burrowY];
-    $('.info-text').html('3. Tag cricket behaviours and ID as the video plays');
+        var burrowPercent = mouse_pos(e, this);
 
-    $('.id-display').show(); //if ended
+        add_event(burrow_start_id,movie_id,user_id, burrowPercent['x'], burrowPercent['y'], null);
+
+
+        
+        update_infotext();
     });
 
 }
@@ -159,20 +178,28 @@ function event_button_change(obj, image) {
     obj.style.backgroundImage="url("+image+")";
 }
 
-function video_setup(image) {
+function percentage(x, y) {
+    var container_w = $('#ourvideo').width();
+    var container_h = $('#ourvideo').height();
+    
+    var percent_x = (x / container_w) * 100;
+    var percent_y = (y / container_h) * 100;
+    
+    return {'x' : percent_x, 'y' : percent_y}
+}
+
+function mouse_pos(e, context) {
+    var parentOffset = $(context).parent().offset();
+    return percentage(e.pageX - parentOffset.left, e.pageY - parentOffset.top)
+}
+
+function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_end_id, movie_id, user_id) {
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
     document.addEventListener("DOMContentLoaded", function () {
 
-        burrowClicked = false;
-        noCricket = false;
-        noCricketEnd = false;
-        cricketFirstClicked = false;
-        idEntered = false;
-        cricketLastClicked = false;
+        state = "wait-cricket";
 
-        videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : '', 'cricketId' : ''};
-
-        build_id_keyboard();
+        build_id_keyboard(cricket_id_id,movie_id,user_id);
 
         pop = Popcorn("#ourvideo");
 
@@ -182,90 +209,48 @@ function video_setup(image) {
             onStart: function() {
                 $('.top_layer').css({'z-index' : '-1', 'display' : 'none'});
 
-                if (cricketFirstClicked === false) {
-                    $('.info-text').html('1. Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>');
-                    $("#ourvideo").click(function(e) {
-                        $(this).off( 'click' );
-                        var parentOffset = $(this).parent().offset();
-                        var cricketStartX = e.pageX - parentOffset.left;
-                        var cricketStartY = e.pageY - parentOffset.top;
+                update_infotext();
 
-                        if (noCricket === false){
-                            videoClickEvents['cricketStartXY'] = [cricketStartX, cricketStartY];
-                            console.log(videoClickEvents['cricketStartXY']);
-
-                        } else {
-                            videoClickEvents['cricketStartXY'] = '';
-                        }
-
-                        $(this).off('click');
-
-                        burrow_event();
-                        });
-                };
-
-
-                    $('#no_cricket').click(function() {
-                    console.log('No cricket');
-                    $('.info-text').html('2. Click on the middle of the burrow to begin the video');
-                    $(this).off( 'click' );
-                    noCricket = true;
-                    burrow_event();
-
+                $("#ourvideo").click(function(e) {
+                    var cricketStartPercent = mouse_pos(e, this);
+                    if (state === "wait-cricket"){
+                        add_event(cricket_start_id,movie_id,user_id, cricketStartPercent['x'], cricketStartPercent['y'], null);
+                        state = "wait-burrow";
+                        burrow_event(burrow_start_id,movie_id,user_id);
+                    }                    
                 });
 
-                }
 
+                $('#no_cricket').click(function() {
+                    state = "wait-burrow";                    
+                    burrow_event(burrow_start_id,movie_id,user_id);
+                });
+
+            }
 
         });
 
         pop.on("ended", function() {
 
+            state = "wait-cricket-end";
+            update_infotext();
 
-            if (burrowClicked === true) {
-                $('.info-text').html('4. Click on the cricket to finish the video, or click <button id="no_cricket_end">No cricket</button>');
-                $('#ourvideo').click(function(e) {
-                    $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
-                    pop.currentTime(pop.duration());
-
-                    $(this).off( 'click' );
-                    $('.info-text').html('Well done! Video complete');
-                    pop.pause();
-
-                    var parentOffset = $(this).parent().offset();
-                    var cricketEndX = e.pageX - parentOffset.left;
-                    var cricketEndY = e.pageY - parentOffset.top;
-
-                    cricketLastClicked = true;
-
-                    if (noCricketEnd === false) {
-                        videoClickEvents['cricketEndXY'] = [cricketEndX, cricketEndY];
-                        // $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #717892; position: absolute; opacity: 0.7; display: block; top:'+(cricketEndY)+'px; left:'+(cricketEndX - 50)+'px;"></div>');
-                        // $('.click-video-circle').fadeOut();
-                    } else {
-                        videoClickEvents = '';
-                    }
-                    $(this).off( 'click' );
-                    $("#movie_end").css("visibility", "visible");
-
-                });
-
-            } else if (cricketFirstClicked === false) {
-                $('.info-text').html('No cricket clicked [no cricket seen?]');
-            }
-
-             $('#no_cricket_end').click(function() {
-                    $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
-                    $(this).off( 'click' );
-                    $('.info-text').html('Well done! Video complete');
-                    noCricketEnd = true;
-                    $("#movie_end").css("visibility", "visible");
-                    $('#ourvideo').off( 'click' );
+            $('#ourvideo').click(function(e) {
+                $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
+                pop.currentTime(pop.duration());
+                state = "movie-end";
+                update_infotext();
+                pop.pause();
+                var pos = mouse_pos(e, this);
+                add_event(cricket_end_id,movie_id,user_id, pos['x'], pos['y'], null);
+                $("#movie_end").css("visibility", "visible");
             });
 
-
-            //console.log(videoClickEvents);
-
+            $('#no_cricket_end').click(function() {
+                $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});                  
+                update_infotext();
+                $("#movie_end").css("visibility", "visible");                   
+            });
         });
 
         // scrubbing
@@ -305,15 +290,12 @@ function video_setup(image) {
     },false);
 };
 
-function id_cricket() {
-
+function toggle_id_cricket() {
     $('#tag_cricket').toggle();
-
-    if($('#tag_cricket:hidden').length == 0)
-        {
+    if($('#tag_cricket:hidden').length == 0) {
             pop.pause();
         } else {
-            if (pop.duration() != pop.currentTime()) {
+            if (state === "movie-playing") {
                 pop.play();
             }
         }
@@ -322,7 +304,7 @@ function id_cricket() {
 
 
 function restart_video() {
-    $('#ourvideo').off( 'click' );
+   
     $("#movie_end").css("visibility", "visible");
     pop.currentTime(0);
     pop.pause();
@@ -351,7 +333,7 @@ function inner_render_my_event(type, start_time) {
 }
 
 // sends the event to the server and renders it
-function add_event(event_type, event_id, movie_id,user_id) {
+function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();
@@ -360,23 +342,26 @@ function add_event(event_type, event_id, movie_id,user_id) {
         if (user_id=="None") {
             $.post("/spit_event/", {
                 movie: movie_id,
-                type: event_id,
+                type: event_type_id,
                 user: "",
                 start_time: t,
-                end_time: t+1
+                end_time: t+1,
+                x_pos : xpos,
+                y_pos: ypos,
+                other: other
             });
         } else {
             $.post("/spit_event/", {
                 movie: movie_id,
-                type: event_id,
+                type: event_type_id,
                 user: parseInt(user_id),
                 start_time: t,
-                end_time: t+1
+                end_time: t+1,
+                x_pos : xpos,
+                y_pos: ypos,
+                other: other
             });
         }
-
-        // add to the page
-        inner_render_my_event(event_type, t);
     }
 
 }

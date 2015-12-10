@@ -101,5 +101,8 @@ class Event(models.Model):
     user = models.ForeignKey(User, null=True, blank=True, default = None)
     start_time = models.FloatField(default=0)
     end_time = models.FloatField(default=0)
+    x_pos = models.FloatField(null=True, blank=True, default=None)
+    y_pos = models.FloatField(null=True, blank=True, default=None)
+    other = models.CharField(max_length=200, null=True, blank=True, default=None)
     def __unicode__(self):
         return self.type.name+" "+str(self.start_time)+" : "+str(self.movie);
