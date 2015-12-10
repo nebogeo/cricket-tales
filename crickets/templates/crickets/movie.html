@@ -136,7 +136,7 @@
                onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
                onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
                onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
-               onclick="add_event('{{event_type.name}}',{{event_type.id}},{{movie.id}},'{{user.id}}')">
+               onclick="add_event('{{event_type.name}}',{{event_type.id}},{{movie.id}},'{{user.id}}', null, null, null)">
             <div class="button_text">
               <p>{{event_type.name}}</p></div>
           </div>
@@ -148,7 +148,7 @@
                onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/bird.png');"
                onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/bird-offset.png');"
                onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/bird.png');"
-               onclick="add_event('{{predator_bird.name}}',{{predator_bird.id}},{{movie.id}},'{{user.id}}')">
+               onclick="add_event('{{predator_bird.name}}',{{predator_bird.id}},{{movie.id}},'{{user.id}}', null, null, null)">
                <div class="button_text" style="visibility: hidden">
                 <p>{{predator_bird.name}}</p>
                </div>
@@ -158,7 +158,7 @@
                onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/shrew.png');"
                onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/shrew-offset.png');"
                onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/shrew.png');"
-               onclick="add_event('{{predator_shrew.name}}',{{predator_shrew.id}},{{movie.id}},'{{user.id}}')">
+               onclick="add_event('{{predator_shrew.name}}',{{predator_shrew.id}},{{movie.id}},'{{user.id}}', null, null, null)">
                <div class="button_text" style="visibility: hidden">
                 <p>{{predator_shrew.name}}</p>
                </div>
@@ -168,7 +168,7 @@
                onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
                onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-offset.png');"
                onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
-               onclick="add_event('{{something_else.name}}',{{something_else.id}},{{movie.id}},'{{user.id}}')">
+               onclick="add_event('{{something_else.name}}',{{something_else.id}},{{movie.id}},'{{user.id}}', null, null, null)">
                <div class="button_text">
               <p>!</p></div>
              </div>

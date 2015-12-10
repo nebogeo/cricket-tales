@@ -262,7 +262,6 @@ function video_setup(image) {
                         videoClickEvents = '';
                     }
 
-                    
 
                     $(this).off( 'click' );
                     $("#movie_end").css("visibility", "visible");
@@ -370,7 +369,7 @@ function inner_render_my_event(type, start_time) {
 }
 
 // sends the event to the server and renders it
-function add_event(event_type, event_id, movie_id,user_id) {
+function add_event(event_type, event_id, movie_id,user_id, xpos, ypos, other) {
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();
@@ -382,7 +381,10 @@ function add_event(event_type, event_id, movie_id,user_id) {
                 type: event_id,
                 user: "",
                 start_time: t,
-                end_time: t+1
+                end_time: t+1,
+                x_pos : xpos,
+                y_pos: ypos,
+                other: other
             });
         } else {
             $.post("/spit_event/", {
@@ -390,7 +392,10 @@ function add_event(event_type, event_id, movie_id,user_id) {
                 type: event_id,
                 user: parseInt(user_id),
                 start_time: t,
-                end_time: t+1
+                end_time: t+1,
+                x_pos : xpos,
+                y_pos: ypos,
+                other: other
             });
         }
 
