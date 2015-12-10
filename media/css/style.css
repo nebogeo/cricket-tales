@@ -268,13 +268,16 @@ input#tag_id {
 }
 
 .tiny_circle {
-    border: 1px solid #1e4018;
+    border: 1px solid #F8AFC2;
     border-radius: 0.3em;
 	width: 0.6em;
 	height: 0.6em;
     text-align: center;
     position: relative;
     top: 0.1em;
+    -webkit-box-shadow: -3px 5px 2px 0px rgba(62,67,43,1);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(62,67,43,1);
+    box-shadow: -3px 5px 2px 0px rgba(62,67,43,1);
 }
 
 .micro_circle {
@@ -348,7 +351,7 @@ span.cricket-id-char {
 .time {
     margin-top: 0.06em;
     margin-left: 0.5em;
-    background-color: yellow;
+    background-color: #F8AFC2;
     /*-webkit-transition: left 1.5s linear;
     -moz-transition: left 1.5s linear;*/
     z-index: 100;
