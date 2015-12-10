@@ -64,11 +64,6 @@ imagelist.forEach( function(path) {
 var pop = false;
 var events = [];
 
-// called before video loaded, so store them...
-function render_event(type, start_time) {
-    events.push([type, start_time]);
-}
-
 function build_id_keyboard() {
 
     $('#tag_cricket').draggable();
@@ -171,7 +166,7 @@ function percentage(x, y) {
     return {'x' : percent_x, 'y' : percent_y}
 }
 
-function video_setup(image) {
+function video_setup(cricket_start_id, burrow_start, cricket_id_id, cricket_end_id) {
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
     document.addEventListener("DOMContentLoaded", function () {
 
@@ -369,7 +364,7 @@ function inner_render_my_event(type, start_time) {
 }
 
 // sends the event to the server and renders it
-function add_event(event_type, event_id, movie_id,user_id, xpos, ypos, other) {
+function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();
@@ -378,7 +373,7 @@ function add_event(event_type, event_id, movie_id,user_id, xpos, ypos, other) {
         if (user_id=="None") {
             $.post("/spit_event/", {
                 movie: movie_id,
-                type: event_id,
+                type: event_type_id,
                 user: "",
                 start_time: t,
                 end_time: t+1,
@@ -389,7 +384,7 @@ function add_event(event_type, event_id, movie_id,user_id, xpos, ypos, other) {
         } else {
             $.post("/spit_event/", {
                 movie: movie_id,
-                type: event_id,
+                type: event_type_id,
                 user: parseInt(user_id),
                 start_time: t,
                 end_time: t+1,
@@ -398,9 +393,6 @@ function add_event(event_type, event_id, movie_id,user_id, xpos, ypos, other) {
                 other: other
             });
         }
-
-        // add to the page
-        inner_render_my_event(event_type, t);
     }
 
 }
