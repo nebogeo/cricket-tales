@@ -64,7 +64,7 @@ imagelist.forEach( function(path) {
 var pop = false;
 var events = [];
 
-function build_id_keyboard() {
+function build_id_keyboard(cricket_id_id,movie_id,user_id) {
 
     $('#tag_cricket').draggable();
     //Constructing keyboard
@@ -93,26 +93,22 @@ function build_id_keyboard() {
     table += '</table>';
 
     //console.log(table);
-    initialise_operators_keyboard();
+    initialise_operators_keyboard(cricket_id_id,movie_id,user_id);
 }
 
-function initialise_operators_keyboard() {
+function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
         $("#delete").click(function (){
             $('#tag_id').val('');
         });
 
         $("#save").click(function (){
             cricket_id = $('#tag_id').val();
-
-
             if (cricket_id.length == 2) {
-                videoClickEvents['cricketId'] = cricket_id;
+                add_event(cricket_id_id,movie_id,user_id, null, null, cricket_id);
                 $('p.cricket-id-display').html('ID: <span class="cricket-id-char">'+cricket_id+'</span>');
-            } else {
-                videoClickEvents['cricketId'] = '';
-            }
+            } 
 
-            id_cricket();
+            toggle_id_cricket();
         });
 }
 
@@ -201,17 +197,9 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
     document.addEventListener("DOMContentLoaded", function () {
 
-        burrowClicked = false;
-        noCricket = false;
-        noCricketEnd = false;
-        cricketFirstClicked = false;
-        idEntered = false;
-        cricketLastClicked = false;
         state = "wait-cricket";
 
-        videoClickEvents = {'burrowXY' : '', 'cricketStartXY' : '', 'cricketEndXY' : '', 'cricketId' : ''};
-
-        build_id_keyboard();
+        build_id_keyboard(cricket_id_id,movie_id,user_id);
 
         pop = Popcorn("#ourvideo");
 
@@ -221,36 +209,24 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
             onStart: function() {
                 $('.top_layer').css({'z-index' : '-1', 'display' : 'none'});
 
-                // if (state === "wait-cricket") {
                 update_infotext();
+
                 $("#ourvideo").click(function(e) {
-
                     var cricketStartPercent = mouse_pos(e, this);
-
                     if (state === "wait-cricket"){
                         add_event(cricket_start_id,movie_id,user_id, cricketStartPercent['x'], cricketStartPercent['y'], null);
-
                         state = "wait-burrow";
-
                         burrow_event(burrow_start_id,movie_id,user_id);
-
-                    } 
-
-
-                    
-                    });
-                // };
+                    }                    
+                });
 
 
-                    $('#no_cricket').click(function() {
-                        state = "wait-burrow";
-                        
-                        burrow_event(burrow_start_id,movie_id,user_id);
+                $('#no_cricket').click(function() {
+                    state = "wait-burrow";                    
+                    burrow_event(burrow_start_id,movie_id,user_id);
+                });
 
-                    });
-
-                }
-
+            }
 
         });
 
@@ -259,38 +235,22 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
             state = "wait-cricket-end";
             update_infotext();
 
-
             $('#ourvideo').click(function(e) {
                 $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                 pop.currentTime(pop.duration());
-
-
-
                 state = "movie-end";
                 update_infotext();
-
                 pop.pause();
-
                 var pos = mouse_pos(e, this);
-
                 add_event(cricket_end_id,movie_id,user_id, pos['x'], pos['y'], null);
-
-
-
-
-                
                 $("#movie_end").css("visibility", "visible");
-
-                });
-
-             $('#no_cricket_end').click(function() {
-                    $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});                  
-                    update_infotext();
-                    $("#movie_end").css("visibility", "visible");
-                   
             });
 
-
+            $('#no_cricket_end').click(function() {
+                $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});                  
+                update_infotext();
+                $("#movie_end").css("visibility", "visible");                   
+            });
         });
 
         // scrubbing
@@ -330,12 +290,9 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
     },false);
 };
 
-function id_cricket() {
-
+function toggle_id_cricket() {
     $('#tag_cricket').toggle();
-
-    if($('#tag_cricket:hidden').length == 0)
-        {
+    if($('#tag_cricket:hidden').length == 0) {
             pop.pause();
         } else {
             if (state === "movie-playing") {
