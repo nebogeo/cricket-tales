@@ -347,12 +347,12 @@ span.cricket-id-char {
 }
 
 #tag_cricket tr {
-    background: #caec9e;
+    background: #f6fce9;
 }
 
 #tag_cricket td {
     min-width: 2em;
-    border: 1px solid #3e432b;
+    border: 1px solid #e7f8c1;
 }
 
 #tag_cricket td#delete,
