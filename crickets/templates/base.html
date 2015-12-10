@@ -25,11 +25,14 @@
               {% if user.is_authenticated %}
               <li><a href="/player/{{ user.id }}">MY MAP</a></li>
               {% else %}
-              <li><a href="/login">LOGIN/REGISTER</a></li>
+              <li><a href="/login">LOGIN</a></li>
               {% endif %}
 		      <li><a href="/tutorial/">TUTORIAL</a></li>
 		      <li><a href="/about/">ABOUT</a></li>
 		      <li><a href="/random_movie/">PLAY!</a></li>
+              {% if user.is_authenticated %}
+		      <li><a href="/logout/">LOG OUT</a></li>
+              {% endif %}
 	        </ul>
           </li>
         </ul>

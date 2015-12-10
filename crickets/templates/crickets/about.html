@@ -4,54 +4,45 @@
 {% endblock %}
 
 {% block bottom_layer %}
-<section class="cricket_top">
-<h1>About Cricket Tales</h1>
-<div class="row" style="font-size: 150%">
-  <div class="col-sm-6 col-xs-12">
-    In a secret field in Northern Spain, 300 cricket burrows are monitored using CCTV. The videos reveal the intricate lives of the crickets. This is the first long-term study of behaviour in a wild insect, and we need your help to see what the crickets are up to. By tagging events in these videos, you are helping us to understand the crickets' personalities, how their lives progress, how they age, and why they die.
+<div class="row-fluid">
+
+  <h1>ABOUT THE PROJECT</h1>
+
+  <hr class="bottom">
+
+  <p>
+    In a secret field in Northern Spain, 300 cricket burrows are monitored
+    using CCTV. This is the first long-term study of behaviour in a wild
+    insect, and we need your help to see what the crickets are up to.
+  </p>
+
+</div>
+
+<div class="row" style="margin:1em;">
+  <div class="col-sm-4 col-xs-12">
+    <img src="{{ MEDIA_URL }}/images/about-field.jpg" width="100%">
+    <center><h1>THE FIELD</h1></center>
   </div>
-  <div class="col-sm-6 col-xs-12">
-    <img src="{{ MEDIA_URL }}/images/field.jpg" width="100%">
+  <div class="col-sm-4 col-xs-12">
+    <img src="{{ MEDIA_URL }}/images/about-cameras.jpg" width="100%">
+    <center><h1>THE CAMERAS</h1></center>
   </div>
-  <div class="col-xs-12">
-    The data that you collect from these videos will be combined with our knowledge of the crickets' genetics and local environment. This will mean we can study whether the crickets' genetics determines their behaviour or ageing process, whether females or males age faster, and how the environment affects the crickets.
-    If you want to find out more about our work, have a look <a href="">here</a>.
-  </div>
+  <div class="col-sm-4 col-xs-12">
+    <img src="{{ MEDIA_URL }}/images/about-crickets.jpg" width="100%">
+    <center><h1>THE CRICKETS</h1></center>
   </div>
 </div>
+
 <div class="row">
-  <div class="col-sm-8 col-xs-12">
-
-    <div class="button col-sm-4 col-xs-12"
-         style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;"
-         onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-high.png');"
-         onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
-         onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-offset.png');"
-         onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
-         onclick="window.location.href='/random_movie/'">
-      <div class="button_text">
-        <p style="font-size:2.5vw;">Play</p>
-      </div>
-    </div>
-
-    {% if user.is_authenticated %}
-    <div class="button col-sm-4 col-xs-12"
-         style="background: url(/media/images/buttons/button-6.png); background-size: 100% 100%;"
-         onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-high.png');"
-         onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
-         onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-offset.png');"
-         onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
-         onclick="window.location.href='/player/{{ user.id }}'"
-         >
-      <div class="button_text">
-        <p style="font-size:2.5vw;">
-          My home
-        </p>
-      </div>
-    </div>
-    {% endif %}
-  </div> <!-- button container -->
+  <p>
+    By tagging events in these videos, you contribute directly to research,
+    enabling a better understanding of the crickets' personalities and how
+    their lives progress. This helps us to find out more about animal
+    behaviour and the ageing process.
+  </p>
+  <p>
+    If you want to find out more about our work, have a look <a href="">here</a>.
+  </p>
 </div>
-</section>
 
 {% endblock %}

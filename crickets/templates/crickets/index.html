@@ -44,7 +44,7 @@
     </div> -->
 <!-- end of bar hack -->
 <div style="text-align: right;">
-Made in Cornwall by<br/>
+Made by<br/>
 <img class="logo" src="{{ MEDIA_URL }}/images/logo.png"/>
 </div>
 <div class="game_title">
@@ -63,7 +63,7 @@ Made in Cornwall by<br/>
          onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
          onclick="window.location.href='/about/'">
       <div class="button_text">
-        <p style="font-size:2.5vw;">ABOUT THE PROJECT</p>
+        <p style="font-size:2.0vw;">ABOUT THE PROJECT</p>
       </div>
     </div>
 
@@ -80,9 +80,9 @@ Made in Cornwall by<br/>
          {% endif %}
          >
       <div class="button_text">
-        <p style="font-size:2.5vw;">
+        <p style="font-size:2.0vw;">
           {% if user.is_authenticated %}
-          CONTINUE TO PLAY
+          CONTINUE PLAYING
           {% else %}
           LOGIN FOR FULL GAME
           {% endif %}
@@ -98,7 +98,7 @@ Made in Cornwall by<br/>
          onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4.png');"
          onclick="window.location.href='/tutorial/'">
       <div class="button_text">
-        <p style="font-size:2.5vw;">CONTRIBUTE AS GUEST</p>
+        <p style="font-size:2.0vw;">CONTRIBUTE AS GUEST</p>
       </div>
     </div>
   </div> <!- button container -->
