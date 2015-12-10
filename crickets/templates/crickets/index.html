@@ -1,50 +1,10 @@
 {% extends "base.html" %}
 
 {% block top_layer %}
-<!--<div class="hiscores">
-  <h2>Craziest cricket clickers:</h2><br/>
-  <div class="hiscores_table">
-    {% for profile in hiscores_list %}
-    <div class="hiscores_row">
-      <div class="hiscores_left">{{ profile.user__username }}</div>
-      <div class="hiscores_right">{{ profile.count }}</div>
-    </div>
-    {% endfor %}
-  </div>
-</div>-->
 {% endblock %}
 
 {% block bottom_layer %}
-
-<!-- start of bar hack copied from base.html -->
-<!--
-    <div class="login_box">
-      <a href="/">Cricket Tales</a> <span style="font-size:50%">help us tell their stories</span>
-      <div style="float:right;">
-	{% if user.is_authenticated %}
-	Hello {{ user.username }}, you have contributed {{ user.profile.num_events }} events
-
-    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/logout/'">
-      Logout
-    </div>
-
-    <div class="button" style="font-size:70%; float:right;  margin-left:1em;" onclick="window.location.href='/player/{{user.id}}'">
-      My page
-    </div>
-
-	{% else %}
-    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/register/'">
-      Register
-    </div>
-    <div class="button" style="font-size:70%; float:right;" onclick="window.location.href='/login/'">
-      Login
-    </div>
-	{% endif %}
-      </div>
-    </div> -->
-<!-- end of bar hack -->
-<div style="text-align: right;">
-Made by<br/>
+<div style="text-align: right;"><span style="margin-right:1em; font-family: 'Love Ya Like A Sister', sans-serif;">MADE BY</span><br/>
 <img class="logo" src="{{ MEDIA_URL }}/images/logo.png"/>
 </div>
 <div class="game_title">
