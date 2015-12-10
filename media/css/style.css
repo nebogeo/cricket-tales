@@ -340,6 +340,33 @@ span.cricket-id-char {
     margin-left: 0.7em;
 }
 
+/* Keyboard */
+#tag_cricket.panel {
+    background: rgba(255, 255, 255, 0.7);
+    min-width: 25%;
+}
+
+#tag_cricket tr {
+    background: rgba(255, 255, 255, 1);
+}
+
+#tag_cricket td {
+    min-width: 2em;
+}
+
+#tag_cricket td#delete,
+#tag_cricket td#save {
+    border-right: 0px;
+    border-left: 0px;
+    background: url('../images/buttons/button-oblong.png');
+    background-size: 100% 100%;
+}
+
+/*#tag_cricket td#save {
+    border-right: 0px;
+    border-left: 0px;
+}*/
+
 .event {
     margin-top: -1em;
     margin-left: -1.5em;
