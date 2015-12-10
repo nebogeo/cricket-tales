@@ -8,13 +8,6 @@
     <header>
     </header>
 
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap-theme.min.css">
-    <script src="{{ MEDIA_URL }}js/bootstrap.min.js"></script>
-    <!-- loading last for overrides... -->
-    <link rel="stylesheet" href="{{ MEDIA_URL }}/css/style.css" />
-    <script src="/media/js/base.js"></script>
-
     <!-- menu time! -->
     {% if not hide_menu %} <!-- hidden for index (maybe also movie?) -->
     <div class="menu_holder">
@@ -52,9 +45,16 @@
       </div>
     </div>
 
+    <!-- loading scripts at the end of the body is faster (can't remember why tho) -->
     <script src="{{ MEDIA_URL }}js/jquery-1.11.1.min.js"></script>
     <script src="{{ MEDIA_URL }}js/jquery-ui.min.js"></script>
     <script src="{{ MEDIA_URL }}js/popcorn-complete.min.js"></script>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap-theme.min.css">
+    <script src="{{ MEDIA_URL }}js/bootstrap.min.js"></script>
+    <!-- loading last for overrides... -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}/css/style.css" />
+    <script src="/media/js/base.js"></script>
 
   </body>
 </html>
