@@ -147,7 +147,9 @@ function burrow_event() {
     burrowClicked = true;
     pop.play();
 
-    videoClickEvents['burrowXY'] = [burrowX, burrowY];
+    var burrowPercent = percentage(burrowX, burrowY);
+
+    videoClickEvents['burrowXY'] = [burrowPercent['x'], burrowPercent['y']];
     $('.info-text').html('3. Tag cricket behaviours and ID as the video plays');
 
     $('.id-display').show(); //if ended
@@ -157,6 +159,16 @@ function burrow_event() {
 
 function event_button_change(obj, image) {
     obj.style.backgroundImage="url("+image+")";
+}
+
+function percentage(x, y) {
+    var container_w = $('#ourvideo').width();
+    var container_h = $('#ourvideo').height();
+    
+    var percent_x = (x / container_w) * 100;
+    var percent_y = (y / container_h) * 100;
+    
+    return {'x' : percent_x, 'y' : percent_y}
 }
 
 function video_setup(image) {
@@ -190,8 +202,10 @@ function video_setup(image) {
                         var cricketStartX = e.pageX - parentOffset.left;
                         var cricketStartY = e.pageY - parentOffset.top;
 
+                        var cricketStartPercent = percentage(cricketStartX, cricketStartY);
+
                         if (noCricket === false){
-                            videoClickEvents['cricketStartXY'] = [cricketStartX, cricketStartY];
+                            videoClickEvents['cricketStartXY'] = [cricketStartPercent['x'], cricketStartPercent['y']];
                             console.log(videoClickEvents['cricketStartXY']);
 
                         } else {
@@ -238,13 +252,18 @@ function video_setup(image) {
 
                     cricketLastClicked = true;
 
+                    var cricketEndPercent = percentage(cricketEndX, cricketEndY);
+
                     if (noCricketEnd === false) {
-                        videoClickEvents['cricketEndXY'] = [cricketEndX, cricketEndY];
+                        videoClickEvents['cricketEndXY'] = [cricketEndPercent['x'], cricketEndPercent['y']];
                         // $("#cricket_player").append('<div class="click-video-circle" style="width: 100px; height: 100px; border-radius: 50px; background: #717892; position: absolute; opacity: 0.7; display: block; top:'+(cricketEndY)+'px; left:'+(cricketEndX - 50)+'px;"></div>');
                         // $('.click-video-circle').fadeOut();
                     } else {
                         videoClickEvents = '';
                     }
+
+                    
+
                     $(this).off( 'click' );
                     $("#movie_end").css("visibility", "visible");
 
