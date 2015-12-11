@@ -66,7 +66,6 @@ var events = [];
 
 function build_id_keyboard(cricket_id_id,movie_id,user_id) {
 
-    $('#tag_cricket').draggable();
     //Constructing keyboard
     var id_keyboard_values = [['+', 'A', 'L', 'U'], ['=', 'C', 'N', 'V'], ['1', 'D', 'O', 'X'], ['6', 'E', 'P', 'Z'], ['7', 'H', 'S', '9'], ['J', 'T', 'Delete', 'Save']];
     var operators = ['Not sure', 'Cancel', 'Delete', 'Save'];
