@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-07 16:46+0000\n"
+"POT-Creation-Date: 2016-01-07 17:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,6 +42,43 @@ msgstr "JUGAR!"
 msgid "LOG OUT"
 msgstr "CERRAR SESIÓN"
 
+#: crickets/templates/crickets/about.html:9
+#: crickets/templates/crickets/index.html:47
+msgid "ABOUT THE PROJECT"
+msgstr "SOBRE EL PROYECTO"
+
+#: crickets/templates/crickets/about.html:14
+msgid ""
+"\n"
+"    In a secret field in Northern Spain, 300 cricket burrows are monitored\n"
+"    using CCTV. This is the first long-term study of behaviour in a wild\n"
+"    insect, and we need your help to see what the crickets are up to.\n"
+msgstr ""
+
+#: crickets/templates/crickets/about.html:26
+msgid "THE FIELD"
+msgstr ""
+
+#: crickets/templates/crickets/about.html:30
+msgid "THE CAMERAS"
+msgstr ""
+
+#: crickets/templates/crickets/about.html:34
+#, fuzzy
+#| msgid "CRICKET TALES"
+msgid "THE CRICKETS"
+msgstr "CUENTOS DE CRICKET"
+
+#: crickets/templates/crickets/about.html:40
+msgid ""
+"\n"
+"    By tagging events in these videos, you contribute directly to research,\n"
+"    enabling a better understanding of the crickets' personalities and how\n"
+"    their lives progress. This helps us to find out more about animal\n"
+"    behaviour and the ageing process. If you want to find out more about our "
+"work, have a look <a href=\"\">here</a>.\n"
+msgstr ""
+
 #: crickets/templates/crickets/index.html:26
 msgid "MADE BY"
 msgstr "HECHO POR"
@@ -55,10 +92,6 @@ msgstr "Bienvenida de nuevo , %(user.username)s a"
 msgid "CRICKET TALES"
 msgstr "CUENTOS DE CRICKET"
 
-#: crickets/templates/crickets/index.html:47
-msgid "ABOUT THE PROJECT"
-msgstr "SOBRE EL PROYECTO"
-
 #: crickets/templates/crickets/index.html:66
 msgid "CONTINUE PLAYING"
 msgstr "SEGUIR JUGANDO"
@@ -69,4 +102,82 @@ msgstr ""
 
 #: crickets/templates/crickets/index.html:82
 msgid "CONTRIBUTE AS GUEST"
+msgstr ""
+
+#: crickets/templates/crickets/login.html:5
+#, fuzzy
+#| msgid "CRICKET TALES"
+msgid "LOGIN TO CRICKET TALES"
+msgstr "CUENTOS DE CRICKET"
+
+#: crickets/templates/crickets/login.html:9
+msgid "Username:"
+msgstr ""
+
+#: crickets/templates/crickets/login.html:11
+msgid "Password:"
+msgstr ""
+
+#: crickets/templates/crickets/login.html:13
+msgid "Login"
+msgstr ""
+
+#: crickets/templates/crickets/login.html:16
+msgid "Register"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:9
+msgid "Thankyou for watching!"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:17
+msgid "View again"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:26
+msgid "Back"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:35
+msgid "Next movie"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:62
+msgid ""
+"I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 "
+"with H.264."
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:131
+msgid "Delete"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:132
+msgid "Save"
+msgstr ""
+
+#: crickets/templates/crickets/player.html:12
+#, fuzzy, python-format
+#| msgid "Welcome back %(user.username)s, to "
+msgid "%(user.username)s's burrow map"
+msgstr "Bienvenida de nuevo , %(user.username)s a"
+
+#: crickets/templates/crickets/player.html:18
+msgid "SCORE"
+msgstr ""
+
+#: crickets/templates/crickets/player.html:20
+msgid "Videos tagged"
+msgstr ""
+
+#: crickets/templates/crickets/player.html:24
+msgid "Houses built"
+msgstr ""
+
+#: crickets/templates/crickets/player.html:28
+msgid "Empty burrows"
+msgstr ""
+
+#: crickets/templates/crickets/player.html:33
+msgid "NEWS FEED"
 msgstr ""
