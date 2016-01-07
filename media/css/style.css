@@ -162,8 +162,9 @@ hr.bottom {
 
 button#no_cricket,
 button#no_cricket_end,
-button.save,
-button.delete {
+div.save,
+div.delete,
+div.closed {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
     background-size: 100% 100%;
@@ -243,12 +244,17 @@ div#tag_cricket {
     z-index: 10;
 }
 
-/*div#something_else {
+div#something_else {
+    position: absolute;
+    top: 10%;
+    right: 10%;
     display: block;
-    width: 25%;
     height: 60%;
     overflow: auto;
-}*/
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.7);
+    display: none;
+}
 
 div#something_else .panel-heading {
     background: #e7f8c1;
@@ -263,7 +269,6 @@ div#something_else .form-group,
 div#something_else textarea {
     height: 92%;
     resize: none;
-
 }
 
 div#something_else textarea {
@@ -276,9 +281,27 @@ div#something_else textarea {
     box-shadow: none;
 }
 
+
+div.save > span {
+    font-size: 0.6em;
+    margin: 0.3em;
+}
+
+div.delete > span {
+    font-size: 0.6em;
+    margin: 0.3em;
+}
+
+div.closed > span {
+    font-size: 0.6em;
+    margin: 0.3em;
+}
+
 ::-webkit-input-placeholder {
    text-align: center;
 }
+
+
 
 input#tag_id {
     text-align: center;
@@ -376,7 +399,6 @@ span.cricket-id-char {
 }
 
 /* Keyboard */
-div#something_else,
 #tag_cricket.panel {
     background: rgba(255, 255, 255, 0.7);
     min-width: 25%;
