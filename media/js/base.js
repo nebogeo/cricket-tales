@@ -100,6 +100,10 @@ function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
             $('#tag_id').val('');
         });
 
+        $('.closed').click(function() {
+            close_something_else()
+        })
+
         $("#save").click(function (){
             cricket_id = $('#tag_id').val();
             if (cricket_id.length == 2) {
@@ -110,6 +114,11 @@ function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
             toggle_id_cricket();
         });
 }
+
+function close_something_else() {
+    $('#something_else').hide();   
+}
+
 
 function enter_id(t) {
    var id_par = $(t).attr('data-value');
@@ -292,6 +301,17 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
 function toggle_id_cricket() {
     $('#tag_cricket').toggle();
     if($('#tag_cricket:hidden').length == 0) {
+            pop.pause();
+        } else {
+            if (state === "movie-playing") {
+                pop.play();
+            }
+        }
+}
+
+function toggle_something_else() {
+    $('#something_else').toggle();
+    if($('#something_else:hidden').length == 0) {
             pop.pause();
         } else {
             if (state === "movie-playing") {

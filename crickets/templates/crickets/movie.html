@@ -74,6 +74,19 @@
       </div><!-- End video/prompt div -->
     </div><!-- End video/prompt row -->
 
+    <div id="something_else" class="panel panel-default col-lg-3 col-md-4 col-sm-5 col-xs-6 col-lg-offset-9">
+      <div class="panel-heading">
+        <h3 class="panel-title">Report Something Else</h3>
+      </div>
+      <div class="panel-body">        
+        <div class="form-group">
+          <textarea class="form-control" id="something_else_input"></textarea>
+          <div class="closed col-lg-4"><span>Close</span></div>
+          <div class="save col-lg-4 col-lg-offset-4" onclick="add_event({{something_else.id}},{{movie.id}},'{{user.id}}', null, null, null); close_something_else()"><span>Save</span></div>
+        </div>
+      </div>
+    </div>
+    
     <div id="tag_cricket" class="panel panel-default">
       <div class="panel-body">
 
@@ -170,7 +183,7 @@
                onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
                onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-offset.png');"
                onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
-               onclick="add_event({{something_else.id}},{{movie.id}},'{{user.id}}', null, null, null)">
+               onclick="toggle_something_else()">
                <div class="button_text">
               <p>!</p></div>
              </div>

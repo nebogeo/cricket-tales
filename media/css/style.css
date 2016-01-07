@@ -161,7 +161,10 @@ hr.bottom {
 }
 
 button#no_cricket,
-button#no_cricket_end {
+button#no_cricket_end,
+div.save,
+div.delete,
+div.closed {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
     background-size: 100% 100%;
@@ -199,8 +202,8 @@ button#no_cricket_end {
 .bar {
     width: 100%;
     background: url('../images/track/timeline.png');
-    background-size: 108% 250%;
-    background-position: -1em;
+    background-size: 102% 250%;
+    background-position: 0.2em;
     text-align: center;
     display: inline-block;
     overflow: visible;
@@ -236,14 +239,69 @@ div#tag_cricket {
     width: 20%;
     background: #fff;
     position: absolute;
-    top: 10%;
+    top: 20%;
     right: 10%;
     z-index: 10;
+}
+
+div#something_else {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    display: block;
+    height: 60%;
+    overflow: auto;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.7);
+    display: none;
+}
+
+div#something_else .panel-heading {
+    background: #e7f8c1;
+}
+
+div#something_else .panel-heading h3{
+    text-align: center;
+}
+
+div#something_else .panel-body,
+div#something_else .form-group,
+div#something_else textarea {
+    height: 92%;
+    resize: none;
+}
+
+div#something_else textarea {
+    background: #f6fce9;
+    border: 1px solid #e7f8c1;
+    outline: none;
+    focus: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+
+div.save > span {
+    font-size: 0.6em;
+    margin: 0.3em;
+}
+
+div.delete > span {
+    font-size: 0.6em;
+    margin: 0.3em;
+}
+
+div.closed > span {
+    font-size: 0.6em;
+    margin: 0.3em;
 }
 
 ::-webkit-input-placeholder {
    text-align: center;
 }
+
+
 
 input#tag_id {
     text-align: center;
