@@ -105,7 +105,7 @@ function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
             if (cricket_id.length == 2) {
                 add_event(cricket_id_id,movie_id,user_id, null, null, cricket_id);
                 $('p.cricket-id-display').html('ID: <span class="cricket-id-char">'+cricket_id+'</span>');
-            } 
+            }
 
             toggle_id_cricket();
         });
@@ -147,7 +147,7 @@ function update_infotext() {
         case "no-cricket-end":
             $('.info-text').html('No cricket clicked [no cricket seen?]');
             break;
-        default: 
+        default:
             $('.info-text').html('I have no idea, you broke me');
 
     }
@@ -167,7 +167,7 @@ function burrow_event(burrow_start_id,movie_id,user_id) {
         add_event(burrow_start_id,movie_id,user_id, burrowPercent['x'], burrowPercent['y'], null);
 
 
-        
+
         update_infotext();
     });
 
@@ -180,10 +180,10 @@ function event_button_change(obj, image) {
 function percentage(x, y) {
     var container_w = $('#ourvideo').width();
     var container_h = $('#ourvideo').height();
-    
+
     var percent_x = (x / container_w) * 100;
     var percent_y = (y / container_h) * 100;
-    
+
     return {'x' : percent_x, 'y' : percent_y}
 }
 
@@ -216,12 +216,12 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
                         add_event(cricket_start_id,movie_id,user_id, cricketStartPercent['x'], cricketStartPercent['y'], null);
                         state = "wait-burrow";
                         burrow_event(burrow_start_id,movie_id,user_id);
-                    }                    
+                    }
                 });
 
 
                 $('#no_cricket').click(function() {
-                    state = "wait-burrow";                    
+                    state = "wait-burrow";
                     burrow_event(burrow_start_id,movie_id,user_id);
                 });
 
@@ -246,9 +246,9 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
             });
 
             $('#no_cricket_end').click(function() {
-                $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});                  
+                $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                 update_infotext();
-                $("#movie_end").css("visibility", "visible");                   
+                $("#movie_end").css("visibility", "visible");
             });
         });
 
@@ -303,7 +303,7 @@ function toggle_id_cricket() {
 
 
 function restart_video() {
-   
+
     $("#movie_end").css("visibility", "visible");
     pop.currentTime(0);
     pop.pause();
@@ -336,6 +336,9 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();
+
+        // todo: user_id now comes in as -1 if the player is anonymous
+        // not sure what circumstances it can be None now
 
         // save to django ->
         if (user_id=="None") {

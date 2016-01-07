@@ -39,8 +39,12 @@
   {% endblock %}
 
   {% block bottom_layer %}
-  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{movie.id}}, {{user.id}});
-  </script>
+  {% if user.is_authenticated %}
+  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{movie.id}}, {{user.id}});</script>
+  {% else %}
+  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{movie.id}}, -1);</script>
+  {% endif %}
+
   <div class="row-fluid"><!-- video/prompt row -->
     <div class="col-sm-8 col-xs-12" style="padding-left:0px; padding-right:0px;"><!-- video/prompt div -->
       <div class="row-fluid col-xs-12"><!-- Info panel row -->
