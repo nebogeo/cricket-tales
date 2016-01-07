@@ -1,18 +1,18 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block bottom_layer %}
 <center>
-<h1>LOGIN TO CRICKET TALES</h1>
+<h1>{% trans "LOGIN TO CRICKET TALES" %}</h1>
 
 <form id="login_form" method="post" action="/login/">
   {% csrf_token %}
-  Username: <input type="text" name="username" value="" size="50" />
+  {% trans "Username:" %} <input type="text" name="username" value="" size="50" />
   <br />
-  Password: <input type="password" name="password" value="" size="50" />
+  {% trans "Password:" %} <input type="password" name="password" value="" size="50" />
   <br />
-  <input type="submit" value="Login" />
+  <input type="submit" value={% trans "Login" %} />
 </form>
 
-<a href="/register/">Register</a>
+<a href="/register/">{% trans "Register" %}</a>
 </center>
 {% endblock %}

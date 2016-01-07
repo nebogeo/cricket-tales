@@ -1,15 +1,36 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block top_layer %}
 {% endblock %}
 
 {% block bottom_layer %}
-<div style="text-align: right;"><span style="margin-right:1em; font-family: 'Love Ya Like A Sister', sans-serif;">MADE BY</span><br/>
+{% load i18n %}
+
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}" />
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+        {% if language.code == "es" or language.code == "en-gb" %}
+        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+          {{ language.name_local }} ({{ language.code }})
+        </option>
+        {% endif %}
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go" />
+</form>
+
+<div style="text-align: right;"><span style="margin-right:1em; font-family: 'Love Ya Like A Sister', sans-serif;">{% trans "MADE BY" %}</span><br/>
 <img class="logo" src="{{ MEDIA_URL }}/images/logo.png"/>
 </div>
 <div class="game_title">
-{% if user.is_authenticated %} Welcome back {{ user.username }}, to {% endif %}</br>
-<span style="font-size:500%">CRICKET TALES</span>
+{% if user.is_authenticated %}
+{% blocktrans %}Welcome back {{ user.username }}, to {% endblocktrans %}</br>
+{% endif %}
+<span style="font-size:500%">{% trans "CRICKET TALES" %}</span>
 </div>
 <div class="row">
   <div class="col-sm-2 col-xs-0"></div>
@@ -23,7 +44,7 @@
          onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
          onclick="window.location.href='/about/'">
       <div class="button_text">
-        <p style="font-size:2.0vw;">ABOUT THE PROJECT</p>
+        <p style="font-size:2.0vw;">{% trans "ABOUT THE PROJECT" %}</p>
       </div>
     </div>
 
@@ -42,9 +63,9 @@
       <div class="button_text">
         <p style="font-size:2.0vw;">
           {% if user.is_authenticated %}
-          CONTINUE PLAYING
+          {% trans "CONTINUE PLAYING" %}
           {% else %}
-          LOGIN FOR FULL GAME
+          {% trans "LOGIN FOR FULL GAME" %}
           {% endif %}
         </p>
       </div>
@@ -58,7 +79,7 @@
          onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4.png');"
          onclick="window.location.href='/tutorial/'">
       <div class="button_text">
-        <p style="font-size:2.0vw;">CONTRIBUTE AS GUEST</p>
+        <p style="font-size:2.0vw;">{% trans "CONTRIBUTE AS GUEST" %}</p>
       </div>
     </div>
   </div> <!- button container -->
@@ -106,5 +127,6 @@
   </div>
 </div>
 -->
+
 
 {% endblock %}

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 <div class="row-fluid"> <!-- Row for the whole thing -->
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <!-- Setting up grid for whole thing -->
   {% block top_layer %}
 
   <div id="movie_end" class="movie_end" style="visibility:hidden;">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <h1>Thankyou for watching!</h1>
+      <h1>{% trans "Thankyou for watching!" %}</h1>
       <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4"
            style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' as image_num %}.png); background-size: 100% 100%;"
            onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-high.png');"
@@ -14,7 +14,7 @@
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
            onclick="restart_video()">
-        <div class="button_text"><p>View again</p></div>
+        <div class="button_text"><p>{% trans "View again" %}</p></div>
       </div>
       <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4"
            style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' as image_num %}.png); background-size: 100% 100%;"
@@ -23,7 +23,7 @@
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
            onclick="window.location.href='/'">
-        <div class="button_text"><p>Back</p></div>
+        <div class="button_text"><p>{% trans "Back" %}</p></div>
       </div>
       <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4"
            style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' as image_num %}.png); background-size: 100% 100%;"
@@ -32,7 +32,7 @@
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
            onclick="window.location.href='/random_movie/'">
-        <div class="button_text"><p>Next movie</p></div>
+        <div class="button_text"><p>{% trans "Next movie" %}</p></div>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.webm" type="video/webm">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.mp4" type="video/mp4">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.ogg" type="video/ogg">
-            I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264.
+            {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
           </video>
         </div><!-- end Player div -->
       </div><!-- end Player row -->
@@ -115,8 +115,8 @@
             <tr>
                 <td data-value="J" onclick="enter_id(this)">J</td>
                 <td data-value="T" onclick="enter_id(this)">T</td>
-                <td id="delete">Delete</td>
-                <td id="save">Save</td>
+                <td id="delete">{% trans "Delete" %}</td>
+                <td id="save">{% trans "Save" %}</td>
             </tr>
         </table>
       </div>
