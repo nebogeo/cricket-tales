@@ -1,6 +1,5 @@
 db.sqlite3
 *.pyc
 media/movie/*
+media/map/*
 crickets/migrations/*
-
-
