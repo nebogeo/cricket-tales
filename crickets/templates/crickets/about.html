@@ -1,19 +1,21 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block top_layer %}
 {% endblock %}
 
 {% block bottom_layer %}
 <div class="row-fluid">
 
-  <h1>ABOUT THE PROJECT</h1>
+  <h1>{% trans "ABOUT THE PROJECT" %}</h1>
 
   <hr class="bottom">
 
   <p>
+{% blocktrans %}
     In a secret field in Northern Spain, 300 cricket burrows are monitored
     using CCTV. This is the first long-term study of behaviour in a wild
     insect, and we need your help to see what the crickets are up to.
+{% endblocktrans %}
   </p>
 
 </div>
@@ -21,24 +23,26 @@
 <div class="row" style="margin:1em;">
   <div class="col-sm-4 col-xs-12">
     <img src="{{ MEDIA_URL }}/images/about-field.jpg" width="100%">
-    <center><h1>THE FIELD</h1></center>
+    <center><h1>{% trans "THE FIELD" %}</h1></center>
   </div>
   <div class="col-sm-4 col-xs-12">
     <img src="{{ MEDIA_URL }}/images/about-cameras.jpg" width="100%">
-    <center><h1>THE CAMERAS</h1></center>
+    <center><h1>{% trans "THE CAMERAS" %}</h1></center>
   </div>
   <div class="col-sm-4 col-xs-12">
     <img src="{{ MEDIA_URL }}/images/about-crickets.jpg" width="100%">
-    <center><h1>THE CRICKETS</h1></center>
+    <center><h1>{% trans "THE CRICKETS" %}</h1></center>
   </div>
 </div>
 
 <div class="row-fluid">
   <p>
+{% blocktrans %}
     By tagging events in these videos, you contribute directly to research,
     enabling a better understanding of the crickets' personalities and how
     their lives progress. This helps us to find out more about animal
     behaviour and the ageing process. If you want to find out more about our work, have a look <a href="">here</a>.
+{% endblocktrans %}
   </p>
 </div>
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
   <head>
     <title>cricket-tales</title>
@@ -26,15 +27,15 @@
           <li><a href="#"><img src="{{ MEDIA_URL }}images/buttons/menu.png"></a>
 	        <ul>
               {% if user.is_authenticated %}
-              <li><a href="/player/{{ user.id }}">MY MAP</a></li>
+              <li><a href="/player/{{ user.id }}">{% trans "MY MAP" %}</a></li>
               {% else %}
-              <li><a href="/login">LOGIN</a></li>
+              <li><a href="/login">{% trans "LOGIN" %}</a></li>
               {% endif %}
-		      <li><a href="/tutorial/">TUTORIAL</a></li>
-		      <li><a href="/about/">ABOUT</a></li>
-		      <li><a href="/random_movie/">PLAY!</a></li>
+		      <li><a href="/tutorial/">{% trans "TUTORIAL" %}</a></li>
+		      <li><a href="/about/">{% trans "ABOUT" %}</a></li>
+		      <li><a href="/random_movie/">{% trans "PLAY!" %}</a></li>
               {% if user.is_authenticated %}
-		      <li><a href="/logout/">LOG OUT</a></li>
+		      <li><a href="/logout/">{% trans "LOG OUT" %}</a></li>
               {% endif %}
 	        </ul>
           </li>

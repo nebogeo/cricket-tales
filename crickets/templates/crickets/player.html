@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block top_layer %}
 {% endblock %}
@@ -8,28 +9,28 @@
   <!-- map -->
   <div class="col-sm-8 col-xs-12">
     <div class="map row-fluid">
-      <h1>{{ user.username }}'s burrow map</h1>
+      <h1>{% blocktrans %}{{ user.username }}'s burrow map{% endblocktrans %}</h1>
     </div>
   </div> <!-- map -->
 
   <div class="col-sm-4 col-xs-12"> <!-- info block -->
     <div class="score row-fluid">
-      <h1>SCORE</h1>
+      <h1>{% trans "SCORE" %}</h1>
       <div class="row">
-      <div class="score-name col-sm-6">Videos tagged</div>
+      <div class="score-name col-sm-6">{% trans "Videos tagged" %}</div>
       <div class="score-value col-sm-3">{{ movies.count }}</div>
       </div>
       <div class="row">
-      <div class="score-name col-sm-6">Houses built</div>
+      <div class="score-name col-sm-6">{% trans "Houses built" %}</div>
       <div class="score-value col-sm-3">0</div>
       </div>
       <div class="row">
-      <div class="score-name col-sm-6">Empty burrows</div>
+      <div class="score-name col-sm-6">{% trans "Empty burrows" %}</div>
       <div class="score-value col-sm-3">999</div>
       </div>
     </div>
     <div class="news-feed row-fluid">
-      <h1>NEWS FEED</h1>
+      <h1>{% trans "NEWS FEED" %}</h1>
     </div>
   </div> <!-- info block -->
 </div> <!-- main row -->
