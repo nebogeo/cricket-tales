@@ -125,6 +125,7 @@ function initialise_operators_keyboard(cricket_id_id, something_else_id, movie_i
         })
 
         $('.close_id_no_tag').click(function() {
+            add_event(cricket_id_id,movie_id,user_id, null, null, "No Tag");
             close_id_no_tag();
         })
 
