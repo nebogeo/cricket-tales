@@ -298,6 +298,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
             var percentage = Math.floor((100 / pop.duration()) *
                                         pop.currentTime());
             $("#time").css({left: percentage*0.95+"%"});
+
         });
 
 
@@ -348,30 +349,18 @@ function toggle_keyboard() {
     $('#tag_cricket').toggle();
 }
 
-// function pause_play() {
-//     classes = $('.toggle-button').attr('class');
-//     current_state = classes.split(/\s+/)[1]
-    
-//     if (current_state === 'play'){
-//         pop.play()
-//         $('.toggle-button').removeClass('play');
-//         $('.toggle-button').addClass('pause');
-//         $('.toggle-button').css({
-//             'background': 'url("/media/images/movie_buttons/pause.png")',
-//             'background-size': '100% 100%'
-//         })
-//     } else if (current_state === 'pause') {
-//         pop.pause()
-//         $('.toggle-button').removeClass('pause');
-//         $('.toggle-button').addClass('play');
-//         $('.toggle-button').css({
-//             'background': 'url("/media/images/movie_buttons/play.png")',
-//             'background-size': '100% 100%'
-//         })
-//     }
+function pause_movie() {    
+    if (state === 'movie-playing') {        
+            pop.pause()
+    }   
+}
 
-//     console.log(current_state);
-// }
+function play_movie() {    
+    if (state === 'movie-playing') {        
+            pop.play()
+    }   
+}
+
 // actually render the event
 function inner_render_event(type, start_time) {
     // convert time into %

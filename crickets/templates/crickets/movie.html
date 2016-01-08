@@ -65,11 +65,11 @@
       </div><!-- end Player row -->
 
       <div class="row-fluid"><!-- timeline row -->
-          <div id="controls" class="col-lg-1">
-            <button class="toggle-button play" style="background: url(/media/images/movie_buttons/play.png); background-size: 100% 100%;"></button>
-          </div>
-        <div id="timeline" class="timeline bar col-lg-11"><!-- timeline div -->
-          <div class="timeline_line"></div>
+          <div id="controls col-lg-1">
+            <button class="toggle-button play col-lg-3" style="background: url(/media/images/movie_buttons/play.png); background-size: 100% 100%;" onclick='play_movie()'></button>
+            <button class="toggle-button pause col-lg-3" style="background: url(/media/images/movie_buttons/pause.png); background-size: 100% 100%;" onclick='pause_movie()'></button>
+        <div id="timeline" class="timeline bar col-lg-10"><!-- timeline div -->
+          <div class="timeline_line col-lg-11"></div>
           <div id="time" class="time tiny_circle"></div>
         </div><!-- end timeline div -->
       </div><!-- end timeline row -->
