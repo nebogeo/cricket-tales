@@ -160,8 +160,6 @@ hr.bottom {
     margin: 0px;
 }
 
-button#no_cricket,
-button#no_cricket_end,
 div.save_something,
 div.delete,
 div.closed,
@@ -174,6 +172,19 @@ div.close_id_no_tag {
     background-position-y: -0.4em;*/
     overflow: visible;
 /*    width: 120px;*/
+    text-align: left;
+    background-repeat: no-repeat;
+}
+
+button#no_cricket,
+button#no_cricket_end {
+    background:url('../images/buttons/box.png');
+    border: 0px;
+    background-size: 177% 260%;
+    background-position-x: -2.3em;
+    background-position-y: -1.3em;
+    overflow: visible;
+/*    padding: 0.8em;*/
     text-align: left;
     background-repeat: no-repeat;
 }
