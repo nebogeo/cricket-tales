@@ -237,6 +237,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
 
 
                 $('#no_cricket').click(function() {
+                    add_event(cricket_start_id,movie_id,user_id, 0, 0, 'No Cricket');
                     state = "wait-burrow";
                     burrow_event(burrow_start_id,movie_id,user_id);
                 });
@@ -262,6 +263,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
             });
 
             $('#no_cricket_end').click(function() {
+                add_event(cricket_end_id,movie_id,user_id, 0, 0, 'No Cricket');
                 $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                 update_infotext();
                 $("#movie_end").css("visibility", "visible");
