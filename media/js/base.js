@@ -50,17 +50,7 @@ imagelist.forEach( function(path) {
     new Image().src="/media/images/buttons/"+path;
 } );
 
-// do the dragging magic
-
-/*$(document).ready(function(){
-    $(".box_container").draggable({
-        axis:"y",
-    });
-});*/
-
 // video/tagging business
-
-// global variables?! come on dear...
 var pop = false;
 var events = [];
 
@@ -101,8 +91,8 @@ function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
         });
 
         $('.closed').click(function() {
-            close_something_else()
-        })
+            close_something_else();
+        });
 
         $("#save").click(function (){
             cricket_id = $('#tag_id').val();
@@ -116,7 +106,7 @@ function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
 }
 
 function close_something_else() {
-    $('#something_else').hide();   
+    $('#something_else').hide();
 }
 
 
@@ -131,8 +121,8 @@ function enter_id(t) {
         return false;
     } else {
         $(input).val($(input).val() + value);
+        return true;
     }
-
 }
 
 function update_infotext() {
@@ -193,12 +183,12 @@ function percentage(x, y) {
     var percent_x = (x / container_w) * 100;
     var percent_y = (y / container_h) * 100;
 
-    return {'x' : percent_x, 'y' : percent_y}
+    return {'x' : percent_x, 'y' : percent_y};
 }
 
 function mouse_pos(e, context) {
     var parentOffset = $(context).parent().offset();
-    return percentage(e.pageX - parentOffset.left, e.pageY - parentOffset.top)
+    return percentage(e.pageX - parentOffset.left, e.pageY - parentOffset.top);
 }
 
 function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_end_id, movie_id, user_id) {
@@ -324,9 +314,10 @@ function toggle_something_else() {
 
 function restart_video() {
 
-    $("#movie_end").css("visibility", "visible");
+    $("#movie_end").css("visibility", "hidden");
     pop.currentTime(0);
-    pop.pause();
+    state = 'movie-playing';
+    pop.play();
 }
 
 function toggle_keyboard() {
