@@ -341,8 +341,7 @@ function restart_video() {
     console.log(state);
     $("#movie_end").css("visibility", "hidden");
     pop.currentTime(0);
-    state = 'movie-playing';
-    pop.play();
+    pop.pause();
 }
 
 function toggle_keyboard() {
