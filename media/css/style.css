@@ -202,7 +202,6 @@ div.close_id_no_tag {
 /* square things */
 
 .bar {
-    width: 100%;
     background: url('../images/track/timeline.png');
     background-size: 102% 250%;
     background-position: 0.2em;
@@ -210,6 +209,7 @@ div.close_id_no_tag {
     display: inline-block;
     overflow: visible;
     font-size: 130%;
+    /*margin-left: 1em;*/
 }
 
 .timeline {
@@ -233,6 +233,25 @@ div.close_id_no_tag {
 
 .button_container.bar {
     background: transparent;
+} 
+
+#controls {
+/*    width: 5em;*/
+/*    max-height: 1em;
+    max-width: 5em;
+    max-height: 3em;*/
+}
+
+button.play,
+button.pause {
+    max-width: 1.4em;
+    max-height: 1.4em;
+    width: 1.5em;
+    height: 1.5em;
+    border: 0px;
+    margin:0;
+    padding: 0;
+    outline: 0;
 }
 
 /* invisible then visible things, aka ID form */

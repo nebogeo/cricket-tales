@@ -298,6 +298,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
             var percentage = Math.floor((100 / pop.duration()) *
                                         pop.currentTime());
             $("#time").css({left: percentage*0.95+"%"});
+
         });
 
 
@@ -347,6 +348,19 @@ function restart_video() {
 function toggle_keyboard() {
     $('#tag_cricket').toggle();
 }
+
+function pause_movie() {    
+    if (state === 'movie-playing') {        
+            pop.pause()
+    }   
+}
+
+function play_movie() {    
+    if (state === 'movie-playing') {        
+            pop.play()
+    }   
+}
+
 // actually render the event
 function inner_render_event(type, start_time) {
     // convert time into %
