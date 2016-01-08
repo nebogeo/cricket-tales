@@ -10,10 +10,9 @@
 <div class="row">
   <!-- map -->
   <div class="col-sm-8 col-xs-12">
-    <div class="map row-fluid">
       <h1>{% blocktrans %}{{ user.username }}'s burrow map{% endblocktrans %}</h1>
 
-      <div id="map" style="width: 700px; height: 500px"></div>
+      <div id="map" class="row-fluid" style="height:500px;"></div>
 
       <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 
@@ -27,7 +26,6 @@
         }).addTo(map);
     </script>
 
-    </div>
   </div> <!-- map -->
 
   <div class="col-sm-4 col-xs-12"> <!-- info block -->
