@@ -48,17 +48,7 @@ imagelist.forEach( function(path) {
     new Image().src="/media/images/buttons/"+path;
 } );
 
-// do the dragging magic
-
-/*$(document).ready(function(){
-    $(".box_container").draggable({
-        axis:"y",
-    });
-});*/
-
 // video/tagging business
-
-// global variables?! come on dear...
 var pop = false;
 var events = [];
 
@@ -112,25 +102,25 @@ function initialise_operators_keyboard(cricket_id_id, something_else_id, movie_i
             string = $('#something_else_input').val();
             add_event(something_else_id,movie_id,user_id, null, null, string);
             close_something_else();
-        })
+        });
 
         $('.closed').click(function() {
             close_something_else();
-        })
+        });
 
         $('.close_id').click(function() {
             close_id();
-        })
+        });
 
         $('.close_id_no_tag').click(function() {
             add_event(cricket_id_id,movie_id,user_id, null, null, "No Tag");
             close_id_no_tag();
-        })
+        });
 
 }
 
 function close_something_else() {
-    $('#something_else').hide();  
+    $('#something_else').hide();
 }
 
 function close_id() {
@@ -154,8 +144,8 @@ function enter_id(t) {
         return false;
     } else {
         $(input).val($(input).val() + value);
+        return true;
     }
-
 }
 
 function update_infotext() {
@@ -189,13 +179,13 @@ function update_infotext() {
 function burrow_event(burrow_start_id,movie_id,user_id) {
     console.log(state);
     update_infotext();
-    $("#ourvideo").click(function(e) {       
+    $("#ourvideo").click(function(e) {
         state = 'movie-playing';
         pop.play();
         var burrowPercent = mouse_pos(e, this);
         add_event(burrow_start_id,movie_id,user_id, burrowPercent['x'], burrowPercent['y'], null);
         update_infotext();
-        $(this).off('click'); 
+        $(this).off('click');
     });
 
 }
@@ -211,12 +201,12 @@ function percentage(x, y) {
     var percent_x = (x / container_w) * 100;
     var percent_y = (y / container_h) * 100;
 
-    return {'x' : percent_x, 'y' : percent_y}
+    return {'x' : percent_x, 'y' : percent_y};
 }
 
 function mouse_pos(e, context) {
     var parentOffset = $(context).parent().offset();
-    return percentage(e.pageX - parentOffset.left, e.pageY - parentOffset.top)
+    return percentage(e.pageX - parentOffset.left, e.pageY - parentOffset.top);
 }
 
 function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_end_id, something_else_id, movie_id, user_id) {
@@ -241,7 +231,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
                     var cricketStartPercent = mouse_pos(e, this);
                     add_event(cricket_start_id,movie_id,user_id, cricketStartPercent['x'], cricketStartPercent['y'], null);
                     state = "wait-burrow";
-                    $(this).off('click'); 
+                    $(this).off('click');
                     burrow_event(burrow_start_id,movie_id,user_id);
                 });
 
@@ -263,7 +253,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
                 update_infotext();
 
 
-                $('#ourvideo').click(function(e) {                    
+                $('#ourvideo').click(function(e) {
                    $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                     pop.currentTime(pop.duration());
                     state = "movie-end";
@@ -271,18 +261,18 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
                     pop.pause();
                     var pos = mouse_pos(e, this);
                     add_event(cricket_end_id,movie_id,user_id, pos['x'], pos['y'], null);
-                    $("#movie_end").css("visibility", "visible"); 
-                    $(this).off('click');                    
+                    $("#movie_end").css("visibility", "visible");
+                    $(this).off('click');
                 });
 
                 $('#no_cricket_end').click(function() {
                     add_event(cricket_end_id,movie_id,user_id, 0, 0, 'No Cricket');
                     $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                     update_infotext();
-                    $("#movie_end").css("visibility", "visible"); 
-                });                
+                    $("#movie_end").css("visibility", "visible");
+                });
             }
-            
+
         });
 
         // scrubbing
