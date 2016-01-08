@@ -24,9 +24,7 @@ var csrftoken = getCookie('csrftoken');
 
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
-	console.log("csrf token before");
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-	    console.log("csrf token set");
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
@@ -191,18 +189,13 @@ function update_infotext() {
 function burrow_event(burrow_start_id,movie_id,user_id) {
     console.log(state);
     update_infotext();
-    $("#ourvideo").click(function(e) {
-
+    $("#ourvideo").click(function(e) {       
         state = 'movie-playing';
         pop.play();
-
         var burrowPercent = mouse_pos(e, this);
-
         add_event(burrow_start_id,movie_id,user_id, burrowPercent['x'], burrowPercent['y'], null);
-
-
-
         update_infotext();
+        $(this).off('click'); 
     });
 
 }
@@ -246,11 +239,10 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
 
                 $("#ourvideo").click(function(e) {
                     var cricketStartPercent = mouse_pos(e, this);
-                    if (state === "wait-cricket"){
-                        add_event(cricket_start_id,movie_id,user_id, cricketStartPercent['x'], cricketStartPercent['y'], null);
-                        state = "wait-burrow";
-                        burrow_event(burrow_start_id,movie_id,user_id);
-                    }
+                    add_event(cricket_start_id,movie_id,user_id, cricketStartPercent['x'], cricketStartPercent['y'], null);
+                    state = "wait-burrow";
+                    $(this).off('click'); 
+                    burrow_event(burrow_start_id,movie_id,user_id);
                 });
 
 
@@ -266,26 +258,31 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
 
         pop.on("ended", function() {
 
-            state = "wait-cricket-end";
-            update_infotext();
-
-            $('#ourvideo').click(function(e) {
-                $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
-                pop.currentTime(pop.duration());
-                state = "movie-end";
+            if (state === "movie-playing") {
+                state = "wait-cricket-end";
                 update_infotext();
-                pop.pause();
-                var pos = mouse_pos(e, this);
-                add_event(cricket_end_id,movie_id,user_id, pos['x'], pos['y'], null);
-                $("#movie_end").css("visibility", "visible");
-            });
 
-            $('#no_cricket_end').click(function() {
-                add_event(cricket_end_id,movie_id,user_id, 0, 0, 'No Cricket');
-                $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
-                update_infotext();
-                $("#movie_end").css("visibility", "visible");
-            });
+
+                $('#ourvideo').click(function(e) {                    
+                   $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
+                    pop.currentTime(pop.duration());
+                    state = "movie-end";
+                    update_infotext();
+                    pop.pause();
+                    var pos = mouse_pos(e, this);
+                    add_event(cricket_end_id,movie_id,user_id, pos['x'], pos['y'], null);
+                    $("#movie_end").css("visibility", "visible"); 
+                    $(this).off('click');                    
+                });
+
+                $('#no_cricket_end').click(function() {
+                    add_event(cricket_end_id,movie_id,user_id, 0, 0, 'No Cricket');
+                    $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
+                    update_infotext();
+                    $("#movie_end").css("visibility", "visible"); 
+                });                
+            }
+            
         });
 
         // scrubbing
@@ -350,8 +347,9 @@ function toggle_something_else() {
 
 
 function restart_video() {
-
-    $("#movie_end").css("visibility", "visible");
+    state = 'wait-cricket';
+    console.log(state);
+    $("#movie_end").css("visibility", "hidden");
     pop.currentTime(0);
     pop.pause();
 }
