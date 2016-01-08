@@ -162,9 +162,11 @@ hr.bottom {
 
 button#no_cricket,
 button#no_cricket_end,
-div.save,
+div.save_something,
 div.delete,
-div.closed {
+div.closed,
+div.close_id,
+div.close_id_no_tag {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
     background-size: 100% 100%;
@@ -282,7 +284,7 @@ div#something_else textarea {
 }
 
 
-div.save > span {
+div.save_something > span {
     font-size: 0.6em;
     margin: 0.3em;
 }
@@ -293,6 +295,16 @@ div.delete > span {
 }
 
 div.closed > span {
+    font-size: 0.6em;
+    margin: 0.3em;
+}
+
+div.close_id > span {
+    font-size: 0.6em;
+    margin: 0.3em;
+}
+
+div.close_id_no_tag > span {
     font-size: 0.6em;
     margin: 0.3em;
 }

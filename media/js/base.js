@@ -110,7 +110,7 @@ function initialise_operators_keyboard(cricket_id_id, something_else_id, movie_i
             toggle_id_cricket();
         });
 
-        $('.save').click(function() {
+        $('.save_something').click(function() {
             string = $('#something_else_input').val();
             add_event(something_else_id,movie_id,user_id, null, null, string);
             close_something_else();
@@ -120,10 +120,27 @@ function initialise_operators_keyboard(cricket_id_id, something_else_id, movie_i
             close_something_else();
         })
 
+        $('.close_id').click(function() {
+            close_id();
+        })
+
+        $('.close_id_no_tag').click(function() {
+            close_id_no_tag();
+        })
+
 }
 
 function close_something_else() {
     $('#something_else').hide();  
+}
+
+function close_id() {
+    $('#tag_cricket').hide();
+}
+
+function close_id_no_tag() {
+    $('#tag_cricket').hide();
+    $('p.cricket-id-display').html('ID: <span class="cricket-id-char">'+'--'+'</span>');
 }
 
 
