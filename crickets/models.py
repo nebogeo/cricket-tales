@@ -17,6 +17,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from common import *
+from datetime import datetime
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
@@ -103,6 +104,7 @@ class Event(models.Model):
     end_time = models.FloatField(default=0)
     x_pos = models.FloatField(null=True, blank=True, default=None)
     y_pos = models.FloatField(null=True, blank=True, default=None)
+    timestamp = models.DateTimeField(auto_now_add=True)
     other = models.CharField(max_length=200, null=True, blank=True, default=None)
     def __unicode__(self):
         return self.type.name+" "+str(self.start_time)+" : "+str(self.movie);
