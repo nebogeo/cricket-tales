@@ -209,17 +209,17 @@ div.close_id_no_tag {
     display: inline-block;
     overflow: visible;
     font-size: 130%;
-    /*margin-left: 1em;*/
 }
 
 .timeline {
     height: 1em;
     overflow: visible;
+    width: 91%;
 }
 
 .timeline_line {
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 0.5em;
+    width: 96%;
     background-color: black;
     height: 2px;
     position: relative;

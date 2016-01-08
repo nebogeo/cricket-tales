@@ -297,7 +297,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
         pop.on("timeupdate", function() {
             var percentage = Math.floor((100 / pop.duration()) *
                                         pop.currentTime());
-            $("#time").css({left: percentage*0.95+"%"});
+            $("#time").css({left: percentage*0.9505+"%"});
 
         });
 
