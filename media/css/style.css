@@ -235,17 +235,11 @@ div.close_id_no_tag {
     background: transparent;
 } 
 
-#controls {
-/*    width: 5em;*/
-/*    max-height: 1em;
-    max-width: 5em;
-    max-height: 3em;*/
-}
 
 button.play,
 button.pause {
-    max-width: 1.4em;
-    max-height: 1.4em;
+    max-width: 1em;
+    max-height: 1em;
     width: 1.5em;
     height: 1.5em;
     border: 0px;
