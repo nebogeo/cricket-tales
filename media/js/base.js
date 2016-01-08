@@ -64,7 +64,7 @@ imagelist.forEach( function(path) {
 var pop = false;
 var events = [];
 
-function build_id_keyboard(cricket_id_id,movie_id,user_id) {
+function build_id_keyboard(cricket_id_id,something_else_id, movie_id,user_id) {
 
     //Constructing keyboard
     var id_keyboard_values = [['+', 'A', 'L', 'U'], ['=', 'C', 'N', 'V'], ['1', 'D', 'O', 'X'], ['6', 'E', 'P', 'Z'], ['7', 'H', 'S', '9'], ['J', 'T', 'Delete', 'Save']];
@@ -92,17 +92,13 @@ function build_id_keyboard(cricket_id_id,movie_id,user_id) {
     table += '</table>';
 
     //console.log(table);
-    initialise_operators_keyboard(cricket_id_id,movie_id,user_id);
+    initialise_operators_keyboard(cricket_id_id,something_else_id, movie_id,user_id);
 }
 
-function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
+function initialise_operators_keyboard(cricket_id_id, something_else_id, movie_id,user_id) {
         $("#delete").click(function (){
             $('#tag_id').val('');
         });
-
-        $('.closed').click(function() {
-            close_something_else()
-        })
 
         $("#save").click(function (){
             cricket_id = $('#tag_id').val();
@@ -113,10 +109,21 @@ function initialise_operators_keyboard(cricket_id_id,movie_id,user_id) {
 
             toggle_id_cricket();
         });
+
+        $('.save').click(function() {
+            string = $('#something_else_input').val();
+            add_event(something_else_id,movie_id,user_id, null, null, string);
+            close_something_else();
+        })
+
+        $('.closed').click(function() {
+            close_something_else();
+        })
+
 }
 
 function close_something_else() {
-    $('#something_else').hide();   
+    $('#something_else').hide();  
 }
 
 
@@ -201,13 +208,13 @@ function mouse_pos(e, context) {
     return percentage(e.pageX - parentOffset.left, e.pageY - parentOffset.top)
 }
 
-function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_end_id, movie_id, user_id) {
+function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_end_id, something_else_id, movie_id, user_id) {
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
     document.addEventListener("DOMContentLoaded", function () {
 
         state = "wait-cricket";
 
-        build_id_keyboard(cricket_id_id,movie_id,user_id);
+        build_id_keyboard(cricket_id_id,something_else_id, movie_id,user_id);
 
         pop = Popcorn("#ourvideo");
 

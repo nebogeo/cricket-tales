@@ -40,9 +40,9 @@
 
   {% block bottom_layer %}
   {% if user.is_authenticated %}
-  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{movie.id}}, {{user.id}});</script>
+  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{something_else.id}}, {{movie.id}}, {{user.id}});</script>
   {% else %}
-  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{movie.id}}, -1);</script>
+  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{something_else.id}}, {{movie.id}}, -1);</script>
   {% endif %}
 
   <div class="row-fluid"><!-- video/prompt row -->
@@ -82,7 +82,7 @@
         <div class="form-group">
           <textarea class="form-control" id="something_else_input"></textarea>
           <div class="closed col-lg-4"><span>Close</span></div>
-          <div class="save col-lg-4 col-lg-offset-4" onclick="add_event({{something_else.id}},{{movie.id}},'{{user.id}}', null, null, null); close_something_else()"><span>Save</span></div>
+          <div class="save col-lg-4 col-lg-offset-4"><span>Save</span></div>
         </div>
       </div>
     </div>
