@@ -357,6 +357,31 @@ function restart_video() {
 function toggle_keyboard() {
     $('#tag_cricket').toggle();
 }
+
+// function pause_play() {
+//     classes = $('.toggle-button').attr('class');
+//     current_state = classes.split(/\s+/)[1]
+    
+//     if (current_state === 'play'){
+//         pop.play()
+//         $('.toggle-button').removeClass('play');
+//         $('.toggle-button').addClass('pause');
+//         $('.toggle-button').css({
+//             'background': 'url("/media/images/movie_buttons/pause.png")',
+//             'background-size': '100% 100%'
+//         })
+//     } else if (current_state === 'pause') {
+//         pop.pause()
+//         $('.toggle-button').removeClass('pause');
+//         $('.toggle-button').addClass('play');
+//         $('.toggle-button').css({
+//             'background': 'url("/media/images/movie_buttons/play.png")',
+//             'background-size': '100% 100%'
+//         })
+//     }
+
+//     console.log(current_state);
+// }
 // actually render the event
 function inner_render_event(type, start_time) {
     // convert time into %

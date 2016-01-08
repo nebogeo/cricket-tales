@@ -202,7 +202,7 @@ div.close_id_no_tag {
 /* square things */
 
 .bar {
-    width: 100%;
+    /*width: 80%;*/
     background: url('../images/track/timeline.png');
     background-size: 102% 250%;
     background-position: 0.2em;
@@ -233,6 +233,13 @@ div.close_id_no_tag {
 
 .button_container.bar {
     background: transparent;
+} 
+
+button.play,
+button.pause {
+    width: 1.5em;
+    height: 1.5em;
+    border: 0px;
 }
 
 /* invisible then visible things, aka ID form */
