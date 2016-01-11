@@ -38,7 +38,7 @@
       var marker = L.marker(new L.LatLng(latitude, longitude), {
         icon: L.icon({
             iconUrl: '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png',
-            iconSize: [20, 15],
+            iconSize: [30, 20],
         })
       });
 
@@ -46,17 +46,13 @@
       var total_videos = '<strong>Total Videos: </strong> {{ burrow.num_movies_ready }}<br/>';
       var total_contributors = '<strong>Total Contributors: </strong> {{ burrow.num_contributors }}<br/>';
       var total_videos_watched = '<strong>Total Videos Watched: </strong> {{ burrow.num_movies_watched }}<br/>';
-      var total_videos_unwatched = '<strong>Total Videos Watched: </strong> {{ burrow.num_movies_unwatched }}<br/>';
+      var total_videos_unwatched = '<strong>Total Videos Unwatched: </strong> {{ burrow.num_movies_unwatched }}<br/>';
+      var burrow_button = '<form action="/burrow/{{ burrow.id }}"><input type="submit" value="Go to Burrow"></form>'
 
-      marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched);
-      marker.on('mouseover', function (e) {
-          this.openPopup();
-      });
-      marker.on('mouseout', function (e) {
-          this.closePopup();
-      });
+      marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched + burrow_button);
 
       marker.addTo(map);
+
     </script>
     {% endfor %}
 
