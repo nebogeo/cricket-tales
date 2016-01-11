@@ -81,7 +81,7 @@
       <div class="panel-heading">
         <h3 class="panel-title">Report Something Else</h3>
       </div>
-      <div class="panel-body">        
+      <div class="panel-body">
         <div class="form-group">
           <textarea class="form-control" id="something_else_input"></textarea>
           <div class="closed col-lg-4"><span>Close</span></div>
@@ -89,7 +89,7 @@
         </div>
       </div>
     </div>
-    
+
     <div id="tag_cricket" class="panel panel-default">
       <div class="panel-body">
 
@@ -147,42 +147,18 @@
         <!-- Generated buttons -->
         <div class="row-fluid">
         {% for event_type in event_types %}
-
-          {% if 'Predator:' not in event_type.name and 'Something Else' not in event_type.name %}
-
           <div class="button col-sm-6 col-xs-3"
-               style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' as image_num %}.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
+               style="background: url(/media/images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;"
+               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-high.png');"
+               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');"
+               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-offset.png');"
+               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');"
                onclick="add_event({{event_type.id}},{{movie.id}},'{{user.id}}', null, null, null)">
-            <div class="button_text">
-              <p>{{event_type.name}}</p></div>
+            <div class="button_text" {% if not event_type.title %} style="visibility: hidden" {% endif %}>
+              <p>{{event_type.name}}</p>
+            </div>
           </div>
-          {% endif %}
         {% endfor %}
-        <!-- Non generated buttons -->
-         <div class="button col-sm-6 col-xs-3" style="background: url(/media/images/buttons/bird.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/bird-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/bird.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/bird-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/bird.png');"
-               onclick="add_event({{predator_bird.id}},{{movie.id}},'{{user.id}}', null, null, null)">
-               <div class="button_text" style="visibility: hidden">
-                <p>{{predator_bird.name}}</p>
-               </div>
-        </div>
-         <div class="button col-sm-6 col-xs-3" style="background: url(/media/images/buttons/shrew.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/shrew-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/shrew.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/shrew-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/shrew.png');"
-               onclick="add_event({{predator_shrew.id}},{{movie.id}},'{{user.id}}', null, null, null)">
-               <div class="button_text" style="visibility: hidden">
-                <p>{{predator_shrew.name}}</p>
-               </div>
-             </div>
          <div class="button col-sm-6 col-xs-3" style="background: url(/media/images/buttons/button-1.png); background-size: 100% 100%;"
                onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-high.png');"
                onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"

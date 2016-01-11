@@ -144,39 +144,43 @@ class BurrowView(generic.DetailView):
 ######################################################################
 ## movie page
 
+def get_event_types():
+    event_types = [
+        EventType.objects.filter(name="MATE").first(),
+        EventType.objects.filter(name="SING").first(),
+        EventType.objects.filter(name="FIGHT").first(),
+        EventType.objects.filter(name="FEED").first(),
+        EventType.objects.filter(name="LEAVES BURROW").first(),
+        EventType.objects.filter(name="ENTERS BURROW").first(),
+        EventType.objects.filter(name="ANOTHER CRICKET").first(),
+        EventType.objects.filter(name="LEAVES FRAME").first(),
+        EventType.objects.filter(name="TRAP").first(),
+        EventType.objects.filter(name="Predator: Bird").first(),
+        EventType.objects.filter(name="Predator: Shrew").first()]
+
+    for c, event_type in enumerate(event_types):
+        event_type.title = True
+        event_type.image = (c%7)+1 # rotate variations
+        if c == 9:
+            event_type.image = 8 # bird
+            event_type.title = False
+        if c == 10:
+            event_type.image = 9 # shrew
+            event_type.title = False
+    return event_types
+
 class MovieView(generic.DetailView):
     model = Movie
     template_name = 'crickets/movie.html'
 
     def get_context_data(self, **kwargs):
         context = super(MovieView, self).get_context_data(**kwargs)
-
         # inc views
         context['movie'].views+=1
         context['movie'].save()
 
         # order these explicitly
-        context['event_types']=[
-            EventType.objects.filter(name="MATE").first(),
-            EventType.objects.filter(name="SING").first(),
-            EventType.objects.filter(name="FIGHT").first(),
-            EventType.objects.filter(name="FEED").first(),
-            EventType.objects.filter(name="LEAVES BURROW").first(),
-            EventType.objects.filter(name="ENTERS BURROW").first(),
-            EventType.objects.filter(name="ANOTHER CRICKET").first(),
-            EventType.objects.filter(name="LEAVES FRAME").first(),
-            EventType.objects.filter(name="Predator: Bird").first(),
-            EventType.objects.filter(name="Predator: Shrew").first(),
-            EventType.objects.filter(name="TRAP").first(),
-            EventType.objects.filter(name="Something Else").first()]
-
-        for c, event_type in enumerate(context['event_types']):
-            event_type.width=int(100/len(context['event_types']))*0.5
-
-        context['events']=Event.objects.filter(movie=context['movie'])
-        context['buttons'] = [1, 2, 3, 4, 5, 6, 7]
-        context['predator_bird'] = EventType.objects.filter(name="Predator: Bird").first()
-        context['predator_shrew'] = EventType.objects.filter(name="Predator: Shrew").first()
+        context['event_types']=get_event_types()
         context['something_else'] = EventType.objects.filter(name="Something Else").first()
         context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
         context['cricket_end'] = EventType.objects.filter(name="Cricket End").first()
@@ -286,8 +290,14 @@ def logmein(request):
         return render_to_response('crickets/login.html', {}, context)
 
 def tutorial(request):
-    context = RequestContext(request)
-    return render_to_response('crickets/tutorial.html', {}, context)
+    context = {}
+    context['event_types'] = get_event_types()
+    context['something_else'] = EventType.objects.filter(name="Something Else").first()
+    context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
+    context['cricket_end'] = EventType.objects.filter(name="Cricket End").first()
+    context['burrow_start'] = EventType.objects.filter(name="Burrow Start").first()
+    context['cricket_id'] = EventType.objects.filter(name="Cricket ID").first()
+    return render(request, 'crickets/tutorial.html', context)
 
 def about(request):
     context = RequestContext(request)
