@@ -313,9 +313,11 @@ def update_burrows_activity():
         #print("with "+str(cricket.num_contributors)+" contributors")
         burrow.total_events = Event.objects.filter(movie__burrow=burrow).count()
         burrow.num_movies_watched = Movie.objects.filter(burrow=burrow, views__gt=1).count()
+        movies_ready = burrow.num_movies_ready
+        burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
         burrow.num_movies_ready = Movie.objects.filter(burrow=burrow,status=1).count()
         #print("total events: "+str(cricket.total_events))
-        burrow.save()
+        # burrow.save()
 
 def update_movies_activity():
     print("movies...")
