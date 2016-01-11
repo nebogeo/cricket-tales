@@ -42,6 +42,21 @@
         })
       });
 
+      var popup_title = '<strong>Burrow {{ burrow.name }}</strong><br/>';
+      var total_videos = '<strong>Total Videos: </strong> {{ burrow.num_movies }}<br/>';
+      var total_contributors = '<strong>Total Contributors: </strong> {{ burrow.num_contributors }}<br/>';
+      var movie_views = '{% for movie in all_movies %}{% if movie.burrow == burrow %}{{ movie.views }}{% endif %}{% endfor %}';
+
+      console.log(movie_views);
+
+      marker.bindPopup(popup_title + total_videos + total_contributors);
+      marker.on('mouseover', function (e) {
+          this.openPopup();
+      });
+      marker.on('mouseout', function (e) {
+          this.closePopup();
+      });
+
       marker.addTo(map);
     </script>
     {% endfor %}
