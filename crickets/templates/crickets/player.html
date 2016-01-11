@@ -33,12 +33,12 @@
       var latitude = parseFloat(lat_string);
       var longitude = parseFloat(long_string);
       
-      // L.marker([latitude, longitude],).addTo(map);
+      var random_file_no = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
 
       var marker = L.marker(new L.LatLng(latitude, longitude), {
         icon: L.icon({
-            iconUrl: '{{MEDIA_URL}}images/burrows/burrow-1.png',
-            iconSize: [20, 20],
+            iconUrl: '/media/images/burrows/burrow-'+random_file_no+'.png',
+            iconSize: [20, 15],
         })
       });
 
