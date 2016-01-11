@@ -64,6 +64,7 @@ class PlayerView(generic.DetailView):
         ###############################################################
         ## fast lookup via playerstomovies
         context['movies']=PlayersToMovies.objects.filter(user=context["user"])
+        context['burrows'] = Burrow.objects.all()
 
 
 

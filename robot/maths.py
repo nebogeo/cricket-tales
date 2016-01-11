@@ -26,12 +26,12 @@ def distance(a,b):
     return mag([a[0]-b[0],a[1]-b[1]])
 
 def random_pos():
-    return [random.randrange(0,950),
-            random.randrange(0,950)]
+    return [random.uniform(-85,85),
+            random.uniform(-180,180)]
 
 def check_list(np,poslist):
     for p in poslist:
-        if distance(p,np)<40:
+        if distance(p,np)<0.5:
             return False
     return True
 

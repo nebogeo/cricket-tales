@@ -26,6 +26,26 @@
         }).addTo(map);
     </script>
 
+    {% for burrow in burrows %}
+    <script>
+      var lat_string = '{{ burrow.pos_x }}';
+      var long_string = '{{ burrow.pos_y }}';
+      var latitude = parseFloat(lat_string);
+      var longitude = parseFloat(long_string);
+      
+      // L.marker([latitude, longitude],).addTo(map);
+
+      var marker = L.marker(new L.LatLng(latitude, longitude), {
+        icon: L.icon({
+            iconUrl: '{{MEDIA_URL}}images/burrows/burrow-1.png',
+            iconSize: [20, 20],
+        })
+      });
+
+      marker.addTo(map);
+    </script>
+    {% endfor %}
+
   </div> <!-- map -->
 
   <div class="col-sm-4 col-xs-12"> <!-- info block -->
@@ -44,6 +64,9 @@
       <div class="score-value col-sm-3">999</div>
       </div>
     </div>
+
+    
+
     <div class="news-feed row-fluid">
       <h1>{% trans "NEWS FEED" %}</h1>
     </div>
