@@ -45,8 +45,10 @@
       var popup_title = '<strong>Burrow {{ burrow.name }}</strong><br/>';
       var total_videos = '<strong>Total Videos: </strong> {{ burrow.num_movies_ready }}<br/>';
       var total_contributors = '<strong>Total Contributors: </strong> {{ burrow.num_contributors }}<br/>';
+      var total_videos_watched = '<strong>Total Videos Watched: </strong> {{ burrow.num_movies_watched }}<br/>';
+      var total_videos_unwatched = '<strong>Total Videos Watched: </strong> {{ burrow.num_movies_unwatched }}<br/>';
 
-      marker.bindPopup(popup_title + total_videos + total_contributors);
+      marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched);
       marker.on('mouseover', function (e) {
           this.openPopup();
       });
