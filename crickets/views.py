@@ -155,6 +155,11 @@ class MovieView(generic.DetailView):
         context['movie'].views+=1
         context['movie'].save()
 
+        # When page loads, mark as 'watched', this will need to be changed to 50%
+        burrow = context['movie'].burrow
+        burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
+        burrow.save()
+
         # order these explicitly
         context['event_types']=[
             EventType.objects.filter(name="MATE").first(),
