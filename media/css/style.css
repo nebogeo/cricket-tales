@@ -160,8 +160,6 @@ hr.bottom {
     margin: 0px;
 }
 
-button#no_cricket,
-button#no_cricket_end,
 div.save_something,
 div.delete,
 div.closed,
@@ -174,6 +172,19 @@ div.close_id_no_tag {
     background-position-y: -0.4em;*/
     overflow: visible;
 /*    width: 120px;*/
+    text-align: left;
+    background-repeat: no-repeat;
+}
+
+button#no_cricket,
+button#no_cricket_end {
+    background:url('../images/buttons/box.png');
+    border: 0px;
+    background-size: 177% 260%;
+    background-position-x: -2.3em;
+    background-position-y: -1.3em;
+    overflow: visible;
+/*    padding: 0.8em;*/
     text-align: left;
     background-repeat: no-repeat;
 }
@@ -209,17 +220,17 @@ div.close_id_no_tag {
     display: inline-block;
     overflow: visible;
     font-size: 130%;
-    /*margin-left: 1em;*/
 }
 
 .timeline {
     height: 1em;
     overflow: visible;
+    width: 91%;
 }
 
 .timeline_line {
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 0.5em;
+    width: 96%;
     background-color: black;
     height: 2px;
     position: relative;
@@ -235,17 +246,11 @@ div.close_id_no_tag {
     background: transparent;
 } 
 
-#controls {
-/*    width: 5em;*/
-/*    max-height: 1em;
-    max-width: 5em;
-    max-height: 3em;*/
-}
 
 button.play,
 button.pause {
-    max-width: 1.4em;
-    max-height: 1.4em;
+    max-width: 1em;
+    max-height: 1em;
     width: 1.5em;
     height: 1.5em;
     border: 0px;

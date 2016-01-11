@@ -62,6 +62,8 @@ class Burrow(models.Model):
     biggest_contributor = models.CharField(max_length=200, default="None yet")
     num_contributors = models.CharField(max_length=200, default=0)
     total_events = models.CharField(max_length=200, default=0)
+    house_info = models.CharField(max_length=200, default=0)
+    
     def __unicode__(self):
         return self.name;
 
