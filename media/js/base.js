@@ -80,7 +80,10 @@ function switch_tutorial(from,to) {
     if (to=="tut-2") make_visible("FEED-buttongroup",true);
     if (to=="tut-3") make_visible("LEAVES FRAME-buttongroup",true);
     if (to=="tut-4") make_visible("id-buttongroup",true);
-
+    if (to=="tut-5") {
+        var t = document.getElementById("tutorial-buttons");
+       // t.style.display = "none";
+    }
 
 }
 

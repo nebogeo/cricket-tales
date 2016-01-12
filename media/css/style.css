@@ -757,7 +757,7 @@ nav ul ul li a:hover {
 }
 
 .gallery-dummy {
-  padding-top: 75%;
+  padding-top: 80%;
   /*        4:3 aspect ratio */
 }
 
@@ -768,6 +768,7 @@ nav ul ul li a:hover {
   left: 0;
   right: 0;
   overflow: hidden;
+  background: #1e4018;
 }
 
 .slider-items {
@@ -788,11 +789,10 @@ nav ul ul li a:hover {
 }
 
 .slider-caption {
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   padding-left: 1em;
   position: relative;
-  top: -4em;
   color: #fff;
   background: url(../images/transparent-dark.png);
   z-index: 999;
