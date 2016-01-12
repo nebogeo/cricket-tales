@@ -164,7 +164,8 @@ div.save_something,
 div.delete,
 div.closed,
 div.close_id,
-div.close_id_no_tag {
+div.close_id_no_tag,
+input.burrow_link {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
     background-size: 100% 100%;
@@ -174,6 +175,7 @@ div.close_id_no_tag {
 /*    width: 120px;*/
     text-align: left;
     background-repeat: no-repeat;
+    outline: 0;
 }
 
 .tutorial_highlight {
@@ -747,7 +749,7 @@ nav ul ul li a:hover {
 	text-decoration: none;
 }
 
-/*---------------------------------------------------*/
+/*-gallery stuff-----------------------------------------------*/
 
 .gallery {
   display: inline-block;
@@ -815,4 +817,23 @@ nav ul ul li a:hover {
   z-index: 999;
   float: right;
   margin-right: 2em;
+}
+
+
+/* Map */
+.leaflet-popup-tip,
+.leaflet-popup-content-wrapper {
+    color: black !important;
+    background: #f6fce9 !important;
+    font-family: 'Vidaloka', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper h4 {
+  font-family: 'Love Ya Like A Sister', sans-serif !important;
+  padding: 0px;
+  margin: 0px;
+}
+
+input.burrow_link {
+    margin-top: 1em;
 }

@@ -65,8 +65,7 @@ class PlayerView(generic.DetailView):
         ## fast lookup via playerstomovies
         context['movies']=PlayersToMovies.objects.filter(user=context["user"])
         context['burrows'] = Burrow.objects.all()
-
-
+        context['all_movies'] = Movie.objects.all()
 
         return context
 
@@ -179,6 +178,11 @@ class MovieView(generic.DetailView):
         # inc views
         context['movie'].views+=1
         context['movie'].save()
+
+        # When page loads, mark as 'watched', this will need to be changed to 50%
+        burrow = context['movie'].burrow
+        burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
+        burrow.save()
 
         # order these explicitly
         context['event_types']=get_event_types()
