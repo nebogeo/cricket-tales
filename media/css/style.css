@@ -176,11 +176,30 @@ div.close_id_no_tag {
     background-repeat: no-repeat;
 }
 
+.tutorial_highlight {
+    overflow: auto;
+    /*border: 3px dotted red; */
+}
+
+.tutorial_list {
+    list-style-type: none;
+}
+
+button#tutorial {
+    background:url('../images/buttons/button-oblong.png');
+    border: 0px;
+    background-size: 100% 100%;
+    padding: 1em;
+    overflow: visible;
+    text-align: left;
+    background-repeat: no-repeat;
+}
+
 button#no_cricket,
 button#no_cricket_end {
     background:url('../images/buttons/box.png');
     border: 0px;
-    background-size: 177% 260%;
+    background-size: 177% 280%;
     background-position-x: -2.3em;
     background-position-y: -1.3em;
     overflow: visible;
@@ -244,7 +263,7 @@ button#no_cricket_end {
 
 .button_container.bar {
     background: transparent;
-} 
+}
 
 
 button.play,
@@ -648,9 +667,6 @@ span.cricket-id-char {
     padding: 0px;
 }
 
-.container {
-    width: 100%;
-}
 
 /* override some bootstrap padding */
 #cricket_player {
@@ -729,4 +745,74 @@ nav ul ul li a {
 nav ul ul li a:hover {
     background: #b6e05c;
 	text-decoration: none;
+}
+
+/*---------------------------------------------------*/
+
+.gallery {
+  display: inline-block;
+  position: relative;
+}
+
+.gallery-dummy {
+  padding-top: 75%;
+  /*        4:3 aspect ratio */
+}
+
+.gallery-slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.slider-items {
+  position: relative;
+  cursor: move;
+  width: 1200000px;
+}
+
+.slider-item {
+  float: left;
+}
+
+.slider-overlay {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+}
+
+.slider-caption {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  padding-left: 1em;
+  position: relative;
+  top: -4em;
+  color: #fff;
+  background: url(../images/transparent-dark.png);
+  z-index: 999;
+}
+
+.slider-caption a {
+  color: #ff0;
+}
+
+.slider-image {
+  height: 100%;
+  width: 100%;
+}
+
+.arrow-left {
+  float: left;
+  margin-left: 2em;
+  z-index: 999;
+}
+
+.arrow-right {
+  z-index: 999;
+  float: right;
+  margin-right: 2em;
 }

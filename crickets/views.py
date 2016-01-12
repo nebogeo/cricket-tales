@@ -155,17 +155,17 @@ def get_event_types():
         EventType.objects.filter(name="ENTERS BURROW").first(),
         EventType.objects.filter(name="ANOTHER CRICKET").first(),
         EventType.objects.filter(name="LEAVES FRAME").first(),
-        EventType.objects.filter(name="TRAP").first(),
         EventType.objects.filter(name="Predator: Bird").first(),
-        EventType.objects.filter(name="Predator: Shrew").first()]
+        EventType.objects.filter(name="Predator: Shrew").first(),
+        EventType.objects.filter(name="TRAP").first()]
 
     for c, event_type in enumerate(event_types):
         event_type.title = True
         event_type.image = (c%7)+1 # rotate variations
-        if c == 9:
+        if c == 8:
             event_type.image = 8 # bird
             event_type.title = False
-        if c == 10:
+        if c == 9:
             event_type.image = 9 # shrew
             event_type.title = False
     return event_types

@@ -48,6 +48,48 @@ imagelist.forEach( function(path) {
     new Image().src="/media/images/buttons/"+path;
 } );
 
+
+// jquery doesn't seem to work from onclick events!?
+function make_visible(id,viz) {
+    var t = document.getElementById(id);
+    if (viz) {
+        t.style.border = "3px dotted green";
+        t.style.background = "white";
+    } else {
+        t.style.border = "0px solid";
+        t.style.background = "none";
+    }
+}
+
+function switch_tutorial(from,to) {
+    var t = document.getElementById(from);
+    t.style.display = "none";
+    t = document.getElementById(to);
+    t.style.display = "block";
+    // need to build the gallery here
+    // as the element is display:none at load time
+    // so does not calculate properly
+    setup_gallery();
+
+    make_visible("behaviour-buttongroup",false);
+    make_visible("FEED-buttongroup",false);
+    make_visible("LEAVES FRAME-buttongroup",false);
+    make_visible("id-buttongroup",false);
+
+    if (to=="tut-1") make_visible("behaviour-buttongroup",true);
+    if (to=="tut-2") make_visible("FEED-buttongroup",true);
+    if (to=="tut-3") make_visible("LEAVES FRAME-buttongroup",true);
+    if (to=="tut-4") make_visible("id-buttongroup",true);
+
+
+}
+
+function tut_video_right() {
+    var t = document.getElementById("tut_video_scroll");
+    t.style.left=-100;
+
+}
+
 // video/tagging business
 var pop = false;
 var events = [];
@@ -349,16 +391,16 @@ function toggle_keyboard() {
     $('#tag_cricket').toggle();
 }
 
-function pause_movie() {    
-    if (state === 'movie-playing') {        
+function pause_movie() {
+    if (state === 'movie-playing') {
             pop.pause()
-    }   
+    }
 }
 
-function play_movie() {    
-    if (state === 'movie-playing') {        
+function play_movie() {
+    if (state === 'movie-playing') {
             pop.play()
-    }   
+    }
 }
 
 // actually render the event
