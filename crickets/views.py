@@ -316,6 +316,11 @@ def logmeout(request):
 def random_movie(request):
     return HttpResponseRedirect('/movie/'+str(random_one_check_status(Movie,1).pk))
 
+# redirect to random movie of burrow
+def random_burrow_movie(request, id):
+    burrow = Burrow.objects.filter(id=id)
+    return HttpResponseRedirect('/movie/'+str(random_burrow_one_check_status(Movie,burrow,1).pk))
+
 ######################################################################
 ## json data
 

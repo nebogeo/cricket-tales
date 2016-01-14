@@ -40,3 +40,14 @@ def random_one_check_status(model, status):
                return choice
        except model.DoesNotExist:
            pass
+
+def random_burrow_one_check_status(model, burrow, status):
+   max_ = model.objects.filter(burrow=burrow).aggregate(Max('id'))['id__max']
+   while True:
+       try:
+           choice = model.objects.get(pk=randint(1, max_))
+           if choice.status==status:
+               return choice
+       except model.DoesNotExist:
+           pass
+

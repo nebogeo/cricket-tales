@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^login/$', views.logmein, name='login'),
     url(r'^logout/$', views.logmeout, name='logout'),
     url(r'^random_movie/$', views.random_movie, name='random_movie'),
+    url(r'^random_burrow_movie/(?P<id>\d+)/$', views.random_burrow_movie, name='random_burrow_movie'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 )

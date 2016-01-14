@@ -47,7 +47,7 @@
           var total_contributors = '<strong>Total Contributors: </strong> '+ num_contributors +'<br/>';
           var total_videos_watched = '<strong>Total Videos Watched: </strong> '+ num_movies_watched +'<br/>';
           var total_videos_unwatched = '<strong>Total Videos Unwatched: </strong> '+ num_movies_unwatched +'<br/>';
-          var burrow_button = '<form action="/burrow/'+id+'"><input type="submit" class="burrow_link" value="Go to Burrow"></form>'
+          var burrow_button = '<form action="/random_burrow_movie/'+id+'"><input type="submit" class="burrow_link" value="Go to Burrow"></form>'
           
           marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched + burrow_button);
 
