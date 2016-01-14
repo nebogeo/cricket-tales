@@ -24,70 +24,77 @@
             attribution: 'Cricket Burrow Surveys Ltd',
             tms: true
         }).addTo(map);
+
+        function create_marker(pos_x, pos_y, name, num_movies_ready, num_contributors, num_movies_watched, num_movies_unwatched, id) {
+          var lat_string = pos_x;
+          var long_string = pos_y;
+          var latitude = parseFloat(lat_string);
+          var longitude = parseFloat(long_string);
+          
+          var random_file_no = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+
+          // Default marker
+          var marker = L.marker(new L.LatLng(latitude, longitude), {
+            icon: L.icon({
+                iconUrl: '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png',
+                iconSize: [30, 20],
+            })
+          });
+
+
+          var popup_title = '<h4>Burrow {{ burrow.name }}</h4><br/>';
+          var total_videos = '<strong>Total Videos: </strong> '+ num_movies_ready +'<br/>';
+          var total_contributors = '<strong>Total Contributors: </strong> '+ num_contributors +'<br/>';
+          var total_videos_watched = '<strong>Total Videos Watched: </strong> '+ num_movies_watched +'<br/>';
+          var total_videos_unwatched = '<strong>Total Videos Unwatched: </strong> '+ num_movies_unwatched +'<br/>';
+          var burrow_button = '<form action="/burrow/'+id+'"><input type="submit" class="burrow_link" value="Go to Burrow"></form>'
+          
+          marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched + burrow_button);
+
+          marker.addTo(map);    
+          
+          // The bizznizz
+          map.on('zoomend', function (e) {
+            var currentZoom = map.getZoom();
+
+            if(currentZoom == 1) {
+              new_icon(5, 3.3335);
+            }
+            else if(currentZoom == 2) {
+              new_icon(10, 6.667);
+            }
+            else if(currentZoom == 3) {
+              new_icon(20, 13.334);
+            }
+            else if(currentZoom == 4) {
+              new_icon(30, 20);
+            }
+            else if(currentZoom == 5) {
+              new_icon(70, 46.669);
+            } 
+            else if (currentZoom == 6) {
+              new_icon(125, 83.3375);
+            }
+            
+          });
+
+          function new_icon(x, y) {
+            var icon = marker.options.icon;
+            icon.options.iconSize = [x, y];
+            icon.options.iconUrl =
+            '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png';
+            marker.setIcon(icon);
+          }
+        }
         
     </script>
 
     {% for burrow in burrows %}
-    <script>
-      var lat_string = '{{ burrow.pos_x }}';
-      var long_string = '{{ burrow.pos_y }}';
-      var latitude = parseFloat(lat_string);
-      var longitude = parseFloat(long_string);
-      
-      var random_file_no = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-
-      // Default marker
-      var marker = L.marker(new L.LatLng(latitude, longitude), {
-        icon: L.icon({
-            iconUrl: '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png',
-            iconSize: [30, 20],
-        })
-      });
-
-
-      var popup_title = '<h4>Burrow {{ burrow.name }}</h4><br/>';
-      var total_videos = '<strong>Total Videos: </strong> {{ burrow.num_movies_ready }}<br/>';
-      var total_contributors = '<strong>Total Contributors: </strong> {{ burrow.num_contributors }}<br/>';
-      var total_videos_watched = '<strong>Total Videos Watched: </strong> {{ burrow.num_movies_watched }}<br/>';
-      var total_videos_unwatched = '<strong>Total Videos Unwatched: </strong> {{ burrow.num_movies_unwatched }}<br/>';
-      var burrow_button = '<form action="/burrow/{{ burrow.id }}"><input type="submit" class="burrow_link" value="Go to Burrow"></form>'
-      
-      marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched + burrow_button);
-
-      marker.addTo(map);
-
-      // Zoom level 5
-      var markerZoom5 = L.Icon.extend({
-        options: {
-          iconUrl: '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png',
-          iconSize: new L.Point(70, 46.669),        
-        }
-      });
-
-      // Zoom level 6
-      var markerZoom6 = L.Icon.extend({
-        options: {
-          iconUrl: '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png',
-          iconSize: new L.Point(125, 83.3375),
-        }
-      });
-
-      var marker_5 = new markerZoom5();
-      var marker_6 = new markerZoom6();      
-      
-      // The bizznizz
-      map.on('zoomend', function (e) {
-        var currentZoom = map.getZoom();
-        console.log(currentZoom);
-
-        if(currentZoom == 1) {
-          marker.setIcon(marker_6);
-        }
-        
-      });
-
+    <script>      
+    create_marker('{{ burrow.pos_x }}', '{{ burrow.pos_y }}', '{{ burrow.name }}', '{{ burrow.num_movies_ready }}', '{{ burrow.num_contributors }}', '{{ burrow.num_contributors }}', '{{ burrow.num_movies_watched }}', '{{ burrow.id }}');
     </script>
     {% endfor %}
+
 
   </div> <!-- map -->
 
