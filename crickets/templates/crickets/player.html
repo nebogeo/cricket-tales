@@ -7,7 +7,6 @@
 {% block bottom_layer %}
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
 
-
 <div class="row">
   <!-- map -->
   <div class="col-sm-8 col-xs-12">
@@ -18,13 +17,14 @@
       <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 
       <script>
-        var map = L.map('map').setView([0, 0], 2);
+        var map = L.map('map').setView([0, 0], 4);
         L.tileLayer('{{MEDIA_URL}}map/{z}/{x}/{y}.png', {
             minZoom: 1,
             maxZoom: 6,
             attribution: 'Cricket Burrow Surveys Ltd',
             tms: true
         }).addTo(map);
+        
     </script>
 
     {% for burrow in burrows %}
@@ -36,6 +36,7 @@
       
       var random_file_no = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
 
+      // Default marker
       var marker = L.marker(new L.LatLng(latitude, longitude), {
         icon: L.icon({
             iconUrl: '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png',
@@ -43,16 +44,47 @@
         })
       });
 
+
       var popup_title = '<h4>Burrow {{ burrow.name }}</h4><br/>';
       var total_videos = '<strong>Total Videos: </strong> {{ burrow.num_movies_ready }}<br/>';
       var total_contributors = '<strong>Total Contributors: </strong> {{ burrow.num_contributors }}<br/>';
       var total_videos_watched = '<strong>Total Videos Watched: </strong> {{ burrow.num_movies_watched }}<br/>';
       var total_videos_unwatched = '<strong>Total Videos Unwatched: </strong> {{ burrow.num_movies_unwatched }}<br/>';
       var burrow_button = '<form action="/burrow/{{ burrow.id }}"><input type="submit" class="burrow_link" value="Go to Burrow"></form>'
-
+      
       marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched + burrow_button);
 
       marker.addTo(map);
+
+      // Zoom level 5
+      var markerZoom5 = L.Icon.extend({
+        options: {
+          iconUrl: '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png',
+          iconSize: new L.Point(70, 46.669),        
+        }
+      });
+
+      // Zoom level 6
+      var markerZoom6 = L.Icon.extend({
+        options: {
+          iconUrl: '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png',
+          iconSize: new L.Point(125, 83.3375),
+        }
+      });
+
+      var marker_5 = new markerZoom5();
+      var marker_6 = new markerZoom6();      
+      
+      // The bizznizz
+      map.on('zoomend', function (e) {
+        var currentZoom = map.getZoom();
+        console.log(currentZoom);
+
+        if(currentZoom == 1) {
+          marker.setIcon(marker_6);
+        }
+        
+      });
 
     </script>
     {% endfor %}
