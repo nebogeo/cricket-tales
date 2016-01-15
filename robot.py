@@ -90,3 +90,5 @@ else:
         robot_django.shuffle_burrows()
     if sys.argv[1]=="activity-update":
         robot_django.update_all_activity()
+    if sys.argv[1]=="test":
+        robot_django.test_random_movie()
