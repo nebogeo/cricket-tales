@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-07 17:13+0000\n"
+"POT-Creation-Date: 2016-01-15 16:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,7 @@ msgid "ABOUT"
 msgstr "ACERCA DE"
 
 #: crickets/templates/base.html:36
+#: crickets/templates/crickets/tutorial.html:255
 msgid "PLAY!"
 msgstr "JUGAR!"
 
@@ -84,8 +85,9 @@ msgid "MADE BY"
 msgstr "HECHO POR"
 
 #: crickets/templates/crickets/index.html:31
-#, python-format
-msgid "Welcome back %(user.username)s, to "
+#, fuzzy, python-format
+#| msgid "Welcome back %(user.username)s, to "
+msgid "Welcome back %(username)s, to "
 msgstr "Bienvenida de nuevo , %(user.username)s a"
 
 #: crickets/templates/crickets/index.html:33
@@ -143,41 +145,206 @@ msgid "Next movie"
 msgstr ""
 
 #: crickets/templates/crickets/movie.html:62
+#: crickets/templates/crickets/tutorial.html:60
+#: crickets/templates/crickets/tutorial.html:69
+#: crickets/templates/crickets/tutorial.html:78
+#: crickets/templates/crickets/tutorial.html:87
 msgid ""
 "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 "
 "with H.264."
 msgstr ""
 
-#: crickets/templates/crickets/movie.html:131
+#: crickets/templates/crickets/movie.html:134
 msgid "Delete"
 msgstr ""
 
-#: crickets/templates/crickets/movie.html:132
+#: crickets/templates/crickets/movie.html:135
 msgid "Save"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:12
+#: crickets/templates/crickets/player.html:13
 #, fuzzy, python-format
 #| msgid "Welcome back %(user.username)s, to "
-msgid "%(user.username)s's burrow map"
+msgid "%(username)s's burrow map"
 msgstr "Bienvenida de nuevo , %(user.username)s a"
 
-#: crickets/templates/crickets/player.html:18
+#: crickets/templates/crickets/player.html:103
 msgid "SCORE"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:20
+#: crickets/templates/crickets/player.html:105
 msgid "Videos tagged"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:24
+#: crickets/templates/crickets/player.html:109
 msgid "Houses built"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:28
+#: crickets/templates/crickets/player.html:113
 msgid "Empty burrows"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:33
+#: crickets/templates/crickets/player.html:121
 msgid "NEWS FEED"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:14
+msgid "HOW YOU CAN HELP"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:17
+msgid ""
+"\n"
+"        For each video, you will have these buttons\n"
+"        so you can record what you see. Click\n"
+"        through the categories below to see how\n"
+"        to use the buttons – if you are logged in\n"
+"        you only need to do this once, but you can\n"
+"        come back to this page at any time:\n"
+"        "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:28
+msgid "Basic behaviour"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:29
+msgid "Movement"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:30
+msgid "Predators"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:31
+msgid "IDing crickets"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:39
+msgid "BASIC BEHAVIOURS"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:42
+msgid ""
+"\n"
+"        These buttons are for cricket behaviours. Scroll\n"
+"        through the four videos below to learn how to\n"
+"        identify each behaviour.\n"
+"        "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:55
+msgid "Mating behaviour"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:64
+msgid "Singing behaviour"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:73
+msgid "Fighting behaviour"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:82
+msgid "Feeding behaviour"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:103
+#: crickets/templates/crickets/tutorial.html:128
+#: crickets/templates/crickets/tutorial.html:168
+#: crickets/templates/crickets/tutorial.html:199
+msgid "Got it!"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:112
+msgid "MOVEMENT"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:115
+msgid ""
+"\n"
+"        These buttons are for when your cricket\n"
+"        moves around – either leaving its burrow,\n"
+"        entering its burrow, or leaving the frame of\n"
+"        the video. Click once each time this happens.\n"
+"        If you see another cricket, click the button to\n"
+"        tell us, but keep recording for your main\n"
+"        cricket.\n"
+"        "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:136
+msgid "PREDATORS AND TRAPS"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:139
+msgid ""
+"\n"
+"        Look out for predators, like birds and voles,\n"
+"        and tube traps which are sometimes used to\n"
+"        collect the crickets. If you see them, click on\n"
+"        the buttons to tell us!\n"
+"        "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:159
+msgid ""
+"\n"
+"          If you see something interesting in a video and\n"
+"          want to tell us about it, click on the '!' button.\n"
+"          "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:176
+#, fuzzy
+#| msgid "CRICKET TALES"
+msgid "ID CRICKETS"
+msgstr "CUENTOS DE CRICKET"
+
+#: crickets/templates/crickets/tutorial.html:179
+msgid ""
+"\n"
+"        If you see a cricket and can read the tag on its\n"
+"        back, click the ID button. The video will pause\n"
+"        and you can enter the two digits of the ID code.\n"
+"        Make sure you read the tag the right way up –\n"
+"        the example crickets below are LU and TT:\n"
+"        "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:210
+msgid ""
+"\n"
+"           <p>Now you know what you're doing, you're ready to play!</p>\n"
+"           "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:216
+msgid ""
+"\n"
+"           <p>On the next page you'll see the burrow map. Click on an\n"
+"             empty burrow to start.</p>\n"
+"           "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:223
+msgid ""
+"\n"
+"           <p>If you register you can see the burrow map, where you can\n"
+"             build houses for the crickets!</p>\n"
+"           "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:230
+msgid ""
+"\n"
+"           <p>Each burrow has multiple videos. If you have watched the\n"
+"             most videos for a burrow, you'll get to build a house on it. "
+"If\n"
+"             someone else picks the same burrow and watches more\n"
+"             videos than you, they can knock your house down and build\n"
+"             their own in its place. If you are the first to watch all the\n"
+"             videos in a burrow, you get a flag on your house, and it is\n"
+"             there to stay!</p>\n"
+"           "
 msgstr ""

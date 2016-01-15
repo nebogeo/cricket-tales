@@ -10,7 +10,7 @@
 <div class="row">
   <!-- map -->
   <div class="col-sm-8 col-xs-12">
-      <h1>{% blocktrans %}{{ user.username }}'s burrow map{% endblocktrans %}</h1>
+      <h1>{% blocktrans with username=user.username %}{{ username }}'s burrow map{% endblocktrans %}</h1>
 
       <div id="map" class="row-fluid" style="height:500px;"></div>
 
@@ -30,7 +30,7 @@
           var long_string = pos_y;
           var latitude = parseFloat(lat_string);
           var longitude = parseFloat(long_string);
-          
+
           var random_file_no = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
 
           // Default marker
@@ -48,11 +48,11 @@
           var total_videos_watched = '<strong>Total Videos Watched: </strong> '+ num_movies_watched +'<br/>';
           var total_videos_unwatched = '<strong>Total Videos Unwatched: </strong> '+ num_movies_unwatched +'<br/>';
           var burrow_button = '<form action="/random_burrow_movie/'+id+'"><input type="submit" class="burrow_link" value="Go to Burrow"></form>'
-          
+
           marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched + burrow_button);
 
-          marker.addTo(map);    
-          
+          marker.addTo(map);
+
           // The bizznizz
           map.on('zoomend', function (e) {
             var currentZoom = map.getZoom();
@@ -71,11 +71,11 @@
             }
             else if(currentZoom == 5) {
               new_icon(70, 46.669);
-            } 
+            }
             else if (currentZoom == 6) {
               new_icon(125, 83.3375);
             }
-            
+
           });
 
           function new_icon(x, y) {
@@ -86,11 +86,11 @@
             marker.setIcon(icon);
           }
         }
-        
+
     </script>
 
     {% for burrow in burrows %}
-    <script>      
+    <script>
     create_marker('{{ burrow.pos_x }}', '{{ burrow.pos_y }}', '{{ burrow.name }}', '{{ burrow.num_movies_ready }}', '{{ burrow.num_contributors }}', '{{ burrow.num_contributors }}', '{{ burrow.num_movies_watched }}', '{{ burrow.id }}');
     </script>
     {% endfor %}
@@ -115,7 +115,7 @@
       </div>
     </div>
 
-    
+
 
     <div class="news-feed row-fluid">
       <h1>{% trans "NEWS FEED" %}</h1>

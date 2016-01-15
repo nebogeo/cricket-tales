@@ -28,7 +28,7 @@
 </div>
 <div class="game_title">
 {% if user.is_authenticated %}
-{% blocktrans %}Welcome back {{ user.username }}, to {% endblocktrans %}</br>
+{% blocktrans with username=user.username %}Welcome back {{ username }}, to {% endblocktrans %}</br>
 {% endif %}
 <span style="font-size:500%">{% trans "CRICKET TALES" %}</span>
 </div>
