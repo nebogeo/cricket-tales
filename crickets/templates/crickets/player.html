@@ -17,6 +17,8 @@
       <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 
       <script>
+        $( document ).ready(function() {
+
         var map = L.map('map').setView([0, 0], 4);
         L.tileLayer('{{MEDIA_URL}}map/{z}/{x}/{y}.png', {
             minZoom: 1,
@@ -86,7 +88,7 @@
             marker.setIcon(icon);
           }
         }
-
+        });
     </script>
 
     {% for burrow in burrows %}
