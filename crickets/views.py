@@ -10,6 +10,7 @@ from django.core import serializers
 from django.template import Context, loader, RequestContext
 from itertools import chain
 from django.db.models import Count
+from django.utils.translation import ugettext_lazy as _
 
 # todo move forms
 from django import forms
@@ -66,6 +67,7 @@ class PlayerView(generic.DetailView):
         context['movies']=PlayersToMovies.objects.filter(user=context["user"])
         context['burrows'] = Burrow.objects.all()
         context['all_movies'] = Movie.objects.all()
+        context['page_title'] = "%(username)s's BURROW MAP" % {'username': context["user"].username}
 
         return context
 
@@ -185,6 +187,7 @@ class MovieView(generic.DetailView):
         burrow.save()
 
         # order these explicitly
+        context['page_title'] = _("MOVIE")
         context['event_types']=get_event_types()
         context['something_else'] = EventType.objects.filter(name="Something Else").first()
         context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
@@ -286,16 +289,17 @@ def logmein(request):
                 login(request, user)
                 return HttpResponseRedirect('/')
             else:
-                return HttpResponse("Your account is disabled.")
+                return HttpResponse(_("Your account is disabled."))
         else:
             print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponse("Invalid login details supplied.")
+            return HttpResponse(_("Invalid login details supplied."))
 
     else:
         return render_to_response('crickets/login.html', {}, context)
 
 def tutorial(request):
     context = {}
+    context['page_title'] = _("HOW YOU CAN HELP")
     context['event_types'] = get_event_types()
     context['something_else'] = EventType.objects.filter(name="Something Else").first()
     context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
@@ -305,8 +309,9 @@ def tutorial(request):
     return render(request, 'crickets/tutorial.html', context)
 
 def about(request):
-    context = RequestContext(request)
-    return render_to_response('crickets/about.html', {}, context)
+    context = {}
+    context['page_title'] = _("ABOUT THE PROJECT")
+    return render(request, 'crickets/about.html', context)
 
 def logmeout(request):
     logout(request)

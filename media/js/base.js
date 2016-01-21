@@ -194,28 +194,30 @@ function enter_id(t) {
 }
 
 function update_infotext() {
+    // need to make the font smaller than the usual to fit anything in
+    $('.page_title').css("font-size","120%");
     switch(state) {
         case "wait-cricket":
-            $('.info-text').html('1. Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>');
+            $('.page_title').html('1. Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>');
             break;
         case "wait-burrow":
-            $('.info-text').html('2. Click on the middle of the burrow to begin the video');
+            $('.page_title').html('2. Click on the middle of the burrow to begin the video');
             break;
         case "movie-playing":
-            $('.info-text').html('3. Tag cricket behaviours and ID as the video plays');
+            $('.page_title').html('3. Tag cricket behaviours and ID as the video plays');
             break;
         case "wait-cricket-end":
-            $('.info-text').html('4. Click on the cricket to finish the video, or click <button id="no_cricket_end">No cricket</button>');
+            $('.page_title').html('4. Click on the cricket to finish the video, or click <button id="no_cricket_end">No cricket</button>');
             break;
         case "movie-end":
-            $('.info-text').html('Well done! Video complete');
+            $('.page_title').html('Well done! Video complete');
             break;
         // whyyy
         case "no-cricket-end":
-            $('.info-text').html('No cricket clicked [no cricket seen?]');
+            $('.page_title').html('No cricket clicked [no cricket seen?]');
             break;
         default:
-            $('.info-text').html('I have no idea, you broke me');
+            $('.page_title').html('I have no idea, you broke me');
 
     }
 }
