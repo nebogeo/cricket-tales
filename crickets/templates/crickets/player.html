@@ -17,16 +17,6 @@
       <script src="{{MEDIA_URL}}/js/leaflet.js"></script>
 
       <script>
-        $( document ).ready(function() {
-
-        var map = L.map('map').setView([0, 0], 4);
-        L.tileLayer('{{MEDIA_URL}}map/{z}/{x}/{y}.png', {
-            minZoom: 1,
-            maxZoom: 6,
-            attribution: 'Cricket Burrow Surveys Ltd',
-            tms: true
-        }).addTo(map);
-
         function create_marker(pos_x, pos_y, name, num_movies_ready, num_contributors, num_movies_watched, num_movies_unwatched, id) {
           var lat_string = pos_x;
           var long_string = pos_y;
@@ -79,23 +69,34 @@
             }
 
           });
+        }
 
-          function new_icon(x, y) {
+        function new_icon(x, y) {
             var icon = marker.options.icon;
             icon.options.iconSize = [x, y];
             icon.options.iconUrl =
             '{{MEDIA_URL}}images/burrows/burrow-'+random_file_no+'.png';
             marker.setIcon(icon);
-          }
         }
+
+        $(document).ready(function() {
+
+        map = L.map('map').setView([0, 0], 4);
+        L.tileLayer('{{MEDIA_URL}}map/{z}/{x}/{y}.png', {
+            minZoom: 1,
+            maxZoom: 6,
+            attribution: 'Cricket Burrow Surveys Ltd',
+            tms: true
+        }).addTo(map);
+
+    {% for burrow in burrows %}
+      create_marker('{{ burrow.pos_x }}', '{{ burrow.pos_y }}', '{{ burrow.name }}', '{{ burrow.num_movies_ready }}', '{{ burrow.num_contributors }}', '{{ burrow.num_contributors }}', '{{ burrow.num_movies_watched }}', '{{ burrow.id }}');
+    {% endfor %}
+
+
         });
     </script>
 
-    {% for burrow in burrows %}
-    <script>
-    create_marker('{{ burrow.pos_x }}', '{{ burrow.pos_y }}', '{{ burrow.name }}', '{{ burrow.num_movies_ready }}', '{{ burrow.num_contributors }}', '{{ burrow.num_contributors }}', '{{ burrow.num_movies_watched }}', '{{ burrow.id }}');
-    </script>
-    {% endfor %}
 
 
   </div> <!-- map -->
