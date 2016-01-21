@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block bottom_layer %}
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+<link rel="stylesheet" href="{{MEDIA_URL}}css/leaflet.css" />
 
 <div class="row">
   <!-- map -->
@@ -14,7 +14,7 @@
 
       <div id="map" class="row-fluid" style="height:500px;"></div>
 
-      <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+      <script src="{{MEDIA_URL}}/js/leaflet.js"></script>
 
       <script>
         $( document ).ready(function() {
