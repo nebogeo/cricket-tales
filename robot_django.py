@@ -343,3 +343,7 @@ def update_all_activity():
     update_burrows_activity()
     update_movies_activity()
     #update_player_to_movies()
+
+
+def test_random_movie():
+    print random_burrow_one_check_status(Movie,1,1)

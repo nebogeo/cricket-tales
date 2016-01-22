@@ -11,7 +11,8 @@ body {
 
 h1 {
     font-family: 'Love Ya Like A Sister', sans-serif;
-    font-size: 200%;
+    font-size: 180%;
+    margin: 0em;
 }
 h2 {
     font-family: 'Love Ya Like A Sister', sans-serif;
@@ -678,23 +679,25 @@ span.cricket-id-char {
 
 
 /* menu stuff */
+.menu_main {
+}
+
+.menu_title {
+}
 
 .menu_holder {
-    font-family: 'Love Ya Like A Sister', sans-serif;
-    top: 0px;
-    width: 100%;
     text-align: right;
+    font-family: 'Love Ya Like A Sister', sans-serif;
     z-index: 5;
-    position:relative;
-    padding-left: 3em;
-    padding-right: 3em;
+    overflow: visible;
+    height: 3.5em;
 }
 
 nav ul {
-    text-align: center;
 	list-style: none;
 	position: relative;
-	display: inline-table;
+    right: 0;
+    display: inline-table;
 }
 
 nav ul ul {

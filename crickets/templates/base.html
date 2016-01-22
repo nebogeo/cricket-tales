@@ -21,26 +21,31 @@
 
     <!-- menu time! -->
     {% if not hide_menu %} <!-- hidden for index (maybe also movie?) -->
-    <div class="menu_holder">
-      <nav>
-        <ul>
-          <li><a href="#"><img src="{{ MEDIA_URL }}images/buttons/menu.png"></a>
-	        <ul>
-              {% if user.is_authenticated %}
-              <li><a href="/player/{{ user.id }}">{% trans "MY MAP" %}</a></li>
-              {% else %}
-              <li><a href="/login">{% trans "LOGIN" %}</a></li>
-              {% endif %}
-		      <li><a href="/tutorial/">{% trans "TUTORIAL" %}</a></li>
-		      <li><a href="/about/">{% trans "ABOUT" %}</a></li>
-		      <li><a href="/random_movie/">{% trans "PLAY!" %}</a></li>
-              {% if user.is_authenticated %}
-		      <li><a href="/logout/">{% trans "LOG OUT" %}</a></li>
-              {% endif %}
-	        </ul>
-          </li>
-        </ul>
-      </nav>
+    <div class="menu_main">
+      <div class="menu_title col-sm-9 col-xs-9">
+        <h1 class="page_title">{{ page_title }}</h1>
+        <hr class="bottom"> </hr>
+      </div>
+      <div class="menu_holder col-sm-3 col-xs-3">
+        <nav>
+          <ul>
+            <li><a href="#"><img src="{{ MEDIA_URL }}images/buttons/menu.png"></a>
+	          <ul>
+                {% if user.is_authenticated %}
+                <li><a href="/player/{{ user.id }}">{% trans "MY MAP" %}</a></li>
+                {% else %}
+                <li><a href="/login">{% trans "LOGIN" %}</a></li>
+                {% endif %}
+		        <li><a href="/tutorial/">{% trans "TUTORIAL" %}</a></li>
+		        <li><a href="/about/">{% trans "ABOUT" %}</a></li>
+                {% if user.is_authenticated %}
+		        <li><a href="/logout/">{% trans "LOG OUT" %}</a></li>
+                {% endif %}
+	          </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
     {% endif %}
 
