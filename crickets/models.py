@@ -21,9 +21,10 @@ from datetime import datetime
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    picture = models.ImageField(upload_to='profile_images', blank=True)
     score = models.FloatField(default=0)
     num_events = models.IntegerField(default=0)
+    ethics_agreed = models.IntegerField(default=0)
+    age_range = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.user.username

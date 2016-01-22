@@ -67,7 +67,7 @@ class PlayerView(generic.DetailView):
         context['movies']=PlayersToMovies.objects.filter(user=context["user"])
         context['burrows'] = Burrow.objects.all()
         context['all_movies'] = Movie.objects.all()
-        context['page_title'] = "%(username)s's BURROW MAP" % {'username': context["user"].username}
+        context['page_title'] = _("%(username)s's BURROW MAP") % {'username': context["user"].username}
 
         return context
 
@@ -246,7 +246,7 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('picture',)
+        fields = ('age_range',)
 
 def register(request):
     context = RequestContext(request)

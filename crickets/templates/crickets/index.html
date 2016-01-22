@@ -1,6 +1,24 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block top_layer %}
+
+<div id="movie_end" class="movie_end" style="visibility:hidden;">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h1>{% trans "Login" %}</h1>
+
+    <form id="login_form" method="post" action="/login/">
+      {% csrf_token %}
+      {% trans "Username:" %} <input type="text" name="username" value="" size="50" />
+      <br />
+      {% trans "Password:" %} <input type="password" name="password" value="" size="50" />
+      <br />
+      <input type="submit" value={% trans "Login" %} />
+    </form>
+
+    <a href="/register/">{% trans "Register" %}</a>
+  </div>
+</div>
+
 {% endblock %}
 
 {% block bottom_layer %}
@@ -57,7 +75,7 @@
          {% if user.is_authenticated %}
          onclick="window.location.href='/player/{{ user.id }}'"
          {% else %}
-         onclick="window.location.href='/login/'"
+         onclick='$("#movie_end").css("visibility", "visible");'
          {% endif %}
          >
       <div class="button_text">
