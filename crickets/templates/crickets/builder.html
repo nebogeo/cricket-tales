@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block top_layer %}
+{% endblock %}
+
+
+{% block bottom_layer %}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+<div class="row-fluid">
+	<div class="slider-roof col-lg-5 col-lg-offset-3">
+
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-1-roof-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-2-roof-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-3-roof-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-4-roof-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-5-roof-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-6-roof-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-7-roof-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-8-roof-pink.png" class="thumbnail" width="150"></div>
+	</div>
+	<div class="slider-middle col-lg-5 col-lg-offset-3">
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-1-middle-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-2-middle-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-3-middle-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-4-middle-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-5-middle-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-6-middle-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-7-middle-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-8-middle-pink.png" class="thumbnail" width="150"></div>
+	</div>
+	<div class="slider-ground col-lg-5 col-lg-offset-3">
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-1-ground-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-2-ground-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-3-ground-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-4-ground-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-5-ground-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-6-ground-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-7-ground-pink.png" class="thumbnail" width="150"></div>
+		<div class="col-lg-2"><img src="/media/images/houses/components/house-8-ground-pink.png" class="thumbnail" width="150"></div>
+	</div>
+	<div class="your-class col-lg-5 col-lg-offset-3">
+		<div class="col-lg-3">your content</div>
+		<div class="col-lg-3">your content</div>
+		<div class="col-lg-3">your content</div>
+	</div>
+</div>
+
+ <script type="text/javascript">
+    $(document).ready(function() {
+    	$('.your-class').slick({
+			centerMode: true,
+			centerPadding: '120px',
+			arrows: true,
+			appendArrows : $('.lol')
+		});
+
+
+    });
+  </script>
+
+{% endblock %}

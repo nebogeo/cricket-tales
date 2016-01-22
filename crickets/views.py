@@ -198,6 +198,12 @@ class EventForm(ModelForm):
          model = Event
          fields = "__all__"
 
+## Static house builder
+def house_builder(request):
+    context = {}
+    context['event_types'] = get_event_types()
+    return render(request, 'crickets/builder.html', context)
+
 ## incoming from javascript...
 def spit_event(request):
     if request.method == 'POST':
