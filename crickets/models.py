@@ -57,6 +57,12 @@ class PlayerBurrowScore(models.Model):
     def __unicode__(self):
         return str(self.player.username+" "+self.burrow.name)
 
+class Story(models.Model):
+    time = models.DateTimeField(auto_now_add=True)
+    player = models.ForeignKey(User)
+    text = models.CharField(max_length=1024, blank=True, default='')
+    def __unicode__(self):
+        return self.text % {'player':self.player.username}
 
 class Movie(models.Model):
     burrow = models.ForeignKey(Burrow, null=True, blank=True, default = None)

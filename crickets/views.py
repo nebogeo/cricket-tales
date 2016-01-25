@@ -44,6 +44,11 @@ class PlayerView(generic.DetailView):
         context['burrows'] = Burrow.objects.all()
         context['page_title'] = _("%(username)s's BURROW MAP") % {'username': context["user"].username}
         context['houses_needed_for'] = Burrow.objects.filter(owner=context["user"], new_house_needed=1)
+        context['stories'] = Story.objects.all().order_by('-time')[:5]
+
+        # can we not do this on the browser??
+        for story in context['stories']:
+            story.text = _(story.text) % {'player': context['user'].username}
 
         return context
 
@@ -111,6 +116,56 @@ def house_builder(request):
     context['event_types'] = get_event_types()
     return render(request, 'crickets/builder.html', context)
 
+
+def update_score(user,burrow):
+    # what if no burrow??
+    scores = PlayerBurrowScore.objects.filter(player=user,
+                                              burrow=burrow)
+    print scores
+    if len(scores)>0:
+        scores[0].movies_finished+=1
+        scores[0].save()
+
+        if scores[0].movies_finished in [10,25,50,100]:
+            story = Story(player=user,
+                          burrow=burrow,
+                          text="%(player)s has now watched "+scores[0].movies_finished+" burrows!")
+            story.save()
+
+        else:
+            score = PlayerBurrowScore(player=user,
+                                      burrow=movie.burrow,
+                                      movies_finished=1)
+            score.save()
+
+def update_stories(user,data):
+    # make some stories
+    if data['type'].name == "Cricket ID":
+        story = Story(player=user,
+                      text="A cricket has just been IDed by %(player)s")
+        story.save()
+
+    if data['type'].name == "Predator: Bird":
+        story = Story(player=user,
+                      text="A bird has been spotted by %(player)s")
+        story.save()
+
+    if data['type'].name == "Predator: Shrew":
+        story = Story(player=user,
+                      text="%(player)s has seen a shrew!")
+        story.save()
+
+    if data['type'].name == "SING":
+        story = Story(player=user,
+                      text="A cricket has been seen singing by %(player)s")
+        story.save()
+
+    if data['type'].name == "FIGHT":
+        story = Story(player=user,
+                      text="A fight has been spotted by %(player)s")
+        story.save()
+
+
 ## incoming from javascript...
 def spit_event(request):
     if request.method == 'POST':
@@ -135,27 +190,9 @@ def spit_event(request):
                 # event (we can also calculate these by counting the
                 # cricket end's in the event table if we need to)
                 if data["type"].name == "Cricket End":
+                    update_score(user,movie.burrow)
 
-                    # what if no burrow??
-                    scores = PlayerBurrowScore.objects.filter(player=user,
-                                                              burrow=movie.burrow)
-                    print scores
-                    if len(scores)>0:
-                        scores[0].movies_finished+=1
-                        scores[0].save()
-                    else:
-                        score = PlayerBurrowScore(player=user,
-                                                  burrow=movie.burrow,
-                                                  movies_finished=1)
-                        score.save()
-
-
-
-                try:
-                    existing = PlayersToMovies.objects.get(user=user,movie=movie)
-                except PlayersToMovies.DoesNotExist:
-                    print("Player to movie added for "+user.username)
-                    PlayersToMovies(user=user, movie=movie).save()
+                update_stories(user,data)
 
             return HttpResponse('')
         return HttpResponse('request is invalid: '+str(form))

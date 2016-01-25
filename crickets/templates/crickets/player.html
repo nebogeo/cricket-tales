@@ -236,6 +236,12 @@
 
     <div class="news-feed row-fluid">
       <h1>{% trans "NEWS FEED" %}</h1>
+
+      {% for story in stories %}
+      <p>{{story.text}}</p>
+      {% endfor %}
+
+
     </div>
   </div> <!-- info block -->
 </div> <!-- main row -->
