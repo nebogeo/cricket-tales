@@ -501,7 +501,7 @@ function size_from_house(house,zoom) {
                  [70, 46.669],
                  [125, 83.3375]];
 
-    if (house=='') {
+    if (house=='' || house=="0") {
         return zooms[zoom];
     } else {
         ret = zooms[zoom];
