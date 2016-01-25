@@ -485,7 +485,7 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
 // house helpers
 
 function image_from_house(house) {
-    if (house=='') {
+    if (house=='' || house=="0") {
         var random_file_no = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
         return 'images/burrows/burrow-'+random_file_no+'.png';
     } else {
