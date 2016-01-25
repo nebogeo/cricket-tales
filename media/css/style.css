@@ -188,6 +188,10 @@ input.burrow_link {
     list-style-type: none;
 }
 
+a.tutorial-play {
+    color: #333;
+}
+
 button#tutorial {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
