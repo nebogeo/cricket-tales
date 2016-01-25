@@ -831,6 +831,10 @@ nav ul ul li a:hover {
     padding-top: 25%;
 }
 
+.slick-disabled {
+    opacity: 0.1;
+}
+
 
 /* Map */
 .leaflet-popup-tip,

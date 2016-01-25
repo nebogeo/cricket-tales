@@ -15,6 +15,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
+
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -49,6 +50,7 @@ imagelist.forEach( function(path) {
 } );
 
 
+
 // jquery doesn't seem to work from onclick events!?
 function make_visible(id,viz) {
     var t = document.getElementById(id);
@@ -61,6 +63,8 @@ function make_visible(id,viz) {
     }
 }
 
+
+
 function switch_tutorial(from,to) {
     var t = document.getElementById(from);
     t.style.display = "none";
@@ -69,7 +73,7 @@ function switch_tutorial(from,to) {
     // need to build the gallery here
     // as the element is display:none at load time
     // so does not calculate properly
-    setup_gallery();
+    // setup_gallery();
 
     make_visible("behaviour-buttongroup",false);
     make_visible("FEED-buttongroup",false);
@@ -86,6 +90,7 @@ function switch_tutorial(from,to) {
     }
 
 }
+
 
 function tut_video_right() {
     var t = document.getElementById("tut_video_scroll");
@@ -127,6 +132,7 @@ function build_id_keyboard(cricket_id_id,something_else_id, movie_id,user_id) {
     //console.log(table);
     initialise_operators_keyboard(cricket_id_id,something_else_id, movie_id,user_id);
 }
+
 
 function initialise_operators_keyboard(cricket_id_id, something_else_id, movie_id,user_id) {
         $("#delete").click(function (){
@@ -463,11 +469,3 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
     }
 
 }
-
-// Slick slider for tutorials
- $('.slider-tutorial').slick({
-    infinite: false,
-    arrows: true,
-    prevArrow: $('.arrow-tut-left'),
-    nextArrow: $('.arrow-tut-right')
-  });

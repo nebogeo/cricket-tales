@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block bottom_layer %}
-<script src="{{ MEDIA_URL }}js/gallery-slider.js"></script>
+<script src="{{ MEDIA_URL }}js/slick.min.js"></script>
 
 <div class="row-fluid"><!-- video/prompt row -->
   <div class="col-sm-8 col-xs-12" style="padding-left:0px; padding-right:0px;"><!-- video/prompt div -->
@@ -307,20 +307,21 @@
     </div><!-- End button div -->
     </div><!-- End video/prompt div -->
     </div><!-- End player row-->
+        <script>
+            // Slick slider for tutorials
+        $(document).ready(function() {
+          $('.slider-tutorial').slick({
+            infinite: false,
+            arrows: true,
+            prevArrow: $('.arrow-tut-left'),
+            nextArrow: $('.arrow-tut-right')
+        });
 
-    <script>
-    // $(document).ready(function() {
-
-    //   $('.slider-tutorial').slick({
-    //     infinite: false,
-    //     arrows: true,
-    //     prevArrow: $('.arrow-tut-left'),
-    //     nextArrow: $('.arrow-tut-right')
-    //   });
-
-    // });
-      
+        }); 
+        
+ 
     </script>
 
-
 {% endblock %}
+
+
