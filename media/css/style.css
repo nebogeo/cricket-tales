@@ -188,6 +188,10 @@ input.burrow_link {
     list-style-type: none;
 }
 
+a.tutorial-play {
+    color: #333;
+}
+
 button#tutorial {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
@@ -792,10 +796,8 @@ nav ul ul li a:hover {
 .slider-caption {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  padding-left: 1em;
   position: relative;
-  color: #fff;
-  background: url(../images/transparent-dark.png);
+  color: #000;
   z-index: 999;
 }
 
@@ -818,6 +820,21 @@ nav ul ul li a:hover {
   z-index: 999;
   float: right;
   margin-right: 2em;
+}
+
+/* Tutorial slider styling */
+
+
+/* Verbose selector cuz slick */
+/*#tut-1 > div > div.arrow.arrow-tut-left.col-lg-2,
+#tut-1 > div > div.arrow.arrow-tut-right.col-lg-2,*/
+#tut-1 > div > div.arrow.arrow-tut-left.col-lg-2.slick-arrow,
+#tut-1 > div > div.arrow.arrow-tut-right.col-lg-2.slick-arrow {
+    padding-top: 25%;
+}
+
+.slick-disabled {
+    opacity: 0.1;
 }
 
 

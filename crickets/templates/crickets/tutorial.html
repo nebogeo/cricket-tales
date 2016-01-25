@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block bottom_layer %}
-<script src="{{ MEDIA_URL }}js/gallery-slider.js"></script>
+<script src="{{ MEDIA_URL }}js/slick.min.js"></script>
 
 <div class="row-fluid"><!-- video/prompt row -->
   <div class="col-sm-8 col-xs-12" style="padding-left:0px; padding-right:0px;"><!-- video/prompt div -->
@@ -23,10 +23,7 @@
 
         <center>
           <ul class="tutorial_list">
-            <li><button id="tutorial" onclick="switch_tutorial('tut-main','tut-1');">{% trans "Basic behaviour" %}</button></li>
-            <li><button id="tutorial" onclick="switch_tutorial('tut-main','tut-2');">{% trans "Movement" %}</button></li>
-            <li><button id="tutorial" onclick="switch_tutorial('tut-main','tut-3');">{% trans "Predators" %}</button></li>
-            <li><button id="tutorial" onclick="switch_tutorial('tut-main','tut-4');">{% trans "IDing crickets" %}</button></li>
+            <li><button id="tutorial" onclick="switch_tutorial('tut-main','tut-1');">{% trans "Begin Tutorial" %}</button></li>
           </ul>
         </center>
 
@@ -42,65 +39,69 @@
         identify each behaviour.
         {% endblocktrans %}
 
-        <div class="row">
-
-	    <div class="gallery col-xs-12">
-          <div class="gallery-dummy"></div>
-          <div class="gallery-slider">
-            <div class="slider-items">
-              <div class="slider-item">
-                <div class="slider-caption">{% trans "Mating behaviour" %}</div>
-                <video controls>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/mating.webm" type="video/webm"/>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/mating.mp4" type="video/mp4"/>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/mating.ogg" type="video/ogg"/>
-                  {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
-                </video>
-              </div>
-              <div class="slider-item">
-                <div class="slider-caption">{% trans "Singing behaviour" %}</div>
-                <video controls>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/singing.webm" type="video/webm"/>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/singing.mp4" type="video/mp4"/>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/singing.ogg" type="video/ogg"/>
-                  {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
-                </video>
-              </div>
-              <div class="slider-item">
-                <div class="slider-caption">{% trans "Fighting behaviour" %}</div>
-                <video controls>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/fight.webm" type="video/webm"/>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/fight.mp4" type="video/mp4"/>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/fight.ogg" type="video/ogg"/>
-                  {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
-                </video>
-              </div>
-              <div class="slider-item">
-                <div class="slider-caption">{% trans "Feeding behaviour" %}</div>
-                <video controls>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/feeding.webm" type="video/webm"/>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/feeding.mp4" type="video/mp4"/>
-                  <source src="{{ MEDIA_URL }}movies/tutorial/feeding.ogg" type="video/ogg"/>
-                  {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
-                </video>
-              </div>
+        <div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="arrow arrow-tut-left col-lg-2">
+            <img src="/media/images/left-arrow.png" width="100"/>
+          </div>
+          <div class="slider-tutorial col-lg-8">
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Mating behaviour" %}</h2></div>
+              <video controls>
+                <source src="{{ MEDIA_URL }}movies/tutorial/mating.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/mating.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/mating.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "Face-to-face pushing and shoving." %}</div>
             </div>
-            <div class="slider-overlay">
-              <img class="arrow-left" src="{{ MEDIA_URL }}images/arrow-left-t.png">
-              <img class="arrow-right" src="{{ MEDIA_URL }}images/arrow-right-t.png">
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Singing behaviour" %}</h2></div>
+              <video controls>
+                <source src="{{ MEDIA_URL }}movies/tutorial/singing.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/singing.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/singing.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "The cricket's wings flutter." %}</div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Fighting behaviour" %}</h2></div>
+              <video controls>
+                <source src="{{ MEDIA_URL }}movies/tutorial/fight.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/fight.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/fight.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "One cricket climbs on the back of another." %}</div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Feeding behaviour" %}</h2></div>
+              <video controls>
+                <source src="{{ MEDIA_URL }}movies/tutorial/feeding.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/feeding.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/feeding.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "Munching on a leaf." %}</div>
             </div>
           </div>
+          <div class="arrow arrow-tut-right col-lg-2">
+            <img src="/media/images/right-arrow.png" width="100"/>
+          </div>
         </div>
-
-        </div>
-
         <div class="row">
           <center>
+             <button id="tutorial" onclick="switch_tutorial('tut-1','tut-main');">
+              {% trans "Go Back" %}
+            </button>
             <button id="tutorial" onclick="switch_tutorial('tut-1','tut-2');">
               {% trans "Got it!" %}
             </button>
           </center>
         </div>
+        </div>
+
+        
 
 
       </div>
@@ -120,9 +121,12 @@
 
         <div class="row">
           <center>
+            <button id="tutorial" onclick="switch_tutorial('tut-2','tut-1');">
+              {% trans "Go Back" %}
+            </button>
             <button id="tutorial" onclick="switch_tutorial('tut-2','tut-3');">
               {% trans "Got it!" %}
-            </button>
+            </button>            
           </center>
         </div>
 
@@ -159,6 +163,9 @@
 
         <div class="row">
           <center>
+             <button id="tutorial" onclick="switch_tutorial('tut-3','tut-2');">
+              {% trans "Go Back" %}
+            </button>
             <button id="tutorial" onclick="switch_tutorial('tut-3','tut-4');">
               {% trans "Got it!" %}
             </button>
@@ -189,6 +196,9 @@
 
         <div class="row">
           <center>
+             <button id="tutorial" onclick="switch_tutorial('tut-4','tut-3');">
+              {% trans "Go Back" %}
+            </button>
             <button id="tutorial" onclick="switch_tutorial('tut-4','tut-5');">
               {% trans "Got it!" %}
             </button>
@@ -240,11 +250,15 @@
 
          <div class="row">
            <center>
+            <button id="tutorial" onclick="switch_tutorial('tut-5','tut-4');">
+                  {% trans "Go Back" %}
+                </button>
              {% if user.is_authenticated %}
-             <a href="/player/{{ user.id }}">
+             <a href="/player/{{ user.id }}" class="tutorial-play">
                {% else %}
-               <a href="/random_movie">
+               <a href="/random_movie" class="tutorial-play">
                  {% endif %}
+                
                  <button id="tutorial" onclick="">
                    {% trans "PLAY!" %}
                  </button>
@@ -306,8 +320,21 @@
     </div><!-- End button div -->
     </div><!-- End video/prompt div -->
     </div><!-- End player row-->
+        <script>
+            // Slick slider for tutorials
+        $(document).ready(function() {
+          $('.slider-tutorial').slick({
+            infinite: false,
+            arrows: true,
+            prevArrow: $('.arrow-tut-left'),
+            nextArrow: $('.arrow-tut-right')
+        });
 
-
-
+        }); 
+        
+ 
+    </script>
 
 {% endblock %}
+
+
