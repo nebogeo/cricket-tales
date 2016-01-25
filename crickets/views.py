@@ -129,7 +129,7 @@ def update_score(user,burrow):
         if scores[0].movies_finished in [10,25,50,100]:
             story = Story(player=user,
                           burrow=burrow,
-                          text="%(player)s has now watched "+scores[0].movies_finished+" burrows!")
+                          text=_("%(player)s has now watched %(count)i burrows!") % ('count':scores[0].movies_finished))
             story.save()
 
         else:
@@ -142,27 +142,27 @@ def update_stories(user,data):
     # make some stories
     if data['type'].name == "Cricket ID":
         story = Story(player=user,
-                      text="A cricket has just been IDed by %(player)s")
+                      text=_("A cricket has just been IDed by %(player)s)")
         story.save()
 
     if data['type'].name == "Predator: Bird":
         story = Story(player=user,
-                      text="A bird has been spotted by %(player)s")
+                      text=_("A bird has been spotted by %(player)s"))
         story.save()
 
     if data['type'].name == "Predator: Shrew":
         story = Story(player=user,
-                      text="%(player)s has seen a shrew!")
+                      text=_("%(player)s has seen a shrew!"))
         story.save()
 
     if data['type'].name == "SING":
         story = Story(player=user,
-                      text="A cricket has been seen singing by %(player)s")
+                      text=_("A cricket has been seen singing by %(player)s"))
         story.save()
 
     if data['type'].name == "FIGHT":
         story = Story(player=user,
-                      text="A fight has been spotted by %(player)s")
+                      text=_("A fight has been spotted by %(player)s"))
         story.save()
 
 

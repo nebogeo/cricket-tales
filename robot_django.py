@@ -23,6 +23,7 @@ from crickets.common import *
 from django.utils import timezone
 from django.db.models import Max
 from django.db.models import Count
+from django.utils.translation import ugettext_lazy as _
 
 import robot.process
 import robot.exicatcher
@@ -290,7 +291,7 @@ def update_burrows_activity():
                 burrow.save()
 
                 story = Story(player=hiscore.player,
-                              text="%(player) has built a new house.")
+                              text=_("%(player) has built a new house."))
                 story.save()
 
         burrow.total_events = Event.objects.filter(movie__burrow=burrow).count()
