@@ -494,11 +494,11 @@ function image_from_house(house) {
 }
 
 function size_from_house(house,zoom) {
-    var zooms = [[5, 3.3335],
-                 [10, 6.667],
-                 [20, 13.334],
-                 [30, 20],
-                 [70, 46.669],
+    var zooms = [[5,   3.3335],
+                 [10,  6.667],
+                 [20,  13.334],
+                 [30,  20],
+                 [70,  46.669],
                  [125, 83.3375]];
 
     if (house=='' || house=="0") {
