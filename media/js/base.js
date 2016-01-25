@@ -463,3 +463,32 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
     }
 
 }
+
+// house helpers
+
+function image_from_house(house) {
+    if (house=='') {
+        var random_file_no = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+        return 'images/burrows/burrow-'+random_file_no+'.png';
+    } else {
+        return 'images/houses/built/'+house+'.png';
+    }
+}
+
+function size_from_house(house,zoom) {
+    var zooms = [[5, 3.3335],
+                 [10, 6.667],
+                 [20, 13.334],
+                 [30, 20],
+                 [70, 46.669],
+                 [125, 83.3375]];
+
+    if (house=='') {
+        return zooms[zoom];
+    } else {
+        ret = zooms[zoom];
+        ret[0]*=2;
+        ret[1]*=5;
+        return ret;
+    }
+}

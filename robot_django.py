@@ -277,47 +277,27 @@ def make_video(movie,instance_name):
 #########################################################################
 # updating data from player activity, expensive stuff to do every few mins
 
-def update_crickets_activity():
-    print("crickets...")
-    for cricket in Cricket.objects.all():
-        #print("cricket:"+str(cricket))
-        fans = Event.objects.filter(movie__cricket=cricket)\
-                            .exclude(user__isnull=True)\
-                            .values('user__username')\
-                            .annotate(count=Count('user'))\
-                            .order_by('-count')
-        if len(fans)>0:
-            cricket.biggest_fan=fans[0]["user__username"]
-            #print("biggest fan is: "+cricket.biggest_fan)
-        cricket.num_contributors = len(fans)
-        #print("with "+str(cricket.num_contributors)+" contributors")
-        cricket.total_events = Event.objects.filter(movie__cricket=cricket).count()
-        #print("total events: "+str(cricket.total_events))
-
-        # dependant on active videos so needs updating here
-        cricket.num_videos = Movie.objects.filter(cricket=cricket,status=1).count()
-        #if cricket.num_videos!=0: print(cricket.num_videos)
-        cricket.save()
-
 def update_burrows_activity():
     print("burrows...")
     for burrow in Burrow.objects.all():
-        fans = Event.objects.filter(movie__burrow=burrow)\
-                            .exclude(user__isnull=True)\
-                            .values('user__username')\
-                            .annotate(count=Count('user'))\
-                            .order_by('-count')
-        if len(fans)>0:
-            burrow.biggest_contributor=fans[0]["user__username"]
-        burrow.num_contributors = len(fans)
-        #print("with "+str(cricket.num_contributors)+" contributors")
+        # update the houses stuff
+        hiscores = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('movies_finished')
+        if len(hiscores)>0:
+            hiscore=hiscores[0]
+            if burrow.owner != hiscore.player:
+                burrow.new_house_needed = 1
+                burrow.owner = hiscore.player
+                burrow.save()
+
         burrow.total_events = Event.objects.filter(movie__burrow=burrow).count()
-        burrow.num_movies_watched = Movie.objects.filter(burrow=burrow, views__gt=1).count()
+        # todo: not right, need to sum these...
+        burrow.num_movies_watched = PlayerBurrowScore.objects.filter(burrow=burrow).count()
         # movies_ready = burrow.num_movies_ready
         # burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
         burrow.num_movies_ready = Movie.objects.filter(burrow=burrow,status=1).count()
         #print("total events: "+str(cricket.total_events))
         burrow.save()
+
 
 def update_movies_activity():
     print("movies...")
@@ -339,7 +319,6 @@ def update_movies_activity():
 #                PlayersToMovies(user=user, movie=movie).save()
 
 def update_all_activity():
-    update_crickets_activity()
     update_burrows_activity()
     update_movies_activity()
     #update_player_to_movies()

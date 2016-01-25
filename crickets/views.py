@@ -25,23 +25,10 @@ from django.contrib.auth import authenticate, login, logout
 #####################################################################
 ## index
 
-class IndexView(generic.ListView):
-    template_name = 'crickets/index.html'
-    context_object_name = 'crickets_list'
-    def get_queryset(self):
-        return Cricket.objects.exclude(num_videos=0).order_by('?')[:5]
-
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        context['burrows'] = Burrow.objects.all()
-        context['hiscores_list']=Event.objects.all()\
-                            .exclude(user__isnull=True)\
-                            .values('user__username')\
-                            .annotate(count=Count('user'))\
-                            .order_by('-count')[:20]
-        context['hide_menu'] = True
-
-        return context
+def index(request):
+    context = {}
+    context['hide_menu'] = True
+    return render(request, 'crickets/index.html', context)
 
 ######################################################################
 ## player page
@@ -53,95 +40,12 @@ class PlayerView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(PlayerView, self).get_context_data(**kwargs)
 
-        ###############################################################
-        ## long lookup via all events (add movie.m.* to template to use)
-        ## get all unique movies that contain events we've tagged
-        #context['movies']=Event.objects.filter(user=context["user"]).values("movie").distinct()
-        ## lookup the movies themselves
-        ## this should be done in SQL - wtf can't work out how with ORM
-        #for movie in context['movies']:
-        #    movie["m"] = Movie.objects.get(pk=movie["movie"])
-
-        ###############################################################
-        ## fast lookup via playerstomovies
-        context['movies']=PlayersToMovies.objects.filter(user=context["user"])
+        context['movies'] = PlayerBurrowScore.objects.filter(player=context["user"])
         context['burrows'] = Burrow.objects.all()
-        context['all_movies'] = Movie.objects.all()
         context['page_title'] = _("%(username)s's BURROW MAP") % {'username': context["user"].username}
+        context['houses_needed_for'] = Burrow.objects.filter(owner=context["user"], new_house_needed=1)
 
         return context
-
-######################################################################
-## cricket page
-
-class CricketView(generic.DetailView):
-    model = Cricket
-    template_name = 'crickets/cricket.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(CricketView, self).get_context_data(**kwargs)
-        context['least_watched_movies']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).order_by('views')[:30]
-
-        for movie in context['least_watched_movies']:
-            movie.contributors=Event.objects.filter(movie=movie)\
-                            .exclude(user__isnull=True)\
-                            .values('user__username')\
-                            .annotate(count=Count('user'))\
-                            .count()
-
-        context['most_interesting_movies']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).order_by('-num_events')[:30]
-
-        for movie in context['most_interesting_movies']:
-            movie.contributors=Event.objects.filter(movie=movie)\
-                            .exclude(user__isnull=True)\
-                            .values('user__username')\
-                            .annotate(count=Count('user'))\
-                            .count()
-
-        context['num_events']=Event.objects.filter(movie__cricket=context['cricket']).count()
-
-        context['fan_list']=Event.objects.filter(movie__cricket=context['cricket'])\
-                            .exclude(user__isnull=True)\
-                            .values('user__username')\
-                            .annotate(count=Count('user'))\
-                            .order_by('-count')[:3]
-
-        context['anon']=Event.objects.filter(movie__cricket=context['cricket'], user__isnull=True).count()
-        context['total_videos']=Movie.objects.filter(cricket=context['cricket']).count()
-        context['total_videos_ready']=Movie.objects.filter(cricket=context['cricket']).exclude(status=0).count()
-        context['total_hours']="%0.2f"%(context['total_videos']/120.0)
-        return context
-
-# just like cricket view atm
-class BurrowView(generic.DetailView):
-    model = Burrow
-    template_name = 'crickets/burrow.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(BurrowView, self).get_context_data(**kwargs)
-        context['least_watched_movies']=Movie.objects.filter(burrow=context['burrow']).exclude(status=0).order_by('views')[:30]
-        for movie in context['least_watched_movies']:
-            movie.contributors=Event.objects.filter(movie=movie)\
-                            .exclude(user__isnull=True)\
-                            .values('user__username')\
-                            .annotate(count=Count('user'))\
-                            .count()
-
-        context['most_interesting_movies']=Movie.objects.filter(burrow=context['burrow']).exclude(status=0).order_by('-num_events')[:30]
-        for movie in context['most_interesting_movies']:
-            movie.contributors=Event.objects.filter(movie=movie)\
-                            .exclude(user__isnull=True)\
-                            .values('user__username')\
-                            .annotate(count=Count('user'))\
-                            .count()
-
-        context['total_videos']=Movie.objects.filter(burrow=context['burrow']).count()
-        context['total_videos_ready']=Movie.objects.filter(burrow=context['burrow'])\
-                                                   .exclude(status=0)\
-                                                   .count()
-        context['total_hours']="%0.2f"%(context['total_videos']/120.0)
-        return context
-
 
 ######################################################################
 ## movie page
@@ -227,6 +131,26 @@ def spit_event(request):
                 user = data["user"]
                 movie = data["movie"]
 
+                # update the score for this user if it's the last
+                # event (we can also calculate these by counting the
+                # cricket end's in the event table if we need to)
+                if data["type"].name == "Cricket End":
+
+                    # what if no burrow??
+                    scores = PlayerBurrowScore.objects.filter(player=user,
+                                                              burrow=movie.burrow)
+                    print scores
+                    if len(scores)>0:
+                        scores[0].movies_finished+=1
+                        scores[0].save()
+                    else:
+                        score = PlayerBurrowScore(player=user,
+                                                  burrow=movie.burrow,
+                                                  movies_finished=1)
+                        score.save()
+
+
+
                 try:
                     existing = PlayersToMovies.objects.get(user=user,movie=movie)
                 except PlayersToMovies.DoesNotExist:
@@ -238,6 +162,20 @@ def spit_event(request):
     else:
         form = EventForm()
         return render(request, 'crickets/event.html', {'form': form})
+
+## need to be a bit careful here, as these could come from anywhere
+def update_house(request):
+    if request.method == 'POST':
+        r = request.POST
+        burrow = Burrow.objects.filter(id=r['burrow']).first()
+        user = User.objects.filter(id=r['user']).first()
+        if burrow.new_house_needed==1 and burrow.owner==user:
+            burrow.house_info = r['house']
+            burrow.new_house_needed = 0
+            burrow.save()
+
+    return HttpResponse('')
+
 
 ######################################################################
 ## user stuff
@@ -335,9 +273,6 @@ def random_burrow_movie(request, id):
 ######################################################################
 ## json data
 
-def suck(request):
-    data = serializers.serialize("json", Cricket.objects.all())
-    return HttpResponse(json.dumps(data), content_type="application/json")
-
-def spit(request):
-    pass
+#def suck(request):
+#    data = serializers.serialize("json", Cricket.objects.all())
+#    return HttpResponse(json.dumps(data), content_type="application/json")
