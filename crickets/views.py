@@ -33,24 +33,27 @@ def index(request):
 ######################################################################
 ## player page
 
-class PlayerView(generic.DetailView):
-    model = User
-    template_name = 'crickets/player.html'
+def player(request,pk):
+    context = {}
 
-    def get_context_data(self, **kwargs):
-        context = super(PlayerView, self).get_context_data(**kwargs)
-
+    context["user"] = User.objects.filter(id=pk).first()
+    context['houses_needed_for'] = Burrow.objects.filter(owner=context["user"], new_house_needed=1)
+    # redirect to the house builder...
+    if len(context['houses_needed_for'])>0:
+        context['page_title'] = "CRICKET HOUSE BUILDER"
+        return render(request, 'crickets/builder.html', context)
+    else:
         context['movies'] = PlayerBurrowScore.objects.filter(player=context["user"])
         context['burrows'] = Burrow.objects.all()
         context['page_title'] = _("%(username)s's BURROW MAP") % {'username': context["user"].username}
-        context['houses_needed_for'] = Burrow.objects.filter(owner=context["user"], new_house_needed=1)
         context['stories'] = Story.objects.all().order_by('-time')[:5]
 
         # can we not do this on the browser??
         for story in context['stories']:
             story.text = _(story.text) % {'player': context['user'].username}
 
-        return context
+        return render(request, 'crickets/player.html', context)
+
 
 ######################################################################
 ## movie page
@@ -111,9 +114,9 @@ class EventForm(ModelForm):
          fields = "__all__"
 
 ## Static house builder
-def house_builder(request):
-    context = {}
-    context['event_types'] = get_event_types()
+def house_builder(request,id):
+    context = RequestContext(request)
+    print(context)
     return render(request, 'crickets/builder.html', context)
 
 
@@ -126,23 +129,23 @@ def update_score(user,burrow):
         scores[0].movies_finished+=1
         scores[0].save()
 
+        # make some stories out of counts of movies per user
         if scores[0].movies_finished in [10,25,50,100]:
             story = Story(player=user,
-                          burrow=burrow,
-                          text=_("%(player)s has now watched %(count)i burrows!") % ('count':scores[0].movies_finished))
+                          text=_("%(player)s has now watched %(count)i burrows!") %
+                         {'count':scores[0].movies_finished})
             story.save()
-
-        else:
-            score = PlayerBurrowScore(player=user,
-                                      burrow=movie.burrow,
-                                      movies_finished=1)
-            score.save()
+    else:
+        score = PlayerBurrowScore(player=user,
+                                  burrow=movie.burrow,
+                                  movies_finished=1)
+        score.save()
 
 def update_stories(user,data):
     # make some stories
     if data['type'].name == "Cricket ID":
         story = Story(player=user,
-                      text=_("A cricket has just been IDed by %(player)s)")
+                      text=_("A cricket has just been IDed by %(player)s"))
         story.save()
 
     if data['type'].name == "Predator: Bird":
@@ -210,8 +213,15 @@ def update_house(request):
             burrow.house_info = r['house']
             burrow.new_house_needed = 0
             burrow.save()
+            story = Story(player=user,
+                          text=_("%(player)s has built a new house."))
+            story.save()
 
     return HttpResponse('')
+
+
+
+
 
 
 ######################################################################

@@ -290,10 +290,6 @@ def update_burrows_activity():
                 burrow.owner = hiscore.player
                 burrow.save()
 
-                story = Story(player=hiscore.player,
-                              text=_("%(player) has built a new house."))
-                story.save()
-
         burrow.total_events = Event.objects.filter(movie__burrow=burrow).count()
         # todo: not right, need to sum these...
         burrow.num_movies_watched = PlayerBurrowScore.objects.filter(burrow=burrow).count()
