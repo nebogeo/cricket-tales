@@ -794,10 +794,8 @@ nav ul ul li a:hover {
 .slider-caption {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  padding-left: 1em;
   position: relative;
-  color: #fff;
-  background: url(../images/transparent-dark.png);
+  color: #000;
   z-index: 999;
 }
 
