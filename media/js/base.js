@@ -463,3 +463,11 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
     }
 
 }
+
+// Slick slider for tutorials
+ $('.slider-tutorial').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+  });

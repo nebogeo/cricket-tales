@@ -820,6 +820,17 @@ nav ul ul li a:hover {
   margin-right: 2em;
 }
 
+/* Tutorial slider styling */
+
+
+/* Verbose selector cuz slick */
+/*#tut-1 > div > div.arrow.arrow-tut-left.col-lg-2,
+#tut-1 > div > div.arrow.arrow-tut-right.col-lg-2,*/
+#tut-1 > div > div.arrow.arrow-tut-left.col-lg-2.slick-arrow,
+#tut-1 > div > div.arrow.arrow-tut-right.col-lg-2.slick-arrow {
+    padding-top: 25%;
+}
+
 
 /* Map */
 .leaflet-popup-tip,
