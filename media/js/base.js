@@ -91,11 +91,11 @@ function switch_tutorial(from,to) {
 
     // Checking if slide is tut-5, handle visibility of buttons
     if (to === "tut-5") {
-        $('.button_container').css({
+        $('#tutorial-buttons').css({
             'display' : 'none'
         });
     } else {
-        $('.button_container').css({
+        $('#tutorial-buttons').css({
             'display' : 'block'
         });
     }
