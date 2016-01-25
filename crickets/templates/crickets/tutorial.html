@@ -92,16 +92,19 @@
             <img src="/media/images/right-arrow.png" width="100"/>
           </div>
         </div>
-
-        </div>
-
         <div class="row">
           <center>
+             <button id="tutorial" onclick="switch_tutorial('tut-1','tut-main');">
+              {% trans "Go Back" %}
+            </button>
             <button id="tutorial" onclick="switch_tutorial('tut-1','tut-2');">
               {% trans "Got it!" %}
             </button>
           </center>
         </div>
+        </div>
+
+        
 
 
       </div>
@@ -121,9 +124,12 @@
 
         <div class="row">
           <center>
+            <button id="tutorial" onclick="switch_tutorial('tut-2','tut-1');">
+              {% trans "Go Back" %}
+            </button>
             <button id="tutorial" onclick="switch_tutorial('tut-2','tut-3');">
               {% trans "Got it!" %}
-            </button>
+            </button>            
           </center>
         </div>
 
@@ -160,6 +166,9 @@
 
         <div class="row">
           <center>
+             <button id="tutorial" onclick="switch_tutorial('tut-3','tut-2');">
+              {% trans "Go Back" %}
+            </button>
             <button id="tutorial" onclick="switch_tutorial('tut-3','tut-4');">
               {% trans "Got it!" %}
             </button>
@@ -190,6 +199,9 @@
 
         <div class="row">
           <center>
+             <button id="tutorial" onclick="switch_tutorial('tut-4','tut-3');">
+              {% trans "Go Back" %}
+            </button>
             <button id="tutorial" onclick="switch_tutorial('tut-4','tut-5');">
               {% trans "Got it!" %}
             </button>
@@ -241,11 +253,15 @@
 
          <div class="row">
            <center>
+            <button id="tutorial" onclick="switch_tutorial('tut-5','tut-4');">
+                  {% trans "Go Back" %}
+                </button>
              {% if user.is_authenticated %}
              <a href="/player/{{ user.id }}">
                {% else %}
                <a href="/random_movie">
                  {% endif %}
+                
                  <button id="tutorial" onclick="">
                    {% trans "PLAY!" %}
                  </button>

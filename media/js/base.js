@@ -98,6 +98,7 @@ function tut_video_right() {
 
 }
 
+
 // video/tagging business
 var pop = false;
 var events = [];
