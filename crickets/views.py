@@ -137,7 +137,7 @@ def update_score(user,burrow):
             story.save()
     else:
         score = PlayerBurrowScore(player=user,
-                                  burrow=movie.burrow,
+                                  burrow=burrow,
                                   movies_finished=1)
         score.save()
 
