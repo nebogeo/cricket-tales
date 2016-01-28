@@ -35,7 +35,6 @@ def index(request):
 
 def player(request,pk):
     context = {}
-
     context["user"] = User.objects.filter(id=pk).first()
     context['houses_needed_for'] = Burrow.objects.filter(owner=context["user"], new_house_needed=1)
     # redirect to the house builder...
@@ -72,6 +71,7 @@ def get_event_types():
         EventType.objects.filter(name="Predator: Shrew").first(),
         EventType.objects.filter(name="TRAP").first()]
 
+    # sort out the backgrounds (there are 8 variations and two special types)
     for c, event_type in enumerate(event_types):
         event_type.title = True
         event_type.image = (c%7)+1 # rotate variations
@@ -209,6 +209,7 @@ def update_house(request):
         r = request.POST
         burrow = Burrow.objects.filter(id=r['burrow']).first()
         user = User.objects.filter(id=r['user']).first()
+        # if the details look correct
         if burrow.new_house_needed==1 and burrow.owner==user:
             burrow.house_info = r['house']
             burrow.new_house_needed = 0
@@ -278,7 +279,7 @@ def logmein(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/player/'+str(user.id))
             else:
                 return HttpResponse(_("Your account is disabled."))
         else:

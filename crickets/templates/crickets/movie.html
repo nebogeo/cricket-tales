@@ -22,7 +22,11 @@
            onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
+  {% if user.is_authenticated %}
+           onclick="window.location.href='/player/{{ user.id }}'">
+  {% else %}
            onclick="window.location.href='/'">
+  {% endif %}
         <div class="button_text"><p>{% trans "Back" %}</p></div>
       </div>
       <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4"
