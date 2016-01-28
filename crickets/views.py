@@ -49,7 +49,7 @@ def player(request,pk):
 
         # can we not do this on the browser??
         for story in context['stories']:
-            story.text = _(story.text) % {'player': context['user'].username}
+            story.text = _(story.text) % {'player': story.player}
 
         return render(request, 'crickets/player.html', context)
 
