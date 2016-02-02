@@ -23,7 +23,7 @@
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
   {% if user.is_authenticated %}
-           onclick="window.location.href='/player/{{ user.id }}'">
+           onclick="window.location.href='/map/'">
   {% else %}
            onclick="window.location.href='/'">
   {% endif %}

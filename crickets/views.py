@@ -31,42 +31,50 @@ def index(request):
     return render(request, 'crickets/index.html', context)
 
 ######################################################################
-## player page
+## player's map page
 
-def player(request,pk):
-    context = {}
-    context["user"] = User.objects.filter(id=pk).first()
-    context['houses_needed_for'] = Burrow.objects.filter(owner=context["user"], new_house_needed=1)
-    # redirect to the house builder...
-    if len(context['houses_needed_for'])>0:
-        context['page_title'] = "CRICKET HOUSE BUILDER"
-        return render(request, 'crickets/builder.html', context)
-    else:
-        context['movies'] = PlayerBurrowScore.objects.filter(player=context["user"])
-        context['burrows'] = Burrow.objects.all()
-        context['page_title'] = _("%(username)s's BURROW MAP") % {'username': context["user"].username}
-        context['stories'] = Story.objects.all().order_by('-time')[:5]
+def map(request):
+    if request.user.is_authenticated():
+        context = {}
+        context['user']=request.user
+        context['houses_needed_for'] = Burrow.objects.filter(owner=request.user, new_house_needed=1)
+        # redirect to the house builder...
+        if len(context['houses_needed_for'])>0:
+            context['page_title'] = "CRICKET HOUSE BUILDER"
+            return render(request, 'crickets/builder.html', context)
+        else:
+            context['movies'] = PlayerBurrowScore.objects.filter(player=request.user)
+            context['burrows'] = Burrow.objects.all()
+            context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
+            context['stories'] = Story.objects.all().order_by('-time')[:5]
 
-        # can we not do this on the browser??
-        for story in context['stories']:
-            story.text = _(story.text) % {'player': story.player}
+            # can we not do this on the browser??
+            for story in context['stories']:
+                story.text = _(story.text) % {'player': story.player}
 
-        return render(request, 'crickets/player.html', context)
+        return render(request, 'crickets/map.html', context)
 
-def house(request,player_id,burrow_id,house):
+    return HttpResponseRedirect('/')
+
+def house(request,burrow_id,house):
+    context = RequestContext(request)
     burrow = Burrow.objects.filter(id=burrow_id).first()
-    user = User.objects.filter(id=player_id).first()
-    # if the details look correct
-    # (we need to be careful as this can be called from anywhere)
-    if burrow.new_house_needed==1 and burrow.owner==user:
-        burrow.house_info = house
-        burrow.new_house_needed = 0
-        burrow.save()
-        story = Story(player=user,
-                      text=_("%(player)s has built a new house."))
-        story.save()
 
-    return HttpResponseRedirect('/player/'+str(player_id))
+    if request.user.is_authenticated():
+        user = request.user
+        # check that the details look correct
+
+        if burrow.new_house_needed==1 and burrow.owner==user:
+            burrow.house_info = house
+            burrow.new_house_needed = 0
+            burrow.save()
+            story = Story(player=user,
+                          text=_("%(player)s has built a new house."))
+            story.save()
+
+        return HttpResponseRedirect('/map/')
+
+    return HttpResponseRedirect('/')
 
 
 ######################################################################
@@ -273,7 +281,7 @@ def logmein(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/player/'+str(user.id))
+                return HttpResponseRedirect('/map/')
             else:
                 return HttpResponse(_("Your account is disabled."))
         else:

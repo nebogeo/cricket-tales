@@ -101,7 +101,7 @@
         </div>
         </div>
 
-        
+
 
 
       </div>
@@ -126,7 +126,7 @@
             </button>
             <button id="tutorial" onclick="switch_tutorial('tut-2','tut-3');">
               {% trans "Got it!" %}
-            </button>            
+            </button>
           </center>
         </div>
 
@@ -254,11 +254,11 @@
                   {% trans "Go Back" %}
                 </button>
              {% if user.is_authenticated %}
-             <a href="/player/{{ user.id }}" class="tutorial-play">
+             <a href="/map/" class="tutorial-play">
                {% else %}
                <a href="/random_movie" class="tutorial-play">
                  {% endif %}
-                
+
                  <button id="tutorial" onclick="">
                    {% trans "PLAY!" %}
                  </button>
@@ -330,11 +330,9 @@
             nextArrow: $('.arrow-tut-right')
         });
 
-        }); 
-        
- 
+        });
+
+
     </script>
 
 {% endblock %}
-
-
