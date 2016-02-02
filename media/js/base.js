@@ -96,15 +96,17 @@ function switch_tutorial(from,to) {
         });
     }
 
-    // need to build the gallery here
-    // as the element is display:none at load time
-    // so does not calculate properly
-    $('#slider-tutorial').slick({
-        infinite: false,
-        arrows: true,
-        prevArrow: $('.arrow-tut-left'),
-        nextArrow: $('.arrow-tut-right')
-    });
+    if (to=="tut-1") {
+        // need to build the carousel here
+        // as the element is display:none at load time
+        // so does not calculate properly
+        $('#slider-tutorial').slick({
+            infinite: false,
+            arrows: true,
+            prevArrow: $('.arrow-tut-left'),
+            nextArrow: $('.arrow-tut-right')
+        });
+    }
 }
 
 
