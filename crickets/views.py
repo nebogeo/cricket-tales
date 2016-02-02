@@ -156,7 +156,8 @@ def update_score(user,burrow):
         if scores[0].movies_finished in [10,25,50,100]:
             story = Story(player=user,
                           text=_("%(player)s has now watched %(count)i burrows!") %
-                         {'count':scores[0].movies_finished})
+                         {'player':'%(player)s', # stick this back in...
+                          'count':scores[0].movies_finished})
             story.save()
     else:
         score = PlayerBurrowScore(player=user,
