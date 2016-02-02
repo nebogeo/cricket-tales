@@ -34,6 +34,7 @@
           <ul>
             <li><a href="#"><img src="{{ MEDIA_URL }}images/buttons/menu.png"></a>
 	          <ul>
+		        <li><a href="/">{% trans "HOME" %}</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="/map/">{% trans "MY MAP" %}</a></li>
                 {% else %}
