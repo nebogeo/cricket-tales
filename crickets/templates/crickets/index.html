@@ -45,9 +45,6 @@
 <img class="logo" src="{{ MEDIA_URL }}/images/logo.png"/>
 </div>
 <div class="game_title">
-{% if user.is_authenticated %}
-{% blocktrans with username=user.username %}Welcome back {{ username }}, to {% endblocktrans %}</br>
-{% endif %}
 <span style="font-size:500%">{% trans "CRICKET TALES" %}</span>
 </div>
 <div class="row">
