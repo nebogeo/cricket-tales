@@ -53,6 +53,21 @@ def player(request,pk):
 
         return render(request, 'crickets/player.html', context)
 
+def house(request,player_id,burrow_id,house):
+    burrow = Burrow.objects.filter(id=burrow_id).first()
+    user = User.objects.filter(id=player_id).first()
+    # if the details look correct
+    # (we need to be careful as this can be called from anywhere)
+    if burrow.new_house_needed==1 and burrow.owner==user:
+        burrow.house_info = house
+        burrow.new_house_needed = 0
+        burrow.save()
+        story = Story(player=user,
+                      text=_("%(player)s has built a new house."))
+        story.save()
+
+    return HttpResponseRedirect('/player/'+str(player_id))
+
 
 ######################################################################
 ## movie page
@@ -202,27 +217,6 @@ def spit_event(request):
     else:
         form = EventForm()
         return render(request, 'crickets/event.html', {'form': form})
-
-## need to be a bit careful here, as these could come from anywhere
-def update_house(request):
-    if request.method == 'POST':
-        r = request.POST
-        burrow = Burrow.objects.filter(id=r['burrow']).first()
-        user = User.objects.filter(id=r['user']).first()
-        # if the details look correct
-        if burrow.new_house_needed==1 and burrow.owner==user:
-            burrow.house_info = r['house']
-            burrow.new_house_needed = 0
-            burrow.save()
-            story = Story(player=user,
-                          text=_("%(player)s has built a new house."))
-            story.save()
-
-    return HttpResponse('')
-
-
-
-
 
 
 ######################################################################

@@ -85,7 +85,7 @@
   </div>
 </div>
 <div class="row-fluid col-xs-12">
-  <a href="."><button class="col-lg-2 col-lg-offset-3 submit">BUILD</button></a>
+  <button class="col-lg-2 col-lg-offset-3 submit">BUILD</button>
 </div>
 
  <script type="text/javascript">
@@ -112,13 +112,7 @@
 
     		var final_house = select_roof + select_middle + select_ground + select_colour;
 
-            $.post("/update_house/", {
-                burrow: {{ houses_needed_for.first.id }},
-                house: final_house,
-                user: {{ user.id }},
-            });
-
-
+            window.location = "/house/{{ user.id }}/{{ houses_needed_for.first.id }}/"+final_house;
     	})
     });
   </script>
