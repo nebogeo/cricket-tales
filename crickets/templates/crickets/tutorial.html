@@ -43,7 +43,7 @@
           <div class="arrow arrow-tut-left col-lg-2">
             <img src="/media/images/left-arrow.png" width="100"/>
           </div>
-          <div class="slider-tutorial col-lg-8">
+          <div id="slider-tutorial" class="slider-tutorial col-lg-8">
             <div class="slider-item">
               <div class="slider-caption"><h2 class="text-center">{% trans "Mating behaviour" %}</h2></div>
               <video controls>
@@ -320,19 +320,5 @@
     </div><!-- End button div -->
     </div><!-- End video/prompt div -->
     </div><!-- End player row-->
-        <script>
-            // Slick slider for tutorials
-        $(document).ready(function() {
-          $('.slider-tutorial').slick({
-            infinite: false,
-            arrows: true,
-            prevArrow: $('.arrow-tut-left'),
-            nextArrow: $('.arrow-tut-right')
-        });
-
-        });
-
-
-    </script>
 
 {% endblock %}

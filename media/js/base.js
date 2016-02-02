@@ -70,10 +70,6 @@ function switch_tutorial(from,to) {
     t.style.display = "none";
     t = document.getElementById(to);
     t.style.display = "block";
-    // need to build the gallery here
-    // as the element is display:none at load time
-    // so does not calculate properly
-    // setup_gallery();
 
     make_visible("behaviour-buttongroup",false);
     make_visible("FEED-buttongroup",false);
@@ -100,6 +96,15 @@ function switch_tutorial(from,to) {
         });
     }
 
+    // need to build the gallery here
+    // as the element is display:none at load time
+    // so does not calculate properly
+    $('#slider-tutorial').slick({
+        infinite: false,
+        arrows: true,
+        prevArrow: $('.arrow-tut-left'),
+        nextArrow: $('.arrow-tut-right')
+    });
 }
 
 
