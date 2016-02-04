@@ -35,7 +35,11 @@
            onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
+  {% if user.is_authenticated %}
            onclick="window.location.href='/random_burrow_movie/{{ movie.burrow.id }}'">
+  {% else %}
+           onclick="window.location.href='/random_movie/'">
+  {% endif %}
         <div class="button_text"><p>{% trans "Next movie" %}</p></div>
       </div>
     </div>
