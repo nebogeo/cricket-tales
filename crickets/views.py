@@ -118,8 +118,10 @@ class MovieView(generic.DetailView):
 
         # When page loads, mark as 'watched', this will need to be changed to 50%
         burrow = context['movie'].burrow
-        burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
-        burrow.save()
+        # not all videos have burrows (in anon mode)
+        if burrow:
+            burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
+            burrow.save()
 
         # order these explicitly
         context['page_title'] = _("MOVIE")
