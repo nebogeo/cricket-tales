@@ -43,8 +43,8 @@ def map(request):
             context['page_title'] = "CRICKET HOUSE BUILDER"
             return render(request, 'crickets/builder.html', context)
         else:
-            context['movies'] = PlayerBurrowScore.objects.filter(player=request.user)
             context['burrows'] = Burrow.objects.all()
+            context['num_empty_burrows'] = Burrow.objects.filter(owner__isnull=True).count()
             context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
             context['stories'] = Story.objects.all().order_by('-time')[:5]
 

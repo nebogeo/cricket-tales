@@ -15,7 +15,11 @@
       <script src="{{MEDIA_URL}}/js/leaflet.js"></script>
 
       <script>
-        function create_marker(pos_x, pos_y, name, num_movies_ready, num_contributors, num_movies_watched, num_movies_unwatched, id, house) {
+        function create_marker(pos_x, pos_y, name, num_movies,
+                               num_contributors, num_movies_watched,
+                               num_movies_unwatched, events_recorded,
+                               id, house) {
+
           var lat_string = pos_x;
           var long_string = pos_y;
           var latitude = parseFloat(lat_string);
@@ -29,15 +33,15 @@
             })
           });
 
-
           var popup_title = '<h4>{% trans 'Burrow' %} '+name+'</h4><br/>';
-          var total_videos = '<strong>{% trans 'Total Videos:' %} </strong> '+ num_movies_ready +'<br/>';
+          var total_videos = '<strong>{% trans 'Total Videos:' %} </strong> '+ num_movies +'<br/>';
           var total_contributors = '<strong>{% trans 'Total Contributors:' %} </strong> '+ num_contributors +'<br/>';
           var total_videos_watched = '<strong>{% trans 'Total Videos Watched:' %} </strong> '+ num_movies_watched +'<br/>';
           var total_videos_unwatched = '<strong>{% trans 'Total Videos Unwatched:' %} </strong> '+ num_movies_unwatched +'<br/>';
+          var events_recorded = '<strong>{% trans 'Total Events Recorded:' %} </strong> '+ events_recorded +'<br/>';
           var burrow_button = '<form action="/random_burrow_movie/'+id+'"><input type="submit" class="burrow_link" value="{% trans 'Go to Burrow' %}"></form>'
 
-          marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched + burrow_button);
+          marker.bindPopup(popup_title + total_videos + total_contributors + total_videos_watched + total_videos_unwatched + events_recorded + burrow_button);
 
           marker.addTo(map);
 
@@ -67,7 +71,17 @@
         }).addTo(map);
 
     {% for burrow in burrows %}
-      create_marker('{{ burrow.pos_x }}', '{{ burrow.pos_y }}', '{{ burrow.name }}', '{{ burrow.num_movies_ready }}', '{{ burrow.num_contributors }}', '{{ burrow.num_contributors }}', '{{ burrow.num_movies_watched }}', '{{ burrow.id }}', '{{burrow.house_info}}');
+
+      create_marker('{{ burrow.pos_x }}', '{{ burrow.pos_y }}',
+        '{{ burrow.name }}',
+        '{{ burrow.num_movies }}',
+        '{{ burrow.total_contributors }}',
+        '{{ burrow.num_movies_watched }}',
+        '{{ burrow.num_movies_unwatched }}',
+        '{{ burrow.total_events }}',
+        '{{ burrow.id }}',
+        '{{burrow.house_info}}');
+
     {% endfor %}
 
 
@@ -83,15 +97,15 @@
       <h1>{% trans "SCORE" %}</h1>
       <div class="row">
       <div class="score-name col-sm-6">{% trans "Videos watched" %}</div>
-      <div class="score-value col-sm-3">{{ movies.count }}</div>
+      <div class="score-value col-sm-3">{{ user.profile.num_videos_watched }}</div>
       </div>
       <div class="row">
-      <div class="score-name col-sm-6">{% trans "Houses built" %}</div>
-      <div class="score-value col-sm-3">0</div>
+      <div class="score-name col-sm-6">{% trans "Burrows owned" %}</div>
+      <div class="score-value col-sm-3">{{ user.profile.num_burrows_owned }}</div>
       </div>
       <div class="row">
       <div class="score-name col-sm-6">{% trans "Empty burrows" %}</div>
-      <div class="score-value col-sm-3">999</div>
+      <div class="score-value col-sm-3">{{ num_empty_burrows }}</div>
       </div>
     </div>
 

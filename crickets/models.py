@@ -22,7 +22,11 @@ from datetime import datetime
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     score = models.FloatField(default=0)
+    # these 3 updated by robot
     num_events = models.IntegerField(default=0)
+    num_videos_watched = models.IntegerField(default=0)
+    num_burrows_owned = models.IntegerField(default=0)
+
     ethics_agreed = models.IntegerField(default=0)
     age_range = models.IntegerField(default=0)
 
@@ -43,7 +47,8 @@ class Burrow(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, default = None)
     # (updated from update.py)
     new_house_needed = models.IntegerField(default=0)
-    num_contributors = models.CharField(max_length=200, default=0)
+    total_contributors = models.IntegerField(default=0)
+
     total_events = models.CharField(max_length=200, default=0)
     house_info = models.CharField(max_length=200, blank=True, default='')
 

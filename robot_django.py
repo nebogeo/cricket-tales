@@ -21,8 +21,7 @@ import datetime
 from crickets.models import *
 from crickets.common import *
 from django.utils import timezone
-from django.db.models import Max
-from django.db.models import Count
+from django.db.models import Max, Count, Sum
 from django.utils.translation import ugettext_lazy as _
 
 import robot.process
@@ -278,8 +277,18 @@ def make_video(movie,instance_name):
 #########################################################################
 # updating data from player activity, expensive stuff to do every few mins
 
+def update_player_activity():
+    for profile in UserProfile.objects.all():
+        user=profile.user
+        # slightly unwieldy, count the number of movies that have
+        # cricket end events for this user
+        cricket_end = EventType.objects.filter(name="Cricket End").first()
+        profile.num_videos_watched = Event.objects.filter(user=user,type=cricket_end).distinct('movie').count()
+        profile.num_burrows_owned = Burrow.objects.filter(owner=user).count()
+        profile.num_events = Event.objects.filter(user=user).count()
+        profile.save()
+
 def update_burrows_activity():
-    print("burrows...")
     for burrow in Burrow.objects.all():
         # update the houses stuff
         hiscores = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('movies_finished')
@@ -291,17 +300,19 @@ def update_burrows_activity():
                 burrow.save()
 
         burrow.total_events = Event.objects.filter(movie__burrow=burrow).count()
-        # todo: not right, need to sum these...
-        burrow.num_movies_watched = PlayerBurrowScore.objects.filter(burrow=burrow).count()
-        # movies_ready = burrow.num_movies_ready
-        # burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
+        burrow.total_contributors = PlayerBurrowScore.objects.filter(burrow=burrow).distinct('player').count()
+
+        # slightly unwieldy, count the number of movies that have
+        # cricket end events for this burrow
+        cricket_end = EventType.objects.filter(name="Cricket End").first()
+        burrow.num_movies_watched = Event.objects.filter(movie__burrow=burrow,type=cricket_end).distinct('movie').count()
+        burrow.num_movies_unwatched = burrow.num_movies-burrow.num_movies_watched
         burrow.num_movies_ready = Movie.objects.filter(burrow=burrow,status=1).count()
         #print("total events: "+str(cricket.total_events))
         burrow.save()
 
 
 def update_movies_activity():
-    print("movies...")
     for movie in Movie.objects.all():
         num_events = Event.objects.filter(movie=movie).count()
         if movie.num_events != num_events:
@@ -321,8 +332,8 @@ def update_movies_activity():
 
 def update_all_activity():
     update_burrows_activity()
-    update_movies_activity()
-    #update_player_to_movies()
+    #update_movies_activity()
+    update_player_activity()
 
 
 def test_random_movie():
