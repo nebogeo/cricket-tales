@@ -46,6 +46,7 @@ def map(request):
             context['burrows'] = Burrow.objects.all()
 
             for burrow in context['burrows']:
+                # todo: this may be a bit heavy... perhaps cache in it's own table?
                 player_score = 0
                 t = PlayerBurrowScore.objects.filter(player=request.user,burrow=burrow)
                 if t: player_score = t[0].movies_finished
@@ -53,7 +54,6 @@ def map(request):
                 t = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('movies_finished')
                 if t: highest_score = t[0].movies_finished
                 burrow.videos_to_view = highest_score - player_score
-
 
             context['num_empty_burrows'] = Burrow.objects.filter(owner__isnull=True).count()
             context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
