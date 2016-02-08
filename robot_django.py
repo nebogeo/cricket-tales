@@ -23,6 +23,7 @@ from crickets.common import *
 from django.utils import timezone
 from django.db.models import Max, Count, Sum
 from django.utils.translation import ugettext_lazy as _
+import subprocess
 
 import robot.process
 import robot.exicatcher
@@ -277,6 +278,33 @@ def make_video(movie,instance_name):
 #########################################################################
 # updating data from player activity, expensive stuff to do every few mins
 
+def disk_state():
+    df = subprocess.Popen(["df", "-h", "/"], stdout=subprocess.PIPE)
+    output = df.communicate()[0]
+    device, size, used, available, percent, mountpoint = output.split("\n")[1].split()
+    return used+" used, "+available+" available, "+percent+" full"
+
+def generate_report():
+    cricket_end = EventType.objects.filter(name="Cricket End").first()
+    print("it's yer daily cricket tales robot report")
+    print("-----------------------------------------")
+    print("")
+    print("players: "+str(UserProfile.objects.all().count()))
+    print("movies watched: "+str(Event.objects.filter(type=cricket_end).distinct('movie').count()))
+    print("events recorded: "+str(Event.objects.all().count()))
+    print("movies availible: "+str(Movie.objects.filter(status=1).count()))
+    print("movies awaiting processing: "+str(Movie.objects.filter(status=0).count()))
+    print("movies finished: "+str(Movie.objects.filter(status=2).count()))
+    print("disk state: "+disk_state())
+    load = os.getloadavg()
+    print("server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2]))
+    print("(eight cpus, so only in trouble with MD if > 8)")
+    print("")
+    print("    __         .' '. ")
+    print("  _/__)        .   .       .")
+    print(" (8|)_}}- .      .        .")
+    print("  `\__)    '. . ' ' .  . '")
+
 def update_player_activity():
     for profile in UserProfile.objects.all():
         user=profile.user
@@ -295,6 +323,7 @@ def update_burrows_activity():
         if len(hiscores)>0:
             hiscore=hiscores[0]
             if burrow.owner != hiscore.player:
+                print("burrow "+burrow.name+" has just been owned by "+hiscore.player.username)
                 burrow.new_house_needed = 1
                 burrow.owner = hiscore.player
                 burrow.save()

@@ -42,4 +42,4 @@ def random_one_check_status(model, status):
          pass
 
 def random_burrow_one_check_status(model, burrow, status):
-   return model.objects.filter(burrow=burrow).order_by('?').first()
+   return model.objects.filter(burrow=burrow, status=status).order_by('?').first()
