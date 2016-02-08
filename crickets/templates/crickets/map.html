@@ -74,7 +74,7 @@
       create_marker('{{ burrow.pos_x }}', '{{ burrow.pos_y }}',
         '{{ burrow.name }}',
         '{{ burrow.videos_to_view }}',
-        ({{ burrow.num_movies_watched }}/{{ burrow.num_movies }})*100,
+        Number(({{ burrow.num_movies_watched }}/{{ burrow.num_movies }})*100).toFixed(1),
         '{{ burrow.total_contributors }}',
         '{{ burrow.total_events }}',
         '{{ burrow.id }}',
