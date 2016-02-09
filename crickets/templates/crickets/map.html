@@ -7,10 +7,10 @@
 {% block bottom_layer %}
 <link rel="stylesheet" href="{{MEDIA_URL}}css/leaflet.css" />
 
-<div class="row">
+<div class="row col-sm-12">
   <!-- map -->
   <div class="col-sm-8 col-xs-12">
-      <div id="map" class="row-fluid" style="height:500px;"></div>
+      <div id="map" class="row-fluid" style="height:800px;"></div>
 
       <script src="{{MEDIA_URL}}/js/leaflet.js"></script>
 
@@ -53,7 +53,6 @@
         function new_icon(zoom) {
             var icon = marker.options.icon;
             icon.options.iconSize = size_from_house(house,zoom);
-            console.log(house)
             icon.options.iconUrl = '{{MEDIA_URL}}'+image_from_house(house)
             marker.setIcon(icon);
         }
@@ -92,28 +91,32 @@
 
   </div> <!-- map -->
 
-  <div class="col-sm-4 col-xs-12"> <!-- info block -->
-    <div class="score row-fluid">
+  <div class="row col-sm-4 col-xs-12"> <!-- info block -->
+
+    <div class="row-fluid score col-sm-12">
       <h1>{% trans "SCORE" %}</h1>
       <div class="row">
-      <div class="score-name col-sm-6">{% trans "Videos watched" %}</div>
-      <div class="score-value col-sm-3">{{ user.profile.num_videos_watched }}</div>
+      <div class="score-name col-sm-9 col-xs-9">{% trans "Videos watched" %}</div>
+      <div class="score-value col-sm-2 col-xs-2">{{ user.profile.num_videos_watched }}</div>
       </div>
       <div class="row">
-      <div class="score-name col-sm-6">{% trans "Houses built" %}</div>
-      <div class="score-value col-sm-3">{{ user.profile.num_burrows_owned }}</div>
+      <div class="score-name col-sm-9 col-xs-9">{% trans "Houses built" %}</div>
+      <div class="score-value col-sm-2 col-xs-2">{{ user.profile.num_burrows_owned }}</div>
       </div>
       <div class="row">
-      <div class="score-name col-sm-6">{% trans "Empty burrows" %}</div>
-      <div class="score-value col-sm-3">{{ num_empty_burrows }}</div>
+      <div class="score-name col-sm-9 col-xs-9">{% trans "Empty burrows" %}</div>
+      <div class="score-value col-sm-2 col-xs-2">{{ num_empty_burrows }}</div>
       </div>
     </div>
 
-    <div class="news-feed row-fluid">
+    <div class="row-fluid news-feed col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <h1>{% trans "NEWS FEED" %}</h1>
 
       {% for story in stories %}
-      <p>{{story.text}}</p>
+      <div class="news-bubble col-lg-6 col-md-12 col-sm-12 col-xs-4">
+        <div class="news-story">{{story.text}}</div>
+        <img src="{{MEDIA_URL}}images/crickets/bubble-0{{ rand|add:"123456"|make_list|random }}.png" class="news-stretch" alt="" />
+      </div>
       {% endfor %}
 
 
@@ -130,7 +133,7 @@
     <a href="/movie/{{ movie.movie.id }}/">
       <div class="box" style="background:url({{ MEDIA_URL }}movies/{{ movie.movie.name }}.jpg)">
         <div class="box-overlay"></div>
-        <div class="box-contents">
+{% cycle 'even' 'odd'%}        <div class="box-contents">
           Movie: {{ movie.movie.name }}</br>
         </div>
       </div>

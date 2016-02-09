@@ -2,7 +2,6 @@
 @import url(https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister);
 /* firefox likes these at the top??! */
 
-
 body {
   background: url('../images/background.png');
   background-repeat: repeat;
@@ -52,29 +51,67 @@ video {
     text-align: center;
     background: #f6fce9;
     font-size: 2vw;
-    height: 10em;
-    margin-bottom: 2em;
-}
+    margin-bottom: 1em;
+ }
 
 .score-name {
-    padding: 0.25em;
+    padding: 0.2em;
 }
 
 .score-value {
+    padding: 0.2em;
+    margin-bottom: 0.1em;
     background: #e7f8c1;
     text-align: center;
-    padding: 0.25em;
-    margin-bottom: 0.1em;
 }
 
 .news-feed {
     text-align: center;
     background: #f6fce9;
     font-size: 2vw;
-    height: 10em;
-    margin-bottom: 2em;
 }
 
+.news-bubble {
+
+}
+
+.news-story {
+    position: absolute;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    top: 12%;
+    left: 0;
+    font-size: 1.2vw;
+}
+
+/*
+ xm = 480px
+ sm = 768px
+ md = 992px
+ lg = 1200px
+*/
+
+@media (max-width: 1200px) {
+    .news-story{font-size: 2vw;}
+}
+
+@media (max-width: 992px) {
+    .news-story{font-size: 1.5vw;}
+}
+
+@media (max-width: 768px) {
+    .news-story{font-size: 3vw;}
+}
+
+@media (max-width: 480px) {
+    .news-story{font-size: 3vw;}
+}
+
+
+.news-stretch {
+    width:99%;
+    height:99%;
+}
 
 .game_title {
     text-align: center;

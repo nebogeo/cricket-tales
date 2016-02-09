@@ -57,7 +57,7 @@ def map(request):
 
             context['num_empty_burrows'] = Burrow.objects.filter(owner__isnull=True).count()
             context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
-            context['stories'] = Story.objects.all().order_by('-time')[:5]
+            context['stories'] = Story.objects.all().order_by('-time')[:6]
 
             # can we not do this on the browser??
             for story in context['stories']:
