@@ -1,29 +1,27 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block top_layer %}
-
-<div id="movie_end" class="movie_end" style="visibility:hidden;">
+<div id="login_pop" class="login_pop" style="visibility:hidden;">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <h1>{% trans "Login" %}</h1>
-
     <form id="login_form" method="post" action="/login/">
       {% csrf_token %}
-      {% trans "Username:" %} <input type="text" name="username" value="" size="50" />
+      {% trans "Username:" %} <input type="text" class="login" name="username" value="" size="12" />
       <br />
-      {% trans "Password:" %} <input type="password" name="password" value="" size="50" />
+      {% trans "Password:" %} <input type="password" class="login" name="password" value="" size="12" />
       <br />
-      <input type="submit" value={% trans "Login" %} />
+      <input type="submit" class="login" value={% trans "Login" %} />
     </form>
-
-    <a href="/register/">{% trans "Register" %}</a>
+    <a href="/register/">
+      <button id="tutorial">
+        {% trans "Register" %}
+      </button>
+    </a>
   </div>
 </div>
-
 {% endblock %}
 
 {% block bottom_layer %}
-{% load i18n %}
-
 <div class="row">
   <div class="col-sm-6">
     <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
@@ -74,7 +72,7 @@
          {% if user.is_authenticated %}
          onclick="window.location.href='/map/'"
          {% else %}
-         onclick='$("#movie_end").css("visibility", "visible");'
+         onclick='$("#login_pop").css("visibility", "visible");'
          {% endif %}
          >
       <div class="button_text">
@@ -114,43 +112,5 @@
       {% endif %}
     </div>
 </div>
-
-
-<!--
-<div class="field">
-  <div class="burrow-container">
-    <img src="/media/images/grass.png"></img>
-    {% if burrows %}
-    {% for burrow in burrows %}
-
-    <div class="burrow" style="left:{{ burrow.pos_x }}px; top:{{ burrow.pos_y }}px;">
-      <a href="/burrow/{{ burrow.id }}/">
-        {% if burrow.biggest_contributor != "None yet" %}
-        <div class="owner">{{ burrow.biggest_contributor }}</div>
-        {% endif %}
-	    <img src={% if burrow.num_movies_ready > 0 %} "/media/images/house-full.png" {% else %} "/media/images/house-empty.png" {% endif %}></img>
-      </a>
-      <span class="tooltip">
-	<h3>{{ burrow.name }}</h3> </br>
-	{% if burrow.num_movies_ready > 0 %}
-	Movies ready: {{ burrow.num_movies_ready }}</br>
-	Total movies: {{ burrow.num_movies }}</br>
-	Biggest contributor: {{ burrow.biggest_contributor }}</br>
-	Contributors: {{ burrow.num_contributors }}</br>
-	Total events: {{ burrow.total_events }}</br>
-	{% else %}
-	Waiting for movies!
-	{{ burrow.num_movies }} in the queue...</br>
-	{% endif %}
-      </span>
-    </div>
-    {% endfor %}
-    {% else %}
-    <p>No burrows are available.</p>
-    {% endif %}
-  </div>
-</div>
--->
-
 
 {% endblock %}

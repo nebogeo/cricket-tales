@@ -60,6 +60,12 @@ video {
     background: #e7f8c1;
 }
 
+.login {
+    font-family: 'Vidaloka', sans-serif;
+    overflow: hidden;
+    background: #e7f8c1;
+}
+
 .logo {
 }
 
@@ -575,6 +581,21 @@ span.cricket-id-char {
     font-size: 50%;
 }
 
+.login_pop {
+    left: 0px;
+    top: 0px;
+    border-radius: 2em;
+    padding: 2em;
+    position: absolute;
+    margin-left: 30%;
+    margin-top: 10%;
+    width: 50%;
+    z-index: 2;
+    background: #e7f8c1;
+    border: 3px solid black;
+}
+
+
 .movie_end {
     left: 0px;
     top: 0px;
@@ -585,7 +606,8 @@ span.cricket-id-char {
     margin-top: 20%;
     width: 60%;
     z-index: 2;
-    background: rgba(255,255,255,0.75);
+    background: #e7f8c1;
+    border: 3px solid black;
 }
 
 .hiscores {
@@ -950,4 +972,15 @@ input.burrow_link {
     left: 0;
     margin: 0 auto;
     max-height: 100% !important;
+}
+
+
+.register-form {}
+
+.register-form input {
+  display: block;
+}
+
+.login_pop input {
+  display: block;
 }

@@ -282,7 +282,10 @@ def register(request):
 
     return render_to_response(
             'crickets/register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
+            {'user_form': user_form,
+             'profile_form': profile_form,
+             'registered': registered,
+             'page_title': _("JOIN IN AND HELP CRICKET TALES")},
             context)
 
 def logmein(request):

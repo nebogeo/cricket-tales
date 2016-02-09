@@ -4,9 +4,7 @@
 <strong>Thank you for registering!</strong>
 <a href="/">Return to the homepage.</a><br />
 {% else %}
-<h1>JOIN IN AND HELP CRICKET TALES</h1>
-
-<form id="user_form" method="post" action="/register/"
+<form id="user_form" class="register-form" method="post" action="/register/"
       enctype="multipart/form-data">
   {% csrf_token %}
   {{ user_form.as_p }}
