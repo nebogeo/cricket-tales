@@ -309,7 +309,11 @@
         </div>
         <div class="row-fluid">
           <div id="id-buttongroup" class="tutorial_highlight">
-            <div class="button id-display col-lg-7 col-lg-offset-2 col-md-7 col-md-offset-2 col-sm-7 col-sm-offset-2 col-xs-7 col-xs-offset-2" style="background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;" onclick="toggle_id_cricket()">
+            <div class="button id-display col-lg-7 col-lg-offset-2 col-md-7 col-md-offset-2 col-sm-7 col-sm-offset-2 col-xs-7 col-xs-offset-2" style="background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;"
+               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle-high.png');"
+               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle.png');"
+               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle-offset.png');"
+               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle.png');">
               <div class="button_text">
                 <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">ID</p>
               </div>
