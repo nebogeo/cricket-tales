@@ -28,6 +28,7 @@ body {
 
 a {
   text-decoration: none;
+    color: black;
 }
 
 a:visited {
@@ -37,6 +38,26 @@ a:visited {
 video {
     width: 100%;
     height: auto;
+}
+
+.lang-select select {
+    font-family: 'Vidaloka', sans-serif;
+    background: transparent;
+    width: 268px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 34px;
+    -webkit-appearance: none;
+}
+
+.lang-select {
+    font-family: 'Vidaloka', sans-serif;
+    height: 34px;
+    overflow: hidden;
+    background: #e7f8c1;
 }
 
 .logo {
@@ -238,6 +259,18 @@ button#tutorial {
     text-align: left;
     background-repeat: no-repeat;
 }
+
+button#tutorial:hover {
+    background:url('../images/buttons/button-oblong-high.png');
+    background-size: 100% 100%;
+}
+
+button#tutorial:active {
+    background:url('../images/buttons/button-oblong-offset.png');
+    background-size: 100% 100%;
+}
+
+
 
 button#no_cricket,
 button#no_cricket_end {
