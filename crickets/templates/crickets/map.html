@@ -113,7 +113,7 @@
       <h1>{% trans "NEWS FEED" %}</h1>
 
       {% for story in stories %}
-      <div class="news-bubble col-lg-6 col-md-12 col-sm-12 col-xs-4">
+      <div class="news-bubble col-lg-12 col-md-12 col-sm-12 col-xs-4">
         <div class="news-story">{{story.text}}</div>
         <img src="{{MEDIA_URL}}images/crickets/bubble-0{{ rand|add:"123456"|make_list|random }}.png" class="news-stretch" alt="" />
       </div>

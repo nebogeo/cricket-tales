@@ -108,7 +108,7 @@ video {
     padding-right: 1.5em;
     top: 12%;
     left: 0;
-    font-size: 1.2vw;
+    font-size: 2vw;
 }
 
 /*
@@ -117,13 +117,13 @@ video {
  md = 992px
  lg = 1200px
 */
-
+/*
 @media (max-width: 1200px) {
-    .news-story{font-size: 1.8vw;}
+    .news-story{font-size: 2.5vw;}
 }
 
 @media (max-width: 992px) {
-    .news-story{font-size: 1.5vw;}
+    .news-story{font-size: 2.5vw;}
 }
 
 @media (max-width: 768px) {
@@ -133,7 +133,7 @@ video {
 @media (max-width: 480px) {
     .news-story{font-size: 2.8vw;}
 }
-
+*/
 
 .news-stretch {
     width:99%;
