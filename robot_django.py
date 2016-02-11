@@ -319,7 +319,7 @@ def update_player_activity():
 def update_burrows_activity():
     for burrow in Burrow.objects.all():
         # update the houses stuff
-        hiscores = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('movies_finished')
+        hiscores = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('-movies_finished')
         if len(hiscores)>0:
             hiscore=hiscores[0]
             if burrow.owner != hiscore.player:
