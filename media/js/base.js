@@ -223,7 +223,7 @@ function update_infotext() {
     $('.page_title').css("font-size","120%");
     switch(state) {
         case "wait-cricket":
-            $('.page_title').html('1. XX Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>');
+            $('.page_title').html('1. Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>');
             break;
         case "wait-burrow":
             $('.page_title').html('2. Click on the middle of the burrow to begin the video');
@@ -381,9 +381,6 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
                 inner_render_event(e[0],e[1]);
             });
         });
-
-        pop.play();
-//        pop.pause();
 
     },false);
 };
