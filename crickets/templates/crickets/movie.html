@@ -58,7 +58,7 @@
 
       <div class="row-fluid"><!-- Player row -->
         <div id="cricket_player" class="col-xs-12"><!-- Player div -->
-          <video nocontrols id="ourvideo" class="video-start">
+          <video nocontrols poster="{{ MEDIA_URL }}movies/{{movie.name}}.jpg" id="ourvideo" class="video-start">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.webm">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.mp4" type="video/mp4">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.ogg" type="video/ogg">
