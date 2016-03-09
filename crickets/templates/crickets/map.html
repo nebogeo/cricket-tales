@@ -16,7 +16,7 @@
 
       <script>
         function create_marker(pos_x, pos_y, name, owner, videos_to_view,
-                               percent_viewed,
+                               percent_viewed, num_movies_watched,
                                num_contributors, events_recorded,
                                id, house) {
 
@@ -35,13 +35,14 @@
 
           var popup_title = '<h4>{% trans 'Burrow' %} '+name+'</h4><br/>';
           var owned_by = '<strong>House built by</strong> '+owner+'<br/>';
-          var to_view = '<strong>{% trans 'Videos till owner:' %} </strong> '+ videos_to_view +'<br/>';
+          var to_view = '<strong>{% trans 'Movies till you own:' %} </strong> '+ videos_to_view +'<br/>';
           var total_videos = '<progress value="'+percent_viewed+'" max="100"></progress><br/><strong>{% trans 'Complete:' %}</strong> '+ percent_viewed +'%<br/>';
+          var total_watched = '<strong>{% trans 'Total watched:' %} </strong> '+ num_movies_watched +'<br/>';
           var total_contributors = '<strong>{% trans 'Total Contributors:' %} </strong> '+ num_contributors +'<br/>';
           var events_recorded = '<strong>{% trans 'Total Events Recorded:' %} </strong> '+ events_recorded +'<br/>';
           var burrow_button = '<form action="/random_burrow_movie/'+id+'"><input type="submit" class="burrow_link" value="{% trans 'Go to Burrow' %}"></form>'
 
-          marker.bindPopup(popup_title + owned_by + to_view + total_videos + total_contributors + events_recorded + burrow_button);
+          marker.bindPopup(popup_title + owned_by + to_view + total_videos + total_watched + total_contributors + burrow_button);
 
           marker.addTo(map);
 
@@ -76,6 +77,7 @@
         '{{ burrow.owner }}',
         '{{ burrow.videos_to_view }}',
         Number(({{ burrow.num_movies_watched }}/{{ burrow.num_movies }})*100).toFixed(1),
+	'{{ burrow.num_movies_watched }}',
         '{{ burrow.total_contributors }}',
         '{{ burrow.total_events }}',
         '{{ burrow.id }}',

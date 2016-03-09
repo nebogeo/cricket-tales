@@ -92,5 +92,7 @@ else:
         robot_django.update_all_activity()
     if sys.argv[1]=="report":
         robot_django.generate_report()
+    if sys.argv[1]=="overwrite-thumbnails":
+        robot_django.update_video_thumbs()
     if sys.argv[1]=="test":
         robot_django.test_random_movie()
