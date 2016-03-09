@@ -383,7 +383,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
         });
 
         pop.play();
-        pop.pause();
+//        pop.pause();
 
     },false);
 };
