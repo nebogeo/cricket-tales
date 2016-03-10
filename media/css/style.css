@@ -367,12 +367,12 @@ button#no_cricket_end {
 
 button.play,
 button.pause {
-    max-width: 1em;
-    max-height: 1em;
-    width: 1.5em;
-    height: 1.5em;
+    max-width: 2em;
+    max-height: 2em;
+    width: 2em;
+    height: 2em;
     border: 0px;
-    margin:0;
+    margin-top:-0.4em;
     padding: 0;
     outline: 0;
 }
@@ -961,6 +961,20 @@ nav ul ul li a:hover {
 
     #tut-1 > div > div.arrow.responsive-buttons-large {
         display: none !important;
+    }
+
+    
+
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 667px) { 
+    
+    .timeline {
+        height: 1em;
+        overflow: visible;
+        width: 80% !important;
     }
 
 }
