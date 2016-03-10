@@ -40,6 +40,10 @@ video {
     height: auto;
 }
 
+.container {
+    width: 100% !important;
+}
+
 .lang-select select {
     font-family: 'Vidaloka', sans-serif;
     background: transparent;
@@ -948,7 +952,7 @@ nav ul ul li a:hover {
 }
 
 @media screen 
-  and (min-device-width: 600px) 
+  and (min-device-width: 100px) 
   and (max-device-width: 1024px) 
   and (min-device-height: 575px) {
 
