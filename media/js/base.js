@@ -253,7 +253,14 @@ function burrow_event(burrow_start_id,movie_id,user_id) {
     update_infotext();
     $("#ourvideo").click(function(e) {
         state = 'movie-playing';
+
         pop.play();
+
+        $('.toggle-button').css({
+            "background": "url(/media/images/movie_buttons/pause.png)",
+            "background-size": "100% 100%"
+        });
+
         var burrowPercent = mouse_pos(e, this);
         add_event(burrow_start_id,movie_id,user_id, burrowPercent['x'], burrowPercent['y'], null);
         update_infotext();
@@ -285,11 +292,29 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
     // Create a popcorn instance by calling Popcorn("#id-of-my-video")
     document.addEventListener("DOMContentLoaded", function () {
 
+
         state = "wait-cricket";
 
         build_id_keyboard(cricket_id_id,something_else_id, movie_id,user_id);
 
         pop = Popcorn("#ourvideo");
+
+        play_state = "";
+
+        popvid = document.getElementById("ourvideo");
+
+        popvid.addEventListener( "playing", function( e ) {
+
+          play_state = true;
+
+        }, false );
+
+        popvid.addEventListener( "pause", function( e ) {
+
+          play_state = false;
+
+        }, false );
+
 
         pop.code({
             start: 0,
@@ -424,12 +449,28 @@ function toggle_keyboard() {
 function pause_movie() {
     if (state === 'movie-playing') {
         pop.pause();
+        $('.toggle-button').css({
+            "background": "url(/media/images/movie_buttons/play.png)",
+            "background-size": "100% 100%"
+        });
     }
 }
 
 function play_movie() {
     if (state === 'movie-playing') {
         pop.play();
+        $('.toggle-button').css({
+            "background": "url(/media/images/movie_buttons/pause.png)",
+            "background-size": "100% 100%"
+        });
+    }
+}
+
+function play_state_toggle() {
+    if (play_state === true) {
+        pause_movie()
+    } else {
+        play_movie()
     }
 }
 
