@@ -1,6 +1,18 @@
-@import url(https://fonts.googleapis.com/css?family=Vidaloka);
-@import url(https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister);
+/*@import url(https://fonts.googleapis.com/css?family=Vidaloka);
+@import url(https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister);*/
 /* firefox likes these at the top??! */
+
+@font-face {
+  font-family: 'Love Ya Like A Sister';
+  src: local('Love Ya Like A Sister'),
+        url('../fonts/LoveYaLikeASister.ttf');
+}
+
+@font-face {
+  font-family: 'Vidaloka';
+  src: local('Vidaloka'),
+        url('../fonts/Vidaloka-Regular.ttf');
+}
 
 body {
   background: url('../images/background.png');
