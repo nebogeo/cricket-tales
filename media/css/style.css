@@ -919,15 +919,33 @@ nav ul ul li a:hover {
 
 
 /* Verbose selector cuz slick */
-/*#tut-1 > div > div.arrow.arrow-tut-left.col-lg-2,
-#tut-1 > div > div.arrow.arrow-tut-right.col-lg-2,*/
 #tut-1 > div > div.arrow.arrow-tut-left.col-lg-2.slick-arrow,
 #tut-1 > div > div.arrow.arrow-tut-right.col-lg-2.slick-arrow {
     padding-top: 25%;
 }
 
+#tut-1 > div.responsive-buttons-small.row.col-xs-12 {
+    display: none;
+}
+
+@media only screen 
+  and (min-device-width: 120px) 
+  and (max-device-width: 1200px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    
+    #tut-1 > div.responsive-buttons-small.row.col-xs-12 {
+        display: inline-block;
+    }
+
+    #tut-1 > div > div.arrow.responsive-buttons-large {
+        display: none !important;
+    }
+
+}
+
 .slick-disabled {
     opacity: 0.1;
+    display: block;
 }
 
 
