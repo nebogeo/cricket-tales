@@ -407,11 +407,11 @@ function toggle_something_else() {
         }
 }
 
-
-
 function restart_video() {
     state = 'wait-cricket';
-    console.log(state);
+    // clear any remaining click events
+    $("#ourvideo").off('click');
+//    console.log(state);
     $("#movie_end").css("visibility", "hidden");
     pop.currentTime(0);
     pop.pause();
