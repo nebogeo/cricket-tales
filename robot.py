@@ -78,7 +78,7 @@ else:
     if sys.argv[1]=="player-activity":
         while True:
             robot_django.update_all_activity()
-            time.sleep(30)
+            time.sleep(1)
 
     if sys.argv[1]=="update-movie-burrows":
         robot_django.connect_burrows_to_movies("cricket-data/camera-burrow.csv")
