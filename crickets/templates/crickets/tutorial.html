@@ -39,11 +39,19 @@
         identify each behaviour.
         {% endblocktrans %}
 
-        <div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="arrow arrow-tut-left col-lg-2">
+        <div class="responsive-buttons-small row col-xs-12 col-md-12">
+          <div class="arrow arrow-tut-left col-lg-2 col-md-2 col-xs-2">
             <img src="/media/images/left-arrow.png" width="100"/>
           </div>
-          <div id="slider-tutorial" class="slider-tutorial col-lg-8">
+          <div class="arrow arrow-tut-right col-lg-2 col-md-2 col-xs-2 col-xs-offset-8">
+            <img src="/media/images/right-arrow.png" width="100"/>
+          </div>
+        </div>
+        <div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="arrow responsive-buttons-large arrow-tut-left col-lg-2 col-md-1 col-xs-1">
+            <img src="/media/images/left-arrow.png" width="100"/>
+          </div>
+          <div id="slider-tutorial" class="slider-tutorial col-lg-8 col-md-12 col-xs-12">
             <div class="slider-item">
               <div class="slider-caption"><h2 class="text-center">{% trans "Mating behaviour" %}</h2></div>
               <video controls>
@@ -85,11 +93,11 @@
               <div class="col-lg-12 text-center">{% trans "Munching on a leaf." %}</div>
             </div>
           </div>
-          <div class="arrow arrow-tut-right col-lg-2">
+          <div class="arrow responsive-buttons-large arrow-tut-right col-lg-2 col-md-2 col-xs-2">
             <img src="/media/images/right-arrow.png" width="100"/>
           </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
           <center>
              <button id="tutorial" onclick="switch_tutorial('tut-1','tut-main');">
               {% trans "Go Back" %}
@@ -119,7 +127,7 @@
         cricket.
         {% endblocktrans %}
 
-        <div class="row">
+        <div class="row-fluid">
           <center>
             <button id="tutorial" onclick="switch_tutorial('tut-2','tut-1');">
               {% trans "Go Back" %}
@@ -142,7 +150,7 @@
         the buttons to tell us.
         {% endblocktrans %}
 
-        <div class="row">
+        <div class="row-fluid">
           <div class="col-sm-4 col-xs-12">
             <img src="{{ MEDIA_URL }}images/training/vole-predator2.jpg" width="100%">
           </div>
@@ -154,14 +162,14 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row-fluid">
           {% blocktrans %}
           If you see something interesting in a video and
           want to tell us about it, click on the '!' button.
           {% endblocktrans %}
         </div>
 
-        <div class="row">
+        <div class="row-fluid">
           <center>
              <button id="tutorial" onclick="switch_tutorial('tut-3','tut-2');">
               {% trans "Go Back" %}
@@ -194,7 +202,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row-fluid">
           <center>
              <button id="tutorial" onclick="switch_tutorial('tut-4','tut-3');">
               {% trans "Go Back" %}
@@ -208,7 +216,7 @@
      </div>
 
      <div id="tut-5" class="col-md-12 col-xs-12" style="display:none">
-       <div class="row">
+       <div class="row-fluid">
          <div class="col-md-8 col-xs-12">
 
            {% blocktrans %}
@@ -248,7 +256,7 @@
          </div>
 
 
-         <div class="row">
+         <div class="row-fluid">
            <center>
             <button id="tutorial" onclick="switch_tutorial('tut-5','tut-4');">
                   {% trans "Go Back" %}
