@@ -246,10 +246,21 @@ def spit_event(request):
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
+    repeat_password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'email', 'password', 'repeat_password')
+
+    def clean_repeat_password(self):
+        password = self.cleaned_data.get('password')
+        repeat_password = self.cleaned_data.get('repeat_password')
+
+        if not repeat_password:
+            raise forms.ValidationError("You must confirm your password")
+        if password != repeat_password:
+            raise forms.ValidationError("Your passwords do not match")
+        return repeat_password
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
@@ -270,9 +281,10 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
             profile.save()
+            new_user = authenticate(username=user_form.cleaned_data['username'],
+                                    password=user_form.cleaned_data['password'])
+            login(request, new_user)
             registered = True
         else:
             print user_form.errors, profile_form.errors
@@ -280,7 +292,10 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-    return render_to_response(
+    if registered:
+        return HttpResponseRedirect('/map/')
+    else:
+        return render_to_response(
             'crickets/register.html',
             {'user_form': user_form,
              'profile_form': profile_form,
@@ -290,6 +305,7 @@ def register(request):
 
 def logmein(request):
     context = RequestContext(request)
+    context['page_title'] = _("LOGIN TO CRICKET TALES")
 
     if request.method == 'POST':
         username = request.POST['username']
