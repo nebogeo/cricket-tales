@@ -43,7 +43,7 @@ def map(request):
             context['page_title'] = "CRICKET HOUSE BUILDER"
             return render(request, 'crickets/builder.html', context)
         else:
-            context['burrows'] = Burrow.objects.all()
+            context['burrows'] = Burrow.objects.filter(num_movies_ready__gt=0)
 
             for burrow in context['burrows']:
                 # todo: this may be a bit heavy... perhaps cache in it's own table?
