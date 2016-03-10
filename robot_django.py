@@ -198,6 +198,14 @@ def update_video_status():
             print("!!! found a movie turned ON without files, turning off: "+movie.name)
             set_movie_status(movie.name,0)
 
+# grab (new) thumbnails from old processed videos
+# hopefully only needed temporarily
+def update_video_thumbs():
+    for movie in Movie.objects.filter(status=1):
+        if robot.process.check_done(movie.name):
+            robot.process.create_thumb_from_movie(movie.name)
+
+
 def connect_cricket_to_movies(name,burrow,date_in,date_out):
     # find cricket
     try:

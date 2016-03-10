@@ -41,7 +41,12 @@ def renamer(start,frames,instance_name):
             run(("mv "+instance_name+"/frame-%05d.jpg "+instance_name+"/frame-%05d.jpg")%(i+start,i))
 
 def create_thumb(fn,instance_name):
-    run("convert "+instance_name+"/frame-00000.jpg -resize '233x175^' -gravity center -crop '175x175+0+0' "+settings.dest_root+fn+".jpg")
+    #run("convert "+instance_name+"/frame-00000.jpg -resize '233x175^' -gravity center -crop '175x175+0+0' "+settings.dest_root+fn+".jpg")
+    # no longer any processing needed (not checked yet)
+    run("cp "+instance_name+"/frame-00000.jpg "+settings.dest_root+fn+".jpg")
+
+def create_thumb_from_movie(fn):
+    run("avconv -i "+settings.dest_root+fn+".mp4 -r 1 -vframes 1 -f image2 "+settings.dest_root+fn+".jpg > /dev/null")
 
 def check_done(fn):
     return (os.path.isfile(settings.dest_root+fn+".jpg") and
