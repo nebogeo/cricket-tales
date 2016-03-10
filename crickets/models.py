@@ -29,6 +29,7 @@ class UserProfile(models.Model):
 
     ethics_agreed = models.IntegerField(default=0)
     age_range = models.IntegerField(default=0)
+    gender = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.user.username

@@ -28,7 +28,7 @@ body {
 
 a {
   text-decoration: none;
-    color: black;
+  color: #333;
 }
 
 a:visited {
@@ -256,7 +256,7 @@ a.tutorial-play {
     color: #333;
 }
 
-button#tutorial {
+input[type=submit], button#tutorial {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
     background-size: 100% 100%;
@@ -266,12 +266,12 @@ button#tutorial {
     background-repeat: no-repeat;
 }
 
-button#tutorial:hover {
+input[type=submit]:hover, button#tutorial:hover {
     background:url('../images/buttons/button-oblong-high.png');
     background-size: 100% 100%;
 }
 
-button#tutorial:active {
+input[type=submit]:active, button#tutorial:active {
     background:url('../images/buttons/button-oblong-offset.png');
     background-size: 100% 100%;
 }
@@ -775,6 +775,8 @@ span.cricket-id-char {
 
 /* menu stuff */
 .menu_main {
+    /* force this to contain it's children */
+    overflow: hidden;
 }
 
 .menu_title {
@@ -983,4 +985,14 @@ input.burrow_link {
 
 .login_pop input {
   display: block;
+}
+
+
+#login_form input {
+  display: block;
+}
+
+.errorlist li {
+    color: red;
+    list-style-type: none;
 }

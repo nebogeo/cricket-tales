@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block bottom_layer %}
+
+<div class="row-fluid">
 <center>
-<h1>{% trans "LOGIN TO CRICKET TALES" %}</h1>
-
-<form id="login_form" method="post" action="/login/">
-  {% csrf_token %}
-  {% trans "Username:" %} <input type="text" name="username" value="" size="50" />
-  <br />
-  {% trans "Password:" %} <input type="password" name="password" value="" size="50" />
-  <br />
-  <input type="submit" value={% trans "Login" %} />
-</form>
-
-<a href="/register/">{% trans "Register" %}</a>
+    <form id="login_form" method="post" action="/login/">
+      {% csrf_token %}
+      {% trans "Username:" %} <input type="text" class="login" name="username" value="" size="12" />
+      <br />
+      {% trans "Password:" %} <input type="password" class="login" name="password" value="" size="12" />
+      <br />
+      <input type="submit" class="login" value={% trans "Login" %} />
+    </form>
+    <a href="/register/">
+      <button id="tutorial">
+        {% trans "Register" %}
+      </button>
+    </a>
 </center>
+</div>
 {% endblock %}
