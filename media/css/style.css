@@ -937,6 +937,10 @@ nav ul ul li a:hover {
         display: inline-block;
     }
 
+    .slick-arrow {
+        padding: 0px !important;
+    }
+
     #tut-1 > div > div.arrow.responsive-buttons-large {
         display: none !important;
     }
@@ -948,8 +952,12 @@ nav ul ul li a:hover {
   and (max-device-width: 1024px) 
   and (min-device-height: 575px) {
 
-    #tut-1 > div.responsive-buttons-small.row.col-xs-12 {
-        display: inline-block;
+    #tut-1 > div.responsive-buttons-small.row.col-xs-12{
+        display: inline-block;        
+    }
+
+    .slick-arrow {
+        padding: 0px !important;
     }
 
     #tut-1 > div > div.arrow.responsive-buttons-large {
