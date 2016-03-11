@@ -90,6 +90,13 @@ video {
     border: 5px dashed #1e4018;
 }
 
+.info {
+    text-align: center;
+    background: #f6fce9;
+    font-size: 1.2vw;
+    margin-bottom: 1em;
+ }
+
 .score {
     text-align: center;
     background: #f6fce9;
@@ -103,6 +110,7 @@ video {
 
 .score-value {
     padding: 0.2em;
+    margin-top: 0.1em;
     margin-bottom: 0.1em;
     background: #e7f8c1;
     text-align: center;
