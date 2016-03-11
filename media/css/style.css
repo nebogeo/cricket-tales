@@ -95,6 +95,7 @@ video {
     background: #f6fce9;
     font-size: 1.2vw;
     margin-bottom: 1em;
+    overflow: hidden;
  }
 
 .score {
@@ -102,6 +103,7 @@ video {
     background: #f6fce9;
     font-size: 2vw;
     margin-bottom: 1em;
+    overflow: hidden;
  }
 
 .score-name {
