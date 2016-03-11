@@ -303,6 +303,16 @@ def generate_report():
     print("movies availible: "+str(Movie.objects.filter(status=1).count()))
     print("movies awaiting processing: "+str(Movie.objects.filter(status=0).count()))
     print("movies finished: "+str(Movie.objects.filter(status=2).count()))
+    print("")
+    print("top 10 players:")
+    for i,player in enumerate(PlayerBurrowScore.objects.values('player__username').order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')[:10]):
+        print(str(i)+" "+player['player__username']+": "+str(player['total']))
+    print("")
+    print("last 10 stories:")
+    for i,story in enumerate(Story.objects.all().order_by('-time')[:10]):
+        print(str(story.time).split()[0]+": "+str(story))
+        #print(str(i)+" "+player.player.username+": "+str(player.total))
+    print("")
     print("disk state: "+disk_state())
     load = os.getloadavg()
     print("server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2]))
@@ -319,7 +329,7 @@ def update_player_activity():
         # slightly unwieldy, count the number of movies that have
         # cricket end events for this user
         cricket_end = EventType.objects.filter(name="Cricket End").first()
-        # profile.num_videos_watched = Event.objects.filter(user=user,type=cricket_end).distinct('movie').count()
+        profile.num_videos_watched = Event.objects.filter(user=user,type=cricket_end).distinct('movie').count()
         profile.num_burrows_owned = Burrow.objects.filter(owner=user).count()
         profile.num_events = Event.objects.filter(user=user).count()
         profile.save()
@@ -332,18 +342,18 @@ def update_burrows_activity():
             hiscore=hiscores[0]
             # only award burrows after 10 movies have been watched
             if hiscore.movies_finished>10 and burrow.owner != hiscore.player:
-                print("burrow "+burrow.name+" has just been owned by "+hiscore.player.username)
+                #print("burrow "+burrow.name+" has just been owned by "+hiscore.player.username)
                 burrow.new_house_needed = 1
                 burrow.owner = hiscore.player
                 burrow.save()
 
         burrow.total_events = Event.objects.filter(movie__burrow=burrow).count()
-        # burrow.total_contributors = PlayerBurrowScore.objects.filter(burrow=burrow).distinct('player').count()
+        burrow.total_contributors = PlayerBurrowScore.objects.filter(burrow=burrow).distinct('player').count()
 
         # slightly unwieldy, count the number of movies that have
         # cricket end events for this burrow
         cricket_end = EventType.objects.filter(name="Cricket End").first()
-        # burrow.num_movies_watched = Event.objects.filter(movie__burrow=burrow,type=cricket_end).distinct('movie').count()
+        burrow.num_movies_watched = Event.objects.filter(movie__burrow=burrow,type=cricket_end).distinct('movie').count()
         burrow.num_movies_unwatched = burrow.num_movies-burrow.num_movies_watched
         burrow.num_movies_ready = Movie.objects.filter(burrow=burrow,status=1).count()
         #print("total events: "+str(cricket.total_events))
