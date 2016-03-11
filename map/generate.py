@@ -10,9 +10,13 @@ def gen_square(map_size,src_size,src_list,trees_list):
 
     size_tiles = int(map_size/(src_size*tile_scale))
 
+    empty_image = Image.open("orig_tiles/6.png")
+
     images = map(lambda i: Image.open("orig_tiles/"+i+".png"), src_list)
     ts = int(src_size*tile_scale)+1
     images = map(lambda i: i.resize((ts,ts), Image.ANTIALIAS), images)
+
+    empty_image = empty_image.resize((ts,ts), Image.ANTIALIAS)
 
     t_images = map(lambda i: Image.open("orig_tiles/"+i+".png"), trees_list)
     ts = int(src_size*tile_scale)+1
@@ -20,7 +24,10 @@ def gen_square(map_size,src_size,src_list,trees_list):
 
     for x in range(0, size_tiles):
         for y in range(0, size_tiles):
-            if random.random()<0.1:
+            if random.random()<0.5:
+                im.paste(empty_image,(int(x*src_size*tile_scale),
+                                      int(y*src_size*tile_scale)))
+            elif random.random()<0.1:
                 im.paste(random.choice(t_images),(int(x*src_size*tile_scale),
                                                 int(y*src_size*tile_scale)))
             else:
@@ -29,4 +36,4 @@ def gen_square(map_size,src_size,src_list,trees_list):
 
     im.save("out.jpg")
 
-gen_square(16384,1034,["1","2","3","4","5","6","7","8","9"],["t1","t1","t2","t4","t5"])
+gen_square(16384,1034,["1","2","3","4","5","7","8","9"],["t1","t1","t2","t4","t5"])

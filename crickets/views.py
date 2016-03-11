@@ -68,7 +68,7 @@ def map(request):
 
             totals = PlayerBurrowScore.objects.values('player__username').order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')
             if len(totals)>0:
-                context['most_views'] = totals[0].['player__username']
+                context['most_views'] = totals[0]['player__username']
             else:
                 context['most_views'] = "none yet"
             #####################################
