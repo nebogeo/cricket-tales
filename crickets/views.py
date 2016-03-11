@@ -65,7 +65,7 @@ def map(request):
             # todo: slow - precache??
             cricket_end = EventType.objects.filter(name="Cricket End").first()
             context['num_videos_watched'] = Event.objects.filter(type=cricket_end).distinct('movie').count()
-            totals = PlayerBurrowScore.objects.all().order_by('player').annotate(total=Sum('movies_finished')).order_by('total')
+            totals = PlayerBurrowScore.objects.all().order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')
             if len(totals)>0:
                 print(totals[0].total)
                 context['most_views'] = totals[0].player
