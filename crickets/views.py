@@ -9,7 +9,7 @@ from crickets.models import *
 from django.core import serializers
 from django.template import Context, loader, RequestContext
 from itertools import chain
-from django.db.models import Count
+from django.db.models import Count, Sum
 from django.utils.translation import ugettext_lazy as _
 
 # todo move forms
@@ -58,6 +58,20 @@ def map(request):
             context['num_empty_burrows'] = Burrow.objects.filter(owner__isnull=True).count()
             context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
             context['stories'] = Story.objects.all().order_by('-time')[:3]
+            context['num_players'] = User.objects.all().count()
+            context['num_videos'] = Movie.objects.filter(status=1).count()
+
+            #############################
+            # todo: slow - precache??
+            cricket_end = EventType.objects.filter(name="Cricket End").first()
+            context['num_videos_watched'] = Event.objects.filter(type=cricket_end).distinct('movie').count()
+            totals = PlayerBurrowScore.objects.all().order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')
+            if len(totals)>0:
+                print(totals[0].total)
+                context['most_views'] = totals[0].player
+            else:
+                context['most_views'] = "none yet"
+            #####################################
 
             # can we not do this on the browser??
             for story in context['stories']:
@@ -152,7 +166,6 @@ class EventForm(ModelForm):
 ## Static house builder
 def house_builder(request,id):
     context = RequestContext(request)
-    print(context)
     return render(request, 'crickets/builder.html', context)
 
 
@@ -160,7 +173,6 @@ def update_score(user,burrow):
     # what if no burrow??
     scores = PlayerBurrowScore.objects.filter(player=user,
                                               burrow=burrow)
-    print scores
     if len(scores)>0:
         scores[0].movies_finished+=1
         scores[0].save()
