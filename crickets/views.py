@@ -65,10 +65,10 @@ def map(request):
             # todo: slow - precache??
             cricket_end = EventType.objects.filter(name="Cricket End").first()
             context['num_videos_watched'] = Event.objects.filter(type=cricket_end).distinct('movie').count()
-            totals = PlayerBurrowScore.objects.all().order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')
+
+            totals = PlayerBurrowScore.objects.values('player__username').order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')
             if len(totals)>0:
-                print(totals[0].total)
-                context['most_views'] = totals[0].player
+                context['most_views'] = totals[0].['player__username']
             else:
                 context['most_views'] = "none yet"
             #####################################
@@ -180,7 +180,7 @@ def update_score(user,burrow):
         # make some stories out of counts of movies per user
         if scores[0].movies_finished in [10,25,50,100]:
             story = Story(player=user,
-                          text=_("%(player)s has now watched %(count)i burrows!") %
+                          text=_("%(player)s has watched %(count)i movies in a burrow!") %
                          {'player':'%(player)s', # stick this back in...
                           'count':scores[0].movies_finished})
             story.save()

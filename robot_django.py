@@ -305,13 +305,12 @@ def generate_report():
     print("movies finished: "+str(Movie.objects.filter(status=2).count()))
 
     print("top 5 players:")
-    for i,player in enumerate(PlayerBurrowScore.objects.all().order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')[:5]):
+    for i,player in enumerate(PlayerBurrowScore.objects.annotate(total=Sum('movies_finished')).order_by('player').order_by('-total')[:5]):
         print(str(i)+" "+player.player.username+": "+str(player.total))
     print("")
     print("last 10 stories:")
     for i,story in enumerate(Story.objects.all().order_by('-time')[:5]):
-        print(story.time+": "+story)
-        #print(str(i)+" "+player.player.username+": "+str(player.total))
+        print(str(story.time)+": "+story)
     print("")
     print("disk state: "+disk_state())
     load = os.getloadavg()
