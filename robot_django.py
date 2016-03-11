@@ -310,7 +310,7 @@ def generate_report():
     print("")
     print("last 10 stories:")
     for i,story in enumerate(Story.objects.all().order_by('-time')[:5]):
-        print(story)
+        print(story.time+": "+story)
         #print(str(i)+" "+player.player.username+": "+str(player.total))
     print("")
     print("disk state: "+disk_state())
