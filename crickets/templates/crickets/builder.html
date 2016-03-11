@@ -16,7 +16,7 @@
   <div class="arrow arrow-roof-left col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-1 col-md-offset-1">
 	<img src="/media/images/left-arrow.png" width="60%"/>
   </div>
-  <div class="slider slider-roof col-lg-5 col-md-6 col-sm-7 col-xs-8">
+  <div class="slider-roof col-lg-5 col-md-6 col-sm-7 col-xs-8">
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-1-roof-clear.png" class="slide-item-image a"></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-2-roof-clear.png" class="slide-item-image b" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-3-roof-clear.png" class="slide-item-image c" ></div>
@@ -34,7 +34,7 @@
   <div class="arrow arrow-middle-left col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-1 col-md-offset-1">
 	<img src="/media/images/left-arrow.png" width="60%"/>
   </div>
-  <div class="slider slider-middle col-lg-5 col-md-6 col-sm-7 col-xs-8">
+  <div class="slider-middle col-lg-5 col-md-6 col-sm-7 col-xs-8">
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-1-middle-clear.png" class="slide-item-image a" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-2-middle-clear.png" class="slide-item-image b" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-3-middle-clear.png" class="slide-item-image c" ></div>
@@ -52,7 +52,7 @@
   <div class="arrow arrow-ground-left col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-1 col-md-offset-1">
 	<img src="/media/images/left-arrow.png" width="60%"/>
   </div>
-  <div class="slider slider-ground col-lg-5 col-md-6 col-sm-7 col-xs-8">
+  <div class="slider-ground col-lg-5 col-md-6 col-sm-7 col-xs-8">
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-1-ground-clear.png" class="slide-item-image a" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-2-ground-clear.png" class="slide-item-image b" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-3-ground-clear.png" class="slide-item-image c" ></div>
@@ -70,7 +70,7 @@
   <div class="arrow arrow-colour-left col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-1 col-md-offset-1">
 	<img src="/media/images/left-arrow.png" width="60%"/>
   </div>
-  <div class="slider slider-colour col-lg-5 col-md-6 col-sm-7 col-xs-8">
+  <div class="slider-colour col-lg-5 col-md-6 col-sm-7 col-xs-8">
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/houses/colours/blue.png" class="slide-item-image a" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/houses/colours/brown.png" class="slide-item-image b" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/houses/colours/green.png" class="slide-item-image c" ></div>
@@ -91,37 +91,44 @@
  <script type="text/javascript">
     $(document).ready(function() {
 
-    	function initialise_slider() {
-	    	var classes = ['roof', 'middle', 'ground', 'colour'];
-	    	$(classes).each(function() {
-	    		if ($(window).width() < 375) {
-		    		$('.slider-' + this).slick({
-		    			centerMode: false,
-						arrows: true,
-						prevArrow: $('.arrow-'+this+'-left'),
-						nextArrow: $('.arrow-'+this+'-right')
-		    		});
-		    	} else {
-		    		$('.slider-' + this).slick({
-						centerMode: true,
-						centerPadding: '120px',
-						arrows: true,
-						prevArrow: $('.arrow-'+this+'-left'),
-						nextArrow: $('.arrow-'+this+'-right')
-					});
-		    	}
-	    		
-	    	});
-    	}
+    	var classes = ['roof', 'middle', 'ground', 'colour'];
 
-    	initialise_slider();
+    	$(classes).each(function() {
+    		$('.slider-' + this).slick({
+    			centerMode: true,
+				centerPadding: '120px',
+				arrows: true,
+				prevArrow: $('.arrow-'+this+'-left'),
+				nextArrow: $('.arrow-'+this+'-right'),
+				responsive: [
+							    {
+							      breakpoint: 1024,
+							      settings: {
+							        slidesToShow: 3,
+							        slidesToScroll: 3,
+							        centerMode: false,
+							      }
+							    },
+							    {
+							      breakpoint: 600,
+							      settings: {
+							        slidesToShow: 2,
+							        slidesToScroll: 2,
+							        centerMode: false,
+							      }
+							    },
+							    {
+							      breakpoint: 480,
+							      settings: {
+							        slidesToShow: 1,
+							        slidesToScroll: 1,
+							        centerMode: false,
 
-    	window.onresize = function(event) {
-    		$('.slider').slick('unslick');
-    		initialise_slider();
-    	}
-
-
+							      }
+							    }
+						    ]
+			});
+    	});
 
     	$('.submit').click(function() {
 
