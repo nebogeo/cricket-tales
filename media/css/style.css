@@ -114,6 +114,7 @@ video {
     margin-bottom: 0.1em;
     background: #e7f8c1;
     text-align: center;
+    overflow: hidden;
 }
 
 .news-feed {
