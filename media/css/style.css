@@ -996,6 +996,12 @@ nav ul ul li a:hover {
         display: none !important;
     }
 
+    .timeline {
+        height: 1em;
+        overflow: visible;
+        width: 90% !important;
+    }
+
 }
 
 .slick-disabled {
