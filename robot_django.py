@@ -303,6 +303,16 @@ def generate_report():
     print("movies availible: "+str(Movie.objects.filter(status=1).count()))
     print("movies awaiting processing: "+str(Movie.objects.filter(status=0).count()))
     print("movies finished: "+str(Movie.objects.filter(status=2).count()))
+
+    print("top 5 players:")
+    for i,player in enumerate(PlayerBurrowScore.objects.all().order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')[:5]):
+        print(str(i)+" "+player.player.username+": "+str(player.total))
+
+    print("last 10 stories:")
+    for i,story in enumerate(Story.objects.all()[:5]):
+        print(story)
+        #print(str(i)+" "+player.player.username+": "+str(player.total))
+
     print("disk state: "+disk_state())
     load = os.getloadavg()
     print("server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2]))
@@ -332,7 +342,7 @@ def update_burrows_activity():
             hiscore=hiscores[0]
             # only award burrows after 10 movies have been watched
             if hiscore.movies_finished>10 and burrow.owner != hiscore.player:
-                print("burrow "+burrow.name+" has just been owned by "+hiscore.player.username)
+                #print("burrow "+burrow.name+" has just been owned by "+hiscore.player.username)
                 burrow.new_house_needed = 1
                 burrow.owner = hiscore.player
                 burrow.save()
