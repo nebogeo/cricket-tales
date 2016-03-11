@@ -792,7 +792,8 @@ span.cricket-id-char {
 /* menu stuff */
 .menu_main {
     /* force this to contain it's children */
-    overflow: hidden;
+    /* can't do this as it breaks the menu dropdown
+       overflow: hidden; */
 }
 
 .menu_title {
@@ -946,11 +947,11 @@ nav ul ul li a:hover {
     display: none;
 }
 
-@media only screen 
-  and (min-device-width: 120px) 
+@media only screen
+  and (min-device-width: 120px)
   and (max-device-width: 1200px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    
+
     #tut-1 > div.responsive-buttons-small.row.col-xs-12 {
         display: inline-block;
     }
@@ -963,14 +964,14 @@ nav ul ul li a:hover {
         display: none !important;
     }
 
-    
+
 
 }
 
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 667px) { 
-    
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 667px) {
+
     .timeline {
         height: 1em;
         overflow: visible;
@@ -979,13 +980,13 @@ nav ul ul li a:hover {
 
 }
 
-@media screen 
-  and (min-device-width: 100px) 
-  and (max-device-width: 1024px) 
+@media screen
+  and (min-device-width: 100px)
+  and (max-device-width: 1024px)
   and (min-device-height: 575px) {
 
     #tut-1 > div.responsive-buttons-small.row.col-xs-12{
-        display: inline-block;        
+        display: inline-block;
     }
 
     .slick-arrow {
