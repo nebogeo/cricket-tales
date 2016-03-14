@@ -24,6 +24,7 @@ from django.utils import timezone
 from django.db.models import Max, Count, Sum
 from django.utils.translation import ugettext_lazy as _
 import subprocess
+import random
 
 import robot.process
 import robot.exicatcher
@@ -234,11 +235,11 @@ def connect_cricket_to_movies(name,burrow,date_in,date_out):
             movie.cricket = cricket
             movie.save()
 
-def shuffle_burrows():
+def shuffle_burrows(empties):
     poslist = []
     for burrow in Burrow.objects.all():
         print(burrow.name)
-        p = robot.maths.find_new_location(poslist)
+        p = robot.maths.find_new_location(random.choice(empties),poslist)
         poslist.append(p)
         burrow.pos_x = p[0]
         burrow.pos_y = p[1]

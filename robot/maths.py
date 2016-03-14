@@ -25,9 +25,9 @@ def mag(a):
 def distance(a,b):
     return mag([a[0]-b[0],a[1]-b[1]])
 
-def random_pos():
-    return [random.uniform(-85,85),
-            random.uniform(-180,180)]
+def random_pos(area):
+    return [random.uniform(area[0],area[2]),
+            random.uniform(area[1],area[3])]
 
 def check_list(np,poslist):
     for p in poslist:
@@ -35,8 +35,8 @@ def check_list(np,poslist):
             return False
     return True
 
-def find_new_location(poslist):
-    np = random_pos()
+def find_new_location(area,poslist):
+    np = random_pos(area)
     found = False
     while not found:
         found = check_list(np,poslist)

@@ -24,6 +24,7 @@ import robot.settings
 import robot.import_data
 import time
 from threading import Thread
+import map.generate
 
 def search_and_create_movie_records(path,duration,fps):
     for (dirpath, dirnames, filenames) in os.walk(path):
@@ -86,8 +87,23 @@ else:
 
     if sys.argv[1]=="check":
         robot_django.update_video_status()
+
+    if sys.argv[1]=="make-map":
+        # make new map image - overrites empties and out.jpg
+        image_size = 16384*2
+        empties = map.generate.gen_square(image_size,1034,["1","2","3","4","5","7","8","9"],["t1","t1","t2","t4","t5"])
+        f = open("empty-map-zones.txt","wo")
+        for empty in empties:
+            f.write(str(empty[0])+" "+str(empty[1])+" "+
+                    str(empty[2])+" "+str(empty[3])+"\n")
+        f.close()
     if sys.argv[1]=="shuffle-burrows":
-        robot_django.shuffle_burrows()
+        empties = []
+        for l in open("empty-map-zones.txt"):
+            l = l.split()
+            empties.append([float(l[0]),float(l[1]),
+                            float(l[2]),float(l[3])])
+        robot_django.shuffle_burrows(empties)
     if sys.argv[1]=="activity-update":
         robot_django.update_all_activity()
     if sys.argv[1]=="report":
