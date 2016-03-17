@@ -241,8 +241,8 @@ def shuffle_burrows(empties):
         print(burrow.name)
         p = robot.maths.find_new_location(random.choice(empties),poslist)
         poslist.append(p)
-        burrow.pos_x = p[0]
-        burrow.pos_y = p[1]
+        burrow.pos_x = p[1]
+        burrow.pos_y = p[0]
         burrow.save()
 
 def process_random_video(instance_name):
