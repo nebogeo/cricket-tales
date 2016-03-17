@@ -40,7 +40,7 @@ def find_new_location(area,poslist):
     found = False
     while not found:
         found = check_list(np,poslist)
-        if not found: np = random_pos()
+        if not found: np = random_pos(area)
     return np
 
 def unit_test():
