@@ -241,7 +241,7 @@ def shuffle_burrows(empties):
         print(burrow.name)
         p = robot.maths.find_new_location(random.choice(empties),poslist)
         poslist.append(p)
-        // fix earlier dave lat/lon confusion
+        # fix earlier dave lat/lon confusion
         burrow.pos_x = p[0]*2.0
         burrow.pos_y = p[1]/2.0
         burrow.save()
