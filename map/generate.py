@@ -1,7 +1,7 @@
 from PIL import Image
 from PIL import ImageDraw
 import numpy as np
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 import random
 
 def gen_square(map_size,src_size,src_list,trees_list):
