@@ -484,13 +484,13 @@ function inner_render_event(type, start_time) {
 }
 
 // actually render the event
-function inner_render_my_event(type, start_time) {
+function inner_render_my_event(start_time) {
     // convert time into %
     var left = (start_time/pop.duration())*100;
     var cricket_image = Math.floor(Math.random() * 10) + 1;
     $("#timeline").append(
-        '<div class="event small_circle" style="left:'+left+'%; margin-top: -1.8em"><img class="cricket-line" src="/media/images/crickets/'+cricket_image+'.png" style="z-index: 2; height: 75px; width:auto"></div>');
-    $('.cricket-line').fadeOut('slow');
+        '<div class="callback event small_circle" style="left:'+left*0.9505+'%; margin-top: -1.8em"></div>');
+    $('.callback').fadeOut(5000);
 }
 
 // sends the event to the server and renders it
@@ -526,6 +526,8 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
                 other: other
             });
         }
+
+        inner_render_my_event(t)
     }
 
 }
