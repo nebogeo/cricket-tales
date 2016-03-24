@@ -92,9 +92,10 @@
             crs: L.CRS.Simple
         }).addTo(map);
 
-        var southWest = map.unproject([0, 16384], map.getMaxZoom());
-        var northEast = map.unproject([16384, 0], map.getMaxZoom());
-        map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
+        // restricts the map, but is a bit iffy
+        //var southWest = map.unproject([0, 16384], map.getMaxZoom());
+        //var northEast = map.unproject([16384, 0], map.getMaxZoom());
+        //map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
 
     {% for burrow in burrows %}
 
