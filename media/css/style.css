@@ -270,7 +270,24 @@ input.burrow_link {
 
 .tutorial_highlight {
     overflow: auto;
+    float: none !important;
     /*border: 3px dotted red; */
+}
+
+.tutorial_highlight_id {
+    overflow: auto;
+    float: none !important;
+    min-height: 100px;
+}
+
+.tutorial_highlight .button {
+    min-height: 75px;
+    height: auto;
+}
+
+.tutorial_highlight div.button_text p {
+    font-size: 2vw;
+    margin-top: 50%;
 }
 
 .tutorial_list {
