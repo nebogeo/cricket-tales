@@ -71,19 +71,19 @@ function switch_tutorial(from,to) {
     t = document.getElementById(to);
     t.style.display = "block";
 
-    make_visible("behaviour-buttongroup",false);
-    make_visible("FEED-buttongroup",false);
-    make_visible("LEAVES FRAME-buttongroup",false);
-    make_visible("id-buttongroup",false);
+    // make_visible("behaviour-buttongroup",false);
+    // make_visible("FEED-buttongroup",false);
+    // make_visible("LEAVES FRAME-buttongroup",false);
+    // make_visible("id-buttongroup",false);
 
-    if (to=="tut-1") make_visible("behaviour-buttongroup",true);
-    if (to=="tut-2") make_visible("FEED-buttongroup",true);
-    if (to=="tut-3") make_visible("LEAVES FRAME-buttongroup",true);
-    if (to=="tut-4") make_visible("id-buttongroup",true);
-    if (to=="tut-5") {
-        var t = document.getElementById("tutorial-buttons");
-       // t.style.display = "none";
-    }
+    // if (to=="tut-1") make_visible("behaviour-buttongroup",true);
+    // if (to=="tut-2") make_visible("FEED-buttongroup",true);
+    // if (to=="tut-3") make_visible("LEAVES FRAME-buttongroup",true);
+    // if (to=="tut-4") make_visible("id-buttongroup",true);
+    // if (to=="tut-5") {
+    //     var t = document.getElementById("tutorial-buttons");
+    //    // t.style.display = "none";
+    // }
 
     // Checking if slide is tut-5, handle visibility of buttons
     if (to === "tut-5") {

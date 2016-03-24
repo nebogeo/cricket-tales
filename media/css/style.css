@@ -1000,7 +1000,7 @@ nav ul ul li a:hover {
 
 @media only screen
   and (min-device-width: 120px)
-  and (max-device-width: 1200px)
+  and (max-device-width: 600px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
     #tut-1 > div.responsive-buttons-small.row.col-xs-12 {
@@ -1014,6 +1014,12 @@ nav ul ul li a:hover {
     #tut-1 > div > div.arrow.responsive-buttons-large {
         display: none !important;
     }
+
+    .tutorial_highlight div.button_text p {
+        font-size: 4vw !important;
+        margin-top: 50% !important;
+    }
+
 
 
 
@@ -1053,7 +1059,6 @@ nav ul ul li a:hover {
         overflow: visible;
         width: 90% !important;
     }
-
 }
 
 .slick-disabled {
