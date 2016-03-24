@@ -251,6 +251,14 @@ function update_infotext() {
 function burrow_event(burrow_start_id,movie_id,user_id) {
     console.log(state);
     update_infotext();
+
+    $('div.event_button').click(function() {
+        $(this).addClass('animated').delay(500).queue(function(){
+            $(this).removeClass('animated').dequeue()
+        })
+        // $('.event_button').removeClass('animated');
+    })
+
     $("#ourvideo").click(function(e) {
         state = 'movie-playing';
 
@@ -260,6 +268,8 @@ function burrow_event(burrow_start_id,movie_id,user_id) {
             "background": "url(/media/images/movie_buttons/pause.png)",
             "background-size": "100% 100%"
         });
+
+
 
         var burrowPercent = mouse_pos(e, this);
         add_event(burrow_start_id,movie_id,user_id, burrowPercent['x'], burrowPercent['y'], null);
@@ -531,6 +541,9 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
     }
 
 }
+
+// Event button click
+    
 
 // house helpers
 

@@ -594,6 +594,29 @@ span.cricket-id-char {
     pointer-events: none;
 }
 
+.event_button.animated {
+    -webkit-animation: filter-animation 0.5s;
+}
+
+
+@-webkit-keyframes filter-animation {
+  0% {
+    -webkit-filter: brightness(2);
+  }
+  
+  10% {
+    -webkit-filter: brightness(1.8);
+  }
+
+  45% {
+    -webkit-filter: brightness(1.4);
+  }
+  
+  100% {
+    -webkit-filter: brightness(1);
+  }
+}
+
 .time {
     margin-top: 0.06em;
     margin-left: 0.5em;
