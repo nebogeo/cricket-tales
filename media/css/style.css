@@ -270,7 +270,24 @@ input.burrow_link {
 
 .tutorial_highlight {
     overflow: auto;
+    float: none !important;
     /*border: 3px dotted red; */
+}
+
+.tutorial_highlight_id {
+    overflow: auto;
+    float: none !important;
+    min-height: 100px;
+}
+
+.tutorial_highlight .button {
+    min-height: 75px;
+    height: auto;
+}
+
+.tutorial_highlight div.button_text p {
+    font-size: 2vw;
+    margin-top: 50%;
 }
 
 .tutorial_list {
@@ -481,11 +498,13 @@ input#tag_id {
 }
 
 .small_circle {
-    /*border: 1px solid #1e4018;*/
-    border-radius: 1em;
-	width: 2em;
-	height: 2em;
+    border: 1px solid #000;
+    border-radius: 0.25em;
+    width: 0.5em;
+    height: 0.5em;
     text-align: center;
+    position: relative;
+    top: 0.1em;
 }
 
 .tiny_circle {
@@ -585,11 +604,34 @@ span.cricket-id-char {
 }
 
 .event {
-    margin-top: -1em;
-    margin-left: -1.5em;
+    margin-left: 0.7em;
     position: absolute;
-/*    background:rgba(255,255,0,.75);*/
+    top: 2.09em;
+    background:rgba(0,0,0,1);
     pointer-events: none;
+}
+
+.event_button.animated {
+    -webkit-animation: filter-animation 0.5s;
+}
+
+
+@-webkit-keyframes filter-animation {
+  0% {
+    -webkit-filter: brightness(2);
+  }
+  
+  10% {
+    -webkit-filter: brightness(1.8);
+  }
+
+  45% {
+    -webkit-filter: brightness(1.4);
+  }
+  
+  100% {
+    -webkit-filter: brightness(1);
+  }
 }
 
 .time {
@@ -958,7 +1000,7 @@ nav ul ul li a:hover {
 
 @media only screen
   and (min-device-width: 120px)
-  and (max-device-width: 1200px)
+  and (max-device-width: 600px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
     #tut-1 > div.responsive-buttons-small.row.col-xs-12 {
@@ -972,6 +1014,12 @@ nav ul ul li a:hover {
     #tut-1 > div > div.arrow.responsive-buttons-large {
         display: none !important;
     }
+
+    .tutorial_highlight div.button_text p {
+        font-size: 4vw !important;
+        margin-top: 50% !important;
+    }
+
 
 
 
@@ -1011,7 +1059,6 @@ nav ul ul li a:hover {
         overflow: visible;
         width: 90% !important;
     }
-
 }
 
 .slick-disabled {

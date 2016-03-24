@@ -71,19 +71,19 @@ function switch_tutorial(from,to) {
     t = document.getElementById(to);
     t.style.display = "block";
 
-    make_visible("behaviour-buttongroup",false);
-    make_visible("FEED-buttongroup",false);
-    make_visible("LEAVES FRAME-buttongroup",false);
-    make_visible("id-buttongroup",false);
+    // make_visible("behaviour-buttongroup",false);
+    // make_visible("FEED-buttongroup",false);
+    // make_visible("LEAVES FRAME-buttongroup",false);
+    // make_visible("id-buttongroup",false);
 
-    if (to=="tut-1") make_visible("behaviour-buttongroup",true);
-    if (to=="tut-2") make_visible("FEED-buttongroup",true);
-    if (to=="tut-3") make_visible("LEAVES FRAME-buttongroup",true);
-    if (to=="tut-4") make_visible("id-buttongroup",true);
-    if (to=="tut-5") {
-        var t = document.getElementById("tutorial-buttons");
-       // t.style.display = "none";
-    }
+    // if (to=="tut-1") make_visible("behaviour-buttongroup",true);
+    // if (to=="tut-2") make_visible("FEED-buttongroup",true);
+    // if (to=="tut-3") make_visible("LEAVES FRAME-buttongroup",true);
+    // if (to=="tut-4") make_visible("id-buttongroup",true);
+    // if (to=="tut-5") {
+    //     var t = document.getElementById("tutorial-buttons");
+    //    // t.style.display = "none";
+    // }
 
     // Checking if slide is tut-5, handle visibility of buttons
     if (to === "tut-5") {
@@ -251,6 +251,14 @@ function update_infotext() {
 function burrow_event(burrow_start_id,movie_id,user_id) {
     console.log(state);
     update_infotext();
+
+    $('div.event_button').click(function() {
+        $(this).addClass('animated').delay(500).queue(function(){
+            $(this).removeClass('animated').dequeue()
+        })
+        // $('.event_button').removeClass('animated');
+    })
+
     $("#ourvideo").click(function(e) {
         state = 'movie-playing';
 
@@ -260,6 +268,8 @@ function burrow_event(burrow_start_id,movie_id,user_id) {
             "background": "url(/media/images/movie_buttons/pause.png)",
             "background-size": "100% 100%"
         });
+
+
 
         var burrowPercent = mouse_pos(e, this);
         add_event(burrow_start_id,movie_id,user_id, burrowPercent['x'], burrowPercent['y'], null);
@@ -484,13 +494,13 @@ function inner_render_event(type, start_time) {
 }
 
 // actually render the event
-function inner_render_my_event(type, start_time) {
+function inner_render_my_event(start_time) {
     // convert time into %
     var left = (start_time/pop.duration())*100;
     var cricket_image = Math.floor(Math.random() * 10) + 1;
     $("#timeline").append(
-        '<div class="event small_circle" style="left:'+left+'%; margin-top: -1.8em"><img class="cricket-line" src="/media/images/crickets/'+cricket_image+'.png" style="z-index: 2; height: 75px; width:auto"></div>');
-    $('.cricket-line').fadeOut('slow');
+        '<div class="callback event small_circle" style="left:'+left*0.9505+'%; margin-top: -1.8em"></div>');
+    $('.callback').fadeOut(5000);
 }
 
 // sends the event to the server and renders it
@@ -526,9 +536,14 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
                 other: other
             });
         }
+
+        inner_render_my_event(t)
     }
 
 }
+
+// Event button click
+    
 
 // house helpers
 

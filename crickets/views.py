@@ -66,6 +66,7 @@ def map(request):
             # todo: slow - precache??
             cricket_end = EventType.objects.filter(name="Cricket End").first()
             context['num_videos_watched'] = Event.objects.filter(type=cricket_end).distinct('movie').count()
+            # context['num_videos_watched'] = 0
 
             totals = PlayerBurrowScore.objects.values('player__username').order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')
             if len(totals)>0:
@@ -341,6 +342,22 @@ def tutorial(request):
     context = {}
     context['page_title'] = _("HOW YOU CAN HELP")
     context['event_types'] = get_event_types()
+
+    context['basic_behaviours'] = []
+    context['movement'] = []
+    context['predators_traps'] = []
+
+    for event in get_event_types():
+        basic_behaviours_names = ["MATE", "SING", "FIGHT", "FEED"]
+        movement_names = ["LEAVES BURROW", "ENTERS BURROW", "ANOTHER CRICKET", "LEAVES FRAME"]
+        predators_traps_names = ["Predator: Bird", "Predator: Shrew", "TRAP", "Something Else"]
+        if event.name in basic_behaviours_names:
+            context['basic_behaviours'].append(event)
+        if event.name in movement_names:
+            context['movement'].append(event)
+        if event.name in predators_traps_names:
+            context['predators_traps'].append(event)
+
     context['something_else'] = EventType.objects.filter(name="Something Else").first()
     context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
     context['cricket_end'] = EventType.objects.filter(name="Cricket End").first()
