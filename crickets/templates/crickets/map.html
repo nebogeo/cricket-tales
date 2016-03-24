@@ -47,7 +47,7 @@
           var longitude = parseFloat(long_string);
 
           // Default marker
-          var marker = L.marker(new L.LatLng(latitude, longitude), {
+          var marker = L.marker(map.unproject([latitude, longitude]), {
             icon: L.icon({
                 iconUrl: '{{MEDIA_URL}}'+image_from_house(house),
                 iconSize: size_from_house(house,map.getZoom()),
@@ -88,8 +88,13 @@
             minZoom: 1,
             maxZoom: 6,
             attribution: 'Cricket Burrow Surveys Ltd',
-            tms: true
+            tms: true,
+            crs: L.CRS.Simple
         }).addTo(map);
+
+        var southWest = map.unproject([0, 16384], map.getMaxZoom());
+        var northEast = map.unproject([16384, 0], map.getMaxZoom());
+        map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
 
     {% for burrow in burrows %}
 

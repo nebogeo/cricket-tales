@@ -12,7 +12,6 @@ def gen_square(map_size,src_size,src_list,trees_list):
     tile_scale = (map_size/size_tiles)/float(src_size)
     print(tile_scale)
 
-
     empty_image = Image.open("map/orig_tiles/6.png")
 
     images = map(lambda i: Image.open("map/orig_tiles/"+i+".png"), src_list)
@@ -31,10 +30,9 @@ def gen_square(map_size,src_size,src_list,trees_list):
                 px = int(x*src_size*tile_scale)
                 py = int(y*src_size*tile_scale)
                 im.paste(empty_image,(px,py))
-                empties.append([(px/float(map_size)-0.5)*360.0,
-                                (py/float(map_size)-0.5)*180.0,
-                                ((px+src_size*tile_scale)/float(map_size)-0.5)*360.0,
-                                ((py+src_size*tile_scale)/float(map_size)-0.5)*180.0])
+                empties.append([px,py,
+                                px+src_size*tile_scale,
+                                py+src_size*tile_scale])
             elif random.random()<0.1:
                 im.paste(random.choice(t_images),(int(x*src_size*tile_scale),
                                                 int(y*src_size*tile_scale)))

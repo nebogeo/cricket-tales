@@ -68,6 +68,11 @@ def build_burrows(filename):
             existing = Burrow(name = c2b["burrow"], pos_x=0, pos_y=0)
             existing.save()
 
+def random_burrows(count):
+    for i in range(0,count):
+        Burrow(name = "rand-"+str(i), pos_x=0, pos_y=0).save()
+
+
 # use the csv file to connect the movies with the right burrows
 def connect_burrows_to_movies(filename):
     cameras_to_burrows = robot.import_data.import_cameras_to_burrows(filename)

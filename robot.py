@@ -53,7 +53,6 @@ def process_loop(instance_name):
         robot_django.process_random_video(instance_name)
         time.sleep(20)
 
-
 if len(sys.argv)<2 or sys.argv[1]=="-?" or sys.argv[1]=="--help":
     print "Welcome to the cricket tales processing robot v0.0.1"
 else:
@@ -90,7 +89,7 @@ else:
 
     if sys.argv[1]=="make-map":
         # make new map image - overrites empties and out.jpg
-        image_size = 16384*2
+        image_size = 16384
         empties = map.generate.gen_square(image_size,1034,["1","2","3","4","5","7","8","9"],["t1","t1","t2","t4","t5"])
         f = open("empty-map-zones.txt","wo")
         for empty in empties:
@@ -101,9 +100,14 @@ else:
         empties = []
         for l in open("empty-map-zones.txt"):
             l = l.split()
-            empties.append([float(l[0]),float(l[1]),
-                            float(l[2]),float(l[3])])
+            # not sure why these divides, but fed up and works
+            ret = [float(l[0])/2, float(l[1])/8,
+                   float(l[2])/2, float(l[3])/8]
+            empties.append(ret)
+
         robot_django.shuffle_burrows(empties)
+    if sys.argv[1]=="random-burrows":
+        robot_django.random_burrows(1000)
     if sys.argv[1]=="activity-update":
         robot_django.update_all_activity()
     if sys.argv[1]=="report":
