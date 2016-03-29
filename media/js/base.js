@@ -232,7 +232,7 @@ function update_infotext() {
             $('.page_title').html('3. Tag cricket behaviours and ID as the video plays');
             break;
         case "wait-cricket-end":
-            $('.page_title').html('4. Click on the cricket to finish the video, or click <button id="no_cricket_end">No cricket</button>');
+            $('.page_title').html('4. Click on the cricket if you can see it, or click <button id="no_cricket_end">No cricket</button>');
             break;
         case "movie-end":
             $('.page_title').html('Well done! Video complete');
@@ -543,7 +543,7 @@ function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
 }
 
 // Event button click
-    
+
 
 // house helpers
 
