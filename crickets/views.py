@@ -56,7 +56,6 @@ def map(request):
                 if t: highest_score = t[0].movies_finished
                 burrow.videos_to_view = highest_score - player_score
 
-            context['num_empty_burrows'] = Burrow.objects.filter(owner__isnull=True).count()
             context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
             context['stories'] = Story.objects.all().order_by('-time')[:3]
             context['num_players'] = User.objects.all().count()
