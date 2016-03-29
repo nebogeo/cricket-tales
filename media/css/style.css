@@ -50,6 +50,10 @@ video {
     height: auto;
 }
 
+.page_title {
+    font-size: 3vw;
+}
+
 .container {
     width: 100% !important;
 }
@@ -251,7 +255,7 @@ hr.top {
 hr.bottom {
     background:url('../images/borders/border-bottom-long.png');
     border: 0;
-    height: 35px;
+    height: 40px;
     background-size: 100%;
     background-repeat: repeat-x;
     padding: 0px;
@@ -330,15 +334,19 @@ input[type=submit]:active, button#tutorial:active {
 
 button#no_cricket,
 button#no_cricket_end {
-    background:url('../images/buttons/box.png');
+    background:url('../images/buttons/button-oblong.png');
     border: 0px;
-    background-size: 177% 280%;
-    background-position-x: -2.3em;
-    background-position-y: -1.3em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    background-size: 100% 100%;
+    /* background-position-x: -2.3em; */
+    /* background-position-y: -1.3em; */
     overflow: visible;
-/*    padding: 0.8em;*/
     text-align: left;
     background-repeat: no-repeat;
+/*    padding: 0.8em;*/
 }
 
 #burrow_start,
@@ -856,20 +864,20 @@ span.cricket-id-char {
 }
 
 .menu_title {
+    font-size: 2.5vw;
 }
 
 .menu_holder {
-    text-align: right;
     font-family: 'Love Ya Like A Sister', sans-serif;
     z-index: 5;
     overflow: visible;
-    height: 3.5em;
 }
 
 nav ul {
+    padding: 0px;
 	list-style: none;
 	position: relative;
-    right: 0;
+    right: 0px;
     display: inline-table;
 }
 
