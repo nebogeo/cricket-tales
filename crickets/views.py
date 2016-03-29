@@ -28,6 +28,16 @@ from django.contrib.auth import authenticate, login, logout
 def index(request):
     context = {}
     context['hide_menu'] = True
+
+    #############################
+    # todo: slow - precache??
+    cricket_end = EventType.objects.filter(name="Cricket End").first()
+    context['num_videos_watched'] = Event.objects.filter(type=cricket_end).distinct('movie').count()
+    #############################
+
+    context['num_players'] = User.objects.all().count()
+    context['num_videos'] = Movie.objects.all().count()
+
     return render(request, 'crickets/index.html', context)
 
 ######################################################################
@@ -58,21 +68,6 @@ def map(request):
 
             context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
             context['stories'] = Story.objects.all().order_by('-time')[:3]
-            context['num_players'] = User.objects.all().count()
-            context['num_videos'] = Movie.objects.filter(status=1).count()
-
-            #############################
-            # todo: slow - precache??
-            cricket_end = EventType.objects.filter(name="Cricket End").first()
-            context['num_videos_watched'] = Event.objects.filter(type=cricket_end).distinct('movie').count()
-            # context['num_videos_watched'] = 0
-
-            totals = PlayerBurrowScore.objects.values('player__username').order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')
-            if len(totals)>0:
-                context['most_views'] = totals[0]['player__username']
-            else:
-                context['most_views'] = "none yet"
-            #####################################
 
             # can we not do this on the browser??
             for story in context['stories']:

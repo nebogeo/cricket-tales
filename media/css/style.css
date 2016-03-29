@@ -171,8 +171,12 @@ video {
 
 .game_title {
     text-align: center;
-    margin-bottom: 0.5em;
     font-family: 'Love Ya Like A Sister', sans-serif;
+}
+
+.game_stats {
+    text-align: center;
+    margin-bottom: 0.5em;
 }
 
 .top_layer {
