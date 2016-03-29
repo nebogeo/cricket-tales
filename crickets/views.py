@@ -106,7 +106,7 @@ def get_event_types():
         EventType.objects.filter(name="MATE").first(),
         EventType.objects.filter(name="SING").first(),
         EventType.objects.filter(name="FIGHT").first(),
-        EventType.objects.filter(name="FEED").first(),
+        EventType.objects.filter(name="EAT").first(),
         EventType.objects.filter(name="LEAVES BURROW").first(),
         EventType.objects.filter(name="ENTERS BURROW").first(),
         EventType.objects.filter(name="ANOTHER CRICKET").first(),
@@ -342,7 +342,7 @@ def tutorial(request):
     context['predators_traps'] = []
 
     for event in get_event_types():
-        basic_behaviours_names = ["MATE", "SING", "FIGHT", "FEED"]
+        basic_behaviours_names = ["MATE", "SING", "FIGHT", "EAT"]
         movement_names = ["LEAVES BURROW", "ENTERS BURROW", "ANOTHER CRICKET", "LEAVES FRAME"]
         predators_traps_names = ["Predator: Bird", "Predator: Shrew", "TRAP", "Something Else"]
         if event.name in basic_behaviours_names:
