@@ -348,7 +348,9 @@ def update_burrows_activity():
         if len(hiscores)>0:
             hiscore=hiscores[0]
             # only award burrows after 10 movies have been watched
-            if hiscore.movies_finished>10 and burrow.owner != hiscore.player:
+            # hiscore.movies_finished>10 and
+            # (controversial)
+            if burrow.owner != hiscore.player:
                 #print("burrow "+burrow.name+" has just been owned by "+hiscore.player.username)
                 burrow.new_house_needed = 1
                 burrow.owner = hiscore.player
