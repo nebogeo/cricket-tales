@@ -65,6 +65,10 @@ def map(request):
                 t = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('-movies_finished')
                 if t: highest_score = t[0].movies_finished
                 burrow.videos_to_view = highest_score - player_score
+                # user perspective stuff
+                burrow.flag=""
+                if player_score>0: burrow.flag="leaf-flag.png"
+                if burrow.owner == request.user: burrow.flag="long-flag.png"
 
             context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
             context['stories'] = Story.objects.all().order_by('-time')[:3]

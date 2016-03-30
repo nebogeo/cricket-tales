@@ -1097,6 +1097,11 @@ nav ul ul li a:hover {
   margin: 0px;
 }
 
+.flag-text {
+    border: 0;
+    background: none;
+}
+
 input.burrow_link {
     margin-top: 1em;
 }
