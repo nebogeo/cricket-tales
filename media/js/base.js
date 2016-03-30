@@ -573,3 +573,13 @@ function size_from_house(house,zoom) {
         return ret;
     }
 }
+
+function flag_size(zoom) {
+    var zooms = [[10, 5],
+                 [20, 10],
+                 [40, 20],
+                 [60, 30],
+                 [120, 70],
+                 [250, 125]];
+    return zooms[zoom-1];
+}

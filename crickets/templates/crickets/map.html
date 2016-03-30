@@ -18,7 +18,7 @@
 
       <script>
         function create_marker(pos_x, pos_y, name, owner, videos_to_view,
-                               percent_viewed, id, house) {
+                               percent_viewed, id, house, flag) {
 
           var lat_string = pos_x;
           var long_string = pos_y;
@@ -43,17 +43,39 @@
 
           marker.addTo(map);
 
+          if (flag != "") {
+            var flag_image = '{{ MEDIA_URL }}images/houses/'+flag
+            flag_icon = new L.Icon({iconUrl: flag_image}),
+            flag_icon.options.iconSize = flag_size(map.getZoom());
+            var flag_marker = L.marker(map.unproject([latitude+26, longitude-40]), {icon: flag_icon}).addTo(map);
+
+            /*if (flag=="long-flag.png") {
+               text_icon = new L.divIcon({className: "flag-text", html: "wow", iconSize: [100, 40]});
+               var text_marker = L.marker(map.unproject([latitude+26, longitude-40]), {icon: text_icon}).addTo(map);
+            }*/
+          }
+
           // The bizznizz
           map.on('zoomend', function (e) {
-            new_icon(map.getZoom());
-          });
-
-        function new_icon(zoom) {
             var icon = marker.options.icon;
-            icon.options.iconSize = size_from_house(house,zoom);
+            icon.options.iconSize = size_from_house(house,map.getZoom());
             icon.options.iconUrl = '{{MEDIA_URL}}'+image_from_house(house)
             marker.setIcon(icon);
-        }
+
+            if (flag!="") {
+              var flag_icon = flag_marker.options.icon;
+              flag_icon.options.iconSize = flag_size(map.getZoom());
+              flag_icon.options.iconUrl = flag_image;
+              flag_marker.setIcon(flag_icon);
+
+              /*if (flag=="long-flag.png") {
+                 var text_icon = text_marker.options.icon;
+                 text_icon.options.className = flag_text_size(map.getZoom());
+                 text_icon.options.html = "wow";
+                 text_marker.setIcon(text_icon);
+              }*/
+            }
+          });
 
         }
 
@@ -81,7 +103,8 @@
         '{{ burrow.videos_to_view }}',
         Number(({{ burrow.num_movies_watched }}/{{ burrow.num_movies }})*100).toFixed(1),
         '{{ burrow.id }}',
-        '{{burrow.house_info}}');
+        '{{burrow.house_info}}',
+        '{{burrow.flag}}');
 
     {% endfor %}
 
