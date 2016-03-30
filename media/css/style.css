@@ -336,7 +336,7 @@ a.tutorial-play {
     color: #333;
 }
 
-input[type=submit], button#tutorial {
+input[type=submit], button#tutorial, button#builder {
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
     background-size: 100% 100%;
@@ -346,16 +346,19 @@ input[type=submit], button#tutorial {
     background-repeat: no-repeat;
 }
 
-input[type=submit]:hover, button#tutorial:hover {
+input[type=submit]:hover, button#tutorial:hover, button#builder:hover {
     background:url('../images/buttons/button-oblong-high.png');
     background-size: 100% 100%;
 }
 
-input[type=submit]:active, button#tutorial:active {
+input[type=submit]:active, button#tutorial:active, button#builder:hover {
     background:url('../images/buttons/button-oblong-offset.png');
     background-size: 100% 100%;
 }
 
+button#builder p {
+    margin-left: 25%;
+}
 
 
 button#no_cricket,
