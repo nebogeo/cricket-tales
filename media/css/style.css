@@ -176,6 +176,32 @@ video {
 .game_title {
     text-align: center;
     font-family: 'Love Ya Like A Sister', sans-serif;
+
+}
+
+.game_title span {
+    margin-left: -1em;
+}
+
+.game_title span::before{
+    content: "";
+    background: url('../images/leaves/leaves6.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 0 0.4em;
+    margin: 0 -0.2em;
+}
+
+.game_title span::after{
+    content: "";
+    background: url('../images/leaves/leaves7.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 0 0.4em;
+/*    margin: 0 -0.35em;*/
+    position: relative;
+    top: 0.85em;
+    left: -0.395em;
 }
 
 .game_stats {
@@ -596,6 +622,23 @@ span.cricket-id-char {
     margin-left: 0.7em;
 }
 
+.button.continue p::after {
+    content: "";
+    background: url('../images/crickets/7.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 3em 3em !important;
+    position: relative;
+    left: 2em;
+    top: -2em;
+}
+
+.nerc-cricket {
+    position: absolute;
+    width: 7%;
+    bottom: -4.2em;
+    left: 0.4em;
+}
 /* Keyboard */
 #tag_cricket.panel {
     background: rgba(255, 255, 255, 0.7);
@@ -1014,11 +1057,9 @@ nav ul ul li a:hover {
     display: none;
 }
 
-@media only screen
-  and (min-device-width: 120px)
-  and (max-device-width: 600px)
-  and (-webkit-min-device-pixel-ratio: 2) {
 
+
+@media screen and (max-width : 600px) {
     #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
         display: inline-block !important;
     }
@@ -1036,14 +1077,16 @@ nav ul ul li a:hover {
         margin-top: 50% !important;
     }
 
+    .button.continue p::after {
+        display: none;
+    }
 
-
-
+    .nerc-cricket {
+        display: none;
+    }
 }
 
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 667px) {
+@media screen and (min-device-width: 320px) and (max-device-width: 667px) {
 
     .timeline {
         height: 1em;
@@ -1053,10 +1096,8 @@ nav ul ul li a:hover {
 
 }
 
-@media screen
-  and (min-device-width: 100px)
-  and (max-device-width: 1024px)
-  and (min-device-height: 575px) {
+
+@media screen and (min-device-width: 100px) and (max-device-width: 1024px){
 
     #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
         display: inline-block !important;

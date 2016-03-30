@@ -49,7 +49,7 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.
       </div>
     </div>
 
-    <div class="button col-sm-4 col-xs-12"
+    <div class="button continue col-sm-4 col-xs-12"
          style="background: url(/media/images/buttons/button-6.png); background-size: 100% 100%;"
          onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-high.png');"
          onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
@@ -86,7 +86,7 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.
   </div> <!- button container -->
 </div>
   <div class="row col-xs-12" style="margin-top:2em;">
-    <div class="col-xs-2">
+    <div class="col-xs-2 col-xs-offset-1 nerc">
       <a href="http://www.nerc.ac.uk/"><img class="logo" src="{{ MEDIA_URL }}/images/nerc logo.jpg"/></a>
     </div>
     <div class="col-xs-2 col-xs-offset-1">
@@ -98,5 +98,7 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.
       {% endif %}
     </div>
 </div>
+
+<img class="nerc-cricket" src="/media/images/crickets/10.png">
 
 {% endblock %}
