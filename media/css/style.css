@@ -633,12 +633,40 @@ span.cricket-id-char {
     top: -2em;
 }
 
-.nerc-cricket {
+
+.field::before {
+    content: "";
+    background: url('../images/crickets/6.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 4em 2em !important;
     position: absolute;
-    width: 7%;
-    bottom: -4.2em;
-    left: 0.4em;
+    left: -0.46em;
+    top: 5em;
 }
+
+.cameras::after {
+    content: "";
+    background: url('../images/leaves/leaves8.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 4em 2em !important;
+    position: absolute;
+    right: -1.5em;
+    top: -1.5em;
+}
+
+.the-crickets::after {
+    content: "";
+    background: url('../images/crickets/1.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 2em 3em !important;
+    position: absolute;
+    right: -0.4em;
+    bottom: 0.4em;
+}
+
 /* Keyboard */
 #tag_cricket.panel {
     background: rgba(255, 255, 255, 0.7);
