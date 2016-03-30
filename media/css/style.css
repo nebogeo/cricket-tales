@@ -1010,7 +1010,7 @@ nav ul ul li a:hover {
     padding-top: 25%;
 }
 
-#tut-1 > div.responsive-buttons-small.row.col-xs-12 {
+#tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
     display: none;
 }
 
@@ -1019,8 +1019,8 @@ nav ul ul li a:hover {
   and (max-device-width: 600px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
-    #tut-1 > div.responsive-buttons-small.row.col-xs-12 {
-        display: inline-block;
+    #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
+        display: inline-block !important;
     }
 
     .slick-arrow {
@@ -1058,8 +1058,8 @@ nav ul ul li a:hover {
   and (max-device-width: 1024px)
   and (min-device-height: 575px) {
 
-    #tut-1 > div.responsive-buttons-small.row.col-xs-12{
-        display: inline-block;
+    #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
+        display: inline-block !important;
     }
 
     .slick-arrow {
