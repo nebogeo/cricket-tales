@@ -222,7 +222,7 @@ def update_video_status():
             print(movie.name+" is complete with "+str(movie.views)+" views")
             set_movie_status(movie,2)
             # spawn a video process
-            Thread(target = process_loop, args = ("thread-0", )).start()
+            #Thread(target = process_loop, args = ("thread-0", )).start()
             # delete files separately
 
 
@@ -289,7 +289,7 @@ def process_random_video(instance_name):
 
 def process_loop(instance_name):
     while True:
-        robot_django.process_random_video(instance_name)
+        process_random_video(instance_name)
         time.sleep(20)
 
 #################################################################
