@@ -1039,6 +1039,10 @@ nav ul ul li a:hover {
   float: left;
 }
 
+.slider-item-tut img {
+    width: 100%;
+}
+
 .slider-overlay {
   position: absolute;
   top: 40%;
