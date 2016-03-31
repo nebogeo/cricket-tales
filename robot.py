@@ -48,10 +48,6 @@ def search_and_process_videos(path,duration,fps):
                 # todo get subdir from path...
                 robot_django.chop_index(duration,fps,dirpath+"/"+filename,subdir)
 
-def process_loop(instance_name):
-    while True:
-        robot_django.process_random_video(instance_name)
-        time.sleep(20)
 
 if len(sys.argv)<2 or sys.argv[1]=="-?" or sys.argv[1]=="--help":
     print "Welcome to the cricket tales processing robot v0.0.1"
@@ -68,12 +64,12 @@ else:
         robot.import_data.connect_cricket_to_movies("cricket-data/crickets-timing.csv",robot_django.connect_cricket_to_movies)
 
     if sys.argv[1]=="video-process":
-        Thread(target = process_loop, args = ("thread-0", )).start()
-        Thread(target = process_loop, args = ("thread-1", )).start()
-        Thread(target = process_loop, args = ("thread-2", )).start()
-        Thread(target = process_loop, args = ("thread-3", )).start()
-        Thread(target = process_loop, args = ("thread-4", )).start()
-        Thread(target = process_loop, args = ("thread-5", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-0", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-1", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-2", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-3", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-4", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-5", )).start()
 
     if sys.argv[1]=="player-activity":
         while True:
@@ -84,8 +80,11 @@ else:
         robot_django.connect_burrows_to_movies("cricket-data/camera-burrow.csv")
 
 
-    if sys.argv[1]=="check":
+    if sys.argv[1]=="check-videos":
         robot_django.update_video_status()
+
+    if sys.argv[1]=="video-clearup":
+        robot_django.video_clearup()
 
     if sys.argv[1]=="make-map":
         # make new map image - overrites empties and out.jpg
