@@ -106,6 +106,56 @@ function switch_tutorial(from,to) {
             prevArrow: $('.arrow-tut-left'),
             nextArrow: $('.arrow-tut-right')
         });
+
+    }
+
+    if (to=="tut-2") {
+        // need to build the carousel here
+        // as the element is display:none at load time
+        // so does not calculate properly
+        $('#slider-tutorial-movement').slick({
+            infinite: false,
+            arrows: true,
+            prevArrow: $('.arrow-tut-left'),
+            nextArrow: $('.arrow-tut-right')
+        });
+
+    }
+    if (to === "tut-3") {
+        $('#critters').slick({
+            infinite: false,
+            arrows: true,
+            slidesToShow: 3,
+            prevArrow: $('.arrow-tut-left'),
+            nextArrow: $('.arrow-tut-right'),
+            responsive: [
+                                {
+                                  breakpoint: 1024,
+                                  settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 1,
+                                    centerMode: false,
+                                  }
+                                },
+                                {
+                                  breakpoint: 768,
+                                  settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 1,
+                                    centerMode: false,
+                                  }
+                                },
+                                {
+                                  breakpoint: 425,
+                                  settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    centerMode: false,
+
+                                  }
+                                }
+                            ]
+        });
     }
 }
 

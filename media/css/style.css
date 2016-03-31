@@ -1039,6 +1039,10 @@ nav ul ul li a:hover {
   float: left;
 }
 
+.slider-item-tut img {
+    width: 100%;
+}
+
 .slider-overlay {
   position: absolute;
   top: 40%;
@@ -1089,9 +1093,41 @@ nav ul ul li a:hover {
 }
 
 
+#tut-2 > div > div > div.arrow.arrow-tut-right.col-lg-2.col-md-2.col-xs-2.col-xs-offset-8.slick-arrow,
+#tut-2 > div > div > div.arrow.arrow-tut-left.col-lg-2.col-md-2.col-xs-2.col-xs-offset-8.slick-arrow {
+    padding-top: 25%;
+}
 
-@media screen and (max-width : 600px) {
+
+#tut-2 > div > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
+    display: none;
+}
+
+.nerc-cricket {
+    position: absolute;
+    width: 7%;
+    bottom: -4.2em;
+    left: 0.4em;
+}
+
+@media screen and (max-width : 321px) {
+    .button.continue p::after {
+        top: -5em !important;
+    }
+}
+
+@media screen and (max-width : 425px) {
+    .button.continue p::after {
+        top: -4em !important;
+    }
+}
+
+@media screen and (max-width : 700px) {
     #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
+        display: inline-block !important;
+    }
+
+    #tut-2 > div > div.responsive-buttons-small.row.col-xs-12.col-md-12  {
         display: inline-block !important;
     }
 
@@ -1103,13 +1139,35 @@ nav ul ul li a:hover {
         display: none !important;
     }
 
+    
+    #tut-2 > div > div.arrow.responsive-buttons-large {
+        display: none !important;
+    }
+
+
     .tutorial_highlight div.button_text p {
         font-size: 4vw !important;
         margin-top: 50% !important;
     }
 
+    .button.continue,
+    .button.guest,
+    .button.about {
+        min-height: 125px;
+    }
+
+    .button.continue p,
+    .button.guest p,
+    .button.about p {
+        font-size: 3vw !important;
+        width: 200px;
+        height: 125px;
+    }
+
     .button.continue p::after {
-        display: none;
+        padding: 2em 4em !important;
+        top: -3em;
+        left: 3em;
     }
 
     .nerc-cricket {
@@ -1134,6 +1192,10 @@ nav ul ul li a:hover {
         display: inline-block !important;
     }
 
+    #tut-2 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
+        display: inline-block !important;
+    }
+
     .slick-arrow {
         padding: 0px !important;
     }
@@ -1142,10 +1204,18 @@ nav ul ul li a:hover {
         display: none !important;
     }
 
+    #tut-2 > div > div.arrow.responsive-buttons-large {
+        display: none !important;
+    }
+
     .timeline {
         height: 1em;
         overflow: visible;
         width: 90% !important;
+    }
+
+    .nerc-cricket {
+        display: none !important;
     }
 }
 
