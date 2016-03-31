@@ -1092,6 +1092,17 @@ nav ul ul li a:hover {
     display: none;
 }
 
+
+#tut-2 > div > div > div.arrow.arrow-tut-right.col-lg-2.col-md-2.col-xs-2.col-xs-offset-8.slick-arrow,
+#tut-2 > div > div > div.arrow.arrow-tut-left.col-lg-2.col-md-2.col-xs-2.col-xs-offset-8.slick-arrow {
+    padding-top: 25%;
+}
+
+
+#tut-2 > div > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
+    display: none;
+}
+
 .nerc-cricket {
     position: absolute;
     width: 7%;
@@ -1116,6 +1127,10 @@ nav ul ul li a:hover {
         display: inline-block !important;
     }
 
+    #tut-2 > div > div.responsive-buttons-small.row.col-xs-12.col-md-12  {
+        display: inline-block !important;
+    }
+
     .slick-arrow {
         padding: 0px !important;
     }
@@ -1123,6 +1138,12 @@ nav ul ul li a:hover {
     #tut-1 > div > div.arrow.responsive-buttons-large {
         display: none !important;
     }
+
+    
+    #tut-2 > div > div.arrow.responsive-buttons-large {
+        display: none !important;
+    }
+
 
     .tutorial_highlight div.button_text p {
         font-size: 4vw !important;
@@ -1171,11 +1192,19 @@ nav ul ul li a:hover {
         display: inline-block !important;
     }
 
+    #tut-2 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
+        display: inline-block !important;
+    }
+
     .slick-arrow {
         padding: 0px !important;
     }
 
     #tut-1 > div > div.arrow.responsive-buttons-large {
+        display: none !important;
+    }
+
+    #tut-2 > div > div.arrow.responsive-buttons-large {
         display: none !important;
     }
 

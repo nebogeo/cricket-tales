@@ -109,6 +109,18 @@ function switch_tutorial(from,to) {
 
     }
 
+    if (to=="tut-2") {
+        // need to build the carousel here
+        // as the element is display:none at load time
+        // so does not calculate properly
+        $('#slider-tutorial-movement').slick({
+            infinite: false,
+            arrows: true,
+            prevArrow: $('.arrow-tut-left'),
+            nextArrow: $('.arrow-tut-right')
+        });
+
+    }
     if (to === "tut-3") {
         $('#critters').slick({
             infinite: false,
