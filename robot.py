@@ -109,6 +109,8 @@ else:
         robot_django.random_burrows(1000)
     if sys.argv[1]=="activity-update":
         robot_django.update_all_activity()
+    if sys.argv[1]=="movie-update":
+        robot_django.update_movies()
     if sys.argv[1]=="report":
         robot_django.generate_report()
     if sys.argv[1]=="overwrite-thumbnails":
