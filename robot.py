@@ -28,6 +28,8 @@ from threading import Thread
 import map.generate
 
 report_recipients = ["dave@fo.am"]
+email_server = 'smtp.gmail.com'
+email_port = 587
 
 def send_email(f,to,subject,text):
     message = """\
@@ -37,7 +39,7 @@ def send_email(f,to,subject,text):
 
     %s
     """ % (f, ", ".join(to), subject, text)
-    server = smtplib.SMTP("localhost")
+    server = smtplib.SMTP(email_server,email_port)
     server.sendmail(f, to, message)
     server.quit()
 
