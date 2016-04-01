@@ -16,7 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os,sys
-import smtplib
+from email.mime.text import MIMEText
+from subprocess import Popen, PIPE
 
 import robot_django
 import robot.process
@@ -28,20 +29,14 @@ from threading import Thread
 import map.generate
 
 report_recipients = ["dave@fo.am"]
-email_server = 'smtp.gmail.com'
-email_port = 587
 
 def send_email(f,to,subject,text):
-    message = """\
-    From: %s
-    To: %s
-    Subject: %s
-
-    %s
-    """ % (f, ", ".join(to), subject, text)
-    server = smtplib.SMTP(email_server,email_port)
-    server.sendmail(f, to, message)
-    server.quit()
+    msg = MIMEText("Here is the body of my message")
+    msg["From"] = f
+    msg["To"] = to[0]
+    msg["Subject"] = subject
+    p = Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=PIPE)
+    p.communicate(msg.as_string())
 
 def search_and_create_movie_records(path,duration,fps):
     for (dirpath, dirnames, filenames) in os.walk(path):
