@@ -59,7 +59,7 @@ video {
 }
 
 .lang-select select {
-    font-family: 'Vidaloka', sans-serif;
+    font-family: 'Love Ya Like A Sister', sans-serif;
     background: transparent;
     width: 268px;
     padding: 5px;
@@ -72,10 +72,14 @@ video {
 }
 
 .lang-select {
-    font-family: 'Vidaloka', sans-serif;
+    font-family: 'Love Ya Like A Sister', sans-serif;
     height: 34px;
     overflow: hidden;
     background: #e7f8c1;
+}
+
+.lang-select option {
+    font-family: inherit;
 }
 
 .login {
