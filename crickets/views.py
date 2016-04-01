@@ -63,7 +63,7 @@ def map(request):
                 if player_score>0: burrow.flag="leaf-flag.png"
                 if burrow.owner == request.user: burrow.flag="long-flag.png"
 
-            context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
+            context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username.upper()}
             context['stories'] = Story.objects.all().order_by('-time')[:3]
 
             # can we not do this on the browser??
