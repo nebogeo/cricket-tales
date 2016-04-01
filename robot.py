@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os,sys
+from email.mime.text import MIMEText
+from subprocess import Popen, PIPE
 
 import robot_django
 import robot.process
@@ -25,6 +27,16 @@ import robot.import_data
 import time
 from threading import Thread
 import map.generate
+
+report_recipients = ["dave@fo.am"]
+
+def send_email(f,to,subject,text):
+    msg = MIMEText(text)
+    msg["From"] = f
+    msg["To"] = to[0]
+    msg["Subject"] = subject
+    p = Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=PIPE)
+    p.communicate(msg.as_string())
 
 def search_and_create_movie_records(path,duration,fps):
     for (dirpath, dirnames, filenames) in os.walk(path):
@@ -48,10 +60,6 @@ def search_and_process_videos(path,duration,fps):
                 # todo get subdir from path...
                 robot_django.chop_index(duration,fps,dirpath+"/"+filename,subdir)
 
-def process_loop(instance_name):
-    while True:
-        robot_django.process_random_video(instance_name)
-        time.sleep(20)
 
 if len(sys.argv)<2 or sys.argv[1]=="-?" or sys.argv[1]=="--help":
     print "Welcome to the cricket tales processing robot v0.0.1"
@@ -68,12 +76,12 @@ else:
         robot.import_data.connect_cricket_to_movies("cricket-data/crickets-timing.csv",robot_django.connect_cricket_to_movies)
 
     if sys.argv[1]=="video-process":
-        Thread(target = process_loop, args = ("thread-0", )).start()
-        Thread(target = process_loop, args = ("thread-1", )).start()
-        Thread(target = process_loop, args = ("thread-2", )).start()
-        Thread(target = process_loop, args = ("thread-3", )).start()
-        Thread(target = process_loop, args = ("thread-4", )).start()
-        Thread(target = process_loop, args = ("thread-5", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-0", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-1", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-2", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-3", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-4", )).start()
+        Thread(target = robot_django.process_loop, args = ("thread-5", )).start()
 
     if sys.argv[1]=="player-activity":
         while True:
@@ -84,8 +92,11 @@ else:
         robot_django.connect_burrows_to_movies("cricket-data/camera-burrow.csv")
 
 
-    if sys.argv[1]=="check":
+    if sys.argv[1]=="check-videos":
         robot_django.update_video_status()
+
+    if sys.argv[1]=="video-clearup":
+        robot_django.video_clearup()
 
     if sys.argv[1]=="make-map":
         # make new map image - overrites empties and out.jpg
@@ -110,8 +121,13 @@ else:
         robot_django.random_burrows(1000)
     if sys.argv[1]=="activity-update":
         robot_django.update_all_activity()
+    if sys.argv[1]=="movie-update":
+        robot_django.update_movies()
     if sys.argv[1]=="report":
-        robot_django.generate_report()
+        report = robot_django.generate_report()
+        send_email("robot@cricket-tales.ex.ac.uk",
+                   report_recipients,"cricket tales report",
+                   report)
     if sys.argv[1]=="overwrite-thumbnails":
         robot_django.update_video_thumbs()
     if sys.argv[1]=="test":

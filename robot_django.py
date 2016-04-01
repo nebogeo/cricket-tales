@@ -25,6 +25,7 @@ from django.db.models import Max, Count, Sum
 from django.utils.translation import ugettext_lazy as _
 import subprocess
 import random
+from threading import Thread
 
 import robot.process
 import robot.exicatcher
@@ -33,6 +34,20 @@ import robot.maths
 import robot.import_data
 
 django.setup()
+
+#######################################################################
+# a note on movie status flag:
+#
+# 0 : created from index files - no videos processed yet
+# 1 : video processed and active
+# 2 : video has been viewed by min_complete_views people (contains this
+#     many 'cricket_end's) but the files still exist
+# 3 : files have been deleted
+#
+#######################################################################
+
+# controls the video file recycling, see above
+min_complete_views = 3
 
 #########################################################################
 # adding movies and updating burrows
@@ -188,14 +203,12 @@ def update_video_status():
         if robot.process.check_done(movie.name):
             #if not robot.process.check_video_lengths(movie.name):
             #    print("movies too short: "+movie.name)#
+            #    print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".mp4"))
+            #    print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".ogg"))
+            #    print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".webm"))
+            #    force redo
+            #    set_movie_status(movie.name,0)
 
-#                print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".mp4"))
- #               print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".ogg"))
-  #              print(robot.process.get_video_length(robot.settings.dest_root+movie.name+".webm"))
-
-
-                # force redo
-   #             set_movie_status(movie.name,0)
             if movie.status == 0:
                 print("found a movie turned off good files, turning on: "+movie.name)
                 set_movie_status(movie.name,1)
@@ -203,6 +216,25 @@ def update_video_status():
         if not robot.process.check_done(movie.name) and movie.status == 1:
             print("!!! found a movie turned ON without files, turning off: "+movie.name)
             set_movie_status(movie.name,0)
+
+        # is this movie complete?
+        if movie.status<2 and movie.views>min_complete_views:
+            print(movie.name+" is complete with "+str(movie.views)+" views")
+            set_movie_status(movie,2)
+            # spawn a video process
+            #Thread(target = process_loop, args = ("thread-0", )).start()
+            # delete files separately
+
+
+def video_clearup():
+    print("hello")
+    for movie in Movie.objects.filter(status=2):
+        print(movie.name)
+        var = raw_input("Ok to delete "+movie.name+", status:"+str(movie.status)+" with "+str(movie.views)+" views? [y/n] ")
+        if var=="y" or var=="Y":
+            #print("not deleting "+movie.name)
+            robot.process.delete_videos(movie.name)
+            set_movie_status(movie,3)
 
 # grab (new) thumbnails from old processed videos
 # hopefully only needed temporarily
@@ -255,6 +287,11 @@ def process_random_video(instance_name):
     # pick a random one, also checks already processed ones
     make_video(random_one(Movie),instance_name)
 
+def process_loop(instance_name):
+    while True:
+        process_random_video(instance_name)
+        time.sleep(20)
+
 #################################################################
 ## video process which need access to django...
 
@@ -301,34 +338,45 @@ def disk_state():
 
 def generate_report():
     cricket_end = EventType.objects.filter(name="Cricket End").first()
-    print("it's yer daily cricket tales robot report")
-    print("-----------------------------------------")
-    print("")
-    print("players: "+str(UserProfile.objects.all().count()))
-    print("movies watched: "+str(Event.objects.filter(type=cricket_end).distinct('movie').count()))
-    print("events recorded: "+str(Event.objects.all().count()))
-    print("movies availible: "+str(Movie.objects.filter(status=1).count()))
-    print("movies awaiting processing: "+str(Movie.objects.filter(status=0).count()))
-    print("movies finished: "+str(Movie.objects.filter(status=2).count()))
-    print("")
-    print("top 10 players:")
+
+    score_text = ""
     for i,player in enumerate(PlayerBurrowScore.objects.values('player__username').order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')[:10]):
-        print(str(i)+" "+player['player__username']+": "+str(player['total']))
-    print("")
-    print("last 10 stories:")
+        score_text += str(i)+" "+player['player__username']+": "+str(player['total'])+"\n"
+
+    story_text = ""
     for i,story in enumerate(Story.objects.all().order_by('-time')[:10]):
-        print(str(story.time).split()[0]+": "+str(story))
-        #print(str(i)+" "+player.player.username+": "+str(player.total))
-    print("")
-    print("disk state: "+disk_state())
+        story_text+=str(story.time).split()[0]+": "+str(story)+"\n"
+        #str(i)+" "+player.player.username+": "+str(player.total))
     load = os.getloadavg()
-    print("server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2]))
-    print("(eight cpus, so only in trouble with MD if > 8)")
-    print("")
-    print("    __         .' '. ")
-    print("  _/__)        .   .       .")
-    print(" (8|)_}}- .      .        .")
-    print("  `\__)    '. . ' ' .  . '")
+
+
+    return "it's yer daily cricket tales robot report\n"+\
+    "-----------------------------------------\n"+\
+    "\n"+\
+    "players: "+str(UserProfile.objects.all().count())+"\n"+\
+    "movies watched: "+str(Event.objects.filter(type=cricket_end).distinct('movie').count())+"\n"+\
+    "events recorded: "+str(Event.objects.all().count())+"\n"+\
+    "\n"+\
+    "movie info\n"+\
+    "available: "+str(Movie.objects.filter(status=1).count())+"\n"+\
+    "awaiting processing: "+str(Movie.objects.filter(status=0).count())+"\n"+\
+    "done but needing deleting: "+str(Movie.objects.filter(status=2).count())+"\n"+\
+    "finished: "+str(Movie.objects.filter(status=3).count())+"\n"+\
+    "\n"+\
+    "top 10 players:\n"+\
+    score_text+\
+    "\n"+\
+    "last 10 stories:\n"+\
+    story_text+\
+    "\n"+\
+    "disk state: "+disk_state()+"\n"+\
+    "server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2])+"\n"+\
+    "(eight cpus, so only in trouble with MD if > 8)\n"+\
+    "\n"+\
+    "    __         .' '. \n"+\
+    "  _/__)        .   .       .\n"+\
+    " (8|)_}}- .      .        .\n"+\
+    "  `\__)    '. . ' ' .  . '\n"
 
 def update_player_activity():
     for profile in UserProfile.objects.all():
@@ -370,10 +418,11 @@ def update_burrows_activity():
 
 
 def update_movies_activity():
-    for movie in Movie.objects.all():
-        num_events = Event.objects.filter(movie=movie).count()
-        if movie.num_events != num_events:
-            movie.num_events = num_events
+    cricket_end = EventType.objects.filter(name="Cricket End").first()
+    for movie in Movie.objects.filter(status=1):
+        num_views = Event.objects.filter(type=cricket_end,movie=movie).count()
+        if movie.views != num_views:
+            movie.views = num_views
             movie.save()
 
 # update the list of movies a player has created an event in
@@ -389,9 +438,10 @@ def update_movies_activity():
 
 def update_all_activity():
     update_burrows_activity()
-    #update_movies_activity()
     update_player_activity()
 
+def update_movies():
+    update_movies_activity()
 
 def test_random_movie():
     print random_burrow_one_check_status(Movie,1,1)

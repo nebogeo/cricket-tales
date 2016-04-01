@@ -54,6 +54,12 @@ def check_done(fn):
             os.path.isfile(settings.dest_root+fn+".ogg") and
             os.path.isfile(settings.dest_root+fn+".webm"))
 
+def delete_videos(fn):
+    run("rm "+settings.dest_root+fn+".jpg")
+    run("rm "+settings.dest_root+fn+".mp4")
+    run("rm "+settings.dest_root+fn+".ogg")
+    run("rm "+settings.dest_root+fn+".webm")
+
 def get_video_length(filename):
     cmd = "avconv -i "+filename+" 2>&1 | grep 'Duration' | awk '{print $2}' | sed s/,//"
     out = subprocess.check_output(cmd,shell=True)

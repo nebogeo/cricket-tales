@@ -28,17 +28,9 @@ from django.contrib.auth import authenticate, login, logout
 def index(request):
     context = {}
     context['hide_menu'] = True
-
-    #############################
-    # todo: slow - precache??
-    cricket_end = EventType.objects.filter(name="Cricket End").first()
-    # context['num_videos_watched'] = Event.objects.filter(type=cricket_end).distinct('movie').count()
-    context['num_videos_watched'] = 0
-    #############################
-
+    context['num_videos_watched'] = Movie.objects.all().aggregate(Sum('views'))['views__sum']
     context['num_players'] = User.objects.all().count()
     context['num_videos'] = Movie.objects.all().count()
-
     return render(request, 'crickets/index.html', context)
 
 ######################################################################
@@ -66,6 +58,10 @@ def map(request):
                 t = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('-movies_finished')
                 if t: highest_score = t[0].movies_finished
                 burrow.videos_to_view = highest_score - player_score
+                # user perspective stuff
+                burrow.flag=""
+                if player_score>0: burrow.flag="leaf-flag.png"
+                if burrow.owner == request.user: burrow.flag="long-flag.png"
 
             context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username}
             context['stories'] = Story.objects.all().order_by('-time')[:3]
@@ -134,9 +130,6 @@ class MovieView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(MovieView, self).get_context_data(**kwargs)
-        # inc views
-        context['movie'].views+=1
-        context['movie'].save()
 
         # When page loads, mark as 'watched', this will need to be changed to 50%
         burrow = context['movie'].burrow
