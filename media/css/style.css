@@ -180,7 +180,7 @@ video {
 }
 
 .game_title span {
-    margin-left: -1em;
+    margin-left: 0.4em;
 }
 
 .game_title span::before{
