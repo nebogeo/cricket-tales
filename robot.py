@@ -28,15 +28,20 @@ import time
 from threading import Thread
 import map.generate
 
-report_recipients = ["dave@fo.am"]
+report_recipients = ["dave@fo.am"
+#                     "amber@fo.am",
+                     "francesca@fo.am",
+                     #"T.Tregenza@exeter.ac.uk"
+]
 
 def send_email(f,to,subject,text):
-    msg = MIMEText(text)
-    msg["From"] = f
-    msg["To"] = to[0]
-    msg["Subject"] = subject
-    p = Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=PIPE)
-    p.communicate(msg.as_string())
+    for recipient in to:
+        msg = MIMEText(text)
+        msg["From"] = f
+        msg["To"] = recipient
+        msg["Subject"] = subject
+        p = Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=PIPE)
+        p.communicate(msg.as_string())
 
 def search_and_create_movie_records(path,duration,fps):
     for (dirpath, dirnames, filenames) in os.walk(path):
