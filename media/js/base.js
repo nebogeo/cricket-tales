@@ -618,18 +618,21 @@ function size_from_house(house,zoom) {
         return zooms[zoom-1];
     } else {
         ret = zooms[zoom-1];
-        ret[0]*=2;
-        ret[1]*=5;
+        ret[0]*=4;
+        ret[1]*=10;
         return ret;
     }
 }
 
 function flag_size(zoom) {
-    var zooms = [[10, 5],
-                 [20, 10],
-                 [40, 20],
-                 [60, 30],
-                 [120, 70],
-                 [250, 125]];
-    return zooms[zoom-1];
+    var zooms = [[15, 5],
+                 [30, 10],
+                 [60, 20],
+                 [120, 40],
+                 [240, 80],
+                 [480, 160]];
+    ret = zooms[zoom-1];
+    ret[0]*=3;
+    ret[1]*=3;
+    return ret;
 }

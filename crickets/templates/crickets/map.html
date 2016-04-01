@@ -47,12 +47,7 @@
             var flag_image = '{{ MEDIA_URL }}images/houses/'+flag
             flag_icon = new L.Icon({iconUrl: flag_image}),
             flag_icon.options.iconSize = flag_size(map.getZoom());
-            var flag_marker = L.marker(map.unproject([latitude+26, longitude-40]), {icon: flag_icon}).addTo(map);
-
-            /*if (flag=="long-flag.png") {
-               text_icon = new L.divIcon({className: "flag-text", html: "wow", iconSize: [100, 40]});
-               var text_marker = L.marker(map.unproject([latitude+26, longitude-40]), {icon: text_icon}).addTo(map);
-            }*/
+            var flag_marker = L.marker(map.unproject([latitude, longitude-100]), {icon: flag_icon}).addTo(map);
           }
 
           // The bizznizz
@@ -67,13 +62,6 @@
               flag_icon.options.iconSize = flag_size(map.getZoom());
               flag_icon.options.iconUrl = flag_image;
               flag_marker.setIcon(flag_icon);
-
-              /*if (flag=="long-flag.png") {
-                 var text_icon = text_marker.options.icon;
-                 text_icon.options.className = flag_text_size(map.getZoom());
-                 text_icon.options.html = "wow";
-                 text_marker.setIcon(text_icon);
-              }*/
             }
           });
 
