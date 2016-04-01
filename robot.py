@@ -29,10 +29,9 @@ from threading import Thread
 import map.generate
 
 report_recipients = ["dave@fo.am",
-#                     "amber@fo.am",
+                     "amber@fo.am",
                      "francesca@fo.am",
-                     #"T.Tregenza@exeter.ac.uk"
-]
+                     "T.Tregenza@exeter.ac.uk"]
 
 def send_email(f,to,subject,text):
     for recipient in to:
