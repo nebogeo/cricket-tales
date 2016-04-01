@@ -146,6 +146,7 @@ class MovieView(generic.DetailView):
         context['cricket_end'] = EventType.objects.filter(name="Cricket End").first()
         context['burrow_start'] = EventType.objects.filter(name="Burrow Start").first()
         context['cricket_id'] = EventType.objects.filter(name="Cricket ID").first()
+        context['redo'] = EventType.objects.filter(name="Redo").first()
         return context
 
 class EventForm(ModelForm):

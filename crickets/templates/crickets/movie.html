@@ -69,7 +69,8 @@
 
       <div class="row-fluid"><!-- timeline row -->
         <button class="toggle-button play col-lg-1 col-md-1 col-sm-1 col-xs-1" style="background: url(/media/images/movie_buttons/play.png); background-size: 100% 100%;" onclick='play_state_toggle()'></button>
-        <button class="play col-lg-1 col-md-1 col-sm-1 col-xs-1" style="background: url(/media/images/movie_buttons/redo.png); background-size: 100% 100%;" onclick='play_state_redo()'></button>
+        <button class="play col-lg-1 col-md-1 col-sm-1 col-xs-1" style="background: url(/media/images/movie_buttons/redo.png); background-size: 100% 100%;"
+                onclick="play_state_redo({{redo.id}},{{movie.id}},'{{user.id}}');"></button>
         <div id="timeline" class="timeline bar col-lg-10 col-md-10 col-sm-10 col-xs-10"><!-- timeline div -->
           <div class="timeline_line col-lg-11"></div>
           <div id="time" class="time tiny_circle"></div>

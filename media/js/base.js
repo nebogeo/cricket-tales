@@ -531,10 +531,15 @@ function play_movie() {
 
 function play_state_toggle() {
     if (play_state === true) {
-        pause_movie()
+        pause_movie();
     } else {
-        play_movie()
+        play_movie();
     }
+}
+
+function play_state_redo(redo_id,movie_id,user_id) {
+    add_event(redo_id,movie_id,user_id, 0, 0, null);
+    restart_video();
 }
 
 // actually render the event
