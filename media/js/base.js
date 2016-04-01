@@ -606,6 +606,7 @@ function image_from_house(house) {
     }
 }
 
+// lots of tweakage here, maybe fix when done...
 function size_from_house(house,zoom) {
     var zooms = [[5,   3.3335],
                  [10,  6.667],
@@ -615,7 +616,10 @@ function size_from_house(house,zoom) {
                  [125, 83.3375]];
 
     if (house=='' || house=="0") {
-        return zooms[zoom-1];
+        ret = zooms[zoom-1];
+        ret[0]*=2;
+        ret[1]*=2;
+        return ret;
     } else {
         ret = zooms[zoom-1];
         ret[0]*=4;
