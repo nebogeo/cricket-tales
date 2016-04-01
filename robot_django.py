@@ -273,6 +273,16 @@ def connect_cricket_to_movies(name,burrow,date_in,date_out):
             movie.save()
 
 def shuffle_burrows(empties):
+    image_size = 16384
+    # remove empties from the edge!
+    new_empties = []
+    for empty in empties:
+        if empty[0]>500 and \
+           empty[1]>500 and \
+           empty[0]<image_size-1000 and \
+           empty[1]<image_size-1000:
+           new_empties.append(empty)
+    empties = new_empties
     poslist = []
     for burrow in Burrow.objects.all():
         print(burrow.name)

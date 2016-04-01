@@ -12,7 +12,7 @@
   <!-- map -->
   <div class="col-sm-8 col-xs-12">
 
-    <div id="map" class="row-fluid col-sm-12" style="height:800px;"></div>
+    <div id="map" class="row-fluid col-sm-12" style="height:500px;"></div>
 
       <script src="{{MEDIA_URL}}/js/leaflet.js"></script>
 
@@ -91,9 +91,9 @@
         }).addTo(map);
 
         // restricts the map, but is a bit iffy
-        //var southWest = map.unproject([0, 16384], map.getMaxZoom());
-        //var northEast = map.unproject([16384, 0], map.getMaxZoom());
-        //map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
+        var southWest = map.unproject([0, 16384], map.getMaxZoom());
+        var northEast = map.unproject([16384, 0], map.getMaxZoom());
+        map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
 
     {% for burrow in burrows %}
 
