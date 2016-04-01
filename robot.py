@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os,sys
+import smtplib
 
 import robot_django
 import robot.process
@@ -25,6 +26,20 @@ import robot.import_data
 import time
 from threading import Thread
 import map.generate
+
+report_recipients = ["dave@fo.am"]
+
+def send_email(f,to,subject,text):
+    message = """\
+    From: %s
+    To: %s
+    Subject: %s
+
+    %s
+    """ % (f, ", ".join(to), subject, text)
+    server = smtplib.SMTP("localhost")
+    server.sendmail(f, to, message)
+    server.quit()
 
 def search_and_create_movie_records(path,duration,fps):
     for (dirpath, dirnames, filenames) in os.walk(path):
@@ -110,7 +125,10 @@ else:
     if sys.argv[1]=="activity-update":
         robot_django.update_all_activity()
     if sys.argv[1]=="report":
-        robot_django.generate_report()
+        report = robot_django.generate_report()
+        send_email("robot@cricket-tales.ex.ac.uk",
+                   report_recipients,"cricket tales report",
+                   report)
     if sys.argv[1]=="overwrite-thumbnails":
         robot_django.update_video_thumbs()
     if sys.argv[1]=="test":

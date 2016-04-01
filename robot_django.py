@@ -338,37 +338,37 @@ def disk_state():
 
 def generate_report():
     cricket_end = EventType.objects.filter(name="Cricket End").first()
-    print("it's yer daily cricket tales robot report")
-    print("-----------------------------------------")
-    print("")
-    print("players: "+str(UserProfile.objects.all().count()))
-    print("movies watched: "+str(Event.objects.filter(type=cricket_end).distinct('movie').count()))
-    print("events recorded: "+str(Event.objects.all().count()))
-    print("")
-    print("movie info")
-    print("available: "+str(Movie.objects.filter(status=1).count()))
-    print("awaiting processing: "+str(Movie.objects.filter(status=0).count()))
-    print("done but needing deleting: "+str(Movie.objects.filter(status=2).count()))
-    print("finished: "+str(Movie.objects.filter(status=3).count()))
-    print("")
-    print("top 10 players:")
+    return "it's yer daily cricket tales robot report\n"+
+    "-----------------------------------------\n"+
+    "\n"+
+    "players: "+str(UserProfile.objects.all().count()))
+    "movies watched: "+str(Event.objects.filter(type=cricket_end).distinct('movie').count()))
+    "events recorded: "+str(Event.objects.all().count()))
+    "\n"+
+    "movie info\n"+
+    "available: "+str(Movie.objects.filter(status=1).count()))
+    "awaiting processing: "+str(Movie.objects.filter(status=0).count()))
+    "done but needing deleting: "+str(Movie.objects.filter(status=2).count()))
+    "finished: "+str(Movie.objects.filter(status=3).count()))
+    "\n"+
+    "top 10 players:\n"+
     for i,player in enumerate(PlayerBurrowScore.objects.values('player__username').order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')[:10]):
-        print(str(i)+" "+player['player__username']+": "+str(player['total']))
-    print("")
-    print("last 10 stories:")
+        str(i)+" "+player['player__username']+": "+str(player['total']))
+    "\n"+
+    "last 10 stories:\n"+
     for i,story in enumerate(Story.objects.all().order_by('-time')[:10]):
-        print(str(story.time).split()[0]+": "+str(story))
-        #print(str(i)+" "+player.player.username+": "+str(player.total))
-    print("")
-    print("disk state: "+disk_state())
+        str(story.time).split()[0]+": "+str(story))
+        #str(i)+" "+player.player.username+": "+str(player.total))
+    "\n"+
+    "disk state: "+disk_state())
     load = os.getloadavg()
-    print("server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2]))
-    print("(eight cpus, so only in trouble with MD if > 8)")
-    print("")
-    print("    __         .' '. ")
-    print("  _/__)        .   .       .")
-    print(" (8|)_}}- .      .        .")
-    print("  `\__)    '. . ' ' .  . '")
+    "server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2]))
+    "(eight cpus, so only in trouble with MD if > 8)\n"+
+    "\n"+
+    "    __         .' '. \n"+
+    "  _/__)        .   .       .\n"+
+    " (8|)_}}- .      .        .\n"+
+    "  `\__)    '. . ' ' .  . '\n"
 
 def update_player_activity():
     for profile in UserProfile.objects.all():
