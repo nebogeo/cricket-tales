@@ -28,7 +28,7 @@ import time
 from threading import Thread
 import map.generate
 
-report_recipients = ["dave@fo.am"
+report_recipients = ["dave@fo.am",
 #                     "amber@fo.am",
                      "francesca@fo.am",
                      #"T.Tregenza@exeter.ac.uk"
