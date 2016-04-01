@@ -70,6 +70,7 @@
       <div class="row-fluid"><!-- timeline row -->
           <div id="controls col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button class="toggle-button play col-lg-2 col-md-1 col-sm-1 col-xs-1" style="background: url(/media/images/movie_buttons/play.png); background-size: 100% 100%;" onclick='play_state_toggle()'></button>
+            <button class="play col-lg-2 col-md-1 col-sm-1 col-xs-1" style="background: url(/media/images/movie_buttons/redo.png); background-size: 100% 100%;" onclick='play_state_redo()'></button>
           </div>
           <div id="timeline" class="timeline bar col-lg-10 col-md-10 col-sm-10 col-xs-7"><!-- timeline div -->
           <div class="timeline_line col-lg-11"></div>
@@ -204,8 +205,6 @@ info_text = [
 
 id_keyboard_values = [['+', 'A', 'L', 'U'], ['=', 'C', 'N', 'V'], ['1', 'D', 'O', 'X'], ['6', 'E', 'P', 'Z'], ['7', 'H', 'S', '9'], ['J', 'T', '{% trans 'Delete' %}', '{% trans 'Save' %}']];
 operators = ['{% trans 'Not sure' %}', '{% trans 'Cancel' %}', '{% trans 'Delete' %}', '{% trans 'Save' %}'];
-
-alert(info_text);
 
 </script>
   {% endblock %}
