@@ -457,7 +457,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
         pop.on("timeupdate", function() {
             var percentage = Math.floor((100 / pop.duration()) *
                                         pop.currentTime());
-            $("#time").css({left: percentage*0.9505+"%"});
+            $("#time").css({left: percentage*timeline_fudge+"%"});
 
         });
 
@@ -546,13 +546,15 @@ function inner_render_event(type, start_time) {
     //     </div>');
 }
 
+var timeline_fudge = 0.96;
+
 // actually render the event
 function inner_render_my_event(start_time) {
     // convert time into %
     var left = (start_time/pop.duration())*100;
     var cricket_image = Math.floor(Math.random() * 10) + 1;
     $("#timeline").append(
-        '<div class="callback event small_circle" style="left:'+left*0.9505+'%; margin-top: -1.8em"></div>');
+        '<div class="callback event small_circle" style="left:'+left*timeline_fudge+'%; margin-top: -1.8em"></div>');
     $('.callback').fadeOut(5000);
 }
 
