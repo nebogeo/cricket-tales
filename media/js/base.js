@@ -1,3 +1,6 @@
+// no human readable text in here,
+// as it all needs to be translated!!
+
 // security stuff for async to prevent csrf
 function getCookie(name) {
     var cookieValue = null;
@@ -171,11 +174,13 @@ function tut_video_right() {
 var pop = false;
 var events = [];
 
-function build_id_keyboard(cricket_id_id,something_else_id, movie_id,user_id) {
+// for translation (see movie.html)
+var id_keyboard_values = [];
+var operators = [];
+var info_text = [];
 
+function build_id_keyboard(cricket_id_id,something_else_id, movie_id,user_id) {
     //Constructing keyboard
-    var id_keyboard_values = [['+', 'A', 'L', 'U'], ['=', 'C', 'N', 'V'], ['1', 'D', 'O', 'X'], ['6', 'E', 'P', 'Z'], ['7', 'H', 'S', '9'], ['J', 'T', 'Delete', 'Save']];
-    var operators = ['Not sure', 'Cancel', 'Delete', 'Save'];
     //Enumerate for tr
     var table = '<table id="tag_cricket_id" class="table-striped table table-bordered">';
     $(id_keyboard_values).each(function (i, array) {
@@ -202,6 +207,34 @@ function build_id_keyboard(cricket_id_id,something_else_id, movie_id,user_id) {
     initialise_operators_keyboard(cricket_id_id,something_else_id, movie_id,user_id);
 }
 
+function update_infotext() {
+    // need to make the font smaller than the usual to fit anything in
+    //$('.page_title').css("font-size","0.01vw;");
+    switch(state) {
+        case "wait-cricket":
+            $('.menu_title').html(info_text[0]);
+            break;
+        case "wait-burrow":
+            $('.menu_title').html(info_text[1]);
+            break;
+        case "movie-playing":
+            $('.menu_title').html(info_text[2]);
+            break;
+        case "wait-cricket-end":
+            $('.menu_title').html(info_text[3]);
+            break;
+        case "movie-end":
+            $('.menu_title').html(info_text[4]);
+            break;
+        // whyyy
+        case "no-cricket-end":
+            $('.menu_title').html(info_text[5]);
+            break;
+        default:
+            $('.menu_title').html(info_text[6]);
+
+    }
+}
 
 function initialise_operators_keyboard(cricket_id_id, something_else_id, movie_id,user_id) {
         $("#delete").click(function (){
@@ -268,36 +301,6 @@ function enter_id(t) {
     }
 }
 
-function update_infotext() {
-    // need to make the font smaller than the usual to fit anything in
-    //$('.page_title').css("font-size","0.01vw;");
-    switch(state) {
-        case "wait-cricket":
-            $('.menu_title').html('1. Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>');
-            break;
-        case "wait-burrow":
-            $('.menu_title').html('2. Click on the middle of the burrow to begin the video');
-            break;
-        case "movie-playing":
-            $('.menu_title').html('3. Tag cricket behaviours and ID as the video plays');
-            break;
-        case "wait-cricket-end":
-            $('.menu_title').html('4. Click on the cricket if you can see it, or click <button id="no_cricket_end">No cricket</button>');
-            break;
-        case "movie-end":
-            $('.menu_title').html('Well done! Video complete');
-            break;
-        // whyyy
-        case "no-cricket-end":
-            $('.menu_title').html('No cricket clicked [no cricket seen?]');
-            break;
-        default:
-            $('.menu_title').html('I have no idea, you broke me');
-
-    }
-}
-
-
 function burrow_event(burrow_start_id,movie_id,user_id) {
     console.log(state);
     update_infotext();
@@ -305,9 +308,9 @@ function burrow_event(burrow_start_id,movie_id,user_id) {
     $('div.event_button').click(function() {
         $(this).addClass('animated').delay(500).queue(function(){
             $(this).removeClass('animated').dequeue()
-        })
+        });
         // $('.event_button').removeClass('animated');
-    })
+    });
 
     $("#ourvideo").click(function(e) {
         state = 'movie-playing';

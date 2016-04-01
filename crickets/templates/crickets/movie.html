@@ -188,6 +188,26 @@
     </div><!-- End button div -->
     </div><!-- End video/prompt div -->
     </div><!-- End player row-->
+
+<script>
+// js with translations
+
+info_text = [
+'{% trans '1. Click on the cricket if you can see it, or click <button id="no_cricket">No Cricket</button>' %}',
+'{% trans '2. Click on the middle of the burrow to begin the video' %}',
+'{% trans '3. Tag cricket behaviours and ID as the video plays' %}',
+'{% trans '4. Click on the cricket if you can see it, or click <button id="no_cricket_end">No cricket</button>' %}',
+'{% trans 'Well done! Video complete' %}',
+'{% trans 'No cricket clicked [no cricket seen?]' %}',
+'{% trans 'I have no idea, you broke me' %}',
+]
+
+id_keyboard_values = [['+', 'A', 'L', 'U'], ['=', 'C', 'N', 'V'], ['1', 'D', 'O', 'X'], ['6', 'E', 'P', 'Z'], ['7', 'H', 'S', '9'], ['J', 'T', '{% trans 'Delete' %}', '{% trans 'Save' %}']];
+operators = ['{% trans 'Not sure' %}', '{% trans 'Cancel' %}', '{% trans 'Delete' %}', '{% trans 'Save' %}'];
+
+alert(info_text);
+
+</script>
   {% endblock %}
 </div><!-- End grid-->
 </div><!-- End main/container row -->

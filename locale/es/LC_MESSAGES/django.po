@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-21 16:09+0000\n"
+"POT-Creation-Date: 2016-04-01 13:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,30 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: crickets/templates/base.html:35
+#: crickets/templates/base.html:37
+msgid "HOME"
+msgstr ""
+
+#: crickets/templates/base.html:39
 msgid "MY MAP"
 msgstr "MI MAPA"
 
-#: crickets/templates/base.html:37
+#: crickets/templates/base.html:41
 msgid "LOGIN"
 msgstr "INICIAR SESIÓN"
 
-#: crickets/templates/base.html:39
+#: crickets/templates/base.html:43
 msgid "TUTORIAL"
 msgstr "TUTORIAL"
 
-#: crickets/templates/base.html:40
+#: crickets/templates/base.html:44
 msgid "ABOUT"
 msgstr "ACERCA DE"
 
-#: crickets/templates/base.html:42
+#: crickets/templates/base.html:46 crickets/templates/crickets/index.html:89
 msgid "LOG OUT"
 msgstr "CERRAR SESIÓN"
 
 #: crickets/templates/crickets/about.html:10
 msgid ""
 "\n"
-"    In a secret field in Northern Spain, 300 cricket burrows are monitored\n"
+"    In a secret field in Northern Spain, hundreds of cricket burrows are "
+"monitored\n"
 "    using CCTV. This is the first long-term study of behaviour in a wild\n"
 "    insect, and we need your help to see what the crickets are up to.\n"
 msgstr ""
@@ -67,44 +72,40 @@ msgid ""
 "    enabling a better understanding of the crickets' personalities and how\n"
 "    their lives progress. This helps us to find out more about animal\n"
 "    behaviour and the ageing process. If you want to find out more about our "
-"work, have a look <a href=\"\">here</a>.\n"
+"work, have a look <a href=\"http://www.wildcrickets.org/\">here</a>.\n"
 msgstr ""
 
-#: crickets/templates/crickets/index.html:26
+#: crickets/templates/crickets/builder.html:12
+msgid "You have watched more of burrow"
+msgstr ""
+
+#: crickets/templates/crickets/builder.html:13
+msgid "Design your house with the arrows below"
+msgstr ""
+
+#: crickets/templates/crickets/index.html:23
 msgid "MADE BY"
 msgstr "HECHO POR"
 
-#: crickets/templates/crickets/index.html:31
-#, fuzzy, python-format
-#| msgid "Welcome back %(user.username)s, to "
-msgid "Welcome back %(username)s, to "
-msgstr "Bienvenida de nuevo , %(user.username)s a"
-
-#: crickets/templates/crickets/index.html:33
+#: crickets/templates/crickets/index.html:30
 msgid "CRICKET TALES"
 msgstr "CUENTOS DE CRICKET"
 
-#: crickets/templates/crickets/index.html:47 crickets/views.py:313
+#: crickets/templates/crickets/index.html:48 crickets/views.py:358
 msgid "ABOUT THE PROJECT"
 msgstr "SOBRE EL PROYECTO"
 
-#: crickets/templates/crickets/index.html:66
+#: crickets/templates/crickets/index.html:67
 msgid "CONTINUE PLAYING"
 msgstr "SEGUIR JUGANDO"
 
-#: crickets/templates/crickets/index.html:68
+#: crickets/templates/crickets/index.html:69
 msgid "LOGIN FOR FULL GAME"
 msgstr ""
 
-#: crickets/templates/crickets/index.html:82
+#: crickets/templates/crickets/index.html:91
 msgid "CONTRIBUTE AS GUEST"
 msgstr ""
-
-#: crickets/templates/crickets/login.html:5
-#, fuzzy
-#| msgid "CRICKET TALES"
-msgid "LOGIN TO CRICKET TALES"
-msgstr "CUENTOS DE CRICKET"
 
 #: crickets/templates/crickets/login.html:9
 msgid "Username:"
@@ -118,71 +119,166 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: crickets/templates/crickets/login.html:16
+#: crickets/templates/crickets/login.html:17
 msgid "Register"
 msgstr ""
 
+#: crickets/templates/crickets/map.html:36
+msgid "Burrow"
+msgstr ""
+
+#: crickets/templates/crickets/map.html:38
+msgid "Movies to watch <br/>till you can build:"
+msgstr ""
+
+#: crickets/templates/crickets/map.html:39
+msgid "Complete:"
+msgstr ""
+
+#: crickets/templates/crickets/map.html:40
+msgid "Go to Burrow"
+msgstr ""
+
+#: crickets/templates/crickets/map.html:110
+msgid "YOUR SCORE"
+msgstr ""
+
+#: crickets/templates/crickets/map.html:112
+msgid "Videos watched"
+msgstr ""
+
+#: crickets/templates/crickets/map.html:116
+msgid "Houses built"
+msgstr ""
+
+#: crickets/templates/crickets/map.html:123
+msgid "NEWS FEED"
+msgstr ""
+
 #: crickets/templates/crickets/movie.html:9
-msgid "Thankyou for watching!"
+msgid "Thank you for watching!"
 msgstr ""
 
 #: crickets/templates/crickets/movie.html:17
 msgid "View again"
 msgstr ""
 
-#: crickets/templates/crickets/movie.html:26
-msgid "Back"
+#: crickets/templates/crickets/movie.html:30
+msgid "Your map"
 msgstr ""
 
-#: crickets/templates/crickets/movie.html:35
+#: crickets/templates/crickets/movie.html:43
 msgid "Next movie"
 msgstr ""
 
-#: crickets/templates/crickets/movie.html:62
-#: crickets/templates/crickets/tutorial.html:59
-#: crickets/templates/crickets/tutorial.html:68
-#: crickets/templates/crickets/tutorial.html:77
-#: crickets/templates/crickets/tutorial.html:86
+#: crickets/templates/crickets/movie.html:65
+#: crickets/templates/crickets/tutorial.html:80
+#: crickets/templates/crickets/tutorial.html:90
+#: crickets/templates/crickets/tutorial.html:100
+#: crickets/templates/crickets/tutorial.html:110
+#: crickets/templates/crickets/tutorial.html:188
+#: crickets/templates/crickets/tutorial.html:198
+#: crickets/templates/crickets/tutorial.html:208
+#: crickets/templates/crickets/tutorial.html:218
 msgid ""
 "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 "
 "with H.264."
 msgstr ""
 
-#: crickets/templates/crickets/movie.html:134
+#: crickets/templates/crickets/movie.html:137
+#: crickets/templates/crickets/movie.html:205
+#: crickets/templates/crickets/movie.html:206
 msgid "Delete"
 msgstr ""
 
-#: crickets/templates/crickets/movie.html:135
+#: crickets/templates/crickets/movie.html:138
+#: crickets/templates/crickets/movie.html:205
+#: crickets/templates/crickets/movie.html:206
 msgid "Save"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:13
-#, fuzzy, python-format
-#| msgid "Welcome back %(user.username)s, to "
-msgid "%(username)s's burrow map"
-msgstr "Bienvenida de nuevo , %(user.username)s a"
-
-#: crickets/templates/crickets/player.html:108
-msgid "SCORE"
+#: crickets/templates/crickets/movie.html:196
+msgid ""
+"1. Click on the cricket if you can see it, or click <button id=\"no_cricket"
+"\">No Cricket</button>"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:110
-msgid "Videos tagged"
+#: crickets/templates/crickets/movie.html:197
+msgid "2. Click on the middle of the burrow to begin the video"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:114
-msgid "Houses built"
+#: crickets/templates/crickets/movie.html:198
+msgid "3. Tag cricket behaviours and ID as the video plays"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:118
-msgid "Empty burrows"
+#: crickets/templates/crickets/movie.html:199
+msgid ""
+"4. Click on the cricket if you can see it, or click <button id="
+"\"no_cricket_end\">No cricket</button>"
 msgstr ""
 
-#: crickets/templates/crickets/player.html:126
-msgid "NEWS FEED"
+#: crickets/templates/crickets/movie.html:200
+msgid "Well done! Video complete"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:16
+#: crickets/templates/crickets/movie.html:201
+msgid "No cricket clicked [no cricket seen?]"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:202
+msgid "I have no idea, you broke me"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:206
+msgid "Not sure"
+msgstr ""
+
+#: crickets/templates/crickets/movie.html:206
+msgid "Cancel"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:23
+#: crickets/templates/crickets/register.html:32
+msgid "Prefer not to say"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:24
+msgid "Male"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:25
+msgid "Female"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:26
+msgid "Other"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:33
+msgid "Younger than 10"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:34
+msgid "10 to 15"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:35
+msgid "16 to 35"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:36
+msgid "36 to 50"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:37
+msgid "Older than 50"
+msgstr ""
+
+#: crickets/templates/crickets/register.html:47
+msgid "No thanks"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:15
 msgid ""
 "\n"
 "        For each video, you will have these buttons\n"
@@ -194,27 +290,15 @@ msgid ""
 "        "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:27
-msgid "Basic behaviour"
+#: crickets/templates/crickets/tutorial.html:26
+msgid "Begin Tutorial"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:28
-msgid "Movement"
-msgstr ""
-
-#: crickets/templates/crickets/tutorial.html:29
-msgid "Predators"
-msgstr ""
-
-#: crickets/templates/crickets/tutorial.html:30
-msgid "IDing crickets"
-msgstr ""
-
-#: crickets/templates/crickets/tutorial.html:38
+#: crickets/templates/crickets/tutorial.html:35
 msgid "BASIC BEHAVIOURS"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:41
+#: crickets/templates/crickets/tutorial.html:55
 msgid ""
 "\n"
 "        These buttons are for cricket behaviours. Scroll\n"
@@ -223,93 +307,187 @@ msgid ""
 "        "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:54
+#: crickets/templates/crickets/tutorial.html:75
 msgid "Mating behaviour"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:63
+#: crickets/templates/crickets/tutorial.html:82
+msgid "One cricket climbs on the back of another."
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:85
 msgid "Singing behaviour"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:72
+#: crickets/templates/crickets/tutorial.html:92
+msgid "The cricket's wings flutter."
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:95
 msgid "Fighting behaviour"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:81
-msgid "Feeding behaviour"
+#: crickets/templates/crickets/tutorial.html:102
+msgid "Face-to-face pushing and shoving."
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:102
-#: crickets/templates/crickets/tutorial.html:127
-#: crickets/templates/crickets/tutorial.html:167
-#: crickets/templates/crickets/tutorial.html:198
+#: crickets/templates/crickets/tutorial.html:105
+msgid "Eating behaviour"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:112
+msgid "Munching on a leaf."
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:123
+#: crickets/templates/crickets/tutorial.html:232
+#: crickets/templates/crickets/tutorial.html:354
+#: crickets/templates/crickets/tutorial.html:400
+#: crickets/templates/crickets/tutorial.html:454
+msgid "Go Back"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:126
+#: crickets/templates/crickets/tutorial.html:235
+#: crickets/templates/crickets/tutorial.html:357
+#: crickets/templates/crickets/tutorial.html:403
 msgid "Got it!"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:111
+#: crickets/templates/crickets/tutorial.html:135
 msgid "MOVEMENT"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:114
+#: crickets/templates/crickets/tutorial.html:154
 msgid ""
 "\n"
-"        These buttons are for when your cricket\n"
-"        moves around – either leaving its burrow,\n"
-"        entering its burrow, or leaving the frame of\n"
-"        the video. Click once each time this happens.\n"
-"        If you see another cricket, click the button to\n"
-"        tell us, but keep recording for your main\n"
-"        cricket.\n"
+"        These buttons are for when your cricket moves around – either\n"
+"        leaving its burrow, entering its burrow when it disappears from\n"
+"        view, or leaving the frame of the video. Click once each time\n"
+"        this happens.  If you see another cricket, click the button to\n"
+"        tell us, but keep recording for your main cricket.\n"
 "        "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:135
+#: crickets/templates/crickets/tutorial.html:162
+msgid ""
+"\n"
+"        These events often happen in quick succession, so it's not\n"
+"        critical to be precise over these particular behaviours.\n"
+"        "
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:183
+msgid "Movement 1"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:190
+#: crickets/templates/crickets/tutorial.html:200
+#: crickets/templates/crickets/tutorial.html:210
+#: crickets/templates/crickets/tutorial.html:220
+msgid "Description"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:193
+msgid "Movement 2"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:203
+msgid "Movement 3"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:213
+msgid "Movement 4"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:243
 msgid "PREDATORS AND TRAPS"
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:138
+#: crickets/templates/crickets/tutorial.html:269
 msgid ""
 "\n"
-"        Look out for predators, like birds and voles,\n"
+"        Look out for predators, like birds and shrews,\n"
 "        and tube traps which are sometimes used to\n"
 "        collect the crickets. If you see them, click on\n"
-"        the buttons to tell us!\n"
+"        the buttons to tell us.\n"
 "        "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:158
+#: crickets/templates/crickets/tutorial.html:289
 msgid ""
-"\n"
-"          If you see something interesting in a video and\n"
-"          want to tell us about it, click on the '!' button.\n"
-"          "
+" If you see something interesting in a video\n"
+"          and want to tell us about it, click on the '!' button.  You\n"
+"          don't need to comment on seeing other creatures unless you see\n"
+"          them actually interact with a cricket. "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:175
+#: crickets/templates/crickets/tutorial.html:299
+msgid "Ant"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:303
+msgid "Beetle"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:307
+msgid "Cricket"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:312
+msgid "Hedgehog"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:316
+msgid "Human"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:320
+msgid "Moth"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:325
+msgid "Slug"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:329
+msgid "Spider"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:333
+msgid "Woodlouse"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:338
+msgid "Worm"
+msgstr ""
+
+#: crickets/templates/crickets/tutorial.html:365
 #, fuzzy
 #| msgid "CRICKET TALES"
 msgid "ID CRICKETS"
 msgstr "CUENTOS DE CRICKET"
 
-#: crickets/templates/crickets/tutorial.html:178
+#: crickets/templates/crickets/tutorial.html:379
 msgid ""
 "\n"
 "        If you see a cricket and can read the tag on its\n"
 "        back, click the ID button. The video will pause\n"
 "        and you can enter the two digits of the ID code.\n"
 "        Make sure you read the tag the right way up –\n"
+"        the top of the tag is by the head -\n"
 "        the example crickets below are LU and TT:\n"
 "        "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:209
+#: crickets/templates/crickets/tutorial.html:414
 msgid ""
 "\n"
-"           <p>Now you know what you're doing, you're ready to play!</p>\n"
+"           <p>Now you know what you're doing, you're ready to play.</p>\n"
 "           "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:215
+#: crickets/templates/crickets/tutorial.html:420
 msgid ""
 "\n"
 "           <p>On the next page you'll see the burrow map. Click on an\n"
@@ -317,7 +495,7 @@ msgid ""
 "           "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:222
+#: crickets/templates/crickets/tutorial.html:427
 msgid ""
 "\n"
 "           <p>If you register you can see the burrow map, where you can\n"
@@ -325,7 +503,7 @@ msgid ""
 "           "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:229
+#: crickets/templates/crickets/tutorial.html:434
 msgid ""
 "\n"
 "           <p>Each burrow has multiple videos. If you have watched the\n"
@@ -335,28 +513,89 @@ msgid ""
 "             videos than you, they can knock your house down and build\n"
 "             their own in its place. If you are the first to watch all the\n"
 "             videos in a burrow, you get a flag on your house, and it is\n"
-"             there to stay!</p>\n"
+"             there to stay.</p>\n"
 "           "
 msgstr ""
 
-#: crickets/templates/crickets/tutorial.html:254
+#: crickets/templates/crickets/tutorial.html:463
 msgid "PLAY!"
 msgstr "JUGAR!"
 
-#: crickets/views.py:71
-#, fuzzy
+#: crickets/views.py:66
+#, fuzzy, python-format
 #| msgid "Welcome back %(user.username)s, to "
-msgid "%(username)'s BURROW MAP"
+msgid "%(username)s's BURROW MAP"
 msgstr "Bienvenida de nuevo , %(user.username)s a"
 
-#: crickets/views.py:292
+#: crickets/views.py:90
+#, python-format
+msgid "%(player)s has built a new house."
+msgstr ""
+
+#: crickets/views.py:142
+msgid "MOVIE"
+msgstr ""
+
+#: crickets/views.py:173
+#, python-format
+msgid "%(player)s has watched %(count)i movies in a burrow!"
+msgstr ""
+
+#: crickets/views.py:187
+#, python-format
+msgid "A cricket has just been IDed by %(player)s"
+msgstr ""
+
+#: crickets/views.py:192
+#, python-format
+msgid "A bird has been spotted by %(player)s"
+msgstr ""
+
+#: crickets/views.py:197
+#, python-format
+msgid "%(player)s has seen a shrew!"
+msgstr ""
+
+#: crickets/views.py:202
+#, python-format
+msgid "A cricket has been seen singing by %(player)s"
+msgstr ""
+
+#: crickets/views.py:207
+#, python-format
+msgid "A fight has been spotted by %(player)s"
+msgstr ""
+
+#: crickets/views.py:305
+#, fuzzy
+#| msgid "CRICKET TALES"
+msgid "JOIN IN AND HELP CRICKET TALES"
+msgstr "CUENTOS DE CRICKET"
+
+#: crickets/views.py:310
+#, fuzzy
+#| msgid "CRICKET TALES"
+msgid "LOGIN TO CRICKET TALES"
+msgstr "CUENTOS DE CRICKET"
+
+#: crickets/views.py:321
 msgid "Your account is disabled."
 msgstr ""
 
-#: crickets/views.py:295
+#: crickets/views.py:324
 msgid "Invalid login details supplied."
 msgstr ""
 
-#: crickets/views.py:302
+#: crickets/views.py:331
 msgid "HOW YOU CAN HELP"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Welcome back %(user.username)s, to "
+#~ msgid "Welcome back %(username)s, to "
+#~ msgstr "Bienvenida de nuevo , %(user.username)s a"
+
+#, fuzzy
+#~| msgid "Welcome back %(user.username)s, to "
+#~ msgid "%(username)s's burrow map"
+#~ msgstr "Bienvenida de nuevo , %(user.username)s a"
