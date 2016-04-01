@@ -338,36 +338,44 @@ def disk_state():
 
 def generate_report():
     cricket_end = EventType.objects.filter(name="Cricket End").first()
-    return "it's yer daily cricket tales robot report\n"+
-    "-----------------------------------------\n"+
-    "\n"+
-    "players: "+str(UserProfile.objects.all().count()))
-    "movies watched: "+str(Event.objects.filter(type=cricket_end).distinct('movie').count()))
-    "events recorded: "+str(Event.objects.all().count()))
-    "\n"+
-    "movie info\n"+
-    "available: "+str(Movie.objects.filter(status=1).count()))
-    "awaiting processing: "+str(Movie.objects.filter(status=0).count()))
-    "done but needing deleting: "+str(Movie.objects.filter(status=2).count()))
-    "finished: "+str(Movie.objects.filter(status=3).count()))
-    "\n"+
-    "top 10 players:\n"+
+
+    score_text = ""
     for i,player in enumerate(PlayerBurrowScore.objects.values('player__username').order_by('player').annotate(total=Sum('movies_finished')).order_by('-total')[:10]):
-        str(i)+" "+player['player__username']+": "+str(player['total']))
-    "\n"+
-    "last 10 stories:\n"+
+        score_text += str(i)+" "+player['player__username']+": "+str(player['total'])+"\n"
+
+    story_text = ""
     for i,story in enumerate(Story.objects.all().order_by('-time')[:10]):
-        str(story.time).split()[0]+": "+str(story))
+        story_text+=str(story.time).split()[0]+": "+str(story)+"\n"
         #str(i)+" "+player.player.username+": "+str(player.total))
-    "\n"+
-    "disk state: "+disk_state())
     load = os.getloadavg()
-    "server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2]))
-    "(eight cpus, so only in trouble with MD if > 8)\n"+
-    "\n"+
-    "    __         .' '. \n"+
-    "  _/__)        .   .       .\n"+
-    " (8|)_}}- .      .        .\n"+
+
+
+    return "it's yer daily cricket tales robot report\n"+\
+    "-----------------------------------------\n"+\
+    "\n"+\
+    "players: "+str(UserProfile.objects.all().count())+"\n"+\
+    "movies watched: "+str(Event.objects.filter(type=cricket_end).distinct('movie').count())+"\n"+\
+    "events recorded: "+str(Event.objects.all().count())+"\n"+\
+    "\n"+\
+    "movie info\n"+\
+    "available: "+str(Movie.objects.filter(status=1).count())+"\n"+\
+    "awaiting processing: "+str(Movie.objects.filter(status=0).count())+"\n"+\
+    "done but needing deleting: "+str(Movie.objects.filter(status=2).count())+"\n"+\
+    "finished: "+str(Movie.objects.filter(status=3).count())+"\n"+\
+    "\n"+\
+    "top 10 players:\n"+\
+    score_text+\
+    "\n"+\
+    "last 10 stories:\n"+\
+    story_text+\
+    "\n"+\
+    "disk state: "+disk_state()+"\n"+\
+    "server load average: "+str(load[0])+" "+str(load[1])+" "+str(load[2])+"\n"+\
+    "(eight cpus, so only in trouble with MD if > 8)\n"+\
+    "\n"+\
+    "    __         .' '. \n"+\
+    "  _/__)        .   .       .\n"+\
+    " (8|)_}}- .      .        .\n"+\
     "  `\__)    '. . ' ' .  . '\n"
 
 def update_player_activity():
