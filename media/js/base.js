@@ -617,13 +617,11 @@ function size_from_house(house,zoom) {
 
     if (house=='' || house=="0") {
         ret = zooms[zoom-1];
-        ret[0]*=2;
-        ret[1]*=2;
         return ret;
     } else {
         ret = zooms[zoom-1];
-        ret[0]*=4;
-        ret[1]*=10;
+        ret[0]*=2;
+        ret[1]*=5;
         return ret;
     }
 }
@@ -636,7 +634,7 @@ function flag_size(zoom) {
                  [240, 80],
                  [480, 160]];
     ret = zooms[zoom-1];
-    ret[0]*=3;
-    ret[1]*=3;
+    ret[0]*=1.5;
+    ret[1]*=1.5;
     return ret;
 }
