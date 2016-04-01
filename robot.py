@@ -31,7 +31,7 @@ import map.generate
 report_recipients = ["dave@fo.am"]
 
 def send_email(f,to,subject,text):
-    msg = MIMEText("Here is the body of my message")
+    msg = MIMEText(text)
     msg["From"] = f
     msg["To"] = to[0]
     msg["Subject"] = subject
