@@ -296,7 +296,7 @@ def register(request):
         profile_form = UserProfileForm()
 
     if registered:
-        return HttpResponseRedirect('/map/')
+        return HttpResponseRedirect('/tutorial/')
     else:
         return render_to_response(
             'crickets/register.html',
