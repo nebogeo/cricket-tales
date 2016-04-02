@@ -22,9 +22,9 @@
         {% endblocktrans %}
 
         <center>
-          <ul class="tutorial_list">
-            <li><button id="tutorial" onclick="switch_tutorial('tut-main','tut-1');">{% trans "Begin Tutorial" %}</button></li>
-          </ul>
+          <button id="tutorial" onclick="switch_tutorial('tut-main','tut-1');">
+              {% trans "Begin Tutorial" %}
+          </button>
         </center>
         <img class="col-xs-2 col-xs-offset-5" src="/media/images/crickets/3.png">
 
@@ -236,7 +236,7 @@
             </button>
           </center>
         </div>
-        <img class="col-xs-2 col-xs-offset-5" src="/media/images/crickets/2.png">
+        <img class="col-xs-2 col-xs-offset-5" src="{{ MEDIA_URL }}images/crickets/2.png">
       </div>
 
      <div id="tut-3" class="col-xs-12" style="display:none">
@@ -246,7 +246,7 @@
 
           {% for event_type in predators_traps %}
           <div class="button col-sm-6 col-xs-6"
-               style="background: url(/media/images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;"
+               style="background: url({{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;"
                onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-high.png');"
                onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');"
                onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-offset.png');"
@@ -256,7 +256,7 @@
             </div>
           </div>
           {% endfor %}
-          <div class="button col-sm-6 col-xs-3" style="background: url(/media/images/buttons/button-1.png); background-size: 100% 100%;"
+          <div class="button col-sm-6 col-xs-3" style="background: url({{ MEDIA_URL }}/images/buttons/button-1.png); background-size: 100% 100%;"
                onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-high.png');"
                onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
                onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-offset.png');"
@@ -293,58 +293,58 @@
         </div>
 
         <div id="critters">
-       
+
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/ant.png" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/ant.png" width="100%">
             <div class="col-lg-12 text-center">{% trans "Ant" %}</div>
           </div>
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/beetle.png" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/beetle.png" width="100%">
             <div class="col-lg-12 text-center">{% trans "Beetle" %}</div>
           </div>
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/cricket.png" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/cricket.png" width="100%">
             <div class="col-lg-12 text-center">{% trans "Cricket" %}</div>
           </div>
-       
+
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/hedgehog.jpg" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/hedgehog.jpg" width="100%">
             <div class="col-lg-12 text-center">{% trans "Hedgehog" %}</div>
           </div>
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/human.jpg" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/human.jpg" width="100%">
             <div class="col-lg-12 text-center">{% trans "Human" %}</div>
           </div>
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/moth.png" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/moth.png" width="100%">
             <div class="col-lg-12 text-center">{% trans "Moth" %}</div>
           </div>
-        
+
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/slug.png" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/slug.png" width="100%">
             <div class="col-lg-12 text-center">{% trans "Slug" %}</div>
           </div>
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/spider.png" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/spider.png" width="100%">
             <div class="col-lg-12 text-center">{% trans "Spider" %}</div>
           </div>
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/woodlouse.png" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/woodlouse.png" width="100%">
             <div class="col-lg-12 text-center">{% trans "Woodlouse" %}</div>
           </div>
-        
+
           <div class="col-sm-4 col-xs-12">
-            <img src="/media/images/training/worm.png" width="100%">
+            <img src="{{ MEDIA_URL }}images/training/worm.png" width="100%">
             <div class="col-lg-12 text-center">{% trans "Worm" %}</div>
           </div>
 
         </div>
         <div class="responsive-buttons-small row col-xs-12 col-md-12">
           <div class="arrow arrow-tut-left col-lg-2 col-md-2 col-xs-2">
-            <img src="/media/images/left-arrow.png" width="100"/>
+            <img src="{{ MEDIA_URL }}images/left-arrow.png" width="100"/>
           </div>
           <div class="arrow arrow-tut-right col-lg-2 col-md-2 col-xs-2 col-xs-offset-8">
-            <img src="/media/images/right-arrow.png" width="100"/>
+            <img src="{{ MEDIA_URL }}images/right-arrow.png" width="100"/>
           </div>
         </div>
 

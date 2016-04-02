@@ -9,14 +9,13 @@
 <script type="text/javascript" src="{{MEDIA_URL}}js/slick.min.js"></script>
 
 <div class="row-fluid">
-  <h1>{% blocktrans %}You have watched more of burrow{% endblocktrans %} {{houses_needed_for.first.name}} than anyone else!</h1>
-  <p>{% blocktrans %}Design your house with the arrows below{% endblocktrans %}</p>
+  <center><p>{% blocktrans %}Design your house with the arrows below{% endblocktrans %}</p></center>
 
-<div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="row-fluid col-xs-offset-1 col-xs-10">
   <div class="arrow arrow-roof-left col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-1 col-md-offset-1">
 	<img src="/media/images/left-arrow.png" width="60%"/>
   </div>
-  <div class="slider-roof col-lg-5 col-md-6 col-sm-7 col-xs-8">
+  <div class="slider-roof col-lg-6 col-md-6 col-sm-7 col-xs-8">
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-1-roof-clear.png" class="slide-item-image a"></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-2-roof-clear.png" class="slide-item-image b" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-3-roof-clear.png" class="slide-item-image c" ></div>
@@ -30,11 +29,11 @@
 	<img src="/media/images/right-arrow.png" width="60%"/>
   </div>
 </div>
-<div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="row-fluid col-xs-offset-1 col-xs-10">
   <div class="arrow arrow-middle-left col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-1 col-md-offset-1">
 	<img src="/media/images/left-arrow.png" width="60%"/>
   </div>
-  <div class="slider-middle col-lg-5 col-md-6 col-sm-7 col-xs-8">
+  <div class="slider-middle col-lg-6 col-md-6 col-sm-7 col-xs-8">
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-1-middle-clear.png" class="slide-item-image a" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-2-middle-clear.png" class="slide-item-image b" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-3-middle-clear.png" class="slide-item-image c" ></div>
@@ -48,11 +47,11 @@
 	<img src="/media/images/right-arrow.png" width="60%"/>
   </div>
 </div>
-<div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="row-fluid col-xs-offset-1 col-xs-10">
   <div class="arrow arrow-ground-left col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-1 col-md-offset-1">
 	<img src="/media/images/left-arrow.png" width="60%"/>
   </div>
-  <div class="slider-ground col-lg-5 col-md-6 col-sm-7 col-xs-8">
+  <div class="slider-ground col-lg-6 col-md-6 col-sm-7 col-xs-8">
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-1-ground-clear.png" class="slide-item-image a" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-2-ground-clear.png" class="slide-item-image b" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/house-parts/house-3-ground-clear.png" class="slide-item-image c" ></div>
@@ -66,11 +65,11 @@
 	<img src="/media/images/right-arrow.png" width="60%"/>
   </div>
 </div>
-<div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="row-fluid col-xs-offset-1 col-xs-10">
   <div class="arrow arrow-colour-left col-lg-2 col-md-2 col-sm-2 col-xs-2 col-lg-offset-1 col-md-offset-1">
 	<img src="/media/images/left-arrow.png" width="60%"/>
   </div>
-  <div class="slider-colour col-lg-5 col-md-6 col-sm-7 col-xs-8">
+  <div class="slider-colour col-lg-6 col-md-6 col-sm-7 col-xs-8">
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/houses/colours/blue.png" class="slide-item-image a" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/houses/colours/brown.png" class="slide-item-image b" ></div>
 	<div class="slide-item col-lg-2 col-md-2 col-sm-2 col-xs-2"><img src="/media/images/houses/colours/green.png" class="slide-item-image c" ></div>
@@ -84,8 +83,12 @@
 	<img src="/media/images/right-arrow.png" width="60%"/>
   </div>
 </div>
-<div class="row-fluid col-lg-12 col-md-8 col-sm-12 col-xs-12">
-  <button id="builder" class="col-lg-2 col-lg-offset-4 col-sm-4 col-xs-5 col-xs-offset-4 submit"><p>BUILD</p></button>
+<div class="row-fluid col-xs-12">
+  <button id="builder" class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5 submit">
+  <div class="button_text">
+    <p>BUILD</p>
+  </div>
+  </button>
 </div>
 
  <script type="text/javascript">

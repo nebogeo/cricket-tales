@@ -17,11 +17,13 @@
 
 h1 {
     font-family: 'Love Ya Like A Sister', sans-serif;
+    text-transform: uppercase;
     font-size: 180%;
     margin: 0em;
 }
 h2 {
     font-family: 'Love Ya Like A Sister', sans-serif;
+    text-transform: uppercase;
     font-size: 150%;
 }
 
@@ -349,6 +351,8 @@ a.tutorial-play {
 }
 
 input[type=submit], button#tutorial, button#builder {
+    font-family: 'Love Ya Like A Sister', cursive;
+    text-transform: uppercase;
     background:url('../images/buttons/button-oblong.png');
     border: 0px;
     background-size: 100% 100%;
@@ -612,6 +616,10 @@ input#tag_id {
     height: 80%;
     display: table;
     margin: auto;
+}
+
+.button_text p {
+    font-family: 'Love Ya Like A Sister', cursive;
 }
 
 .id-display .button_text {
@@ -947,6 +955,7 @@ span.cricket-id-char {
 }
 
 .menu_title {
+    padding-left: 1em;
     font-size: 2.5vw;
 }
 

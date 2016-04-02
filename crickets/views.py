@@ -43,7 +43,7 @@ def map(request):
         context['houses_needed_for'] = Burrow.objects.filter(owner=request.user, new_house_needed=1)
         # redirect to the house builder...
         if len(context['houses_needed_for'])>0:
-            context['page_title'] = "CRICKET HOUSE BUILDER"
+            context['page_title'] = _("You have watched the most videos from burrow %(burrow)s") % {'burrow': context['houses_needed_for'][0].name}
             return render(request, 'crickets/builder.html', context)
         else:
             context['burrows'] = Burrow.objects.filter(num_movies_ready__gt=0)
