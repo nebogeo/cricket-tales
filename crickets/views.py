@@ -253,7 +253,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'repeat_password')
+        fields = ('username', 'password', 'repeat_password')
 
     def clean_repeat_password(self):
         password = self.cleaned_data.get('password')
