@@ -6,7 +6,7 @@
 
   <div id="movie_end" class="movie_end" style="visibility:hidden;">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <h1>{% trans "Thank you for watching!" %}</h1>
+      <center><h1>{% trans "Thank you for watching!" %}</h1></center>
 
   {% if user.is_authenticated %}
       <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
@@ -24,8 +24,8 @@
            onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2.png');"
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2.png');"
-           onclick="window.location.href='/map/'">
-        <div class="button_text"><p>{% trans "Your map" %}</p></div>
+           onclick="window.location.href='/meadow/'">
+        <div class="button_text"><p>{% trans "Your meadow" %}</p></div>
       </div>
       <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
            style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;"

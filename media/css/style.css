@@ -600,6 +600,20 @@ input#tag_id {
 .button {
     float: left;
     font-family: 'Love Ya Like A Sister', cursive;
+    text-transform: uppercase;
+    cursor: pointer;
+    height: auto;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    background: url("../images/buttons/button-1.png");
+    background-size: 100% 100%;
+    border: 0px solid #fff !important;
+}
+
+.button a {
+    float: left;
+    font-family: 'Love Ya Like A Sister', cursive;
+    text-transform: uppercase;
     cursor: pointer;
     height: auto;
     padding-top: 0.25em;
