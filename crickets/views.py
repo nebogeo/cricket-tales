@@ -416,8 +416,11 @@ def get_data(request):
 
         for e in events:
             username = "not found"
-            user = User.objects.get(id=e.user_id)
-            if user: username=user.username
+            try:
+                user = User.objects.get(id=e.user_id)
+                username = user.username
+            except User.DoesNotExist:
+                pass
             writer.writerow([e.id,e.event_type,
                              username,
                              e.event_time_secs,e.mouse_x_percent,
