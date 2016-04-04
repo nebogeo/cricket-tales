@@ -414,6 +414,18 @@ def get_data(request):
 
         writer = csv.writer(response)
 
+        writer.writerow(['"ID"',
+                         '"Event type"',
+                         '"Username"',
+                         '"Event time (secs)"',
+                         '"Mouse X %"',
+                         '"Mouse Y %"',
+                         '"Cricket ID/other data"',
+                         '"Burrow name"',
+                         '"Movie index filename"',
+                         '"Movie start frame"',
+                         '"Movie start time"'])
+
         for e in events:
             username = "not found"
             try:
@@ -421,12 +433,17 @@ def get_data(request):
                 username = user.username
             except User.DoesNotExist:
                 pass
-            writer.writerow([e.id,e.event_type,
+            writer.writerow([e.id,
+                             e.event_type,
                              username,
-                             e.event_time_secs,e.mouse_x_percent,
-                             e.mouse_y_percent,e.cricket_id_reported,
-                             e.burrow_name,e.src_index_file,
-                             e.start_frame,e.start_time])
+                             e.event_time_secs,
+                             e.mouse_x_percent,
+                             e.mouse_y_percent,
+                             e.cricket_id_reported,
+                             e.burrow_name,
+                             e.src_index_file,
+                             e.start_frame,
+                             e.start_time])
 
         return response
 
