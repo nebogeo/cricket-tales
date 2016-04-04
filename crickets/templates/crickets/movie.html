@@ -7,21 +7,21 @@
   <div id="movie_end" class="movie_end" style="visibility:hidden;">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <h1>{% trans "Thank you for watching!" %}</h1>
-      <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4"
-           style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' as image_num %}.png); background-size: 100% 100%;"
-           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-high.png');"
-           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
-           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
-           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
+      <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
+           style="background: url(/media/images/buttons/button-1.png); background-size: 100% 100%;"
+           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-high.png');"
+           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
+           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-offset.png');"
+           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
            onclick="restart_video()">
         <div class="button_text"><p>{% trans "View again" %}</p></div>
       </div>
-      <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4"
-           style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' as image_num %}.png); background-size: 100% 100%;"
-           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-high.png');"
-           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
-           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
-           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
+      <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
+           style="background: url(/media/images/buttons/button-2.png); background-size: 100% 100%;"
+           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2-high.png');"
+           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2.png');"
+           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2-offset.png');"
+           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2.png');"
   {% if user.is_authenticated %}
            onclick="window.location.href='/map/'">
   {% else %}
@@ -29,12 +29,12 @@
   {% endif %}
         <div class="button_text"><p>{% trans "Your map" %}</p></div>
       </div>
-      <div class="button col-lg-4 col-md-4 col-sm-4 col-xs-4"
-           style="background: url(/media/images/buttons/button-{% cycle '1' '2' '3' '4' '5' '6' '7' as image_num %}.png); background-size: 100% 100%;"
-           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-high.png');"
-           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
-           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}-offset.png');"
-           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ image_num }}.png');"
+      <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
+           style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;"
+           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-high.png');"
+           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-offset.png');"
+           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
   {% if user.is_authenticated %}
            onclick="window.location.href='/random_burrow_movie/{{ movie.burrow.id }}'">
   {% else %}
@@ -42,6 +42,19 @@
   {% endif %}
         <div class="button_text"><p>{% trans "Next movie" %}</p></div>
       </div>
+
+  {% if user.is_authenticated %}
+      <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
+           style="background: url(/media/images/buttons/button-4.png); background-size: 100% 100%;"
+           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4-high.png');"
+           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4.png');"
+           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4-offset.png');"
+           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4.png');"
+           onclick="window.location.href='/random_movie/'">
+        <div class="button_text"><p>{% trans "New burrow" %}</p></div>
+      </div>
+  {% endif %}
+
     </div>
   </div>
   {% endblock %}
