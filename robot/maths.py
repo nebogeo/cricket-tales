@@ -31,7 +31,7 @@ def random_pos(area):
 
 def check_list(np,poslist):
     for p in poslist:
-        if distance(p,np)<100:
+        if distance(p,np)<50:
             return False
     return True
 
