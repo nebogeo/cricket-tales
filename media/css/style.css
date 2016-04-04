@@ -1005,7 +1005,8 @@ nav ul li:hover a {
 
 nav ul li a {
 	display: block;
-    padding: 0px 20px;
+    padding: 0px 10px;
+    white-space: nowrap;
 	text-decoration: none;
 }
 

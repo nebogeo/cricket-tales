@@ -34,9 +34,9 @@ def index(request):
     return render(request, 'crickets/index.html', context)
 
 ######################################################################
-## player's map page
+## player's meadow page
 
-def map(request):
+def meadow(request):
     if request.user.is_authenticated():
         context = {}
         context['user']=request.user
@@ -63,14 +63,14 @@ def map(request):
                 if player_score>0: burrow.flag="leaf-flag.png"
                 if burrow.owner == request.user: burrow.flag="long-flag.png"
 
-            context['page_title'] = _("%(username)s's BURROW MAP") % {'username': request.user.username.upper()}
+            context['page_title'] = _("%(username)s's MEADOW") % {'username': request.user.username.upper()}
             context['stories'] = Story.objects.all().order_by('-time')[:10]
 
             # can we not do this on the browser??
             for story in context['stories']:
                 story.text = _(story.text) % {'player': story.player}
 
-        return render(request, 'crickets/map.html', context)
+        return render(request, 'crickets/meadow.html', context)
 
     return HttpResponseRedirect('/')
 
@@ -90,7 +90,7 @@ def house(request,burrow_id,house):
                           text=_("%(player)s has built a new house."))
             story.save()
 
-        return HttpResponseRedirect('/map/')
+        return HttpResponseRedirect('/meadow/')
 
     return HttpResponseRedirect('/')
 
@@ -317,7 +317,7 @@ def logmein(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/map/')
+                return HttpResponseRedirect('/meadow/')
             else:
                 return HttpResponse(_("Your account is disabled."))
         else:

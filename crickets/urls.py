@@ -6,7 +6,7 @@ from crickets import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^movie/(?P<pk>\d+)/$', views.MovieView.as_view(), name='movie'),
-    url(r'^map/$', views.map, name='map'),
+    url(r'^meadow/$', views.meadow, name='meadow'),
     url(r'^house/(?P<burrow_id>\d+)/(?P<house>\w+)/$', views.house, name='house'),
     url(r'^tutorial/', views.tutorial, name='tutorial'),
     url(r'^about/', views.about, name='about'),

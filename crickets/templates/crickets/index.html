@@ -56,7 +56,7 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.
          onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-offset.png');"
          onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
          {% if user.is_authenticated %}
-         onclick="window.location.href='/map/'"
+         onclick="window.location.href='/meadow/'"
          {% else %}
          onclick="window.location.href='/login/'"
          {% endif %}
