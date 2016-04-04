@@ -8,6 +8,7 @@ def gen_square(map_size,src_size,src_list,trees_list):
     im = Image.new("RGB", (map_size,map_size), "black")
 
     size_tiles = map_size/src_size
+    size_tiles*=2
     print(size_tiles)
     tile_scale = (map_size/size_tiles)/float(src_size)
     print(tile_scale)
