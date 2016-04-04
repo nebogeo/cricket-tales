@@ -415,8 +415,11 @@ def get_data(request):
         writer = csv.writer(response)
 
         for e in events:
+            username = "not found"
+            user = User.objects.get(id=e.user_id)
+            if user: username=user.username
             writer.writerow([e.id,e.event_type,
-                             User.objects.get(id=e.user_id).username,
+                             username,
                              e.event_time_secs,e.mouse_x_percent,
                              e.mouse_y_percent,e.cricket_id_reported,
                              e.burrow_name,e.src_index_file,
