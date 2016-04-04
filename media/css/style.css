@@ -309,6 +309,15 @@ div.close_id,
 div.close_id_no_tag,
 input.burrow_link {
     background:url('../images/buttons/button-oblong.png');
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-family: 'Love Ya Like A Sister', cursive;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
     border: 0px;
     background-size: 100% 100%;
 /*    background-position-x: -0.2em;
@@ -465,7 +474,6 @@ button.pause {
 /* invisible then visible things, aka ID form */
 div#tag_cricket {
     display: none;
-    width: 20%;
     background: #fff;
     position: absolute;
     top: 20%;
@@ -479,7 +487,7 @@ div#something_else {
     right: 10%;
     display: block;
     height: 60%;
-    overflow: auto;
+    overflow: hidden;
     z-index: 2;
     background: rgba(255, 255, 255, 0.7);
     display: none;
@@ -592,6 +600,7 @@ input#tag_id {
 .button {
     float: left;
     font-family: 'Love Ya Like A Sister', cursive;
+    cursor: pointer;
     height: auto;
     padding-top: 0.25em;
     padding-bottom: 0.25em;
@@ -691,11 +700,19 @@ span.cricket-id-char {
 /* Keyboard */
 #tag_cricket.panel {
     background: rgba(255, 255, 255, 0.7);
-    min-width: 25%;
+
 }
 
 #tag_cricket tr {
     background: #f6fce9;
+    cursor: pointer;
+    font-family: 'Love Ya Like A Sister', cursive;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    text-align: center;
 }
 
 #tag_cricket td {
@@ -709,6 +726,14 @@ span.cricket-id-char {
     border-left: 0px;
     background: url('../images/buttons/button-oblong.png');
     background-size: 100% 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Love Ya Like A Sister', cursive;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 .event {

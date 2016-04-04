@@ -476,10 +476,10 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
 function toggle_id_cricket() {
     $('#tag_cricket').toggle();
     if($('#tag_cricket:hidden').length == 0) {
-            pop.pause();
+            pause_movie();
         } else {
             if (state === "movie-playing") {
-                pop.play();
+                play_movie();
             }
         }
 }
@@ -487,10 +487,10 @@ function toggle_id_cricket() {
 function toggle_something_else() {
     $('#something_else').toggle();
     if($('#something_else:hidden').length == 0) {
-            pop.pause();
+            pause_movie();
         } else {
             if (state === "movie-playing") {
-                pop.play();
+                play_movie();
             }
         }
 }
