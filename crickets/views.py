@@ -415,7 +415,8 @@ def get_data(request):
         writer = csv.writer(response)
 
         for e in events:
-            writer.writerow([e.id,e.event_type,e.user_id,
+            writer.writerow([e.id,e.event_type,
+                             User.objects.get(id=e.user_id).username,
                              e.event_time_secs,e.mouse_x_percent,
                              e.mouse_y_percent,e.cricket_id_reported,
                              e.burrow_name,e.src_index_file,
