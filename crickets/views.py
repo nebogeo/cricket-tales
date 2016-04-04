@@ -216,7 +216,13 @@ def update_stories(user,data):
 ## incoming from javascript...
 def spit_event(request):
     if request.method == 'POST':
+        # concerned about how much overhead is involved
+        # with this, as it's generating an option list entry
+        # for each movie - seen when you print (but perhaps they
+        # are not actually created until printing)
         form = EventForm(request.POST)
+        # probably not even needed, but who knows where these may
+        # be coming from eventually...?
         if form.is_valid():
             form.save()
             # update the stats for this player
@@ -240,7 +246,6 @@ def spit_event(request):
                     update_score(user,movie.burrow)
 
                 update_stories(user,data)
-
             return HttpResponse('')
         return HttpResponse('request is invalid: '+str(form))
     else:

@@ -73,7 +73,7 @@
   {% if user.is_authenticated %}
   <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{something_else.id}}, {{movie.id}}, {{user.id}});</script>
   {% else %}
-  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{something_else.id}}, {{movie.id}}, -1);</script>
+  <script>video_setup({{cricket_start.id}}, {{burrow_start.id}}, {{cricket_id.id}}, {{cricket_end.id}}, {{something_else.id}}, {{movie.id}}, "None");</script>
   {% endif %}
 
   <div class="row-fluid"><!-- video/prompt row -->

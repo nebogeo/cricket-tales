@@ -565,6 +565,7 @@ function inner_render_my_event(start_time) {
 
 // sends the event to the server and renders it
 function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
+
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();
