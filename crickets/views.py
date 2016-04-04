@@ -1,6 +1,7 @@
 #####################################################################
 
 import json
+import csv
 from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
@@ -20,6 +21,9 @@ from django.contrib.auth.models import User
 from django import forms
 
 from django.contrib.auth import authenticate, login, logout
+
+import mimetypes
+
 
 
 #####################################################################
@@ -378,3 +382,46 @@ def random_burrow_movie(request, id):
 #def suck(request):
 #    data = serializers.serialize("json", Cricket.objects.all())
 #    return HttpResponse(json.dumps(data), content_type="application/json")
+
+######################################################################
+## data access
+
+def get_data(request):
+    if request.user.is_superuser:
+
+        events = Event.objects.raw("""
+        select
+        event.id as id,
+        event_type.name as event_type,
+        event.user_id as user_id,
+        event.start_time as event_time_secs,
+        event.x_pos as mouse_x_percent,
+        event.y_pos as mouse_y_percent,
+        event.other as cricket_id_reported,
+        burrow.name as burrow_name,
+        movie.src_index_file,
+        movie.start_frame,
+        movie.start_time
+        from crickets_event as event
+        join crickets_eventtype as event_type on event_type.id=type_id
+        join crickets_movie as movie on movie.id=movie_id
+        join crickets_burrow as burrow on burrow.id=movie.burrow_id
+        order by event.id;
+        """)
+
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="cricket-tales-events.csv"'
+
+        writer = csv.writer(response)
+
+        for e in events:
+            writer.writerow([e.id,e.event_type,e.user_id,
+                             e.event_time_secs,e.mouse_x_percent,
+                             e.mouse_y_percent,e.cricket_id_reported,
+                             e.burrow_name,e.src_index_file,
+                             e.start_frame,e.start_time])
+
+        return response
+
+    else:
+        return HttpResponseRedirect('/')

@@ -19,4 +19,5 @@ urlpatterns = patterns('',
     url(r'^house_builder/(?P<id>\d+)/$', views.house_builder, name='house_builder'),
     url(r'^random_burrow_movie/(?P<id>\d+)/$', views.random_burrow_movie, name='random_burrow_movie'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^get-data/', views.get_data, name='get-data'),
 )

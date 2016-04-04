@@ -4,6 +4,8 @@ from django.contrib import admin
 import settings
 
 admin.site.site_header = 'Wild Cricket Tales Admin'
+admin.site.index_template = 'admin/ct_index.html'
+admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^', include('crickets.urls')),
