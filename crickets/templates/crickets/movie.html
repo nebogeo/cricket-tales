@@ -7,6 +7,8 @@
   <div id="movie_end" class="movie_end" style="visibility:hidden;">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <h1>{% trans "Thank you for watching!" %}</h1>
+
+  {% if user.is_authenticated %}
       <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
            style="background: url(/media/images/buttons/button-1.png); background-size: 100% 100%;"
            onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-high.png');"
@@ -22,11 +24,7 @@
            onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2.png');"
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-2.png');"
-  {% if user.is_authenticated %}
            onclick="window.location.href='/map/'">
-  {% else %}
-           onclick="window.location.href='/'">
-  {% endif %}
         <div class="button_text"><p>{% trans "Your map" %}</p></div>
       </div>
       <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
@@ -35,15 +33,9 @@
            onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
            onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-offset.png');"
            onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
-  {% if user.is_authenticated %}
            onclick="window.location.href='/random_burrow_movie/{{ movie.burrow.id }}'">
-  {% else %}
-           onclick="window.location.href='/random_movie/'">
-  {% endif %}
         <div class="button_text"><p>{% trans "Next movie" %}</p></div>
       </div>
-
-  {% if user.is_authenticated %}
       <div class="button col-lg-3 col-md-3 col-sm-6 col-xs-12"
            style="background: url(/media/images/buttons/button-4.png); background-size: 100% 100%;"
            onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4-high.png');"
@@ -53,8 +45,26 @@
            onclick="window.location.href='/random_movie/'">
         <div class="button_text"><p>{% trans "New burrow" %}</p></div>
       </div>
+  {% else %}
+      <div class="button col-lg-6 col-md-6 col-sm-6 col-xs-12"
+           style="background: url(/media/images/buttons/button-1.png); background-size: 100% 100%;"
+           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-high.png');"
+           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
+           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-offset.png');"
+           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
+           onclick="restart_video()">
+        <div class="button_text"><p>{% trans "View again" %}</p></div>
+      </div>
+      <div class="button col-lg-6 col-md-6 col-sm-6 col-xs-12"
+           style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;"
+           onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-high.png');"
+           onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+           onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-offset.png');"
+           onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+           onclick="window.location.href='/random_movie/'">
+        <div class="button_text"><p>{% trans "Next movie" %}</p></div>
+      </div>
   {% endif %}
-
     </div>
   </div>
   {% endblock %}
