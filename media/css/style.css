@@ -1201,7 +1201,7 @@ nav ul ul li a:hover {
     }
 
     .slick-arrow {
-        padding: 0px !important;
+        /*padding: 0px !important;*/
     }
 
     #tut-1 > div > div.arrow.responsive-buttons-large {

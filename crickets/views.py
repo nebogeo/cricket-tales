@@ -346,10 +346,11 @@ def tutorial(request):
     context['movement'] = []
     context['predators_traps'] = []
 
+    basic_behaviours_names = ["MATE", "SING", "FIGHT", "EAT"]
+    movement_names = ["LEAVES BURROW", "ENTERS BURROW", "ARRIVES FRAME", "LEAVES FRAME"]
+    predators_traps_names = ["Predator: Bird", "Predator: Shrew", "TRAP", "Something Else"]
+
     for event in get_event_types():
-        basic_behaviours_names = ["MATE", "SING", "FIGHT", "EAT"]
-        movement_names = ["LEAVES BURROW", "ENTERS BURROW", "ANOTHER CRICKET", "LEAVES FRAME"]
-        predators_traps_names = ["Predator: Bird", "Predator: Shrew", "TRAP", "Something Else"]
         if event.name in basic_behaviours_names:
             context['basic_behaviours'].append(event)
         if event.name in movement_names:
