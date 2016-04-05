@@ -190,7 +190,7 @@ video {
 .game_title {
     text-align: center;
     font-family: 'Love Ya Like A Sister', sans-serif;
-
+    white-space: nowrap;
 }
 
 .game_title span {
