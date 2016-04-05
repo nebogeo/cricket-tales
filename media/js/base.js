@@ -69,6 +69,7 @@ function make_visible(id,viz) {
 
 
 function switch_tutorial(from,to) {
+    window.scrollTo(0,0);
     var t = document.getElementById(from);
     t.style.display = "none";
     t = document.getElementById(to);
