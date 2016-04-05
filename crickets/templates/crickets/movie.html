@@ -191,21 +191,32 @@
                onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-offset.png');"
                onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
                onclick="toggle_something_else()">
-               <div class="button_text">
-              <p>!</p></div>
-             </div>
-        </div>
-        <div class="row-fluid">
-          <div class="button event_button id-display col-lg-7 col-lg-offset-2 col-md-7 col-md-offset-2 col-sm-7 col-sm-offset-2 col-xs-7 col-xs-offset-2" style="background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle.png');"
-               onclick="toggle_id_cricket()">
-            <div class="button_text">
-                <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">ID</p>
-            </div>
-          </div>
+           <div class="button_text">
+             <p>!</p>
+           </div>
+         </div>
+         <!-- insert another cricket button here as it looks better -->
+         <div class="event_button button col-sm-6 col-xs-3"
+              style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;"
+              onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-high.png');"
+              onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+              onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-offset.png');"
+              onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
+              onclick="add_event({{another_cricket.id}},{{movie.id}},'{{user.id}}', null, null, null)">
+           <div class="button_text">
+             <p>{{another_cricket.name}}</p>
+           </div>
+         </div>
+         <div class="button event_button id-display col-lg-6 col-md-6 col-sm-6 col-xs-6" style="background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;"
+              onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle-high.png');"
+              onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle.png');"
+              onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle-offset.png');"
+              onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle.png');"
+              onclick="toggle_id_cricket()">
+           <div class="button_text">
+             <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">ID</p>
+           </div>
+         </div>
         </div>
     </div>
     </div><!-- End button div -->

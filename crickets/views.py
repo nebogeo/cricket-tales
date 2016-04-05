@@ -110,7 +110,7 @@ def get_event_types():
         EventType.objects.filter(name="EAT").first(),
         EventType.objects.filter(name="LEAVES BURROW").first(),
         EventType.objects.filter(name="ENTERS BURROW").first(),
-        EventType.objects.filter(name="ANOTHER CRICKET").first(),
+        EventType.objects.filter(name="ARRIVES FRAME").first(),
         EventType.objects.filter(name="LEAVES FRAME").first(),
         EventType.objects.filter(name="Predator: Bird").first(),
         EventType.objects.filter(name="Predator: Shrew").first(),
@@ -151,6 +151,7 @@ class MovieView(generic.DetailView):
         context['burrow_start'] = EventType.objects.filter(name="Burrow Start").first()
         context['cricket_id'] = EventType.objects.filter(name="Cricket ID").first()
         context['redo'] = EventType.objects.filter(name="Redo").first()
+        context['another_cricket'] = EventType.objects.filter(name="ANOTHER CRICKET").first()
         return context
 
 class EventForm(ModelForm):
