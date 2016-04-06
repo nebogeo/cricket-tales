@@ -404,17 +404,19 @@ def update_player_activity():
 def update_burrows_activity():
     for burrow in Burrow.objects.all():
         # update the houses stuff
-        hiscores = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('-movies_finished')
-        if len(hiscores)>0:
-            hiscore=hiscores[0]
+
+        # doing this directly now...
+        ##hiscores = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('-movies_finished')
+        ##if len(hiscores)>0:
+        ##    hiscore=hiscores[0]
             # only award burrows after 10 movies have been watched
             # hiscore.movies_finished>10 and
             # (controversial)
-            if burrow.owner != hiscore.player:
+        ##    if burrow.owner != hiscore.player:
                 #print("burrow "+burrow.name+" has just been owned by "+hiscore.player.username)
-                burrow.new_house_needed = 1
-                burrow.owner = hiscore.player
-                burrow.save()
+        ##        burrow.new_house_needed = 1
+        ##        burrow.owner = hiscore.player
+        ##        burrow.save()
 
         burrow.total_events = Event.objects.filter(movie__burrow=burrow).count()
         burrow.total_contributors = PlayerBurrowScore.objects.filter(burrow=burrow).distinct('player').count()
