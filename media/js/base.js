@@ -611,12 +611,12 @@ function size_from_house(house,zoom) {
 }
 
 function flag_size(zoom) {
-    var zooms = [[15, 5],
-                 [30, 10],
-                 [60, 20],
-                 [120, 40],
-                 [240, 80],
-                 [480, 160]];
+    var zooms = [[15, 9],
+                 [30, 18],
+                 [60, 36],
+                 [120, 72],
+                 [240, 144],
+                 [480, 288]];
     ret = zooms[zoom-1];
     ret[0]*=1.5;
     ret[1]*=1.5;

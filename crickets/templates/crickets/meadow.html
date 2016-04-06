@@ -47,7 +47,7 @@
             var flag_image = '{{ MEDIA_URL }}images/houses/'+flag
             flag_icon = new L.Icon({iconUrl: flag_image}),
             flag_icon.options.iconSize = flag_size(map.getZoom());
-            var flag_marker = L.marker(map.unproject([latitude, longitude-50]), {icon: flag_icon}).addTo(map);
+            var flag_marker = L.marker(map.unproject([latitude, longitude-30]), {icon: flag_icon}).addTo(map);
           }
 
           // The bizznizz
