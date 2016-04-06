@@ -142,6 +142,11 @@ class MovieView(generic.DetailView):
             burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
             burrow.save()
 
+        if 'iphone' in self.request.META['HTTP_USER_AGENT'].lower():
+            context['iphone'] = True
+        else:
+            context['iphone'] = False
+            
         # order these explicitly
         context['page_title'] = _("MOVIE")
         context['event_types']=get_event_types()
