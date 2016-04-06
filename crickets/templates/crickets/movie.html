@@ -78,8 +78,7 @@
 
   <div class="row-fluid"><!-- video/prompt row -->
     <div class="col-sm-8 col-xs-12" style="padding-left:0px; padding-right:0px;"><!-- video/prompt div -->
-      <!-- {% if iphone %}
-      {% endif %} -->
+      
       <div class="row-fluid"><!-- Player row -->
         <div id="cricket_player" class="col-xs-12"><!-- Player div -->
           <video nocontrols poster="{{ MEDIA_URL }}movies/{{movie.name}}.jpg" id="ourvideo" class="video-start" webkit-playsinline playsinline>
@@ -89,6 +88,43 @@
             {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
           </video>
         </div><!-- end Player div -->
+        
+        <canvas id="canvas" width="1208" height="800" class="col-xs-12"></canvas>
+        <!-- <img id="poster" src="{{ MEDIA_URL }}movies/{{movie.name}}.jpg" class="col-xs-12" style> -->
+        <script src="/media/js/iphone-inline-video.js"></script>
+        <script>
+          $(function() {
+          var canvas = document.getElementById('canvas');
+          var ctx = canvas.getContext('2d');
+          var video = document.getElementById('ourvideo');
+
+          // video still plays, forces fullscreen
+          var img = new Image();
+
+          img.onload = function() {
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          };
+
+          img.src = "{{ MEDIA_URL }}movies/{{movie.name}}.jpg";
+
+          document.getElementById('ourvideo').style.display = 'none';
+
+          video.addEventListener('play', function() {
+            var $this = this; //cache
+            (function loop() {
+              if (!$this.paused && !$this.ended) {
+                ctx.drawImage($this, 0, 0, canvas.width, canvas.height);
+                setTimeout(loop, 1000 / 30); // drawing at 30fps
+              }
+            })();
+          }, 0);
+
+          // below applies to new library i'm trying
+          makeVideoPlayableInline(video);
+
+        });
+        </script>
+      
       </div><!-- end Player row -->
 
       <div class="row-fluid"><!-- timeline row -->
