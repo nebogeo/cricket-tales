@@ -602,7 +602,6 @@ input#tag_id {
     font-family: 'Love Ya Like A Sister', cursive;
     text-transform: uppercase;
     cursor: pointer;
-    height: auto;
     padding-top: 0.25em;
     padding-bottom: 0.25em;
     background: url("../images/buttons/button-1.png");

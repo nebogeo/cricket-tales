@@ -62,10 +62,14 @@ def meadow(request):
                 t = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('-movies_finished')
                 if t: highest_score = t[0].movies_finished
                 burrow.videos_to_view = highest_score - player_score
+                burrow.videos_to_view += 1 # (to overtake)
                 # user perspective stuff
                 burrow.flag=""
                 if player_score>0: burrow.flag="leaf-flag.png"
-                if burrow.owner == request.user: burrow.flag="long-flag.png"
+                burrow.mine=False
+                if burrow.owner == request.user:
+                    burrow.flag="long-flag.png"
+                    burrow.mine=True
 
             context['page_title'] = _("%(username)s's MEADOW") % {'username': request.user.username.upper()}
             context['stories'] = Story.objects.all().order_by('-time')[:10]
@@ -146,7 +150,7 @@ class MovieView(generic.DetailView):
             context['iphone'] = True
         else:
             context['iphone'] = False
-            
+
         # order these explicitly
         context['page_title'] = _("MOVIE")
         context['event_types']=get_event_types()
@@ -169,27 +173,37 @@ def house_builder(request,id):
     context = RequestContext(request)
     return render(request, 'crickets/builder.html', context)
 
+def update_house_owner(user,burrow):
+    burrow.new_house_needed = 1
+    burrow.owner = user
+    burrow.save()
 
 def update_score(user,burrow):
     # what if no burrow??
-    scores = PlayerBurrowScore.objects.filter(player=user,
-                                              burrow=burrow)
-    if len(scores)>0:
-        scores[0].movies_finished+=1
-        scores[0].save()
+    hiscore = PlayerBurrowScore.objects.filter(burrow=burrow).order_by('-movies_finished').first()
+    my_score = PlayerBurrowScore.objects.filter(player=user,burrow=burrow)
+    this_score = 1
+
+    if len(my_score)>0:
+        my_score[0].movies_finished+=1
+        this_score = my_score[0].movies_finished
+        my_score[0].save()
 
         # make some stories out of counts of movies per user
-        if scores[0].movies_finished in [10,25,50,100]:
+        if my_score[0].movies_finished in [10,25,50,100]:
             story = Story(player=user,
                           text=_("%(player)s has watched %(count)i movies in a burrow!") %
                          {'player':'%(player)s', # stick this back in...
-                          'count':scores[0].movies_finished})
+                          'count':my_score[0].movies_finished})
             story.save()
     else:
         score = PlayerBurrowScore(player=user,
                                   burrow=burrow,
                                   movies_finished=1)
         score.save()
+
+    if not hiscore or this_score>hiscore.movies_finished:
+        update_house_owner(user,burrow)
 
 def update_stories(user,data):
     # make some stories
