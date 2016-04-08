@@ -1,9 +1,9 @@
 var makeVideoPlayableInline = function() {
     "use strict";
-
     function e(e) {
         var n = {
             start: function t() {
+
                 if (!n.lastCall) {
                     n.lastCall = Date.now()
                 }
@@ -88,6 +88,7 @@ var makeVideoPlayableInline = function() {
             e.load()
         }
         n.driver.play();
+        console.log("play")
         n.updater.start();
         e.dispatchEvent(new Event("play"));
         e.dispatchEvent(new Event("playing"))
@@ -98,6 +99,7 @@ var makeVideoPlayableInline = function() {
         var n = e[a];
         n.updater.stop();
         n.driver.pause();
+        console.log("pause")
         e.dispatchEvent(new Event("pause"));
         if (e.ended) {
             e[u] = true;
@@ -149,6 +151,7 @@ var makeVideoPlayableInline = function() {
         var r = e[a];
         e[d] = e.play;
         e[o] = e.pause;
+        e.play()
         e.play = l;
         e.pause = f;
         t(e, "paused", r.driver);
