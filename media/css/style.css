@@ -1383,3 +1383,7 @@ input.burrow_link {
     min-width: 500px;
   }
 }
+
+.prompt {
+    font-size: 2vw;
+}
