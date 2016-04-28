@@ -87,7 +87,9 @@
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.ogg" type="video/ogg">
             {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
           </video>
-        </div><!-- end Player div -->        
+        </div><!-- end Player div -->   
+        <div class="row-fluid prompt col-xs-12">
+        </div>   
         <!-- {% if iphone %}
         <button class="canvas-play col-xs-12">Play</button>
         <script src="/media/js/iphone-inline-video.js"></script>

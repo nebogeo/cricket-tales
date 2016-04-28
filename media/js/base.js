@@ -185,26 +185,26 @@ function update_infotext() {
     //$('.page_title').css("font-size","0.01vw;");
     switch(state) {
         case "wait-cricket":
-            $('.menu_title').html(info_text[0]);
+            $('.prompt').html(info_text[0]);
             break;
         case "wait-burrow":
-            $('.menu_title').html(info_text[1]);
+            $('.prompt').html(info_text[1]);
             break;
         case "movie-playing":
-            $('.menu_title').html(info_text[2]);
+            $('.prompt').html(info_text[2]);
             break;
         case "wait-cricket-end":
-            $('.menu_title').html(info_text[3]);
+            $('.prompt').html(info_text[3]);
             break;
         case "movie-end":
-            $('.menu_title').html(info_text[4]);
+            $('.prompt').html(info_text[4]);
             break;
         // whyyy
         case "no-cricket-end":
-            $('.menu_title').html(info_text[5]);
+            $('.prompt').html(info_text[5]);
             break;
         default:
-            $('.menu_title').html(info_text[6]);
+            $('.prompt').html(info_text[6]);
 
     }
 }

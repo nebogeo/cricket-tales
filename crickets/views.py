@@ -152,7 +152,7 @@ class MovieView(generic.DetailView):
             context['iphone'] = False
 
         # order these explicitly
-        context['page_title'] = _("MOVIE")
+        context['page_title'] = _("YOU ARE WATCHING BURROW " + str(burrow.id))
         context['event_types']=get_event_types()
         context['something_else'] = EventType.objects.filter(name="Something Else").first()
         context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
