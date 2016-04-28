@@ -137,24 +137,21 @@ def get_event_types():
 class MovieView(generic.DetailView):
     model = Movie
     template_name = 'crickets/movie.html'
-
+ur
     def get_context_data(self, **kwargs):
         context = super(MovieView, self).get_context_data(**kwargs)
-
-        # When page loads, mark as 'watched', this will need to be changed to 50%
-        burrow = context['movie'].burrow
-        # not all videos have burrows (in anon mode)
-        if burrow:
-            burrow.num_movies_unwatched = burrow.num_movies_ready - burrow.num_movies_watched
-            burrow.save()
-
         if 'iphone' in self.request.META['HTTP_USER_AGENT'].lower():
             context['iphone'] = True
         else:
             context['iphone'] = False
 
-        # order these explicitly
-        context['page_title'] = _("YOU ARE WATCHING BURROW " + str(burrow.id))
+        burrow = context['movie'].burrow
+        # not all videos have burrows (in anon mode)
+        if burrow:
+            context['page_title'] = _("YOU ARE WATCHING BURROW " + str(burrow.name))
+        else:
+            context['page_title'] = _("YOU ARE WATCHING MOVIE " + str(movie.name))
+
         context['event_types']=get_event_types()
         context['something_else'] = EventType.objects.filter(name="Something Else").first()
         context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
