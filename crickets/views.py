@@ -74,9 +74,11 @@ def meadow(request):
             context['page_title'] = _("%(username)s's MEADOW") % {'username': request.user.username.upper()}
             context['stories'] = Story.objects.all().order_by('-time')[:10]
 
-            # can we not do this on the browser??
+            # can we not do this on the browser?? :(
             for story in context['stories']:
-                story.text = _(story.text) % {'player': story.player}
+                player = story.player.username
+                if len(player)>10: player=player[:10]+"..."
+                story.text = _(story.text) % {'player': player}
 
         return render(request, 'crickets/meadow.html', context)
 

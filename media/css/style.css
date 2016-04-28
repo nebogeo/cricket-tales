@@ -142,6 +142,7 @@ video {
 .news-bubble {
     width: 10em;
     margin-left: 2em;
+    overflow: hidden;
 }
 
 .news-story {
