@@ -150,7 +150,7 @@ class MovieView(generic.DetailView):
         if burrow:
             context['page_title'] = _("YOU ARE WATCHING BURROW " + str(burrow.name))
         else:
-            context['page_title'] = _("YOU ARE WATCHING MOVIE " + str(movie.name))
+            context['page_title'] = _("YOU ARE WATCHING MOVIE " + str(context['movie'].name))
 
         context['event_types']=get_event_types()
         context['something_else'] = EventType.objects.filter(name="Something Else").first()
