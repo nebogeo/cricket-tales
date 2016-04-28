@@ -168,6 +168,26 @@
           </div>
           <div id="slider-tutorial-movement" class="slider-tutorial col-lg-10 col-md-10 col-sm-10 col-xs-10">
             <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Leaves Burrow" %}</h2></div>
+              <video controls poster="{{ MEDIA_URL }}movies/tutorial/exiting-burrow.jpg">
+                <source src="{{ MEDIA_URL }}movies/tutorial/exiting-burrow.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/exiting-burrow.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/exiting-burrow.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "The cricket leaves the burrow." %}</div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Enters Burrow" %}</h2></div>
+              <video controls poster="{{ MEDIA_URL }}movies/tutorial/enter-burrow.jpg">
+                <source src="{{ MEDIA_URL }}movies/tutorial/enter-burrow.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/enter-burrow.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/enter-burrow.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "The cricket enters the burrow." %}</div>
+            </div>
+            <div class="slider-item">
               <div class="slider-caption"><h2 class="text-center">{% trans "Arrive Frame" %}</h2></div>
               <video controls poster="{{ MEDIA_URL }}movies/tutorial/arriving.jpg">
                 <source src="{{ MEDIA_URL }}movies/tutorial/arriving.webm" type="video/webm"/>
@@ -424,7 +444,7 @@
 
            {% blocktrans %}
            <p>
-             If you register you can see the your meadow, where you can
+             If you register you can see your meadow, where you can
              build houses for the crickets!
            </p>
            {% endblocktrans %}
