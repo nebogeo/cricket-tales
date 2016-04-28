@@ -207,7 +207,12 @@ function update_infotext() {
             $('.prompt').html(info_text[6]);
 
     }
+
+   $('.prompt').addClass('animated-text').delay(500).queue(function(){
+            $(this).removeClass('animated-text').dequeue()
+        });
 }
+
 
 function initialise_operators_keyboard(cricket_id_id, something_else_id, movie_id,user_id) {
         $("#delete").click(function (){

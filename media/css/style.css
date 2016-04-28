@@ -761,10 +761,34 @@ span.cricket-id-char {
     -webkit-animation: filter-animation 0.5s;
 }
 
+.animated-text {
+    -webkit-animation: filter-animation 0.5s;
+}
+
 
 @-webkit-keyframes filter-animation {
   0% {
+    color: rgba(255, 204, 0, 0.8);
     -webkit-filter: brightness(2);
+  }
+
+  10% {
+    -webkit-filter: brightness(1.8);
+  }
+
+  45% {
+    -webkit-filter: brightness(1.4);
+  }
+
+  100% {
+    color: #333;
+    -webkit-filter: brightness(1);
+  }
+}
+
+@-webkit-keyframes text-animation {
+  0% {
+    -webkit-filter: brightness(10);
   }
 
   10% {
