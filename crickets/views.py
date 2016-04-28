@@ -137,7 +137,7 @@ def get_event_types():
 class MovieView(generic.DetailView):
     model = Movie
     template_name = 'crickets/movie.html'
-ur
+
     def get_context_data(self, **kwargs):
         context = super(MovieView, self).get_context_data(**kwargs)
         if 'iphone' in self.request.META['HTTP_USER_AGENT'].lower():
