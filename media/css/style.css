@@ -623,11 +623,11 @@ input#tag_id {
     border: 0px solid #fff !important;
 }
 
-.button_container > .id-display {
+/*.button_container > .id-display {
     width: 100% !important;
     min-height: 200px;
     height: auto !important;
-}
+}*/
 
 .button .button_text {
     -webkit-user-select: none;
@@ -645,12 +645,6 @@ input#tag_id {
     font-family: 'Love Ya Like A Sister', cursive;
 }
 
-.id-display .button_text {
-    width: 80% !important;
-    height: 80%;
-    display: table;
-}
-
 span.cricket-id-char {
     border: 1px solid black;
     padding: 5px;
@@ -665,7 +659,6 @@ span.cricket-id-char {
     padding: 1em 0em 1em 0em;
     margin-left: 0.7em;
 }
-
 .button.continue p::after {
     content: "";
     background: url('../images/crickets/7.png');
@@ -762,10 +755,34 @@ span.cricket-id-char {
     -webkit-animation: filter-animation 0.5s;
 }
 
+.animated-text {
+    -webkit-animation: filter-animation 0.5s;
+}
+
 
 @-webkit-keyframes filter-animation {
   0% {
+    color: rgba(255, 204, 0, 0.8);
     -webkit-filter: brightness(2);
+  }
+
+  10% {
+    -webkit-filter: brightness(1.8);
+  }
+
+  45% {
+    -webkit-filter: brightness(1.4);
+  }
+
+  100% {
+    color: #333;
+    -webkit-filter: brightness(1);
+  }
+}
+
+@-webkit-keyframes text-animation {
+  0% {
+    -webkit-filter: brightness(10);
   }
 
   10% {

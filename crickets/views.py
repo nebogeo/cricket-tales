@@ -120,7 +120,7 @@ def get_event_types():
         EventType.objects.filter(name="LEAVES FRAME").first(),
         EventType.objects.filter(name="Predator: Bird").first(),
         EventType.objects.filter(name="Predator: Shrew").first(),
-        EventType.objects.filter(name="TRAP").first()]
+        EventType.objects.filter(name="TRAP").first(),]
 
     # sort out the backgrounds (there are 8 variations and two special types)
     for c, event_type in enumerate(event_types):
