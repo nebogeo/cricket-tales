@@ -35,11 +35,7 @@ can come back to this page at any time.  {% endblocktrans %}
 
           {% for event_type in basic_behaviours %}
           <div class="button col-sm-6 col-xs-6"
-               style="background: url(/media/images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');">
+               style="cursor: auto; background: url(/media/images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;">
             <div class="button_text" {% if not event_type.title %} style="visibility: hidden" {% endif %}>
               <p>{{event_type.name}}</p>
             </div>
@@ -129,11 +125,7 @@ can come back to this page at any time.  {% endblocktrans %}
 
           {% for event_type in movement %}
           <div class="button col-sm-6 col-xs-6"
-               style="background: url(/media/images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');">
+               style="cursor: auto; background: url(/media/images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;">
             <div class="button_text" {% if not event_type.title %} style="visibility: hidden" {% endif %}>
               <p>{{event_type.name}}</p>
             </div>
@@ -229,21 +221,13 @@ can come back to this page at any time.  {% endblocktrans %}
 
           {% for event_type in predators_traps %}
           <div class="button col-sm-6 col-xs-6"
-               style="background: url({{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');">
+               style="cursor: auto; background: url({{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;">
             <div class="button_text" {% if not event_type.title %} style="visibility: hidden" {% endif %}>
               <p>{{event_type.name}}</p>
             </div>
           </div>
           {% endfor %}
-          <div class="button col-sm-6 col-xs-6" style="background: url({{ MEDIA_URL }}/images/buttons/button-1.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-1.png');">
+          <div class="button col-sm-6 col-xs-6" style="cursor: auto; background: url({{ MEDIA_URL }}/images/buttons/button-1.png); background-size: 100% 100%;">
                <div class="button_text">
                  <p>!</p></div>
           </div>
@@ -366,20 +350,12 @@ can come back to this page at any time.  {% endblocktrans %}
         <h1>4. {% trans "ID CRICKETS" %}</h1>
          <div class="row-fluid">
           <div id="id-buttongroup" class="tutorial_highlight_id col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
-            <div class="button id-display col-lg-6 col-md-6 col-sm-6 col-xs-6" style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');">
+            <div class="button id-display col-lg-6 col-md-6 col-sm-6 col-xs-6" style="cursor: auto; background: url(/media/images/buttons/button-3.png); background-size: 100% 100%;">
               <div class="button_text">
                 <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">ANOTHER CRICKET</p>
               </div>
             </div>
-            <div class="button id-display col-lg-6 col-md-6 col-sm-6 col-xs-6" style="background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;"
-               onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle-high.png');"
-               onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle.png');"
-               onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle-offset.png');"
-               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/squiggle.png');">
+            <div class="button id-display col-lg-6 col-md-6 col-sm-6 col-xs-6" style="cursor: auto; background: url(/media/images/buttons/squiggle.png); background-size: 100% 100%;">
               <div class="button_text">
                 <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">ID</p>
               </div>
