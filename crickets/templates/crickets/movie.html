@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <div class="row-fluid"> <!-- Row for the whole thing -->
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <!-- Setting up grid for whole thing -->
   {% block top_layer %}
@@ -221,7 +222,13 @@
                onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png');"
                onclick="add_event({{event_type.id}},{{movie.id}},'{{user.id}}', null, null, null)">
             <div class="button_text" {% if not event_type.title %} style="visibility: hidden" {% endif %}>
-              <p>{{event_type.name}}</p>
+              <p>
+                {% if 'en-gb' == LANGUAGE_CODE %}
+                {{event_type.name}}
+                {% else %}
+                {{event_type.es_name}}
+                {% endif %}
+              </p>
             </div>
           </div>
         {% endfor %}
@@ -244,7 +251,13 @@
               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
               onclick="add_event({{another_cricket.id}},{{movie.id}},'{{user.id}}', null, null, null)">
            <div class="button_text">
-             <p>{{another_cricket.name}}</p>
+             <p>
+               {% if 'en-gb' == LANGUAGE_CODE %}
+               {{another_cricket.name}}
+               {% else %}
+               {{another_cricket.es_name}}
+               {% endif %}
+             </p>
            </div>
          </div>
          <div class="button event_button id-display col-lg-6 col-md-6 col-sm-6 col-xs-3" style="background: url(/media/images/buttons/button-4.png); background-size: 100% 100%;"
@@ -254,7 +267,9 @@
               onMouseUp="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4.png');"
               onclick="toggle_id_cricket()">
            <div class="button_text">
-             <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">ID</p>
+             <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cricket-id-display">
+               {% trans 'ID' %}
+             </p>
            </div>
          </div>
         </div>

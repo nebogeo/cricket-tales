@@ -1,12 +1,12 @@
+#. extracted from translations2.csv
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-28 18:10+0100\n"
+"POT-Creation-Date: 2016-05-02 13:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,24 +20,19 @@ msgstr ""
 msgid "Django administration"
 msgstr ""
 
-#: crickets/templates/admin/ct_index.html:22
-#: crickets/templates/admin/index.html:23
-#, python-format
+#: crickets%2Ftemplates%2Fadmin%2Fct_index.html%3A22+crickets%2Ftemplates%2Fadmin%2Findex.html%3A23
 msgid "Models in the %(name)s application"
 msgstr ""
 
-#: crickets/templates/admin/ct_index.html:33
-#: crickets/templates/admin/index.html:34
+#: crickets%2Ftemplates%2Fadmin%2Fct_index.html%3A33+crickets%2Ftemplates%2Fadmin%2Findex.html%3A34
 msgid "Add"
 msgstr ""
 
-#: crickets/templates/admin/ct_index.html:39
-#: crickets/templates/admin/index.html:40
+#: crickets%2Ftemplates%2Fadmin%2Fct_index.html%3A39+crickets%2Ftemplates%2Fadmin%2Findex.html%3A40
 msgid "Change"
 msgstr ""
 
-#: crickets/templates/admin/ct_index.html:49
-#: crickets/templates/admin/index.html:50
+#: crickets%2Ftemplates%2Fadmin%2Fct_index.html%3A49+crickets%2Ftemplates%2Fadmin%2Findex.html%3A50
 msgid "You don't have permission to edit anything."
 msgstr ""
 
@@ -45,18 +40,15 @@ msgstr ""
 msgid "Recent Actions"
 msgstr ""
 
-#: crickets/templates/admin/ct_index.html:58
-#: crickets/templates/admin/index.html:59
+#: crickets%2Ftemplates%2Fadmin%2Fct_index.html%3A58+crickets%2Ftemplates%2Fadmin%2Findex.html%3A59
 msgid "My Actions"
 msgstr ""
 
-#: crickets/templates/admin/ct_index.html:62
-#: crickets/templates/admin/index.html:63
+#: crickets%2Ftemplates%2Fadmin%2Fct_index.html%3A62+crickets%2Ftemplates%2Fadmin%2Findex.html%3A63
 msgid "None available"
 msgstr ""
 
-#: crickets/templates/admin/ct_index.html:76
-#: crickets/templates/admin/index.html:77
+#: crickets%2Ftemplates%2Fadmin%2Fct_index.html%3A76+crickets%2Ftemplates%2Fadmin%2Findex.html%3A77
 msgid "Unknown content"
 msgstr ""
 
@@ -66,11 +58,11 @@ msgstr ""
 
 #: crickets/templates/base.html:37
 msgid "HOME"
-msgstr "CASA"
+msgstr "INICIO"
 
 #: crickets/templates/base.html:39
 msgid "MY MEADOW"
-msgstr "MI MAPA"
+msgstr "MI PRADO"
 
 #: crickets/templates/base.html:41
 msgid "LOGIN"
@@ -84,49 +76,56 @@ msgstr "TUTORIAL"
 msgid "ABOUT"
 msgstr "ACERCA DE"
 
-#: crickets/templates/base.html:46 crickets/templates/crickets/index.html:89
+#: crickets%2Ftemplates%2Fbase.html%3A46+crickets%2Ftemplates%2Fcrickets%2Findex.html%3A89
 msgid "LOG OUT"
 msgstr "CERRAR SESIÓN"
 
 #: crickets/templates/crickets/about.html:10
 msgid ""
-"\n"
 "    In a secret field in Northern Spain, hundreds of cricket burrows are "
 "monitored\n"
 "    using CCTV. This is the first long-term study of behaviour in a wild\n"
-"    insect, and we need your help to see what the crickets are up to.\n"
+"    insect, and we need your help to see what the crickets are up to."
 msgstr ""
+"En un campo secreto en el norte de Espańa, cientos de madrigueras de grillo "
+"son monitorizadas utilizando cámaras de video. Este es el primer estudio a "
+"largo plazo del comportamiento de un insecto en condiciones naturales, y "
+"necesitamos tu ayuda para ver que es lo que hacen los grillos."
 
 #: crickets/templates/crickets/about.html:22
 msgid "THE MEADOW"
-msgstr ""
+msgstr "EL PRADO"
 
 #: crickets/templates/crickets/about.html:26
 msgid "THE CAMERAS"
-msgstr ""
+msgstr "LAS CÁMARAS"
 
 #: crickets/templates/crickets/about.html:30
 msgid "THE CRICKETS"
-msgstr "CUENTOS DE CRICKET"
+msgstr "LOS GRILLOS"
 
 #: crickets/templates/crickets/about.html:36
 msgid ""
-"\n"
 "By logging events in these videos, you contribute directly to research. "
 "Understanding the lives of wild insects allows us to answer questions about "
 "how diversity is maintained and about the ageing process. To find out more "
 "about our work, have a look here:"
 msgstr ""
+"Registrando los sucesos que se producen en estos videos, contribuirás "
+"directamente con este proyecto de investigación. Comprender como viven estos "
+"insectos en libertad, nos permite responder a cuestiones sobre como se "
+"mantiene la diversidad y como se produce el envejecimiento. Para saber más "
+"sobre nuestro trabajo, puedes echar un vistazo aquí:"
 
 #: crickets/templates/crickets/builder.html:12
 msgid "Design your house with the arrows below"
-msgstr ""
+msgstr "Diseńa tu casa con las flechas situadas más abajo"
 
 #: crickets/templates/crickets/index.html:30
 msgid "CRICKET TALES"
-msgstr "CUENTOS DE CRICKET"
+msgstr "HISTORIAS SOBRE GRILLOS"
 
-#: crickets/templates/crickets/index.html:48 crickets/views.py:388
+#: crickets%2Ftemplates%2Fcrickets%2Findex.html%3A48+crickets%2Fviews.py%3A388
 msgid "ABOUT THE PROJECT"
 msgstr "SOBRE EL PROYECTO"
 
@@ -136,207 +135,222 @@ msgstr "SEGUIR JUGANDO"
 
 #: crickets/templates/crickets/index.html:69
 msgid "LOGIN FOR FULL GAME"
-msgstr ""
+msgstr "INICIAR SESIÓN PARA JUEGO COMPLETO"
 
 #: crickets/templates/crickets/index.html:91
 msgid "CONTRIBUTE AS GUEST"
-msgstr ""
+msgstr "CONTRIBUYE COMO INVITADO"
 
 #: crickets/templates/crickets/login.html:9
 msgid "Username:"
-msgstr ""
+msgstr "Nombre de usuario:"
 
 #: crickets/templates/crickets/login.html:11
 msgid "Password:"
-msgstr ""
+msgstr "Palabra clave:"
 
 #: crickets/templates/crickets/login.html:13
 msgid "Login"
-msgstr ""
+msgstr "Inicia sesión"
 
 #: crickets/templates/crickets/login.html:17
 msgid "Register"
-msgstr ""
+msgstr "Regístrate"
 
 #: crickets/templates/crickets/meadow.html:36
 msgid "Burrow"
-msgstr ""
+msgstr "Madriguera"
 
 #: crickets/templates/crickets/meadow.html:39
 msgid "Movies to watch <br/>till you can build:"
-msgstr ""
+msgstr "Videos para ver <br/>hasta que puedas construir:"
 
 #: crickets/templates/crickets/meadow.html:40
 msgid "Complete:"
-msgstr ""
+msgstr "Completar:"
 
 #: crickets/templates/crickets/meadow.html:41
 msgid "Go to Burrow"
-msgstr ""
+msgstr "Ir a la madriguera"
 
 #: crickets/templates/crickets/meadow.html:112
 msgid "YOUR SCORE"
-msgstr ""
+msgstr "TÚ PUNTUACIÓN"
 
 #: crickets/templates/crickets/meadow.html:114
 msgid "Videos watched"
-msgstr ""
+msgstr "Videos vistos"
 
 #: crickets/templates/crickets/meadow.html:118
 msgid "Houses built"
-msgstr ""
+msgstr "Casas construidas"
 
 #: crickets/templates/crickets/meadow.html:125
 msgid "NEWS FEED"
-msgstr ""
+msgstr "NOTICIAS"
 
 #: crickets/templates/crickets/movie.html:9
 msgid "Thank you for watching!"
-msgstr ""
+msgstr "ĄGracias por participar!"
 
-#: crickets/templates/crickets/movie.html:19
-#: crickets/templates/crickets/movie.html:56
+#: crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A19+crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A56
 msgid "View again"
-msgstr ""
+msgstr "Ver de nuevo"
 
 #: crickets/templates/crickets/movie.html:28
 msgid "Your meadow"
-msgstr ""
+msgstr "Tu prado"
 
-#: crickets/templates/crickets/movie.html:37
-#: crickets/templates/crickets/movie.html:65
+#: crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A37+crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A65
 msgid "Next movie"
-msgstr ""
+msgstr "Siguiente video"
 
 #: crickets/templates/crickets/movie.html:46
 msgid "New burrow"
-msgstr ""
+msgstr "Nueva madriguera"
 
-#: crickets/templates/crickets/movie.html:88
-#: crickets/templates/crickets/tutorial.html:65
-#: crickets/templates/crickets/tutorial.html:75
-#: crickets/templates/crickets/tutorial.html:85
-#: crickets/templates/crickets/tutorial.html:95
-#: crickets/templates/crickets/tutorial.html:162
-#: crickets/templates/crickets/tutorial.html:172
-#: crickets/templates/crickets/tutorial.html:182
-#: crickets/templates/crickets/tutorial.html:192
-msgid ""
-"I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 "
-"with H.264."
+#: crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A88+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A65+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A75+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A85+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A95+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A162+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A172+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A182+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A192
+msgid "I'm sorry"
 msgstr ""
+" your browser doesn't support HTML5 video in WebM with VP8 or MP4 with "
+"H.264."
 
 #: crickets/templates/crickets/movie.html:200
 msgid "Del"
-msgstr ""
+msgstr "Eliminar"
 
-#: crickets/templates/crickets/movie.html:201
-#: crickets/templates/crickets/movie.html:279
-#: crickets/templates/crickets/movie.html:280
+#: crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A201+crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A279+crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A280
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: crickets/templates/crickets/movie.html:270
 msgid ""
-"1. Click on the cricket if you can see it, or click <button id=\"no_cricket"
-"\">No Cricket</button>"
+"1. Click on the cricket if you can see it, or click <button "
+"id=\"no_cricket\">No Cricket</button>"
 msgstr ""
+"1. Pulsa sobre el grillo si puedes verlo, o pulsa <button "
+"id=\"no_cricket\">Sin grillo</button>"
 
 #: crickets/templates/crickets/movie.html:271
 msgid "2. Click on the middle of the burrow to begin the video"
-msgstr ""
+msgstr "2. Pulsa en el centro de la madriguera para empezar el video"
 
 #: crickets/templates/crickets/movie.html:272
 msgid "3. Tag cricket behaviours and ID as the video plays"
 msgstr ""
+"3. Indica el comportamiento del grillo y su identificador mientras el video "
+"se reproduce"
 
 #: crickets/templates/crickets/movie.html:273
 msgid ""
-"4. Click on the cricket if you can see it, or click <button id="
-"\"no_cricket_end\">No cricket</button>"
+"4. Click on the cricket if you can see it, or click <button "
+"id=\"no_cricket_end\">No cricket</button>"
 msgstr ""
+"4. Pulsa sobre el grillo si puedes verlo, o pulsa <button "
+"id=\"no_cricket\">Sin grillo</button>"
 
 #: crickets/templates/crickets/movie.html:274
 msgid "Well done! Video complete"
-msgstr ""
+msgstr "ĄBien hecho! Video completado"
 
 #: crickets/templates/crickets/movie.html:275
 msgid "No cricket clicked [no cricket seen?]"
-msgstr ""
+msgstr "No has seńalado ningún grillo [żNo has visto ninguno?]"
 
 #: crickets/templates/crickets/movie.html:276
 msgid "I have no idea, you broke me"
-msgstr ""
+msgstr "Algo ha fallado pero no sabemos qué"
 
-#: crickets/templates/crickets/movie.html:279
-#: crickets/templates/crickets/movie.html:280
+#: crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A279+crickets%2Ftemplates%2Fcrickets%2Fmovie.html%3A280
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: crickets/templates/crickets/movie.html:280
 msgid "Not sure"
-msgstr ""
+msgstr "No estoy seguro"
 
 #: crickets/templates/crickets/movie.html:280
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
-#: crickets/templates/crickets/register.html:24
-#: crickets/templates/crickets/register.html:33
-msgid "Prefer not to say"
+#: crickets/templates/crickets/register.html:10
+msgid "Make up your username (don't use an email address)"
 msgstr ""
+"Crea to nombrer de usuario (no utilices una dirección de correo electrónico)"
+
+#: crickets/templates/crickets/register.html:16
+msgid ""
+"    We are collecting information into people who contribute to\n"
+"    citizen science projects - this information is optional.\n"
+"    "
+msgstr ""
+"Estamos recopilando información sobre la gente que contribuye a proyectos de "
+"ciencia ciudadana - esta información es opcional"
+
+#: crickets%2Ftemplates%2Fcrickets%2Fregister.html%3A24+crickets%2Ftemplates%2Fcrickets%2Fregister.html%3A33
+msgid "Prefer not to say"
+msgstr "Prefiero no decirlo"
 
 #: crickets/templates/crickets/register.html:25
 msgid "Male"
-msgstr ""
+msgstr "Hombre"
 
 #: crickets/templates/crickets/register.html:26
 msgid "Female"
-msgstr ""
+msgstr "Mujer"
 
 #: crickets/templates/crickets/register.html:27
 msgid "Other"
-msgstr ""
+msgstr "Otro"
 
 #: crickets/templates/crickets/register.html:34
 msgid "Younger than 10"
-msgstr ""
+msgstr "Menor de 10"
 
 #: crickets/templates/crickets/register.html:35
 msgid "10 to 15"
-msgstr ""
+msgstr "10 a 15"
 
 #: crickets/templates/crickets/register.html:36
 msgid "16 to 35"
-msgstr ""
+msgstr "16 a 35"
 
 #: crickets/templates/crickets/register.html:37
 msgid "36 to 50"
-msgstr ""
+msgstr "36 a 50"
 
 #: crickets/templates/crickets/register.html:38
 msgid "Older than 50"
+msgstr "Mayor de 50"
+
+#: crickets/templates/crickets/register.html:41
+msgid ""
+"  Are you happy for us to use your data for insect behaviour research "
+"purposes?\n"
+"  "
 msgstr ""
+"żEstás de acuerdo en que utilicemos tus datos para la investigación del "
+"comportamiento de los insectos?"
 
 #: crickets/templates/crickets/register.html:48
 msgid "No thanks"
-msgstr ""
+msgstr "No gracias"
 
 #: crickets/templates/crickets/tutorial.html:15
 msgid ""
 " For each video, you have a set of buttons so\n"
 "you can record what you see. This tutorial explains how to use the\n"
-"buttons – if you are logged in you only need to do this once, but you\n"
+"buttons â if you are logged in you only need to do this once, but you\n"
 "can come back to this page at any time.  "
-msgstr ""
+msgstr "Para cada video, tienes un grupo de botones que"
 
 #: crickets/templates/crickets/tutorial.html:22
 msgid "Begin Tutorial"
-msgstr ""
+msgstr "Comenzar el tutorial"
 
 #: crickets/templates/crickets/tutorial.html:31
 msgid "BASIC BEHAVIOURS"
-msgstr ""
+msgstr "COMPORTAMIENTOS BÁSICOS"
 
 #: crickets/templates/crickets/tutorial.html:47
 msgid ""
@@ -345,64 +359,56 @@ msgid ""
 "        identify each behaviour. When you see crickets doing these\n"
 "        things, you only need to click once per video.\n"
 "        "
-msgstr ""
+msgstr "Estos botones son para grillos"
 
 #: crickets/templates/crickets/tutorial.html:60
 msgid "Mating behaviour"
-msgstr ""
+msgstr "Se aparean"
 
 #: crickets/templates/crickets/tutorial.html:67
 msgid "One cricket climbs on the back of another."
-msgstr ""
+msgstr "Un grillo se sube sobre el dorso del otro"
 
 #: crickets/templates/crickets/tutorial.html:70
 msgid "Singing behaviour"
-msgstr ""
+msgstr "Grillo cantando"
 
 #: crickets/templates/crickets/tutorial.html:77
 msgid "The cricket's wings flutter."
-msgstr ""
+msgstr "Las alas del grillo se mueven"
 
 #: crickets/templates/crickets/tutorial.html:80
 msgid "Fighting behaviour"
-msgstr ""
+msgstr "Pelea"
 
 #: crickets/templates/crickets/tutorial.html:87
 msgid "Face-to-face pushing and shoving."
-msgstr ""
+msgstr "Se empujan uno a otro cara a cara"
 
 #: crickets/templates/crickets/tutorial.html:90
 msgid "Eating behaviour"
-msgstr ""
+msgstr "Comiendo"
 
 #: crickets/templates/crickets/tutorial.html:97
 msgid "Munching on a leaf."
-msgstr ""
+msgstr "Masticando una hoja"
 
-#: crickets/templates/crickets/tutorial.html:110
-#: crickets/templates/crickets/tutorial.html:207
-#: crickets/templates/crickets/tutorial.html:339
-#: crickets/templates/crickets/tutorial.html:385
-#: crickets/templates/crickets/tutorial.html:451
+#: crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A110+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A207+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A339+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A385+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A451
 msgid "Go Back"
-msgstr ""
+msgstr "Volver"
 
-#: crickets/templates/crickets/tutorial.html:113
-#: crickets/templates/crickets/tutorial.html:210
-#: crickets/templates/crickets/tutorial.html:342
-#: crickets/templates/crickets/tutorial.html:388
+#: crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A113+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A210+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A342+crickets%2Ftemplates%2Fcrickets%2Ftutorial.html%3A388
 msgid "Got it!"
-msgstr ""
+msgstr "ĄConseguido!"
 
 #: crickets/templates/crickets/tutorial.html:122
 msgid "MOVEMENT"
-msgstr ""
+msgstr "MOVIMIENTO"
 
 #: crickets/templates/crickets/tutorial.html:137
 msgid ""
-"\n"
 "        These buttons are for when your cricket moves\n"
-"        around – either leaving its burrow, entering its burrow, leaving "
+"        around â either leaving its burrow, entering its burrow, leaving "
 "the\n"
 "        frame of the video, or arriving into the frame of the video from\n"
 "        elsewhere.\n"
@@ -411,7 +417,6 @@ msgstr ""
 
 #: crickets/templates/crickets/tutorial.html:144
 msgid ""
-"\n"
 "        These events often happen in quick succession, so it's not\n"
 "        critical to be precise over the timing. Scroll through the four "
 "videos\n"
@@ -421,49 +426,52 @@ msgstr ""
 
 #: crickets/templates/crickets/tutorial.html:157
 msgid "Leaves Burrow"
-msgstr ""
+msgstr "Abandona la madriguera"
 
 #: crickets/templates/crickets/tutorial.html:164
 msgid "The cricket comes out of its burrow (a hole near the middle)."
 msgstr ""
+"El grillo sale de su madriguera (un agujero cerca del centro de la imagen)."
 
 #: crickets/templates/crickets/tutorial.html:167
 msgid "Enters Burrow"
-msgstr ""
+msgstr "Entra en la madriguera"
 
 #: crickets/templates/crickets/tutorial.html:174
 msgid "The cricket enters the burrow."
-msgstr ""
+msgstr "El grillo entre en la madriguera."
 
 #: crickets/templates/crickets/tutorial.html:177
 msgid "Arrive Frame"
-msgstr ""
+msgstr "Entra en escena"
 
 #: crickets/templates/crickets/tutorial.html:184
 msgid "A cricket enters the frame"
-msgstr ""
+msgstr "Un grillo llega a la zona vigilada por la cámara"
 
 #: crickets/templates/crickets/tutorial.html:187
 msgid "Leave Frame"
-msgstr ""
+msgstr "Abandona la escena"
 
 #: crickets/templates/crickets/tutorial.html:194
 msgid "The cricket leaves the frame."
-msgstr ""
+msgstr "Un grillo sale de la zona vigilada por la cámara."
 
 #: crickets/templates/crickets/tutorial.html:218
 msgid "PREDATORS TRAPS AND EXTRA CRITTERS"
-msgstr ""
+msgstr "DEPREDADORES, TRAMPAS Y OTROS BICHOS"
 
 #: crickets/templates/crickets/tutorial.html:237
 msgid ""
-"\n"
 "        Look out for predators, like birds and shrews,\n"
 "        and tube traps which are sometimes used to\n"
 "        collect the crickets. If you see them, click on\n"
 "        the buttons to tell us.\n"
 "        "
 msgstr ""
+"Busca depredadores, como pájaros o musarańas, y trampas de tubo que a veces "
+"utilizamos para capturar grillos. Si los ves, pulsa sobre los botones para "
+"contárnoslo."
 
 #: crickets/templates/crickets/tutorial.html:258
 msgid ""
@@ -471,55 +479,54 @@ msgid ""
 "          and want to tell us about it, click on the '!' button.  You\n"
 "          don't need to comment on seeing other creatures unless you see\n"
 "          them actually interact with a cricket. "
-msgstr ""
+msgstr "Si ves algo interesante en un video"
 
 #: crickets/templates/crickets/tutorial.html:266
 msgid "Other creatures you might see, that we don't need to know about:"
-msgstr ""
+msgstr "Otros bichos que podrías ver, pero que no es necesario registrar:"
 
 #: crickets/templates/crickets/tutorial.html:277
 msgid "Ants"
-msgstr ""
+msgstr "Hormigas"
 
 #: crickets/templates/crickets/tutorial.html:281
 msgid "Beetles"
-msgstr ""
+msgstr "Escarabajos"
 
 #: crickets/templates/crickets/tutorial.html:285
 msgid "Grasshoppers"
-msgstr ""
+msgstr "Saltamontes"
 
 #: crickets/templates/crickets/tutorial.html:290
 msgid "Hedgehogs"
-msgstr ""
+msgstr "Erizos"
 
 #: crickets/templates/crickets/tutorial.html:294
 msgid "Humans"
-msgstr ""
+msgstr "Personas"
 
 #: crickets/templates/crickets/tutorial.html:298
 msgid "Moths"
-msgstr ""
+msgstr "Polillas"
 
 #: crickets/templates/crickets/tutorial.html:303
 msgid "Slugs"
-msgstr ""
+msgstr "Babosas"
 
 #: crickets/templates/crickets/tutorial.html:307
 msgid "Spiders"
-msgstr ""
+msgstr "Arańas"
 
 #: crickets/templates/crickets/tutorial.html:311
 msgid "Woodlouses"
-msgstr ""
+msgstr "Cochinillas de la humedad"
 
 #: crickets/templates/crickets/tutorial.html:316
 msgid "Worms"
-msgstr ""
+msgstr "Gusanos"
 
 #: crickets/templates/crickets/tutorial.html:329
 msgid ""
-"\n"
 "        If you see another cricket, click the button to tell us, but\n"
 "        keep recording for the first cricket you see.\n"
 "        "
@@ -527,31 +534,38 @@ msgstr ""
 
 #: crickets/templates/crickets/tutorial.html:350
 msgid "ID CRICKETS"
-msgstr "CUENTOS DE CRICKET"
+msgstr "IDENTIFICAR GRILLOS"
 
 #: crickets/templates/crickets/tutorial.html:365
 msgid ""
-"\n"
 "         If you see a cricket and can read the tag on\n"
 "         its back, click the ID button. The video will pause and you can "
 "enter\n"
-"         the two digits of the ID code, or click no tag if it doesn’t have\n"
-"         one. Make sure you read the tag the right way up – the top of the "
+"         the two digits of the ID code, or click no tag if it doesnât have\n"
+"         one. Make sure you read the tag the right way up â the top of the "
 "tag is\n"
 "         by the head - the example crickets below are LU and TT:\n"
 "        "
 msgstr ""
+"Si ves un grillo y puedes leer la etiqueta sobre su dorso, pulsa el botón "
+"ID. El video se parará y podrás introducir los dos dígitos del codigo de "
+"identificación, o pulsar sin etiqueta, si no tiene una. Asegúrate de leer la "
+"etiqueta de la manera correcta, la parte de arriba coincide con la cabeza - "
+"en el ejemplo que ves aquí debajo, los grillos son LU y TT:"
 
 #: crickets/templates/crickets/tutorial.html:399
-#, python-format
 msgid ""
-"\n"
 "           <p>Now you know what you're doing, you're ready to play. Don't "
-"worry if you make a mistake, click the redo button (<img src=\"%(MEDIA_URL)s/"
-"images/movie_buttons/redo.png\" width=\"30\">) and the video will restart.</"
-"p>\n"
+"worry if you make a mistake, click the redo button (<img src=\"%"
+"(MEDIA_URL)s/images/movie_buttons/redo.png\" width=\"30\">) and the video will "
+"restart.</p>\n"
 "           "
 msgstr ""
+"           <p>Ahora ya sabes lo que puedes hacer, estás preparado para "
+"empezar. No te preocupes si cometes  un error, pulsa sobre el botón redo "
+"(<img src=\"%(MEDIA_URL)s/images/movie_buttons/redo.png\" width=\"30\">) y el "
+"video volverá a empezar.</p>\n"
+"           "
 
 #: crickets/templates/crickets/tutorial.html:405
 msgid ""
@@ -562,6 +576,12 @@ msgid ""
 "           </p>\n"
 "           "
 msgstr ""
+"\n"
+"           <p> \n"
+"             En la página siguiente verás un prado. Pulsa sobre una "
+"madriguera de grillo para empezar.\n"
+"           </p>\n"
+"           "
 
 #: crickets/templates/crickets/tutorial.html:414
 msgid ""
@@ -572,6 +592,12 @@ msgid ""
 "           </p>\n"
 "           "
 msgstr ""
+"\n"
+"           <p>\n"
+"ĄSi te registras puedes ver tu prado y construir en él casas para los "
+"grillos!\n"
+"           </p>\n"
+"           "
 
 #: crickets/templates/crickets/tutorial.html:423
 msgid ""
@@ -585,6 +611,15 @@ msgid ""
 "           </p>\n"
 "           "
 msgstr ""
+"\n"
+"           <p>\n"
+"             Cada madriguera tiene múltiples videos. Si has mirado la "
+"mayoría de los videos de una madriguera, podrás construir una casa sobre "
+"ella. Si alguien más selecciona esa madriguera y ve más videos que tú, podrá "
+"tirar tu casa y construir la suya en el mismo lugar. ĄTú puedes hacer lo "
+"mismo con la suya!\n"
+"           </p>\n"
+"           "
 
 #: crickets/templates/crickets/tutorial.html:433
 msgid ""
@@ -596,90 +631,87 @@ msgid ""
 "           </p>\n"
 "           "
 msgstr ""
+"\n"
+"           <p>\n"
+"             Las madrigueras que has contribuido a observar están marcadas "
+"por una pequeńa bandera, y las casas que te pertenecen tienen una gran "
+"bandera que dice \"Mi casa\".\n"
+"           </p>\n"
+"           "
 
 #: crickets/templates/crickets/tutorial.html:460
 msgid "PLAY!"
-msgstr "JUGAR!"
+msgstr "ĄREPRODUCIR!"
 
 #: crickets/views.py:50
-#, python-format
 msgid "You have watched the most videos from burrow %(burrow)s"
-msgstr ""
+msgstr "Eres el que ha visto más videos de la madriguera %(burrow)s"
 
 #: crickets/views.py:74
-#, fuzzy, python-format
-#| msgid "%(username)s's MEADOW"
 msgid "%(username)s's MEADOW"
-msgstr "Bienvenida de nuevo , %(user.username)s a"
+msgstr "PRADO DE %(username)s"
 
 #: crickets/views.py:100
-#, python-format
 msgid "%(player)s has built a new house."
-msgstr ""
+msgstr "%(player)s ha construido una nueva casa"
 
 #: crickets/views.py:151
 msgid "YOU ARE WATCHING BURROW "
-msgstr ""
+msgstr "ESTÁS VIENDO LA MADRIGUERA"
 
 #: crickets/views.py:153
 msgid "YOU ARE WATCHING MOVIE "
-msgstr ""
+msgstr "ESTÁS VIENDO EL VIDEO"
 
 #: crickets/views.py:194
-#, python-format
 msgid "%(player)s has watched %(count)i movies in a burrow!"
-msgstr ""
+msgstr "Ą%(player)s ha visto %(count)i videos en una madriguera!"
 
 #: crickets/views.py:211
-#, python-format
 msgid "A cricket has just been IDed by %(player)s"
-msgstr ""
+msgstr "%(player)s ha identificado un grillo"
 
 #: crickets/views.py:216
-#, python-format
 msgid "A bird has been spotted by %(player)s"
-msgstr ""
+msgstr "%(player)s ha visto un pájaro"
 
 #: crickets/views.py:221
-#, python-format
 msgid "%(player)s has seen a shrew!"
-msgstr ""
+msgstr "Ą%(player)s ha visto una musarańa!"
 
 #: crickets/views.py:226
-#, python-format
 msgid "A cricket has been seen singing by %(player)s"
-msgstr ""
+msgstr "%(player)s ha visto un grillo cantando"
 
 #: crickets/views.py:231
-#, python-format
 msgid "A fight has been spotted by %(player)s"
-msgstr ""
+msgstr "%(player)s ha visto una pelea entre grillos"
 
 #: crickets/views.py:334
 msgid "JOIN IN AND HELP CRICKET TALES"
-msgstr "CUENTOS DE CRICKET"
+msgstr "ÚNETE Y AYÚDANOS CON HISTORIAS DE GRILLOS"
 
 #: crickets/views.py:339
 msgid "LOGIN TO CRICKET TALES"
-msgstr "CUENTOS DE CRICKET"
+msgstr "INICIA SESIÓN EN HISTORIAS DE GRILLOS"
 
 #: crickets/views.py:350
 msgid "Your account is disabled."
-msgstr ""
+msgstr "Tu cuenta está desactivada."
 
 #: crickets/views.py:353
 msgid "Invalid login details supplied."
-msgstr ""
+msgstr "Datos de acceso incorrectos."
 
 #: crickets/views.py:360
 msgid "HOW YOU CAN HELP"
-msgstr ""
+msgstr "CÓMO PUEDES AYUDAR"
 
-#~ msgid "MADE BY"
-#~ msgstr "HECHO POR"
+msgid "MADE BY"
+msgstr "HECHO POR"
 
-#~ msgid "Welcome back %(username)s, to "
-#~ msgstr "Bienvenida de nuevo , %(user.username)s a"
+msgid "Welcome back %(username)s, to "
+msgstr "Hola otra vez %(user.username)s"
 
-#~ msgid "%(username)s's burrow map"
-#~ msgstr "Bienvenida de nuevo , %(user.username)s a"
+msgid "%(username)s's burrow map"
+msgstr "Mapa de madrigueras de %(user.username)s"

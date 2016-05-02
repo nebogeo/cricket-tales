@@ -7,16 +7,16 @@
 {% else %}
 <div class="row-fluid">
 <center>
-{{ blocktrans }}Make up your username (don't use an email address){{ endblocktrans }}
+{% blocktrans %}Make up your username (don't use an email address){% endblocktrans %}
 <form id="user_form" class="register-form" method="post" action="/register/"
       enctype="multipart/form-data">
   {% csrf_token %}
   {{ user_form.as_p }}
   <p>
-    {{ blocktrans }}
+    {% blocktrans %}
     We are collecting information into people who contribute to
     citizen science projects - this information is optional.
-    {{ endblocktrans }}
+    {% endblocktrans %}
   </p>
   <p>
     <label for="id_age_range">Gender:</label>
@@ -38,9 +38,9 @@
       <option value="5">{% trans "Older than 50" %}</option>
     </select>
   </p>
-  {{ blocktrans }}
+  {% blocktrans %}
   Are you happy for us to use your data for insect behaviour research purposes?
-  {{ endblocktrans }}
+  {% endblocktrans %}
   <input type="submit" name="submit" value="Yes" />
 </form>
 <a href="/">

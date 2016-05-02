@@ -148,9 +148,9 @@ class MovieView(generic.DetailView):
         burrow = context['movie'].burrow
         # not all videos have burrows (in anon mode)
         if burrow:
-            context['page_title'] = _("YOU ARE WATCHING BURROW " + str(burrow.name))
+            context['page_title'] = _("YOU ARE WATCHING BURROW %(burrow)s") % {"burrow":str(burrow.name)}
         else:
-            context['page_title'] = _("YOU ARE WATCHING MOVIE " + str(context['movie'].name))
+            context['page_title'] = _("YOU ARE WATCHING MOVIE %(movie)s") % {"movie":str(context['movie'].name)}
 
         context['event_types']=get_event_types()
         context['something_else'] = EventType.objects.filter(name="Something Else").first()

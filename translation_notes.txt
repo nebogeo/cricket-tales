@@ -1,2 +1,5 @@
 django-admin makemessages -l es
 django-admin compilemessages
+
+po2csv locale/es/LC_MESSAGES/django.po > translations.csv
+csv2po translations.csv locale/es/LC_MESSAGES/django.po

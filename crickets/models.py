@@ -89,6 +89,7 @@ class Movie(models.Model):
 
 class EventType(models.Model):
     name = models.CharField(max_length=200)
+    es_name = models.CharField(max_length=200)
     def __unicode__(self):
         return str(self.name);
 
