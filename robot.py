@@ -127,6 +127,8 @@ else:
         robot_django.update_all_activity()
     if sys.argv[1]=="movie-update":
         robot_django.update_movies()
+    if sys.argv[1]=="print-report":
+        print(robot_django.generate_report())
     if sys.argv[1]=="report":
         report = robot_django.generate_report()
         send_email("robot@cricket-tales.ex.ac.uk",

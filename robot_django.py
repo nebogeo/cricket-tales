@@ -365,8 +365,8 @@ def generate_report():
     return "it's yer daily cricket tales robot report\n"+\
     "-----------------------------------------\n"+\
     "\n"+\
-    "players: "+str(UserProfile.objects.all().count())+"\n"+\
-    "movies watched: "+str(Event.objects.filter(type=cricket_end).distinct('movie').count())+"\n"+\
+    "players: "+str(User.objects.all().count())+"\n"+\
+    "movies watched: "+str(Movie.objects.all().aggregate(Sum('views'))['views__sum'])+"\n"+\
     "events recorded: "+str(Event.objects.all().count())+"\n"+\
     "\n"+\
     "movie info\n"+\
