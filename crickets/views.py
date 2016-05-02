@@ -388,6 +388,11 @@ def about(request):
     context['page_title'] = _("ABOUT THE PROJECT")
     return render(request, 'crickets/about.html', context)
 
+def faq(request):
+    context = {}
+    context['page_title'] = _("Cricket Tales FAQ")
+    return render(request, 'crickets/faq.html', context)
+
 def logmeout(request):
     logout(request)
     return HttpResponseRedirect('/')

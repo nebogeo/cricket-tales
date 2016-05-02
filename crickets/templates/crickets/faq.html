@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block top_layer %}
+{% endblock %}
+
+{% block bottom_layer %}
+<script src="{{ MEDIA_URL }}js/slick.min.js"></script>
+
+<div class="row-fluid"><!-- video/prompt row -->
+  <div class="col-lg-9 col-md-9 col-sm-offset-1 col-sm-9 col-xs-12" style="padding-left:0px; padding-right:0px;"><!-- video/prompt div -->
+
+    <div class="row-fluid"><!-- Player row -->
+      <div id="tut-main" class="col-xs-12">
+
+{% blocktrans %}
+<p>Q: If a cricket keeps popping in and out of its burrow do I record every time it does it?</p>
+<p>A: Yes! If the cricket comes all the way out of the burrow so you can see the whole animal, and retreats again so that the whole body is inside the burrow, record these events as ‘leaves burrow’ and ‘enters burrow’.  This may happen repeatedly within a video and gives us a measure of how active the individual is, and how cautious it is about possible attacks.</p>
+{% endblocktrans %}
+
+<div class="row">
+  <img class="col-xs-2 col-xs-offset-5" src="/media/images/crickets/5.png">
+</div>
+
+{% blocktrans %}
+<p>Q: Is it important to get the exact timing of clicks?</p>
+<p>A: No! providing you are within a few seconds of an event, the important thing is that you record it, the precise timing is not generally very important</p>
+{% endblocktrans %}
+
+<div class="row">
+  <img class="col-xs-2 col-xs-offset-5" src="/media/images/crickets/1.png"></p>
+</div>
+
+{% blocktrans %}
+<p>Q: If I click something accidentally can I delete it?</p>
+<p>A: No, but if you can watch the video again to overwrite your original records.  Don’t worry if your mistake was about the exact timing of an event, the precise times don’t tend to be very important.</p>
+{% endblocktrans %}
+
+<div class="row">
+  <img class="col-xs-2 col-xs-offset-5" src="/media/images/crickets/7.png"></p>
+</div>
+    </div>
+  </div>
+</div>
+    </div><!-- End player row-->
+
+{% endblock %}
