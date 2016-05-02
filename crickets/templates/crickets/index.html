@@ -40,7 +40,7 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.
   <div class="col-sm-8 col-xs-12">
 
     <div class="button about col-sm-4 col-xs-4"
-         style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%; height:5em;"
+         style="background: url(/media/images/buttons/button-3.png); background-size: 100% 100%; min-height:5em;"
          onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-high.png');"
          onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3.png');"
          onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-3-offset.png');"
@@ -51,8 +51,8 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.
       </div>
     </div>
 
-    <div class="button continue col-sm-4 col-xs-4"
-         style="background: url(/media/images/buttons/button-6.png); background-size: 100% 100%; height:5em;"
+    <div class="button col-sm-4 col-xs-4"
+         style="background: url(/media/images/buttons/button-6.png); background-size: 100% 100%; min-height:5em;"
          onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-high.png');"
          onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
          onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-offset.png');"
@@ -65,17 +65,13 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.
          >
       <div class="button_text">
         <p style="font-size:2.0vw;">
-          {% if user.is_authenticated %}
-          {% trans "CONTINUE PLAYING" %}
-          {% else %}
-          {% trans "LOGIN FOR FULL GAME" %}
-          {% endif %}
+          {% if user.is_authenticated %}{% trans "CONTINUE PLAYING" %}{% else %}{% trans "LOGIN FOR FULL GAME" %}{% endif %}
         </p>
       </div>
     </div>
 
     <div class="button guest col-sm-4 col-xs-4"
-         style="background: url(/media/images/buttons/button-4.png); background-size: 100% 100%; height:5em;"
+         style="background: url(/media/images/buttons/button-4.png); background-size: 100% 100%; min-height:5em;"
          onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4-high.png');"
          onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4.png');"
          onMouseDown="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-4-offset.png');"
