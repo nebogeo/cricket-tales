@@ -52,9 +52,6 @@ video {
     height: auto;
 }
 
-.ipad {
-    height: 500px !important;
-}
 
 .page_title {
     font-size: 3vw;
@@ -93,10 +90,35 @@ video {
 .login {
     font-family: 'Vidaloka', sans-serif;
     overflow: hidden;
-    background: #e7f8c1;
 }
 
-.logo {
+.login[type="text"],
+.login[type="password"],
+.register-form input[type="text"],
+.register-form input[type="password"] {
+    background: #e7f8c1;
+    padding: 0.3em;
+    border: 1px solid rgb(166, 166, 166); 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+}
+
+.register-form input:focus,
+.login:focus {
+    outline: none;
+}
+
+
+.nerc-cricket img {
+    max-width: 20%;
+    width: auto;
 }
 
 .map {
@@ -124,14 +146,18 @@ video {
     overflow: hidden;
  }
 
-@media screen and (min-device-width: 500px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
-    .support {
+.support {
     text-align: center;
     background: #f6fce9;
     font-size: 1em;
     margin-bottom: 1em;
     overflow: hidden;
 }
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .ipad {
+        height: 40vw !important;
+    } 
 }
 
 .score-name {
@@ -163,11 +189,12 @@ video {
 
 .news-story {
     position: absolute;
-    padding-left: 1.5em;
+    padding-left: 1.7em;
     padding-right: 1.5em;
+    padding-top: 0.3em;
     top: 12%;
     left: 0;
-    font-size: 1.8vw;
+    font-size: 1.4vw;
 }
 
 /*
@@ -178,26 +205,36 @@ video {
 */
 
 @media (max-width: 1200px) {
-    .news-story{font-size: 1.8vw;}
-    .news-bubble {width: 10em; margin-left: 0em;}
+    .news-story{font-size: 1.5vw;}
+    .news-bubble {width: 10em; margin-left: 10%;}
 }
 
 @media (max-width: 992px) {
     .news-story{font-size: 1.9vw;}
-    .news-bubble {width: 12em;}
+    .news-bubble {width: 12em; margin-left: 2%;}
 }
 
 @media (max-width: 768px) {
-    .news-story{font-size: 2vw;}
-    .news-bubble {width: 14em;}
-    .news-bubble .news-story {margin-left: 0.2em; margin-top: 0.2em;}
+    .news-story{font-size: 1.6vw;}
+    .news-bubble {width: 12em;}
+    .news-bubble .news-story {margin-left: 0.5em; margin-top: 0.3em; margin-right: 0.5em;}
 }
 
 @media (max-width: 480px) {
-    .news-story{font-size: 1.8vw;}
+    .news-story{font-size: 1.5vw;}
     .news-bubble {width: 15em;}
+    .news-bubble .news-story {margin-left: 0.9em; margin-right: 0.4em; margin-top: 0.2em;}
 }
 
+.faq p {
+    text-align: justify;
+}
+
+.q {
+    text-transform: uppercase !important;
+    font-family: 'Love Ya Like A Sister', sans-serif;
+    font-weight: bold;
+}
 
 .news-stretch {
     width:99%;
@@ -391,6 +428,11 @@ input[type=submit], button#tutorial, button#builder {
 input[type=submit]:hover, button#tutorial:hover, button#builder:hover {
     background:url('../images/buttons/button-oblong-high.png');
     background-size: 100% 100%;
+    color: #333 !important;
+}
+
+button#tutorial a:hover {
+    color: #333 !important;
 }
 
 input[type=submit]:active, button#tutorial:active, button#builder:hover {
@@ -692,7 +734,7 @@ span.cricket-id-char {
     background: url('../images/crickets/6.png');
     background-size: 100%;
     background-repeat: no-repeat;
-    padding: 4em 2em !important;
+    padding: 8vw 4vw !important;
     position: absolute;
     left: -0.46em;
     top: 5em;
@@ -814,6 +856,17 @@ span.cricket-id-char {
   }
 }
 
+
+.logo,
+img.logo {
+    /*height: 3em;*/
+    height: 8vw;
+}
+
+.index-cricket {
+    rotate: -90deg;
+/*    height: 3em !important;*/
+}
 .time {
     margin-left: 0.1em;
     background-color: #F8AFC2;
@@ -1210,12 +1263,6 @@ nav ul ul li a:hover {
     display: none;
 }
 
-.nerc-cricket {
-    position: absolute;
-    width: 7%;
-    bottom: 0em;
-    left: 0.4em;
-}
 
 @media screen and (max-width : 321px) {
     .button.continue p::after {
@@ -1239,8 +1286,7 @@ nav ul ul li a:hover {
     }
 }
 
-
-@media screen and (max-width : 700px) {
+@media screen and (max-width : 798px) {
     #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
         display: inline-block !important;
     }
@@ -1277,7 +1323,7 @@ nav ul ul li a:hover {
     .button.continue p,
     .button.guest p,
     .button.about p {
-        font-size: 3vw !important;
+        font-size: 3.2vw !important;
         width: 200px;
         height: 125px;
     }
@@ -1288,12 +1334,9 @@ nav ul ul li a:hover {
         left: 3em;
     }
 
-    .nerc-cricket {
-        display: none;
-    }
 }
 
-@media screen and (min-device-width: 320px) and (max-device-width: 667px) {
+@media screen and (min-width: 320px) and (max-width: 667px) {
 
     .timeline {
         height: 1em;
@@ -1301,10 +1344,18 @@ nav ul ul li a:hover {
         /*width: 80% !important;*/
     }
 
+    .button.continue p,
+    .button.guest p,
+    .button.about p, {
+        font-size: 3.2vw !important;
+        width: 200px;
+        height: 125px;
+    }
+
 }
 
 
-@media screen and (min-device-width: 100px) and (max-device-width: 1024px){
+@media screen and (min-device-width: 100px) and (max-width: 1024px){
 
     #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
         display: inline-block !important;
@@ -1332,10 +1383,26 @@ nav ul ul li a:hover {
         /* width: 90% !important; */
     }
 
-    .nerc-cricket {
-        display: none !important;
+     .button.continue p,
+    .button.guest p,
+    .button.about p {
+        width: 200px;
+        height: 125px;
     }
+
 }
+
+@media screen and (max-width : 1200px) {
+    .button.continue p,
+    .button.guest p,
+    .button.about p, {
+        font-size: 3.2vw !important;
+        width: 200px;
+        height: 125px;
+    }
+
+}
+
 
 .slick-disabled {
     opacity: 0.1;
