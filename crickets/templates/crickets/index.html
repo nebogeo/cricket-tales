@@ -49,7 +49,7 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.{
       </div>
     </div>
 
-    <div class="button col-sm-4 col-xs-4"
+    <div class="button about col-sm-4 col-xs-4"
          style="background: url(/media/images/buttons/button-6.png); background-size: 100% 100%; min-height:5em;"
          onMouseOver="return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6-high.png');"
          onMouseOut= "return event_button_change(this,'{{ MEDIA_URL }}images/buttons/button-6.png');"
@@ -62,7 +62,7 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.{
          {% endif %}
          >
       <div class="button_text">
-        <p style="font-size:2.0vw;">
+        <p style="font-size:2.0vw; white-space:normal;">
           {% if user.is_authenticated %}{% trans "CONTINUE PLAYING" %}{% else %}{% trans "LOGIN FOR FULL GAME" %}{% endif %}
         </p>
       </div>
@@ -91,14 +91,15 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.{
   </div> <!- button container -->
 </div>
   <div class="row col-xs-12" style="margin-top:2em;">
-    <div class="nerc" style="padding-left:3em; float:left;">
+    <div style="padding-left:3em; float:left;">
       <a href="http://www.nerc.ac.uk/"><img class="logo" src="{{ MEDIA_URL }}/images/nerc logo.jpg"/></a>
     </div>
-    <div style="padding-left:1em; float:left;">
+    <div style="padding-left:0.7em; float:left;">
       <a href="http://www.exeter.ac.uk/"><img class="logo" src="{{ MEDIA_URL }}/images/exeter_logo.png"/></a>
     </div>
+     <div style="padding-left:0.7em; float:left;">
+      <img class="logo index-cricket" src="/media/images/crickets/4.png">
+    </div>
 </div>
-
-<img class="nerc-cricket" src="/media/images/crickets/10.png">
 
 {% endblock %}

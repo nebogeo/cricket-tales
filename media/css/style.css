@@ -91,7 +91,10 @@ video {
     background: #e7f8c1;
 }
 
-.logo {
+
+.nerc-cricket img {
+    max-width: 20%;
+    width: auto;
 }
 
 .map {
@@ -813,6 +816,17 @@ span.cricket-id-char {
   }
 }
 
+
+.logo,
+img.logo {
+    /*height: 3em;*/
+    height: 8vw;
+}
+
+.index-cricket {
+    rotate: -90deg;
+/*    height: 3em !important;*/
+}
 .time {
     margin-left: 0.1em;
     background-color: #F8AFC2;
@@ -1209,12 +1223,6 @@ nav ul ul li a:hover {
     display: none;
 }
 
-.nerc-cricket {
-    position: absolute;
-    width: 7%;
-    bottom: 0em;
-    left: 0.4em;
-}
 
 @media screen and (max-width : 321px) {
     .button.continue p::after {
@@ -1287,9 +1295,6 @@ nav ul ul li a:hover {
         left: 3em;
     }
 
-    .nerc-cricket {
-        display: none;
-    }
 }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 667px) {
@@ -1331,9 +1336,6 @@ nav ul ul li a:hover {
         /* width: 90% !important; */
     }
 
-    .nerc-cricket {
-        display: none !important;
-    }
 }
 
 .slick-disabled {
