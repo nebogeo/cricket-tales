@@ -231,6 +231,7 @@ video {
 .q {
     text-transform: uppercase !important;
     font-family: 'Love Ya Like A Sister', sans-serif;
+    font-weight: bold;
 }
 
 .news-stretch {
