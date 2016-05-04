@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-02 14:36+0100\n"
+"POT-Creation-Date: 2016-05-04 10:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,28 +84,26 @@ msgstr "TUTORIAL"
 msgid "ABOUT"
 msgstr "ACERCA DE"
 
-#: crickets/templates/base.html:46 crickets/templates/crickets/index.html:91
+#: crickets/templates/base.html:45
+msgid "FAQ"
+msgstr ""
+
+#: crickets/templates/base.html:47 crickets/templates/crickets/index.html:85
 msgid "LOG OUT"
 msgstr "CERRAR SESIÓN"
 
 #: crickets/templates/crickets/about.html:10
-#, fuzzy
-#| msgid ""
-#| "    In a secret field in Northern Spain, hundreds of cricket burrows are "
-#| "monitored\n"
-#| "    using CCTV. This is the first long-term study of behaviour in a wild\n"
-#| "    insect, and we need your help to see what the crickets are up to."
 msgid ""
 "\n"
 "    In a secret field in Northern Spain, hundreds of cricket burrows are "
 "monitored\n"
 "    using CCTV. This is the first long-term study of behaviour in a wild\n"
 "    insect, and we need your help to see what the crickets are up to.\n"
-msgstr ""
+msgstr "\n"
 "En un campo secreto en el norte de Espańa, cientos de madrigueras de grillo "
 "son monitorizadas utilizando cámaras de video. Este es el primer estudio a "
 "largo plazo del comportamiento de un insecto en condiciones naturales, y "
-"necesitamos tu ayuda para ver que es lo que hacen los grillos."
+"necesitamos tu ayuda para ver que es lo que hacen los grillos.\n"
 
 #: crickets/templates/crickets/about.html:22
 msgid "THE MEADOW"
@@ -120,19 +118,13 @@ msgid "THE CRICKETS"
 msgstr "LOS GRILLOS"
 
 #: crickets/templates/crickets/about.html:36
-#, fuzzy
-#| msgid ""
-#| "By logging events in these videos, you contribute directly to research. "
-#| "Understanding the lives of wild insects allows us to answer questions "
-#| "about how diversity is maintained and about the ageing process. To find "
-#| "out more about our work, have a look here:"
 msgid ""
 "\n"
 "By logging events in these videos, you contribute directly to research. "
 "Understanding the lives of wild insects allows us to answer questions about "
 "how diversity is maintained and about the ageing process. To find out more "
 "about our work, have a look here:"
-msgstr ""
+msgstr "\n"
 "Registrando los sucesos que se producen en estos videos, contribuirás "
 "directamente con este proyecto de investigación. Comprender como viven estos "
 "insectos en libertad, nos permite responder a cuestiones sobre como se "
@@ -143,32 +135,62 @@ msgstr ""
 msgid "Design your house with the arrows below"
 msgstr "Diseńa tu casa con las flechas situadas más abajo"
 
+#: crickets/templates/crickets/faq.html:16
+msgid ""
+"\n"
+"<p>Q: If a cricket keeps popping in and out of its burrow do I record every "
+"time it does it?</p>\n"
+"<p>A: Yes! If the cricket comes all the way out of the burrow so you can see "
+"the whole animal, and retreats again so that the whole body is inside the "
+"burrow, record these events as ‘leaves burrow’ and ‘enters burrow’.  This "
+"may happen repeatedly within a video and gives us a measure of how active "
+"the individual is, and how cautious it is about possible attacks.</p>\n"
+msgstr ""
+
+#: crickets/templates/crickets/faq.html:25
+msgid ""
+"\n"
+"<p>Q: Is it important to get the exact timing of clicks?</p>\n"
+"<p>A: No! providing you are within a few seconds of an event, the important "
+"thing is that you record it, the precise timing is not generally very "
+"important</p>\n"
+msgstr ""
+
+#: crickets/templates/crickets/faq.html:34
+msgid ""
+"\n"
+"<p>Q: If I click something accidentally can I delete it?</p>\n"
+"<p>A: No, but if you can watch the video again to overwrite your original "
+"records.  Don’t worry if your mistake was about the exact timing of an "
+"event, the precise times don’t tend to be very important.</p>\n"
+msgstr ""
+
 #: crickets/templates/crickets/index.html:30
 msgid "CRICKET TALES"
 msgstr "HISTORIAS SOBRE GRILLOS"
 
 #: crickets/templates/crickets/index.html:33
-#, python-format
 msgid ""
-"\n"
 "<strong>Live progress:</strong> There are %(num_videos)s videos of crickets."
 "<br/>\n"
-"So far, %(num_players)s players have watched %(num_videos_watched)s videos.\n"
-msgstr ""
+"So far, %(num_players)s players have watched %(num_videos_watched)s videos."
+msgstr "<strong>Situación actual:</strong> Hay %(num_videos)s videos de grillos.<br/"
+"> Hasta ahora, %(num_players)s colaboradores han visionado "
+"%(num_videos_watched)s videos."
 
-#: crickets/templates/crickets/index.html:50 crickets/views.py:388
+#: crickets/templates/crickets/index.html:48 crickets/views.py:388
 msgid "ABOUT THE PROJECT"
 msgstr "SOBRE EL PROYECTO"
 
-#: crickets/templates/crickets/index.html:69
+#: crickets/templates/crickets/index.html:66
 msgid "CONTINUE PLAYING"
 msgstr "SEGUIR JUGANDO"
 
-#: crickets/templates/crickets/index.html:71
+#: crickets/templates/crickets/index.html:66
 msgid "LOGIN FOR FULL GAME"
 msgstr "INICIAR SESIÓN PARA JUEGO COMPLETO"
 
-#: crickets/templates/crickets/index.html:93
+#: crickets/templates/crickets/index.html:87
 msgid "CONTRIBUTE AS GUEST"
 msgstr "CONTRIBUYE COMO INVITADO"
 
@@ -193,8 +215,6 @@ msgid "Burrow"
 msgstr "Madriguera"
 
 #: crickets/templates/crickets/meadow.html:37
-#, fuzzy
-#| msgid "Houses built"
 msgid "House built by:"
 msgstr "Casas construidas"
 
@@ -275,7 +295,7 @@ msgstr "Guardar"
 #: crickets/templates/crickets/movie.html:271
 #: crickets/templates/crickets/tutorial.html:381
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: crickets/templates/crickets/movie.html:285
 msgid ""
@@ -334,17 +354,12 @@ msgstr ""
 "Crea to nombrer de usuario (no utilices una dirección de correo electrónico)"
 
 #: crickets/templates/crickets/register.html:16
-#, fuzzy
-#| msgid ""
-#| "    We are collecting information into people who contribute to\n"
-#| "    citizen science projects - this information is optional.\n"
-#| "    "
 msgid ""
 "\n"
 "    We are collecting information into people who contribute to\n"
 "    citizen science projects - this information is optional.\n"
 "    "
-msgstr ""
+msgstr "\n"
 "Estamos recopilando información sobre la gente que contribuye a proyectos de "
 "ciencia ciudadana - esta información es opcional"
 
@@ -386,17 +401,12 @@ msgid "Older than 50"
 msgstr "Mayor de 50"
 
 #: crickets/templates/crickets/register.html:41
-#, fuzzy
-#| msgid ""
-#| "  Are you happy for us to use your data for insect behaviour research "
-#| "purposes?\n"
-#| "  "
 msgid ""
 "\n"
 "  Are you happy for us to use your data for insect behaviour research "
 "purposes?\n"
 "  "
-msgstr ""
+msgstr "\n"
 "żEstás de acuerdo en que utilicemos tus datos para la investigación del "
 "comportamiento de los insectos?"
 
@@ -405,7 +415,6 @@ msgid "No thanks"
 msgstr "No gracias"
 
 #: crickets/templates/crickets/tutorial.html:16
-#, fuzzy
 #| msgid ""
 #| " For each video, you have a set of buttons so\n"
 #| "you can record what you see. This tutorial explains how to use the\n"
@@ -487,6 +496,12 @@ msgid "MOVEMENT"
 msgstr "MOVIMIENTO"
 
 #: crickets/templates/crickets/tutorial.html:150
+#| msgid ""
+#| "        These buttons are for when your cricket moves\n"
+#| "        around – either leaving its burrow, entering its burrow, leaving "
+#| "the\n"
+#| "        frame of the video, or arriving into the frame of the video from\n"
+#| "        elsewhere.        "
 msgid ""
 "\n"
 "        These buttons are for when your cricket moves\n"
@@ -495,9 +510,18 @@ msgid ""
 "        frame of the video, or arriving into the frame of the video from\n"
 "        elsewhere.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"Estos botones se utilizan cuando el grillo se mueve dentro del área "
+"encuadrada por la cámara - bien saliendo de su madriguera, entrando en ella, "
+"abandonando el área de encuadre de la cámara o llegando a ella desde el "
+"exterior."
 
 #: crickets/templates/crickets/tutorial.html:157
+#| msgid ""
+#| "        These events often happen in quick succession, so it's not\n"
+#| "        critical to be precise over the timing. Scroll through the four "
+#| "videos\n"
+#| "        to see examples of these movements.        "
 msgid ""
 "\n"
 "        These events often happen in quick succession, so it's not\n"
@@ -505,7 +529,10 @@ msgid ""
 "videos\n"
 "        to see examples of these movements.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"Estos eventos a menudo ocurren en rápida sucesión, así que no es esencial "
+"indicar el momento exacto en que se producen. Puedes desplazarte a lo largo "
+"de los cuatro videos para ver ejemplos de cada uno de estos movimientos."
 
 #: crickets/templates/crickets/tutorial.html:170
 msgid "Leaves Burrow"
@@ -545,7 +572,6 @@ msgid "PREDATORS TRAPS AND EXTRA CRITTERS"
 msgstr "DEPREDADORES, TRAMPAS Y OTROS BICHOS"
 
 #: crickets/templates/crickets/tutorial.html:256
-#, fuzzy
 #| msgid ""
 #| "        Look out for predators, like birds and shrews,\n"
 #| "        and tube traps which are sometimes used to\n"
@@ -559,7 +585,7 @@ msgid ""
 "        collect the crickets. If you see them, click on\n"
 "        the buttons to tell us.\n"
 "        "
-msgstr ""
+msgstr "\n"
 "Busca depredadores, como pájaros o musarańas, y trampas de tubo que a veces "
 "utilizamos para capturar grillos. Si los ves, pulsa sobre los botones para "
 "contárnoslo."
@@ -622,30 +648,19 @@ msgid ""
 "        If you see another cricket, click the button to tell us, but\n"
 "        keep recording for the first cricket you see.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"Si ves otro grillo pulsa el botón para contárnoslo, pero continúa "
+"registrando la actividad del primer grillo que veas."
 
 #: crickets/templates/crickets/tutorial.html:369
 msgid "ID CRICKETS"
 msgstr "IDENTIFICAR GRILLOS"
 
 #: crickets/templates/crickets/tutorial.html:375
-#, fuzzy
-#| msgid "THE CRICKETS"
 msgid "ANOTHER CRICKET"
 msgstr "LOS GRILLOS"
 
 #: crickets/templates/crickets/tutorial.html:386
-#, fuzzy
-#| msgid ""
-#| "         If you see a cricket and can read the tag on\n"
-#| "         its back, click the ID button. The video will pause and you can "
-#| "enter\n"
-#| "         the two digits of the ID code, or click no tag if it doesnât "
-#| "have\n"
-#| "         one. Make sure you read the tag the right way up â the top of "
-#| "the tag is\n"
-#| "         by the head - the example crickets below are LU and TT:\n"
-#| "        "
 msgid ""
 "\n"
 "         If you see a cricket and can read the tag on\n"
@@ -656,7 +671,7 @@ msgid ""
 "tag is\n"
 "         by the head - the example crickets below are LU and TT:\n"
 "        "
-msgstr ""
+msgstr "\n"
 "Si ves un grillo y puedes leer la etiqueta sobre su dorso, pulsa el botón "
 "ID. El video se parará y podrás introducir los dos dígitos del codigo de "
 "identificación, o pulsar sin etiqueta, si no tiene una. Asegúrate de leer la "
@@ -664,13 +679,6 @@ msgstr ""
 "en el ejemplo que ves aquí debajo, los grillos son LU y TT:"
 
 #: crickets/templates/crickets/tutorial.html:420
-#, fuzzy, python-format
-#| msgid ""
-#| "           <p>Now you know what you're doing, you're ready to play. Don't "
-#| "worry if you make a mistake, click the redo button (<img src="
-#| "\"%(MEDIA_URL)s/images/movie_buttons/redo.png\" width=\"30\">) and the "
-#| "video will restart.</p>\n"
-#| "           "
 msgid ""
 "\n"
 "           <p>Now you know what you're doing, you're ready to play. Don't "
@@ -678,7 +686,7 @@ msgid ""
 "images/movie_buttons/redo.png\" width=\"30\">) and the video will restart.</"
 "p>\n"
 "           "
-msgstr ""
+msgstr "\n"
 "           <p>Ahora ya sabes lo que puedes hacer, estás preparado para "
 "empezar. No te preocupes si cometes  un error, pulsa sobre el botón redo "
 "(<img src=\"%(MEDIA_URL)s/images/movie_buttons/redo.png\" width=\"30\">) y "
@@ -777,16 +785,16 @@ msgid "%(player)s has built a new house."
 msgstr "%(player)s ha construido una nueva casa"
 
 #: crickets/views.py:151
-#, fuzzy, python-format
+#, python-format
 #| msgid "YOU ARE WATCHING BURROW "
 msgid "YOU ARE WATCHING BURROW %(burrow)s"
-msgstr "ESTÁS VIENDO LA MADRIGUERA"
+msgstr "ESTÁS VIENDO LA MADRIGUERA %(burrow)s"
 
 #: crickets/views.py:153
-#, fuzzy, python-format
+#, python-format
 #| msgid "YOU ARE WATCHING MOVIE "
 msgid "YOU ARE WATCHING MOVIE %(movie)s"
-msgstr "ESTÁS VIENDO EL VIDEO"
+msgstr "ESTÁS VIENDO EL VIDEO %(movie)s"
 
 #: crickets/views.py:194
 #, python-format
@@ -837,6 +845,10 @@ msgstr "Datos de acceso incorrectos."
 #: crickets/views.py:360
 msgid "HOW YOU CAN HELP"
 msgstr "CÓMO PUEDES AYUDAR"
+
+#: crickets/views.py:393
+msgid "Cricket Tales FAQ"
+msgstr ""
 
 #~ msgid "I'm sorry"
 #~ msgstr ""
