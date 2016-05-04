@@ -223,7 +223,7 @@
                onclick="add_event({{event_type.id}},{{movie.id}},'{{user.id}}', null, null, null)">
             <div class="button_text" {% if not event_type.title %} style="visibility: hidden" {% endif %}>
               <p>
-                {% if 'en-gb' == LANGUAGE_CODE %}
+                {% if 'es' != LANGUAGE_CODE %}
                 {{event_type.name}}
                 {% else %}
                 {{event_type.es_name}}
@@ -252,7 +252,7 @@
               onclick="add_event({{another_cricket.id}},{{movie.id}},'{{user.id}}', null, null, null)">
            <div class="button_text">
              <p>
-               {% if 'en-gb' == LANGUAGE_CODE %}
+               {% if 'es' != LANGUAGE_CODE %}
                {{another_cricket.name}}
                {% else %}
                {{another_cricket.es_name}}
