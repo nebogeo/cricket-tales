@@ -224,6 +224,14 @@ video {
     .news-bubble .news-story {margin-left: 0.9em; margin-right: 0.4em; margin-top: 0.2em;}
 }
 
+.faq p {
+    text-align: justify;
+}
+
+.q {
+    text-transform: uppercase !important;
+    font-family: 'Love Ya Like A Sister', sans-serif;
+}
 
 .news-stretch {
     width:99%;
