@@ -52,9 +52,6 @@ video {
     height: auto;
 }
 
-.ipad {
-    height: 500px !important;
-}
 
 .page_title {
     font-size: 3vw;
@@ -122,14 +119,18 @@ video {
     overflow: hidden;
  }
 
-@media screen and (min-device-width: 500px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
-    .support {
+.support {
     text-align: center;
     background: #f6fce9;
     font-size: 1em;
     margin-bottom: 1em;
     overflow: hidden;
 }
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .ipad {
+        height: 40vw !important;
+    } 
 }
 
 .score-name {
