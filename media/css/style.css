@@ -91,10 +91,12 @@ video {
 }
 
 .login[type="text"],
-.login[type="password"] {
+.login[type="password"],
+.register-form input[type="text"],
+.register-form input[type="password"] {
     background: #e7f8c1;
     padding: 0.3em;
-    border: 1px solid rgb(202,236,158); 
+    border: 1px solid rgb(166, 166, 166); 
     -webkit-box-shadow: 
       inset 0 0 8px  rgba(0,0,0,0.1),
             0 0 16px rgba(0,0,0,0.1); 
@@ -106,6 +108,7 @@ video {
             0 0 16px rgba(0,0,0,0.1); 
 }
 
+.register-form input:focus,
 .login:focus {
     outline: none;
 }
@@ -412,6 +415,11 @@ input[type=submit], button#tutorial, button#builder {
 input[type=submit]:hover, button#tutorial:hover, button#builder:hover {
     background:url('../images/buttons/button-oblong-high.png');
     background-size: 100% 100%;
+    color: #333 !important;
+}
+
+button#tutorial a:hover {
+    color: #333 !important;
 }
 
 input[type=submit]:active, button#tutorial:active, button#builder:hover {
