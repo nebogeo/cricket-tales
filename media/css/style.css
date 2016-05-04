@@ -118,6 +118,14 @@ video {
     overflow: hidden;
  }
 
+ .support {
+    text-align: center;
+    background: #f6fce9;
+    font-size: 1em;
+    margin-bottom: 1em;
+    overflow: hidden;
+ }
+
 .score-name {
     padding: 0.2em;
 }
