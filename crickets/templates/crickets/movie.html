@@ -82,7 +82,7 @@
 
       <div class="row-fluid"><!-- Player row -->
         <div id="cricket_player" class="col-xs-12"><!-- Player div -->
-          <video nocontrols poster="{{ MEDIA_URL }}movies/{{movie.name}}.jpg" id="ourvideo" class="video-start" webkit-playsinline playsinline>
+          <video nocontrols poster="{{ MEDIA_URL }}movies/{{movie.name}}.jpg" id="ourvideo" class="video-start {% if ipad %}ipad{% endif %}" webkit-playsinline playsinline>
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.webm">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.mp4" type="video/mp4">
             <source src="{{ MEDIA_URL }}movies/{{movie.name}}.ogg" type="video/ogg">
@@ -91,43 +91,8 @@
         </div><!-- end Player div -->
         <div class="row-fluid prompt col-xs-12">
         </div>
-        <!-- {% if iphone %}
-        <button class="canvas-play col-xs-12">Play</button>
-        <script src="/media/js/iphone-inline-video.js"></script>
-        <script>
-          $(function() {
-          //\\/\\ Previous canvas attempt - video still forced full
-          // var canvas = document.getElementById('canvas');
-          // var ctx = canvas.getContext('2d');
-          // video still plays, forces fullscreen
-          // var img = new Image();
 
-          // img.onload = function() {
-          //     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          // };
-
-          // img.src = "{{ MEDIA_URL }}movies/{{movie.name}}.jpg";
-
-          // document.getElementById('ourvideo').style.display = 'none';
-
-          // video.addEventListener('play', function() {
-          //   var $this = this; //cache
-          //   (function loop() {
-          //     if (!$this.paused && !$this.ended) {
-          //       ctx.drawImage($this, 0, 0, canvas.width, canvas.height);
-          //       setTimeout(loop, 1000 / 30); // drawing at 30fps
-          //     }
-          //   })();
-          // }, 0);
-
-          // \\ // \\ Most recent attempt
-          var video = document.querySelector('video');
-          window.makeVideoPlayableInline(video);
-
-        });
-        </script>
-        <script src="/media/js/buttons.js"></script>
-        {% endif %} -->
+        
 
       </div><!-- end Player row -->
 

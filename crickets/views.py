@@ -149,12 +149,15 @@ class MovieView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(MovieView, self).get_context_data(**kwargs)
-        if 'iphone' in self.request.META['HTTP_USER_AGENT'].lower():
-            context['iphone'] = True
+        if 'ipad' in self.request.META['HTTP_USER_AGENT'].lower():
+            context['ipad'] = True
         else:
-            context['iphone'] = False
+            context['ipad'] = False
 
         burrow = context['movie'].burrow
+
+        print self.request.META['HTTP_USER_AGENT'].lower()
+        
         # not all videos have burrows (in anon mode)
         if burrow:
             context['page_title'] = _("YOU ARE WATCHING BURROW %(burrow)s") % {"burrow":str(burrow.name)}
