@@ -1283,8 +1283,7 @@ nav ul ul li a:hover {
     }
 }
 
-
-@media screen and (max-width : 700px) {
+@media screen and (max-width : 798px) {
     #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
         display: inline-block !important;
     }
@@ -1321,7 +1320,7 @@ nav ul ul li a:hover {
     .button.continue p,
     .button.guest p,
     .button.about p {
-        font-size: 3vw !important;
+        font-size: 3.2vw !important;
         width: 200px;
         height: 125px;
     }
@@ -1334,7 +1333,7 @@ nav ul ul li a:hover {
 
 }
 
-@media screen and (min-device-width: 320px) and (max-device-width: 667px) {
+@media screen and (min-width: 320px) and (max-width: 667px) {
 
     .timeline {
         height: 1em;
@@ -1342,10 +1341,18 @@ nav ul ul li a:hover {
         /*width: 80% !important;*/
     }
 
+    .button.continue p,
+    .button.guest p,
+    .button.about p, {
+        font-size: 3.2vw !important;
+        width: 200px;
+        height: 125px;
+    }
+
 }
 
 
-@media screen and (min-device-width: 100px) and (max-device-width: 1024px){
+@media screen and (min-device-width: 100px) and (max-width: 1024px){
 
     #tut-1 > div.responsive-buttons-small.row.col-xs-12.col-md-12 {
         display: inline-block !important;
@@ -1373,7 +1380,26 @@ nav ul ul li a:hover {
         /* width: 90% !important; */
     }
 
+     .button.continue p,
+    .button.guest p,
+    .button.about p {
+        width: 200px;
+        height: 125px;
+    }
+
 }
+
+@media screen and (max-width : 1200px) {
+    .button.continue p,
+    .button.guest p,
+    .button.about p, {
+        font-size: 3.2vw !important;
+        width: 200px;
+        height: 125px;
+    }
+
+}
+
 
 .slick-disabled {
     opacity: 0.1;
