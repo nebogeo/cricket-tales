@@ -98,16 +98,16 @@ video {
 .register-form input[type="password"] {
     background: #e7f8c1;
     padding: 0.3em;
-    border: 1px solid rgb(166, 166, 166); 
-    -webkit-box-shadow: 
+    border: 1px solid rgb(166, 166, 166);
+    -webkit-box-shadow:
       inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    -moz-box-shadow: 
+            0 0 16px rgba(0,0,0,0.1);
+    -moz-box-shadow:
       inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
-    box-shadow: 
+            0 0 16px rgba(0,0,0,0.1);
+    box-shadow:
       inset 0 0 8px  rgba(0,0,0,0.1),
-            0 0 16px rgba(0,0,0,0.1); 
+            0 0 16px rgba(0,0,0,0.1);
 }
 
 .register-form input:focus,
@@ -157,7 +157,7 @@ video {
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     .ipad {
         height: 40vw !important;
-    } 
+    }
 }
 
 .score-name {
@@ -860,7 +860,7 @@ span.cricket-id-char {
 .logo,
 img.logo {
     /*height: 3em;*/
-    height: 8vw;
+    /*height: 8vw; makes the logos look fuzzy */
 }
 
 .index-cricket {
