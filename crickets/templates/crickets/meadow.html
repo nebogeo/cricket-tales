@@ -36,8 +36,8 @@
           var popup_title = '<h4>{% trans 'Burrow' %} '+name+'</h4><br/>';
           var owned_by = '{% trans 'House built by:' %} <br/><strong>'+owner+'</strong><br/>';
           var to_view = ""
-          if (mine=="False") to_view = '{% trans 'Movies to watch <br/>till you can build:' %}<br/> <strong>'+ videos_to_view +'</strong><br/>';
-          var total_videos = '<progress value="'+percent_viewed+'" max="100"></progress><br/>{% trans 'Complete:' %}<strong>'+ percent_viewed +'%</strong><br/>';
+          if (mine=="False") to_view = '{% trans 'Movies to watch <br/>until you can build:' %}<br/> <strong>'+ videos_to_view +'</strong><br/>';
+          var total_videos = '<progress value="'+percent_viewed+'" max="100"></progress><br/>{% trans 'Complete:' %}<strong> '+ percent_viewed +'%</strong><br/>';
           var burrow_button = '<form action="/random_burrow_movie/'+id+'"><input type="submit" class="burrow_link" value="{% trans 'Go to Burrow' %}"></form>'
 
           marker.bindPopup('<div class="map-popup">' + popup_title + owned_by + to_view + total_videos + burrow_button + '</div>');
