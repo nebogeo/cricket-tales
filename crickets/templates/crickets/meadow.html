@@ -46,6 +46,14 @@
 
           if (flag != "") {
             var flag_image = '{{ MEDIA_URL }}images/houses/'+flag
+
+        {% get_current_language as LANGUAGE_CODE %}
+        {% if 'es' == LANGUAGE_CODE %}
+            flag_image+='-es.png';
+        {% else %}
+            flag_image+='.png'
+        {% endif %}
+
             flag_icon = new L.Icon({iconUrl: flag_image}),
             flag_icon.options.iconSize = flag_size(map.getZoom());
             var flag_marker = L.marker(map.unproject([latitude, longitude-30]), {icon: flag_icon}).addTo(map);

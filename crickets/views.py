@@ -12,6 +12,7 @@ from django.template import Context, loader, RequestContext
 from itertools import chain
 from django.db.models import Count, Sum
 from django.utils.translation import ugettext_lazy as _
+import locale
 
 # todo move forms
 from django import forms
@@ -74,10 +75,10 @@ def meadow(request):
                 burrow.videos_to_view += 1 # (to overtake)
                 # user perspective stuff
                 burrow.flag=""
-                if player_score>0: burrow.flag="leaf-flag.png"
+                if player_score>0: burrow.flag="leaf-flag"
                 burrow.mine=False
                 if burrow.owner == request.user:
-                    burrow.flag="long-flag.png"
+                    burrow.flag="long-flag"
                     burrow.mine=True
 
             context['page_title'] = _("%(username)s's MEADOW") % {'username': request.user.username.upper()}
@@ -407,7 +408,7 @@ def tutorial_basic(request):
     for event in get_event_types():
         if event.name in basic_behaviours_names:
             context['basic_behaviours'].append(event)
-       
+
     return render(request, 'crickets/tutorial1.html', context)
 
 def tutorial_movement(request):
@@ -418,10 +419,10 @@ def tutorial_movement(request):
     context['movement'] = []
 
     movement_names = ["LEAVES BURROW", "ENTERS BURROW", "ARRIVES FRAME", "LEAVES FRAME"]
-    
+
 
     for event in get_event_types():
-        
+
         if event.name in movement_names:
             context['movement'].append(event)
 
@@ -432,10 +433,10 @@ def tutorial_predators(request):
     context['page_title'] = _("HOW YOU CAN HELP")
     context['event_types'] = get_event_types()
 
-    
+
     context['predators_traps'] = []
 
-    
+
     predators_traps_names = ["Predator: Bird", "Predator: Shrew", "TRAP", "Something Else"]
 
     for event in get_event_types():
