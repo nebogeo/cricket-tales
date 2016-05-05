@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block bottom_layer %}
-<div class="row">
+<div class="row" style="padding-top: 0.5em;">
   <div class="col-sm-6">
     <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
       <input name="next" type="hidden" value="{{ redirect_to }}" />
@@ -63,7 +63,7 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.{
          >
       <div class="button_text">
 
-        
+
           {% if user.is_authenticated %}{% if 'es' == LANGUAGE_CODE %}<p style="font-size:2.0vw; white-space:normal;">{% else %}<p style="font-size:2.0vw; white-space:normal;">{% endif %}{% trans "CONTINUE PLAYING" %}{% else %}{% if 'es' == LANGUAGE_CODE %}<p style="font-size:1.6vw; white-space:normal;">{% else %}<p style="font-size:1.8vw; white-space:normal;">{% endif %}{% trans "LOGIN FOR FULL GAME" %}{% endif %}
         </p>
       </div>
@@ -92,14 +92,15 @@ So far, {{ num_players }} players have watched {{ num_videos_watched }} videos.{
   </div> <!- button container -->
 </div>
   <div class="row col-xs-12" style="margin-top:2em;">
-    <div style="padding-left:3em; float:left;">
+     <div style="padding-left:0.7em; float:left;">
+      <img class="logo" width="50px" src="/media/images/crickets/10.png">
+     </div>
+
+    <div style="padding-left:0.7em; float:left;">
       <a href="http://www.nerc.ac.uk/"><img class="logo" src="{{ MEDIA_URL }}/images/nerc logo.jpg"/></a>
     </div>
     <div style="padding-left:0.7em; float:left;">
       <a href="http://www.exeter.ac.uk/"><img class="logo" src="{{ MEDIA_URL }}/images/exeter_logo.png"/></a>
-    </div>
-     <div style="padding-left:0.7em; float:left;">
-      <img class="logo index-cricket" src="/media/images/crickets/4.png">
     </div>
 </div>
 
