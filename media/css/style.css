@@ -78,9 +78,10 @@ video {
 .lang-select {
     font-family: 'Love Ya Like A Sister', sans-serif;
     text-transform: uppercase;
-    height: 34px;
+/*    height: 34px; */
     overflow: hidden;
     background: #e7f8c1;
+    font-size: 130%;
 }
 
 .lang-select option {
@@ -237,7 +238,7 @@ video {
 }
 
 .helptext {
-    
+
     display: none;
 }
 
