@@ -674,6 +674,10 @@ input#tag_id {
     border: 0px solid #fff !important;
 }
 
+button:focus {
+    outline: 0;
+}
+
 .button a {
     float: left;
     font-family: 'Love Ya Like A Sister', cursive;
