@@ -410,6 +410,11 @@ div.closed  {
     min-height: 100px;
 }
 
+.critters {
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+}
+
 .tutorial_highlight .button {
     min-height: 75px;
     height: auto;
