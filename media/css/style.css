@@ -391,6 +391,13 @@ input.burrow_link {
     outline: 0;
 }
 
+div.close_id,
+div.closed  {
+    background:url('../images/buttons/button_oblong_2.png') !important;
+    background-size: 100% 100% !important;
+    padding-left: 0.7em;
+}
+
 .tutorial_highlight {
     overflow: auto;
     float: none !important;
@@ -434,7 +441,23 @@ input[type=submit], button#tutorial, button#builder, button#tutorial_2 {
 }
 
 button#tutorial_2 {
-    background:url('../images/buttons/button-oblong-2.png') !important;
+    background:url('../images/buttons/button_oblong_2.png') !important;
+    background-size: 100% 100% !important;
+    padding: 1em !important;
+}
+
+button#tutorial_2:hover {
+    background:url('../images/buttons/button_oblong_2_high.png') !important;
+    background-size: 100% 100% !important;
+    padding: 1em !important;
+    color: #333 !important;
+}
+
+button#tutorial_2:active {
+    background:url('../images/buttons/button_oblong_2_offset.png') !important;
+    background-size: 100% 100% !important;
+    padding: 1em !important;
+    color: #333 !important;
 }
 
 input[type=submit]:hover, button#tutorial:hover, button#builder:hover {
@@ -816,6 +839,11 @@ span.cricket-id-char {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+#tag_cricket td#save {
+    background: url('../images/buttons/button_oblong_2.png') !important;
+    background-size: 100% 100% !important;
 }
 
 .event {
