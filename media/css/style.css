@@ -421,7 +421,7 @@ a.tutorial-play {
     color: #333;
 }
 
-input[type=submit], button#tutorial, button#builder {
+input[type=submit], button#tutorial, button#builder, button#tutorial_2 {
     font-family: 'Love Ya Like A Sister', cursive;
     text-transform: uppercase;
     background:url('../images/buttons/button-oblong.png');
@@ -431,6 +431,10 @@ input[type=submit], button#tutorial, button#builder {
     overflow: visible;
     text-align: left;
     background-repeat: no-repeat;
+}
+
+button#tutorial_2 {
+    background:url('../images/buttons/button-oblong-2.png') !important;
 }
 
 input[type=submit]:hover, button#tutorial:hover, button#builder:hover {
@@ -675,6 +679,7 @@ input#tag_id {
     background-size: 100% 100%;
     border: 0px solid #fff !important;
 }
+
 
 button:focus {
     outline: 0;
