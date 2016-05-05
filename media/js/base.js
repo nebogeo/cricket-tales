@@ -68,73 +68,35 @@ function make_visible(id,viz) {
 
 
 
-function switch_tutorial(from,to) {
-    window.scrollTo(0,0);
-    var t = document.getElementById(from);
-    t.style.display = "none";
-    t = document.getElementById(to);
-    t.style.display = "block";
 
-    // make_visible("behaviour-buttongroup",false);
-    // make_visible("FEED-buttongroup",false);
-    // make_visible("LEAVES FRAME-buttongroup",false);
-    // make_visible("id-buttongroup",false);
-
-    // if (to=="tut-1") make_visible("behaviour-buttongroup",true);
-    // if (to=="tut-2") make_visible("FEED-buttongroup",true);
-    // if (to=="tut-3") make_visible("LEAVES FRAME-buttongroup",true);
-    // if (to=="tut-4") make_visible("id-buttongroup",true);
-    // if (to=="tut-5") {
-    //     var t = document.getElementById("tutorial-buttons");
-    //    // t.style.display = "none";
-    // }
-
-    // Checking if slide is tut-5, handle visibility of buttons
-    if (to === "tut-5") {
-        $('#tutorial-buttons').css({
-            'display' : 'none'
-        });
-    } else {
-        $('#tutorial-buttons').css({
-            'display' : 'block'
-        });
-    }
-
-    if (to=="tut-1") {
-        // need to build the carousel here
-        // as the element is display:none at load time
-        // so does not calculate properly
+function init_sliders() {
+    window.onload(function() {
         $('#slider-tutorial').slick({
-            infinite: false,
-            arrows: true,
-            prevArrow: $('.arrow-tut-left'),
-            nextArrow: $('.arrow-tut-right')
-        });
+        infinite: false,
+        arrows: true,
+        prevArrow: $('.arrow-tut-left'),
+        nextArrow: $('.arrow-tut-right')
+    });
 
-    }
+    $('#slider-tutorial-movement').slick({
+        infinite: false,
+        arrows: true,
+        prevArrow: $('.arrow-tut-left'),
+        nextArrow: $('.arrow-tut-right')
+    });
 
-    if (to=="tut-2") {
-        // need to build the carousel here
-        // as the element is display:none at load time
-        // so does not calculate properly
-        $('#slider-tutorial-movement').slick({
-            infinite: false,
-            arrows: true,
-            prevArrow: $('.arrow-tut-left'),
-            nextArrow: $('.arrow-tut-right')
-        });
 
-    }
-    if (to === "tut-3") {
-        $('#critters').slick({
-            infinite: false,
-            arrows: true,
-            prevArrow: $('.arrow-tut-left'),
-            nextArrow: $('.arrow-tut-right'),
-        });
-    }
+    $('#critters').slick({
+        infinite: false,
+        arrows: true,
+        prevArrow: $('.arrow-tut-left'),
+        nextArrow: $('.arrow-tut-right'),
+    });
+
+    });    
 }
 
+window.onload = init_sliders()
 
 function tut_video_right() {
     var t = document.getElementById("tut_video_scroll");
@@ -142,6 +104,27 @@ function tut_video_right() {
 
 }
 
+$('#slider-tutorial').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+});
+
+$('#slider-tutorial-movement').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+});
+
+
+$('#critters').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right'),
+});
 
 // video/tagging business
 var pop = false;

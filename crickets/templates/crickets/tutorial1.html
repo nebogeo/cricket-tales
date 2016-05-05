@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block top_layer %}
+{% endblock %}
+
+{% block bottom_layer %}
+<script src="{{ MEDIA_URL }}js/slick.min.js"></script>
+
+<div class="row-fluid"><!-- video/prompt row -->
+  <div class="col-lg-9 col-md-9 col-sm-offset-1 col-sm-9 col-xs-12" style="padding-left:0px; padding-right:0px;"><!-- video/prompt div -->
+
+     <div id="tut-1" class="col-xs-12">
+        <h1>1. {% trans "BASIC BEHAVIOURS" %}</h1>
+
+        <div class="row-fluid">
+          <div id="behaviour-buttongroup" class="tutorial_highlight  col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
+
+          {% for event_type in basic_behaviours %}
+          <div class="button col-sm-6 col-xs-6"
+               style="cursor: auto; background: url(/media/images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;">
+            <div class="button_text" {% if not event_type.title %} style="visibility: hidden" {% endif %}>
+               <p>
+                 {% if 'es' != LANGUAGE_CODE %}
+                 {{event_type.name}}
+                 {% else %}
+                 {{event_type.es_name}}
+                 {% endif %}
+               </p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        </div>
+
+        {% blocktrans %} These buttons are for cricket
+        behaviours. Scroll through the four videos below to learn how to
+        identify each behaviour. When you see crickets doing these
+        things, you only need to click once per video.
+        {% endblocktrans %}
+
+        <div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="arrow arrow-tut-left col-lg-1 col-md-1 col-sm-1 col-xs-1"
+               style="padding: 0; padding-top: 30%;">
+            <img src="/media/images/left-arrow.png" style="width:100%;"/>
+          </div>
+          <div id="slider-tutorial" class="slider-tutorial col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Mating behaviour" %}</h2></div>
+              <video controls poster="{{ MEDIA_URL }}movies/tutorial/mating.jpg">
+                <source src="{{ MEDIA_URL }}movies/tutorial/mating.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/mating.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/mating.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "One cricket climbs on the back of another." %}</div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Singing behaviour" %}</h2></div>
+              <video controls poster="{{ MEDIA_URL }}movies/tutorial/singing.jpg">
+                <source src="{{ MEDIA_URL }}movies/tutorial/singing.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/singing.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/singing.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "The cricket's wings flutter." %}</div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Fighting behaviour" %}</h2></div>
+              <video controls poster="{{ MEDIA_URL }}movies/tutorial/fight.jpg">
+                <source src="{{ MEDIA_URL }}movies/tutorial/fight.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/fight.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/fight.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "Face-to-face pushing and shoving." %}</div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Eating behaviour" %}</h2></div>
+              <video controls poster="{{ MEDIA_URL }}movies/tutorial/feeding.jpg">
+                <source src="{{ MEDIA_URL }}movies/tutorial/feeding.webm" type="video/webm"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/feeding.mp4" type="video/mp4"/>
+                <source src="{{ MEDIA_URL }}movies/tutorial/feeding.ogg" type="video/ogg"/>
+                {% trans "I'm sorry; your browser doesn't support HTML5 video in WebM with VP8 or MP4 with H.264." %}
+              </video>
+              <div class="col-lg-12 text-center">{% trans "Munching on a leaf." %}</div>
+            </div>
+          </div>
+          <div class="arrow arrow-tut-right col-lg-1 col-md-1 col-sm-1 col-xs-1"
+               style="padding: 0; padding-top: 30%;">
+            <img src="/media/images/right-arrow.png" width="100%"/>
+          </div>
+        </div>
+
+        <div class="row-fluid">
+          <center>            
+               <button id="tutorial" onclick="window.location='{% url 'tutorial' %}'">
+                {% trans "Go Back" %}
+              </button>  
+          
+              <button id="tutorial" onclick="window.location='{% url 'tutorial_movement' %}'">
+                {% trans "Got it!" %}
+              </button>
+          </center>
+        </div>
+        <img class="col-xs-2 col-xs-offset-5" src="/media/images/crickets/1.png">
+        </div>
+      </div>
+
+  </div>
+</div>
+</div><!-- End player row-->
+<script>
+
+$('#slider-tutorial').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+});
+
+$('#slider-tutorial-movement').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+});
+
+
+$('#critters').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right'),
+});
+</script>
+{% endblock %}

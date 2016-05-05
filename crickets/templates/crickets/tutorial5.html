@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block top_layer %}
+{% endblock %}
+
+{% block bottom_layer %}
+<script src="{{ MEDIA_URL }}js/slick.min.js"></script>
+
+<div class="row-fluid"><!-- video/prompt row -->
+  <div class="col-lg-9 col-md-9 col-sm-offset-1 col-sm-9 col-xs-12" style="padding-left:0px; padding-right:0px;"><!-- video/prompt div -->
+
+   <div id="tut-5" class="col-md-12 col-xs-12">
+       <div class="row-fluid">
+         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+
+           {% blocktrans %}
+           <p>Now you know what you're doing, you're ready to play. Don't worry if you make a mistake, click the redo button (<img src="{{MEDIA_URL}}/images/movie_buttons/redo.png" width="30">) and the video will restart.</p>
+           {% endblocktrans %}
+
+           {% if user.is_authenticated %}
+
+           {% blocktrans %}
+           <p>
+             On the next page you'll see your meadow. Click on a
+             cricket burrow to start.
+           </p>
+           {% endblocktrans %}
+
+           {% else %}
+
+           {% blocktrans %}
+           <p>
+             If you register you can see your meadow, where you can
+             build houses for the crickets!
+           </p>
+           {% endblocktrans %}
+
+           {% endif %}
+
+           {% blocktrans %}
+           <p>
+             Each burrow has multiple videos. If you have watched the
+             most videos for a burrow, you'll get to build a house on
+             it. If someone else clicks on your burrow and watches more
+             videos than you, they can knock your house down and build
+             their own in its place. You can do the same to them!
+           </p>
+           {% endblocktrans %}
+
+           {% blocktrans %}
+           <p>
+             Burrows you've contributed to are marked by a small leaf
+             flag, and houses you own have a big flag that says 'My
+             House'.
+           </p>
+           {% endblocktrans %}
+
+         </div>
+
+         <div class="col-lg-2 col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-5 col-xs-2 col-xs-offset-5">
+           <img src="{{ MEDIA_URL }}images/training/house.png" width=100%>
+         </div>
+
+
+         <div class="row-fluid col-xs-12">
+           <center>
+            <button id="tutorial" onclick="window.location='{% url 'tutorial_id' %}'">
+                  {% trans "Go Back" %}
+                </button>
+             {% if user.is_authenticated %}
+             <a href="/meadow/" class="tutorial-play">
+               {% else %}
+               <a href="/random_movie" class="tutorial-play">
+                 {% endif %}
+
+                 <button id="tutorial" onclick="">
+                   {% trans "PLAY!" %}
+                 </button>
+               </a>
+           </center>
+         </div>
+         <img class="col-xs-2 col-xs-offset-5" src="/media/images/crickets/7.png">
+       </div>
+      </div>
+
+  </div>
+</div>
+</div><!-- End player row-->
+<script>
+
+$('#slider-tutorial').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+});
+
+$('#slider-tutorial-movement').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+});
+
+
+$('#critters').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right'),
+});
+</script>
+{% endblock %}

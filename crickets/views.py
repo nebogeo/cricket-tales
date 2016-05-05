@@ -157,7 +157,7 @@ class MovieView(generic.DetailView):
         burrow = context['movie'].burrow
 
         print self.request.META['HTTP_USER_AGENT'].lower()
-        
+
         # not all videos have burrows (in anon mode)
         if burrow:
             context['page_title'] = _("YOU ARE WATCHING BURROW %(burrow)s") % {"burrow":str(burrow.name)}
@@ -394,6 +394,68 @@ def tutorial(request):
     context['burrow_start'] = EventType.objects.filter(name="Burrow Start").first()
     context['cricket_id'] = EventType.objects.filter(name="Cricket ID").first()
     return render(request, 'crickets/tutorial.html', context)
+
+def tutorial_basic(request):
+    context = {}
+    context['page_title'] = _("HOW YOU CAN HELP")
+    context['event_types'] = get_event_types()
+
+    context['basic_behaviours'] = []
+
+    basic_behaviours_names = ["MATE", "SING", "FIGHT", "EAT"]
+
+    for event in get_event_types():
+        if event.name in basic_behaviours_names:
+            context['basic_behaviours'].append(event)
+       
+    return render(request, 'crickets/tutorial1.html', context)
+
+def tutorial_movement(request):
+    context = {}
+    context['page_title'] = _("HOW YOU CAN HELP")
+    context['event_types'] = get_event_types()
+
+    context['movement'] = []
+
+    movement_names = ["LEAVES BURROW", "ENTERS BURROW", "ARRIVES FRAME", "LEAVES FRAME"]
+    
+
+    for event in get_event_types():
+        
+        if event.name in movement_names:
+            context['movement'].append(event)
+
+    return render(request, 'crickets/tutorial2.html', context)
+
+def tutorial_predators(request):
+    context = {}
+    context['page_title'] = _("HOW YOU CAN HELP")
+    context['event_types'] = get_event_types()
+
+    
+    context['predators_traps'] = []
+
+    
+    predators_traps_names = ["Predator: Bird", "Predator: Shrew", "TRAP", "Something Else"]
+
+    for event in get_event_types():
+        if event.name in predators_traps_names:
+            context['predators_traps'].append(event)
+
+    context['something_else'] = EventType.objects.filter(name="Something Else").first()
+    context['cricket_start'] = EventType.objects.filter(name="Cricket Start").first()
+    context['cricket_end'] = EventType.objects.filter(name="Cricket End").first()
+    context['burrow_start'] = EventType.objects.filter(name="Burrow Start").first()
+    context['cricket_id'] = EventType.objects.filter(name="Cricket ID").first()
+    return render(request, 'crickets/tutorial3.html', context)
+
+def tutorial_id(request):
+    context = {}
+    return render(request, 'crickets/tutorial4.html', context)
+
+def tutorial_ready(request):
+    context = {}
+    return render(request, 'crickets/tutorial5.html', context)
 
 def about(request):
     context = {}

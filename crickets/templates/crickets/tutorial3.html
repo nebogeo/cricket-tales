@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block top_layer %}
+{% endblock %}
+
+{% block bottom_layer %}
+<script src="{{ MEDIA_URL }}js/slick.min.js"></script>
+
+<div class="row-fluid"><!-- video/prompt row -->
+  <div class="col-lg-9 col-md-9 col-sm-offset-1 col-sm-9 col-xs-12" style="padding-left:0px; padding-right:0px;"><!-- video/prompt div -->
+
+   <div id="tut-3" class="col-xs-12">
+        <h1>3. {% trans "PREDATORS TRAPS AND EXTRA CRITTERS" %}</h1>
+        <div class="row-fluid">
+          <div id="behaviour-buttongroup" class="tutorial_highlight col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
+
+          {% for event_type in predators_traps %}
+          <div class="button col-sm-6 col-xs-6"
+               style="cursor: auto; background: url({{ MEDIA_URL }}images/buttons/button-{{ event_type.image }}.png); background-size: 100% 100%;">
+            <div class="button_text" {% if not event_type.title %} style="visibility: hidden" {% endif %}>
+              <p>
+                {% if 'es' != LANGUAGE_CODE %}
+                {{event_type.name}}
+                {% else %}
+                {{event_type.es_name}}
+                {% endif %}
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+          <div class="button col-sm-6 col-xs-6" style="cursor: auto; background: url({{ MEDIA_URL }}/images/buttons/button-1.png); background-size: 100% 100%;">
+               <div class="button_text">
+                 <p>!</p></div>
+          </div>
+        </div>
+        </div>
+        <p>
+        {% blocktrans %}
+        Look out for predators, like birds and shrews,
+        and tube traps which are sometimes used to
+        collect the crickets. If you see them, click on
+        the buttons to tell us.
+        {% endblocktrans %}
+        </p>
+        <div class="row-fluid" style="overflow: hidden;">
+          <div class="col-sm-4 col-xs-12">
+            <img src="{{ MEDIA_URL }}images/training/vole-predator2.jpg" width="100%">
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <img src="{{ MEDIA_URL }}images/training/robin-predator2.jpg" width="100%">
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <img src="{{ MEDIA_URL }}images/training/trap-predator2.jpg" width="100%">
+          </div>
+        </div>
+
+        <p>
+        <div class="row-fluid">
+          {% blocktrans %} If you see something interesting in a video
+          and want to tell us about it, click on the '!' button.  You
+          don't need to comment on seeing other creatures unless you see
+          them actually interact with a cricket. {% endblocktrans %}
+        </div>
+        </p>
+
+        <p>
+          {% blocktrans %}Other creatures you might see, that we don't need to know about:{% endblocktrans %}
+        </p>
+
+        <div class="row-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="arrow arrow-tut-left col-lg-1 col-md-1 col-sm-1 col-xs-1"
+               style="padding: 0; padding-top: 30%;">
+            <img src="/media/images/left-arrow.png" style="width:100%;"/>
+          </div>
+          <div id="critters" class="slider-tutorial col-lg-10 col-md-10 col-sm-10 col-xs-10"
+               style="overflow:hidden;">
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Ants" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/ant.png" width="100%">
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Beetles" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/beetle.png" width="100%">
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Grasshoppers" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/cricket.png" width="100%">
+            </div>
+
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Hedgehogs" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/hedgehog.jpg" width="100%">
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Humans" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/human.jpg" width="100%">
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Moths" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/moth.png" width="100%">
+            </div>
+
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Slugs" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/slug.png" width="100%">
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Spiders" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/spider.png" width="100%">
+            </div>
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Woodlouses" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/woodlouse.png" width="100%">
+            </div>
+
+            <div class="slider-item">
+              <div class="slider-caption"><h2 class="text-center">{% trans "Worms" %}</h2></div>
+              <img src="{{ MEDIA_URL }}images/training/worm.png" width="100%">
+            </div>
+
+          </div>
+          <div class="arrow arrow-tut-right col-lg-1 col-md-1 col-sm-1 col-xs-1"
+               style="padding: 0; padding-top: 30%;">
+            <img src="/media/images/right-arrow.png" width="100%"/>
+          </div>
+        </div>
+
+        <div class="row-fluid">
+        <p>
+        {% blocktrans %}
+        If you see another cricket, click the button to tell us, but
+        keep recording for the first cricket you see.
+        {% endblocktrans %}
+        </p>
+        </div>
+
+        <div class="row-fluid">
+          <center>
+             <button id="tutorial" onclick="window.location='{% url 'tutorial_movement' %}'">
+              {% trans "Go Back" %}
+            </button>
+            <button id="tutorial" onclick="window.location='{% url 'tutorial_id' %}'">
+              {% trans "Got it!" %}
+            </button>
+          </center>
+        </div>
+        <img class="col-xs-2 col-xs-offset-5" src="/media/images/crickets/8.png">
+     </div>
+
+      </div>
+
+  </div>
+</div>
+</div><!-- End player row-->
+<script>
+
+$('#slider-tutorial').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+});
+
+$('#slider-tutorial-movement').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right')
+});
+
+
+$('#critters').slick({
+    infinite: false,
+    arrows: true,
+    prevArrow: $('.arrow-tut-left'),
+    nextArrow: $('.arrow-tut-right'),
+});
+</script>
+{% endblock %}

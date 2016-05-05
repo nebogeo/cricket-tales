@@ -234,6 +234,14 @@ video {
     font-weight: bold;
 }
 
+.helptext {
+    
+    display: none;
+}
+
+.form-verify {
+    font-size: 0.7em;
+}
 .news-stretch {
     width:99%;
     height:99%;
