@@ -501,6 +501,29 @@ button#no_cricket_end {
 /*    padding: 0.8em;*/
 }
 
+div#tut-main {
+    padding-top: 2em;
+}
+
+div#cricket-march {
+    padding-top: 2em;
+}
+
+div#cricket-march img {
+    width: 150px;
+}
+div#cricket-march img.march {
+    height: 130px;
+    width: auto;
+    margin: 1em;
+    margin-right: 0.8em;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
 #burrow_start,
 .info-panel {
     border: 0px;
