@@ -66,38 +66,6 @@ function make_visible(id,viz) {
     }
 }
 
-
-
-
-function init_sliders() {
-    window.onload(function() {
-        $('#slider-tutorial').slick({
-        infinite: false,
-        arrows: true,
-        prevArrow: $('.arrow-tut-left'),
-        nextArrow: $('.arrow-tut-right')
-    });
-
-    $('#slider-tutorial-movement').slick({
-        infinite: false,
-        arrows: true,
-        prevArrow: $('.arrow-tut-left'),
-        nextArrow: $('.arrow-tut-right')
-    });
-
-
-    $('#critters').slick({
-        infinite: false,
-        arrows: true,
-        prevArrow: $('.arrow-tut-left'),
-        nextArrow: $('.arrow-tut-right'),
-    });
-
-    });    
-}
-
-window.onload = init_sliders()
-
 function tut_video_right() {
     var t = document.getElementById("tut_video_scroll");
     t.style.left=-100;
