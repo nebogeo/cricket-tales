@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-10 14:05+0100\n"
+"POT-Creation-Date: 2016-05-10 15:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,7 +86,7 @@ msgstr "ACERCA DE"
 
 #: crickets/templates/base.html:45
 msgid "FAQ"
-msgstr ""
+msgstr "PREGUNTAS FRECUENTES"
 
 #: crickets/templates/base.html:47 crickets/templates/crickets/index.html:86
 msgid "LOG OUT"
@@ -107,7 +107,7 @@ msgid ""
 "    insect, and we need your help to see what the crickets are up to.\n"
 msgstr ""
 "\n"
-"En un campo secreto en el norte de Espańa, cientos de madrigueras de grillo "
+"En un campo secreto en el norte de España, cientos de madrigueras de grillo "
 "son monitorizadas utilizando cámaras de video. Este es el primer estudio a "
 "largo plazo del comportamiento de un insecto en condiciones naturales, y "
 "necesitamos tu ayuda para ver que es lo que hacen los grillos.\n"
@@ -141,7 +141,7 @@ msgstr ""
 
 #: crickets/templates/crickets/builder.html:12
 msgid "Design your house with the arrows below"
-msgstr "Diseńa tu casa con las flechas situadas más abajo"
+msgstr "Diseña tu casa con las flechas situadas más abajo"
 
 #: crickets/templates/crickets/faq.html:16
 msgid ""
@@ -156,10 +156,15 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t<p class=\"q\">¿Si un grillo empieza a entrar y salir de su madriguera repetidamente, debo registrarlo cada vez que lo hace?</p>\n"
-"\t<p>Sí! Si el grillo sale completamente de la madriguera de manera que puedes ver todo su cuerpo, y retrocede de nuevo de manera que se introduce entero dentro de la madriguera, registra estos eventos como “sale de madriguera” y “entra en madriguera”. Esto puede ocurrir repetidamente en un mismo video y nos da una medida del nivel de actividad del individuo, y como de precavido es frente a posibles ataques.</p>\n"
+"\t<p class=\"q\">¿Si un grillo empieza a entrar y salir de su madriguera "
+"repetidamente, debo registrarlo cada vez que lo hace?</p>\n"
+"\t<p>Sí! Si el grillo sale completamente de la madriguera de manera que "
+"puedes ver todo su cuerpo, y retrocede de nuevo de manera que se introduce "
+"entero dentro de la madriguera, registra estos eventos como “sale de "
+"madriguera” y “entra en madriguera”. Esto puede ocurrir repetidamente en un "
+"mismo video y nos da una medida del nivel de actividad del individuo, y como "
+"de precavido es frente a posibles ataques.</p>\n"
 "\t"
-
 
 #: crickets/templates/crickets/faq.html:25
 msgid ""
@@ -171,8 +176,11 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t<p class=\"q\">¿Es importante registrar el momento exacto cuando se pulsa el ratón?</p>\n"
-"\t<p>¡No! Sólo es necesario hacerlo con un margen de unos pocos segundos respecto al tiempo en que se produce el evento. Lo importante es que lo registres, generalmente el momento exacto no es demasiado importante.</p>\n"
+"\t<p class=\"q\">¿Es importante registrar el momento exacto cuando se pulsa "
+"el ratón?</p>\n"
+"\t<p>¡No! Sólo es necesario hacerlo con un margen de unos pocos segundos "
+"respecto al tiempo en que se produce el evento. Lo importante es que lo "
+"registres, generalmente el momento exacto no es demasiado importante.</p>\n"
 "\t"
 
 #: crickets/templates/crickets/faq.html:34
@@ -186,7 +194,10 @@ msgid ""
 msgstr ""
 "\n"
 "\t<p class=\"q\">Si pulso algo accidentalmente, ¿puedo borrarlo?</p>\n"
-"\t<p>No, pero puedes mirar el video de nuevo y sobre escribir tu registro original. No te preocupes si el error está relacionado con el momento exacto de  un evento, ya que el momento exacto no suele ser demasiado importante.</p>\n"
+"\t<p>No, pero puedes mirar el video de nuevo y sobre escribir tu registro "
+"original. No te preocupes si el error está relacionado con el momento exacto "
+"de  un evento, ya que el momento exacto no suele ser demasiado importante.</"
+"p>\n"
 "\t"
 
 #: crickets/templates/crickets/faq.html:43
@@ -199,8 +210,10 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t<p class=\"q\">Los videos no están funcionando correctamente en mi iPad, ¿Qué puedo hacer?</p>\n"
-"\t<p>Intenta actualizar tu iPad. Esto en ocasiones soluciona el problema.</p>\n"
+"\t<p class=\"q\">Los videos no están funcionando correctamente en mi iPad, "
+"¿Qué puedo hacer?</p>\n"
+"\t<p>Intenta actualizar tu iPad. Esto en ocasiones soluciona el problema.</"
+"p>\n"
 "\t"
 
 #: crickets/templates/crickets/faq.html:52
@@ -216,9 +229,14 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t<p class=\"q\">¡Las cosas se complican cuando hay más de un grillo! ¿En cuál debería concentrarme?</p>\n"
+"\t<p class=\"q\">¡Las cosas se complican cuando hay más de un grillo! ¿En "
+"cuál debería concentrarme?</p>\n"
 "\n"
-"    <p>Cuando hay más de un grillo, lo importante es utilizar el botón para contarnos que hay varios grillos, y registrar todos los identificadores si es posible. Pulsa cada vez que veas un comportamiento por parte de cualquiera de ellos. Puedes pulsar sobre cualquier grillo al empezar o terminar el video.</p>\n"
+"    <p>Cuando hay más de un grillo, lo importante es utilizar el botón para "
+"contarnos que hay varios grillos, y registrar todos los identificadores si "
+"es posible. Pulsa cada vez que veas un comportamiento por parte de "
+"cualquiera de ellos. Puedes pulsar sobre cualquier grillo al empezar o "
+"terminar el video.</p>\n"
 "\t"
 
 #: crickets/templates/crickets/index.html:30
@@ -259,6 +277,10 @@ msgstr "Nombre de usuario:"
 #: crickets/templates/crickets/login.html:11
 msgid "Password:"
 msgstr "Palabra clave:"
+
+#: crickets/templates/crickets/login.html:11
+msgid "Repeat password"
+msgstr "Repetir palabra clave"
 
 #: crickets/templates/crickets/login.html:13
 msgid "Login"
@@ -306,7 +328,7 @@ msgstr "NOTICIAS"
 
 #: crickets/templates/crickets/movie.html:10
 msgid "Thank you for watching!"
-msgstr "ĄGracias por participar!"
+msgstr "¡Gracias por participar!"
 
 #: crickets/templates/crickets/movie.html:20
 #: crickets/templates/crickets/movie.html:57
@@ -383,11 +405,11 @@ msgstr ""
 
 #: crickets/templates/crickets/movie.html:254
 msgid "Well done! Video complete"
-msgstr "ĄBien hecho! Video completado"
+msgstr "¡Bien hecho! Video completado"
 
 #: crickets/templates/crickets/movie.html:255
 msgid "No cricket clicked [no cricket seen?]"
-msgstr "No has seńalado ningún grillo [żNo has visto ninguno?]"
+msgstr "No has señalado ningún grillo [¿No has visto ninguno?]"
 
 #: crickets/templates/crickets/movie.html:256
 msgid "I have no idea, you broke me"
@@ -407,14 +429,13 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: crickets/templates/crickets/register.html:10
-msgid ""
-"Make up your username (don't use an email address)<br/>\n"
-"<span class=\"form-verify\">Required. 30 characters or fewer. Letters, "
-"digits and @/./+/-/_ only.</span>"
+msgid "Make up your username (don't use an email address)"
 msgstr ""
-"Crea to nombrer de usuario (no utilices una dirección de correo electrónico)<br/>\n"
-"<span class=\"form-verify\">Required. 30 characters or fewer. Letters, "
-"digits and @/./+/-/_ only.</span>"
+"Crea to nombrer de usuario (no utilices una dirección de correo electrónico)"
+
+#: crickets/templates/crickets/register.html:11
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Requerido. 30 caracteres o menos. Solo se pueden utilizar letras, dígitos o los símbolos @ / . / + / - / _ ."
 
 #: crickets/templates/crickets/register.html:17
 msgid ""
@@ -472,7 +493,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"żEstás de acuerdo en que utilicemos tus datos para la investigación del "
+"¿Estás de acuerdo en que utilicemos tus datos para la investigación del "
 "comportamiento de los insectos?"
 
 #: crickets/templates/crickets/register.html:49
@@ -557,7 +578,7 @@ msgstr "Volver"
 #: crickets/templates/crickets/tutorial3.html:152
 #: crickets/templates/crickets/tutorial4.html:48
 msgid "Got it!"
-msgstr "ĄConseguido!"
+msgstr "¡Conseguido!"
 
 #: crickets/templates/crickets/tutorial2.html:14
 msgid "MOVEMENT"
@@ -640,7 +661,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"Busca depredadores, como pájaros o musarańas, y trampas de tubo que a veces "
+"Busca depredadores, como pájaros o musarañas, y trampas de tubo que a veces "
 "utilizamos para capturar grillos. Si los ves, pulsa sobre los botones para "
 "contárnoslo."
 
@@ -689,7 +710,7 @@ msgstr "Babosas"
 
 #: crickets/templates/crickets/tutorial3.html:109
 msgid "Spiders"
-msgstr "Arańas"
+msgstr "Arañas"
 
 #: crickets/templates/crickets/tutorial3.html:113
 msgid "Woodlouses"
@@ -781,7 +802,7 @@ msgid ""
 msgstr ""
 "\n"
 "           <p>\n"
-"ĄSi te registras puedes ver tu prado y construir en él casas para los "
+"¡Si te registras puedes ver tu prado y construir en él casas para los "
 "grillos!\n"
 "           </p>\n"
 "           "
@@ -803,7 +824,7 @@ msgstr ""
 "             Cada madriguera tiene múltiples videos. Si has mirado la "
 "mayoría de los videos de una madriguera, podrás construir una casa sobre "
 "ella. Si alguien más selecciona esa madriguera y ve más videos que tú, podrá "
-"tirar tu casa y construir la suya en el mismo lugar. ĄTú puedes hacer lo "
+"tirar tu casa y construir la suya en el mismo lugar. ¡Tú puedes hacer lo "
 "mismo con la suya!\n"
 "           </p>\n"
 "           "
@@ -821,14 +842,14 @@ msgstr ""
 "\n"
 "           <p>\n"
 "             Las madrigueras que has contribuido a observar están marcadas "
-"por una pequeńa bandera, y las casas que te pertenecen tienen una gran "
+"por una pequeña bandera, y las casas que te pertenecen tienen una gran "
 "bandera que dice \"Mi casa\".\n"
 "           </p>\n"
 "           "
 
 #: crickets/templates/crickets/tutorial5.html:78
 msgid "PLAY!"
-msgstr "ĄREPRODUCIR!"
+msgstr "¡REPRODUCIR!"
 
 #: crickets/views.py:60
 #, python-format
@@ -858,7 +879,7 @@ msgstr "ESTÁS VIENDO EL VIDEO %(movie)s"
 #: crickets/views.py:207
 #, python-format
 msgid "%(player)s has watched %(count)i movies in a burrow!"
-msgstr "Ą%(player)s ha visto %(count)i videos en una madriguera!"
+msgstr "¡%(player)s ha visto %(count)i videos en una madriguera!"
 
 #: crickets/views.py:224
 #, python-format
@@ -873,7 +894,7 @@ msgstr "%(player)s ha visto un pájaro"
 #: crickets/views.py:234
 #, python-format
 msgid "%(player)s has seen a shrew!"
-msgstr "Ą%(player)s ha visto una musarańa!"
+msgstr "¡%(player)s ha visto una musaraña!"
 
 #: crickets/views.py:239
 #, python-format
@@ -908,12 +929,10 @@ msgstr "CÓMO PUEDES AYUDAR"
 
 #: crickets/views.py:468
 msgid "Cricket Tales FAQ"
-msgstr ""
+msgstr "HISTORIAS SOBRE GRILLOS PREGUNTAS FRECUENTES"
 
-#~ msgid "Make up your username (don't use an email address)"
-#~ msgstr ""
-#~ "Crea to nombrer de usuario (no utilices una dirección de correo "
-#~ "electrónico)"
+msgid "Yes"
+msgstr "Si"
 
 #~ msgid "ANOTHER CRICKET"
 #~ msgstr "LOS GRILLOS"

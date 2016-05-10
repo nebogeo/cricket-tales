@@ -289,8 +289,8 @@ def spit_event(request):
 ## user stuff
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-    repeat_password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(label=_('Password'),widget=forms.PasswordInput())
+    repeat_password = forms.CharField(label=_('Repeat password'),widget=forms.PasswordInput())
 
     class Meta:
         model = User

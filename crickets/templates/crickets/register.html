@@ -7,8 +7,8 @@
 {% else %}
 <div class="row-fluid">
 <center>
-{% blocktrans %}Make up your username (don't use an email address)<br/>
-<span class="form-verify">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.</span>{% endblocktrans %}
+{% blocktrans %}Make up your username (don't use an email address){% endblocktrans %}<br/>
+<span class="form-verify">{% blocktrans %}Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.{% endblocktrans %}</span>
 <form id="user_form" class="register-form" method="post" action="/register/"
       enctype="multipart/form-data">
   {% csrf_token %}
@@ -42,7 +42,7 @@
   {% blocktrans %}
   Are you happy for us to use your data for insect behaviour research purposes?
   {% endblocktrans %}
-  <input type="submit" name="submit" value="Yes" />
+  <input type="submit" name="submit" value="{% trans 'Yes' %}" />
 </form>
 <a href="/">
   <button id="tutorial_2">
