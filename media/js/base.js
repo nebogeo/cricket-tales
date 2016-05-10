@@ -328,6 +328,7 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
                 $('#no_cricket').click(function() {
                     add_event(cricket_start_id,movie_id,user_id, 0, 0, 'No Cricket');
                     state = "wait-burrow";
+                    $("#ourvideo").off('click');
                     burrow_event(burrow_start_id,movie_id,user_id);
                 });
 
@@ -494,7 +495,7 @@ function inner_render_my_event(start_time) {
 
 // sends the event to the server and renders it
 function add_event(event_type_id, movie_id,user_id, xpos, ypos, other) {
-
+    //console.log([event_type_id, movie_id,user_id, xpos, ypos, other]);
     // only works if we have a video running of course...
     if (pop!=false) {
         t = pop.currentTime();
