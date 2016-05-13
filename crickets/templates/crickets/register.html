@@ -20,7 +20,7 @@
     {% endblocktrans %}
   </p>
   <p>
-    <label for="id_age_range">Gender:</label>
+    <label for="id_age_range">{% trans "Gender" %}:</label>
     <select class="lang-select" id="id_gender" name="gender" type="number">
       <option value="0" selected="selected">{% trans "Prefer not to say" %}</option>
       <option value="1">{% trans "Male" %}</option>
@@ -29,7 +29,7 @@
     </select>
   </p>
   <p>
-    <label for="id_age_range">Age range:</label>
+    <label for="id_age_range">{% trans "Age range" %}:</label>
     <select class="lang-select" id="id_age_range" name="age_range" type="number">
       <option value="0" selected="selected">{% trans "Prefer not to say" %}</option>
       <option value="1">{% trans "Younger than 10" %}</option>

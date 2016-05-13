@@ -143,6 +143,9 @@ msgstr ""
 msgid "Design your house with the arrows below"
 msgstr "Diseña tu casa con las flechas situadas más abajo"
 
+msgid "Build"
+msgstr "CONSTRUIR"
+
 #: crickets/templates/crickets/faq.html:16
 msgid ""
 "\n"
@@ -158,7 +161,7 @@ msgstr ""
 "\n"
 "\t<p class=\"q\">¿Si un grillo empieza a entrar y salir de su madriguera "
 "repetidamente, debo registrarlo cada vez que lo hace?</p>\n"
-"\t<p>Sí! Si el grillo sale completamente de la madriguera de manera que "
+"\t<p>¡Sí! Si el grillo sale completamente de la madriguera de manera que "
 "puedes ver todo su cuerpo, y retrocede de nuevo de manera que se introduce "
 "entero dentro de la madriguera, registra estos eventos como “sale de "
 "madriguera” y “entra en madriguera”. Esto puede ocurrir repetidamente en un "
@@ -176,8 +179,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t<p class=\"q\">¿Es importante registrar el momento exacto cuando se pulsa "
-"el ratón?</p>\n"
+"\t<p class=\"q\">¿ES IMPORTANTE PULSAR EL RATÓN EN EL MOMENTO EXACTO EN QUE SE PRODUCE UN EVENTO?</p>\n"
 "\t<p>¡No! Sólo es necesario hacerlo con un margen de unos pocos segundos "
 "respecto al tiempo en que se produce el evento. Lo importante es que lo "
 "registres, generalmente el momento exacto no es demasiado importante.</p>\n"
@@ -193,7 +195,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t<p class=\"q\">Si pulso algo accidentalmente, ¿puedo borrarlo?</p>\n"
+"\t<p class=\"q\">SI PULSO UN BOTÓN POR ERROR, ¿PUEDO DESHACER EL ERROR?</p>\n"
 "\t<p>No, pero puedes mirar el video de nuevo y sobre escribir tu registro "
 "original. No te preocupes si el error está relacionado con el momento exacto "
 "de  un evento, ya que el momento exacto no suele ser demasiado importante.</"
@@ -280,7 +282,7 @@ msgstr "Palabra clave:"
 
 #: crickets/templates/crickets/login.html:11
 msgid "Repeat password"
-msgstr "Repetir palabra clave"
+msgstr "Repetir contraseña"
 
 #: crickets/templates/crickets/login.html:13
 msgid "Login"
@@ -400,7 +402,7 @@ msgid ""
 "4. Click on the cricket if you can see it, or click <button id="
 "\"no_cricket_end\">No cricket</button>"
 msgstr ""
-"4. Pulsa sobre el grillo si puedes verlo, o pulsa <button id=\"no_cricket"
+"4. Para terminar pulsa de nuevo sobre el grillo si puedes verlo, o pulsa <button id=\"no_cricket"
 "\">Sin grillo</button>"
 
 #: crickets/templates/crickets/movie.html:254
@@ -431,7 +433,7 @@ msgstr "Cancelar"
 #: crickets/templates/crickets/register.html:10
 msgid "Make up your username (don't use an email address)"
 msgstr ""
-"Crea to nombrer de usuario (no utilices una dirección de correo electrónico)"
+"Crea tu nombre de usuario (no utilices una dirección de correo electrónico)"
 
 #: crickets/templates/crickets/register.html:11
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
@@ -452,6 +454,14 @@ msgstr ""
 #: crickets/templates/crickets/register.html:34
 msgid "Prefer not to say"
 msgstr "Prefiero no decirlo"
+
+#: crickets/templates/crickets/register.html:26
+msgid "Gender"
+msgstr "Género"
+
+#: crickets/templates/crickets/register.html:26
+msgid "Age range"
+msgstr "Rango de edad"
 
 #: crickets/templates/crickets/register.html:26
 msgid "Male"
@@ -493,8 +503,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"¿Estás de acuerdo en que utilicemos tus datos para la investigación del "
-"comportamiento de los insectos?"
+"¿Estás de acuerdo en que utilicemos tus datos para investigar el comportamiento de los insectos?"
 
 #: crickets/templates/crickets/register.html:49
 msgid "No thanks"
@@ -578,7 +587,7 @@ msgstr "Volver"
 #: crickets/templates/crickets/tutorial3.html:152
 #: crickets/templates/crickets/tutorial4.html:48
 msgid "Got it!"
-msgstr "¡Conseguido!"
+msgstr "¡VISTOS!"
 
 #: crickets/templates/crickets/tutorial2.html:14
 msgid "MOVEMENT"
@@ -629,7 +638,7 @@ msgstr "Entra en la madriguera"
 
 #: crickets/templates/crickets/tutorial2.html:72
 msgid "The cricket enters the burrow."
-msgstr "El grillo entre en la madriguera."
+msgstr "El grillo entra en la madriguera."
 
 #: crickets/templates/crickets/tutorial2.html:75
 msgid "Arrive Frame"
@@ -821,8 +830,7 @@ msgid ""
 msgstr ""
 "\n"
 "           <p>\n"
-"             Cada madriguera tiene múltiples videos. Si has mirado la "
-"mayoría de los videos de una madriguera, podrás construir una casa sobre "
+"             Cada madriguera tiene múltiples videos. Si eres el que más videos ha visto de una madriguera, podrás construir una casa sobre "
 "ella. Si alguien más selecciona esa madriguera y ve más videos que tú, podrá "
 "tirar tu casa y construir la suya en el mismo lugar. ¡Tú puedes hacer lo "
 "mismo con la suya!\n"
@@ -849,7 +857,14 @@ msgstr ""
 
 #: crickets/templates/crickets/tutorial5.html:78
 msgid "PLAY!"
-msgstr "¡REPRODUCIR!"
+msgstr "¡VER VIDEOS!"
+
+#: crickets/templates/crickets/tutorial5.html:78
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "No Tag"
+msgstr "Sin marca"
 
 #: crickets/views.py:60
 #, python-format
@@ -878,8 +893,17 @@ msgstr "ESTÁS VIENDO EL VIDEO %(movie)s"
 
 #: crickets/views.py:207
 #, python-format
-msgid "%(player)s has watched %(count)i movies in a burrow!"
-msgstr "¡%(player)s ha visto %(count)i videos en una madriguera!"
+msgid "%(player)s has watched 10 movies in a burrow!"
+msgstr "¡%(player)s ha visto 10 videos en una madriguera!"
+
+msgid "%(player)s has watched 25 movies in a burrow!"
+msgstr "¡%(player)s ha visto 25 videos en una madriguera!"
+
+msgid "%(player)s has watched 50 movies in a burrow!"
+msgstr "¡%(player)s ha visto 50 videos en una madriguera!"
+
+msgid "%(player)s has watched 100 movies in a burrow!"
+msgstr "¡%(player)s ha visto 100 videos en una madriguera!"
 
 #: crickets/views.py:224
 #, python-format
@@ -929,7 +953,7 @@ msgstr "CÓMO PUEDES AYUDAR"
 
 #: crickets/views.py:468
 msgid "Cricket Tales FAQ"
-msgstr "HISTORIAS SOBRE GRILLOS PREGUNTAS FRECUENTES"
+msgstr "HISTORIAS SOBRE GRILLOS: PREGUNTAS FRECUENTES"
 
 msgid "Yes"
 msgstr "Si"

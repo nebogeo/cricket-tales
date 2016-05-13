@@ -25,8 +25,6 @@ from django.contrib.auth import authenticate, login, logout
 
 import mimetypes
 
-
-
 #####################################################################
 ## index
 
@@ -107,7 +105,7 @@ def house(request,burrow_id,house):
             burrow.new_house_needed = 0
             burrow.save()
             story = Story(player=user,
-                          text=_("%(player)s has built a new house."))
+                          text="%(player)s has built a new house.")
             story.save()
 
         return HttpResponseRedirect('/meadow/')
@@ -204,9 +202,7 @@ def update_score(user,burrow):
         # make some stories out of counts of movies per user
         if my_score[0].movies_finished in [10,25,50,100]:
             story = Story(player=user,
-                          text=_("%(player)s has watched %(count)i movies in a burrow!") %
-                         {'player':'%(player)s', # stick this back in...
-                          'count':my_score[0].movies_finished})
+                          text="%(player)s has watched "+str(my_score[0].movies_finished)+" movies in a burrow!")
             story.save()
     else:
         score = PlayerBurrowScore(player=user,
@@ -221,27 +217,27 @@ def update_stories(user,data):
     # make some stories
     if data['type'].name == "Cricket ID":
         story = Story(player=user,
-                      text=_("A cricket has just been IDed by %(player)s"))
+                      text="A cricket has just been IDed by %(player)s")
         story.save()
 
     if data['type'].name == "Predator: Bird":
         story = Story(player=user,
-                      text=_("A bird has been spotted by %(player)s"))
+                      text="A bird has been spotted by %(player)s")
         story.save()
 
     if data['type'].name == "Predator: Shrew":
         story = Story(player=user,
-                      text=_("%(player)s has seen a shrew!"))
+                      text="%(player)s has seen a shrew!")
         story.save()
 
     if data['type'].name == "SING":
         story = Story(player=user,
-                      text=_("A cricket has been seen singing by %(player)s"))
+                      text="A cricket has been seen singing by %(player)s")
         story.save()
 
     if data['type'].name == "FIGHT":
         story = Story(player=user,
-                      text=_("A fight has been spotted by %(player)s"))
+                      text="A fight has been spotted by %(player)s")
         story.save()
 
 
