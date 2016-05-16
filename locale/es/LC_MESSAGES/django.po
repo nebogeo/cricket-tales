@@ -245,6 +245,10 @@ msgstr ""
 msgid "CRICKET TALES"
 msgstr "HISTORIAS SOBRE GRILLOS"
 
+msgid "Help us to understand the lives of wild insects by watching video clips."
+msgstr "Ayúdanos a conocer cómo viven los insectos en su medio natural visionando fragmentos de video."
+
+
 #: crickets/templates/crickets/index.html:33
 #, python-format
 msgid ""

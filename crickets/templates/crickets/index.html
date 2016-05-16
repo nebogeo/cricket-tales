@@ -27,7 +27,10 @@
 </div>
 
 <div class="game_title">
-{% if 'es' == LANGUAGE_CODE %}<span style="font-size:7vw">{% else %}<span style="font-size:10vw">{% endif %}{% trans "CRICKET TALES" %}</span>
+  <span style="font-size:7vw">{% trans "CRICKET TALES" %}</span>
+</div>
+<div class="game_stats">
+{% blocktrans %}Help us to understand the lives of wild insects by watching video clips.{% endblocktrans %}
 </div>
 <div class="game_stats">
 {% blocktrans %}<strong>Live progress:</strong> There are {{ num_videos }} videos of crickets.<br/>
