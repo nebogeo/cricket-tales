@@ -402,7 +402,7 @@ msgid ""
 "4. Click on the cricket if you can see it, or click <button id="
 "\"no_cricket_end\">No cricket</button>"
 msgstr ""
-"4. Para terminar pulsa de nuevo sobre el grillo si puedes verlo, o pulsa <button id=\"no_cricket"
+"4. Para terminar pulsa de nuevo sobre el grillo si puedes verlo, o pulsa <button id=\"no_cricket_end"
 "\">Sin grillo</button>"
 
 #: crickets/templates/crickets/movie.html:254
