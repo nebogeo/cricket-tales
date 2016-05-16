@@ -341,7 +341,6 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
             if (state === "movie-playing") {
                 state = "wait-cricket-end";
                 update_infotext();
-                console.log("doing wait-cricket-end");
 
                 $('#ourvideo').click(function(e) {
                    $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
@@ -356,7 +355,6 @@ function video_setup(cricket_start_id, burrow_start_id, cricket_id_id, cricket_e
                 });
 
                 $('#no_cricket_end').click(function() {
-                    console.log("hello");
                     add_event(cricket_end_id,movie_id,user_id, 0, 0, 'No Cricket');
                     $('.top_layer').css({'z-index' : '1', 'display' : 'inline-block'});
                     update_infotext();
