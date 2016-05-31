@@ -269,7 +269,7 @@ msgid "CONTINUE PLAYING"
 msgstr "SEGUIR JUGANDO"
 
 #: crickets/templates/crickets/index.html:67
-msgid "LOGIN FOR FULL GAME"
+msgid "LOGIN TO PLAY"
 msgstr "INICIAR SESIÓN PARA JUEGO COMPLETO"
 
 #: crickets/templates/crickets/index.html:88
