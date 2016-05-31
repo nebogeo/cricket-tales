@@ -305,7 +305,7 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('age_range',)
+        fields = ('age_range','gender')
 
 def register(request):
     context = RequestContext(request)
