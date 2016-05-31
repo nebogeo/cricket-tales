@@ -254,11 +254,11 @@ msgstr "Ayúdanos a conocer cómo viven los insectos en su medio natural visiona
 msgid ""
 "<strong>Live progress:</strong> There are %(num_videos)s videos of crickets."
 "<br/>\n"
-"So far, %(num_players)s players have watched %(num_videos_watched)s videos."
+"So far, %(num_events)s cricket story events have been recorded in "
+"%(num_videos_watched)s videos."
 msgstr ""
 "<strong>Situación actual:</strong> Hay %(num_videos)s videos de grillos.<br/"
-"> Hasta ahora, %(num_players)s colaboradores han visionado "
-"%(num_videos_watched)s videos."
+"> Hasta ahora, se han registrado %(num_events)s eventos sobre grillos en %(num_videos_watched)s videos.."
 
 #: crickets/templates/crickets/index.html:48 crickets/views.py:463
 msgid "ABOUT THE PROJECT"

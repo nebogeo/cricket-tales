@@ -32,7 +32,7 @@ def index(request):
     context = {}
     context['hide_menu'] = True
     context['num_videos_watched'] = Movie.objects.all().aggregate(Sum('views'))['views__sum']
-    context['num_players'] = User.objects.all().count()
+    context['num_events'] = Event.objects.all().count()
     context['num_videos'] = Movie.objects.all().count()
 
     print request.META['HTTP_USER_AGENT'].lower()
